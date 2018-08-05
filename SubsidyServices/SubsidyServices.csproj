@@ -62,10 +62,15 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Charities\FoundationSubsidy.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Charities\FoundationSubsidy.svc.cs">
+      <DependentUpon>FoundationSubsidy.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Charities\IFoundationSubsidy.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
