@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsidyServices", "SubsidyS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{F91C708D-7F09-4C4C-B847-CDB2F78A4272}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{287D2811-0B95-4BC7-8E98-4B1B5E819CE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F91C708D-7F09-4C4C-B847-CDB2F78A4272}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F91C708D-7F09-4C4C-B847-CDB2F78A4272}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F91C708D-7F09-4C4C-B847-CDB2F78A4272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{287D2811-0B95-4BC7-8E98-4B1B5E819CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{287D2811-0B95-4BC7-8E98-4B1B5E819CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{287D2811-0B95-4BC7-8E98-4B1B5E819CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{287D2811-0B95-4BC7-8E98-4B1B5E819CE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
