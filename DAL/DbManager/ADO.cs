@@ -12,6 +12,7 @@ using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
 using System.Dynamic;
 using System.Xml.Linq;
+using Models.SpParameters;
 
 namespace DAL.DbManager
 {
@@ -496,40 +497,40 @@ namespace DAL.DbManager
 
         #region General Methods
 
-        //public List<OracleParameter> PapulateOpsListFromGENCs(
-        //    in List<SpInPuts> spInPuts
-        //    )
-        //{
-        //    List<OracleParameter> OpParms = new List<OracleParameter>();
+        public List<OracleParameter> PopulateSpInPuts(
+            in List<SpInPuts> spInPuts
+            )
+        {
+            List<OracleParameter> OpParms = new List<OracleParameter>();
 
-        //    foreach (SpInPuts spin in spInPuts)
-        //    {
-        //        OpParms.Add(new OracleParameter()
-        //        {
-        //            ParameterName = ":" + spin.KEY,
-        //            Value = spin.VALUE
-        //        });
-        //    }
+            foreach (SpInPuts spin in spInPuts)
+            {
+                OpParms.Add(new OracleParameter()
+                {
+                    ParameterName = ":" + spin.KEY,
+                    Value = spin.VALUE
+                });
+            }
 
-        //    return OpParms;
-        //}
+            return OpParms;
+        }
 
-        //public void PapulateOPs(
-        //     ref List<OracleParameter> OpParams,
-        //     in List<SpOutPuts> sqOutPuts
-        //    )
-        //{
-        //    for (int i = 0; i < sqOutPuts.Count(); i++)
-        //    {
-        //        OpParams.Add(new OracleParameter()
-        //        {
-        //            ParameterName = ":" + sqOutPuts[i].ParameterName,
-        //            OracleDbType = sqOutPuts[i].OracleDbType,
-        //            Direction = ParameterDirection.Output,
-        //            Size = sqOutPuts[i].Size
-        //        });
-        //    }
-        //}
+        public void PopulateSpOutPuts(
+             ref List<OracleParameter> OpParams,
+             in List<SpOutPuts> sqOutPuts
+            )
+        {
+            for (int i = 0; i < sqOutPuts.Count(); i++)
+            {
+                OpParams.Add(new OracleParameter()
+                {
+                    ParameterName = ":" + sqOutPuts[i].ParameterName,
+                    OracleDbType = sqOutPuts[i].OracleDbType,
+                    Direction = ParameterDirection.Output,
+                    Size = sqOutPuts[i].Size
+                });
+            }
+        }
 
         public ExpandoObject CreateExapoClass(
             ref OracleParameterCollection OPCs

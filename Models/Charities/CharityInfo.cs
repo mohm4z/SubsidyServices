@@ -11,6 +11,12 @@ namespace Models.Charities
     [DataContract]
     public class CharityInfo
     {
+        [DataMember(EmitDefaultValue = false)]
+        public long LicenseNumber { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public int CharityType { get; set; }
+
         //[DataMember(EmitDefaultValue = false, IsRequired = true)]
         [DataMember]
         public string DevelopmentCenterName { get; set; }

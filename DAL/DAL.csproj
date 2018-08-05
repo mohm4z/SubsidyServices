@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Charities\CharityDAL.cs" />
     <Compile Include="DbManager\ADO.cs" />
     <Compile Include="DbManager\IADO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,6 +5,9 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
+using Models.Charities;
+using Models.HandleFault;
+
 namespace SubsidyServices.Charities
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IFoundationSubsidy" in both code and config file together.
@@ -15,7 +18,17 @@ namespace SubsidyServices.Charities
        )]
     public interface IFoundationSubsidy
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="LicenseNumber"></param>
+        /// <param name="CharityType"></param>
+        /// <returns></returns>
         [OperationContract]
-        void DoWork();
+        [FaultContract(typeof(ValidationFault))]
+        CharityInfo GetCharityInfo(
+            long LicenseNumber,
+            int CharityType
+            );
     }
 }

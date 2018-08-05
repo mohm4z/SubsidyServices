@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Xml.Linq;
+using Models.SpParameters;
 using Oracle.ManagedDataAccess.Client;
 
 namespace DAL.DbManager
@@ -93,24 +94,24 @@ namespace DAL.DbManager
             object value
             );
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="outOfOPs"></param>
-        ///// <returns></returns>
-        //void PapulateOPs(
-        //      ref List<OracleParameter> OpParams,
-        //     in List<SpOutPuts> outOfOPs
-        //     );
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="outOfOPs"></param>
+        /// <returns></returns>
+        void PopulateSpOutPuts(
+              ref List<OracleParameter> OpParams,
+             in List<SpOutPuts> outOfOPs
+             );
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="OpParams"></param>
-        ///// <param name="GENCs"></param>
-        //List<OracleParameter> PapulateOpsListFromGENCs(
-        //    in List<SpInPuts> GENCs
-        //    );
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="OpParams"></param>
+        /// <param name="GENCs"></param>
+        List<OracleParameter> PopulateSpInPuts(
+            in List<SpInPuts> GENCs
+            );
 
         /// <summary>
         /// 

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -45,9 +48,15 @@
     <Compile Include="Charities\CharityGoals.cs" />
     <Compile Include="Charities\CharityInfo.cs" />
     <Compile Include="Charities\RequestResult.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="HandleFault\ValidationFault.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpParameters\SpInPuts.cs" />
+    <Compile Include="SpParameters\SpOutPuts.cs" />
+    <Compile Include="SpParameters\SrvOutPots.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
