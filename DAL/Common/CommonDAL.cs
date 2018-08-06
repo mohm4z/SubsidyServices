@@ -52,12 +52,11 @@ namespace DAL.Common
               );
 
             ado.ExecuteStoredProcedure(
-                "CH_P_GET_REG_GOALS",
+                "CH_P_GET_LOOKUPS",
                 OpParms,
                 out OracleParameterCollection OPCs,
                 out DataSet Ds
                 );
-
           
             return Ds.Tables[0].DataTableToList<Lookup>();
         }

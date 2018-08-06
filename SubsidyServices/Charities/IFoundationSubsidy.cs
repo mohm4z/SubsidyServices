@@ -19,43 +19,9 @@ namespace SubsidyServices.Charities
        )]
     public interface IFoundationSubsidy
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="LicenseNumber"></param>
-        /// <param name="CharityType"></param>
-        /// <returns></returns>
-        [OperationContract]
-        [FaultContract(typeof(ValidationFault))]
-        CharityInfo GetCharityInfo(
-            long LicenseNumber,
-            int CharityType
-            );
+       
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="LicenseNumber"></param>
-        /// <param name="CharityType"></param>
-        /// <returns></returns>
-        [OperationContract]
-        [FaultContract(typeof(ValidationFault))]
-        CharityGoals GetCharityGoals(
-            long LicenseNumber,
-            int CharityType
-            );
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="LicenseNumber"></param>
-        /// <param name="CharityType"></param>
-        /// <returns></returns>
-        [OperationContract]
-        [FaultContract(typeof(ValidationFault))]
-        CharityFiles GetCharityFiles(
-            long SubsidyCode
-            );
+        
 
         /// <summary>
         /// 
@@ -77,13 +43,6 @@ namespace SubsidyServices.Charities
            );
 
 
-        [OperationContract]
-        [FaultContract(typeof(ValidationFault))]
-        RequestResult InsertAttachment(
-           long RequestId,
-           int FileNumber,
-           string FilePath,
-           long CommissionerNumber
-           );
+        
     }
 }
