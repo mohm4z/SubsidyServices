@@ -19,10 +19,6 @@ namespace SubsidyServices.Charities
        )]
     public interface IFoundationSubsidy
     {
-       
-
-        
-
         /// <summary>
         /// 
         /// </summary>

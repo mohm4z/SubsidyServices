@@ -41,14 +41,15 @@ namespace DAL.DbManager
         private OracleCommand cmd;
 
         //public List<OracleParameter> parms = new List<OracleParameter>();
+        private readonly string ConnS =
+            //"SERVER=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ServerDB)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)));uid=ulp;pwd=ulp;unicode=true;"
+            //"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ServerDB)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)));User Id=main;Password=main;";
+            "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.125.83)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=mosawh)));User Id=ch;Password=chmosa;";
+            //"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=ServerDB)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=ORCL)));User Id=main;Password=main;"
 
         public ADO()
         {
-            conn = new OracleConnection(
-            //"SERVER=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ServerDB)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)));uid=ulp;pwd=ulp;unicode=true;"
-            "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ServerDB)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)));User Id=main;Password=main;"
-            //"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=ServerDB)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=ORCL)));User Id=main;Password=main;"
-                );
+            conn = new OracleConnection(ConnS);
 
             cmd = new OracleCommand
             {
@@ -63,7 +64,7 @@ namespace DAL.DbManager
 
         public ADO(bool Trans)
         {
-            conn = new OracleConnection("SERVER=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ServerDB)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)));uid=ulp;pwd=ulp;unicode=true;");
+            conn = new OracleConnection(ConnS);
             cmd = new OracleCommand();
             cmd.Connection = conn;
             //cmd.BindByName = true;

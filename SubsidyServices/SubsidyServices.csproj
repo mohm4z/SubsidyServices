@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Charities\CharityCommonService.svc" />
+    <Content Include="Charities\EmergencySubsidy.svc" />
+    <Content Include="Charities\EmployeeSubsidy.svc" />
     <Content Include="Charities\FoundationSubsidy.svc" />
     <Content Include="Common\CommonServices.svc" />
     <Content Include="Web.config" />
@@ -71,10 +73,18 @@
     <Compile Include="Charities\CharityCommonService.svc.cs">
       <DependentUpon>CharityCommonService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Charities\EmergencySubsidy.svc.cs">
+      <DependentUpon>EmergencySubsidy.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Charities\EmployeeSubsidy.svc.cs">
+      <DependentUpon>EmployeeSubsidy.svc</DependentUpon>
+    </Compile>
     <Compile Include="Charities\FoundationSubsidy.svc.cs">
       <DependentUpon>FoundationSubsidy.svc</DependentUpon>
     </Compile>
     <Compile Include="Charities\ICharityCommonService.cs" />
+    <Compile Include="Charities\IEmergencySubsidy.cs" />
+    <Compile Include="Charities\IEmployeeSubsidy.cs" />
     <Compile Include="Charities\IFoundationSubsidy.cs" />
     <Compile Include="Common\CommonServices.svc.cs">
       <DependentUpon>CommonServices.svc</DependentUpon>
@@ -86,6 +96,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

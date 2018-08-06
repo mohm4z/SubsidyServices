@@ -17,8 +17,6 @@ namespace SubsidyServices.Charities
     // NOTE: In order to launch WCF Test Client for testing this service, please select FoundationSubsidy.svc or FoundationSubsidy.svc.cs at the Solution Explorer and start debugging.
     public class FoundationSubsidy : IFoundationSubsidy
     {
-      
-
         public RequestResult Insert(
            int CharityType,
            long LicenseNumber,
@@ -37,7 +35,7 @@ namespace SubsidyServices.Charities
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
-                    return dal.InsertDAL(
+                    return dal.InsertFoundationSubsidyDAL(
                         CharityType,
                         LicenseNumber,
                         ChairmanBoardMobileNumber,
