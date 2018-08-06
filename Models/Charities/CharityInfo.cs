@@ -17,7 +17,6 @@ namespace Models.Charities
         [DataMember(EmitDefaultValue = false)]
         public int CharityType { get; set; }
 
-        //[DataMember(EmitDefaultValue = false, IsRequired = true)]
         [DataMember]
         public string DevelopmentCenterName { get; set; }
 
@@ -44,6 +43,7 @@ namespace Models.Charities
 
         [DataMember]
         public RequestResult RequestResult { get; set; }
+
 
     }
 }

@@ -16,6 +16,11 @@ namespace Models.Charities
 
         [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
+        public RequestResult RequestResult { get; set; }
+
+
     }
    
 }
