@@ -47,6 +47,7 @@
     <Compile Include="Charities\CharityFiles.cs" />
     <Compile Include="Charities\CharityGoals.cs" />
     <Compile Include="Charities\CharityInfo.cs" />
+    <Compile Include="Charities\EmployeeInfo.cs" />
     <Compile Include="Charities\Files.cs" />
     <Compile Include="Charities\Goals.cs" />
     <Compile Include="Common\RequestResult.cs" />

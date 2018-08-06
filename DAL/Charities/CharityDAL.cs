@@ -235,44 +235,88 @@ namespace DAL.Charities
 
 
         public RequestResult InsertEmployeeSubsidyDAL(
-            int CharityType,
-            long LicenseNumber,
-            int SubsidyType,
-            string ChairmanBoardName,
-            long ChairmanBoardMobileNumber,
-            string EmployeeName,
-            string EmployeeHireDate,
-            long EmployeeNationalId,
-            string EmployeeBirthDate,
-            string EmployeeNationality,
-            int Employeequalification,
-            string EmployeeSpecialist,
-            int EmployeeSpecialistCD,
-            int EmployeeExpertise,
-            decimal EmployeeSalary,
-            string EmployeeRentAmount,
-            long CommissionerNumber
+            EmployeeInfo emp
          )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = CharityType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = LicenseNumber},
-                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = SubsidyType},
-                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = ChairmanBoardName},
-                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = ChairmanBoardMobileNumber},
-                new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = EmployeeName},
-                new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_DT" , VALUE = EmployeeHireDate},
-                new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = EmployeeNationalId},
-                new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = EmployeeBirthDate},
-                new SpInPuts(){KEY = "P_SBSD_EMP_NATIONALITY" , VALUE = EmployeeNationality},
-                new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = Employeequalification},
-                new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST" , VALUE = EmployeeSpecialist},
-                new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST_CD" , VALUE = EmployeeSpecialistCD},
-                new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = EmployeeExpertise},
-                new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = EmployeeSalary},
-                new SpInPuts(){KEY = "P_SBSD_EMP_RENT_AMOUNT" , VALUE = EmployeeRentAmount},
-                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = CommissionerNumber}
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emp.CharityType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = emp.LicenseNumber},
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = emp.SubsidyType},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = emp.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = emp.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = emp.EmployeeName},
+                new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_DT" , VALUE = emp.EmployeeHireDate},
+                new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = emp.EmployeeNationalId},
+                new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = emp.EmployeeBirthDate},
+                new SpInPuts(){KEY = "P_SBSD_EMP_NATIONALITY" , VALUE = emp.EmployeeNationality},
+                new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = emp.Employeequalification},
+                new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST" , VALUE = emp.EmployeeSpecialist},
+                new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST_CD" , VALUE = emp.EmployeeSpecialistCD},
+                new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = emp.EmployeeExpertise},
+                new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = emp.EmployeeSalary},
+                new SpInPuts(){KEY = "P_SBSD_EMP_RENT_AMOUNT" , VALUE = emp.EmployeeRentAmount},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emp.CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Int32 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "CH_P_SUBSIDY_EMP",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            RequestResult chi = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                ErrorCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            return chi;
+        }
+
+
+        public RequestResult InsertEmergencySubsidyDAL(
+           CharityInfo ch
+         )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                //new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = CharityType},
+                //new SpInPuts(){KEY = "P_REG_ID" , VALUE = LicenseNumber},
+                //new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = SubsidyType},
+                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = ChairmanBoardName},
+                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = ChairmanBoardMobileNumber},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = EmployeeName},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_DT" , VALUE = EmployeeHireDate},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = EmployeeNationalId},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = EmployeeBirthDate},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_NATIONALITY" , VALUE = EmployeeNationality},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = Employeequalification},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST" , VALUE = EmployeeSpecialist},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST_CD" , VALUE = EmployeeSpecialistCD},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = EmployeeExpertise},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = EmployeeSalary},
+                //new SpInPuts(){KEY = "P_SBSD_EMP_RENT_AMOUNT" , VALUE = EmployeeRentAmount},
+                //new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()

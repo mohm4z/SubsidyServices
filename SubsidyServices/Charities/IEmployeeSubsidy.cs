@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-
+using Models.Charities;
 using Models.Common;
 using Models.HandleFault;
 
@@ -20,24 +20,8 @@ namespace SubsidyServices.Charities
     {
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        RequestResult Insert(
-            int CharityType,
-            long LicenseNumber,
-            int SubsidyType,
-            string ChairmanBoardName,
-            long ChairmanBoardMobileNumber,
-            string EmployeeName,
-            string EmployeeHireDate,
-            long EmployeeNationalId,
-            string EmployeeBirthDate,
-            string EmployeeNationality,
-            int Employeequalification,
-            string EmployeeSpecialist,
-            int EmployeeSpecialistCD,
-            int EmployeeExpertise,
-            decimal EmployeeSalary,
-            string EmployeeRentAmount,
-            long CommissionerNumber
-           );
+        RequestResult InsertEmployeeSubsidy(
+            EmployeeInfo emp
+            );
     }
 }

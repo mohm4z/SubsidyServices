@@ -30,7 +30,7 @@ namespace SubsidyServices.Charities
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        RequestResult Insert(
+        RequestResult InsertFoundationSubsidy(
            int CharityType,
            long LicenseNumber,
            long ChairmanBoardMobileNumber,

@@ -5,9 +5,9 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-
 using DAL.Charities;
 using DAL.DbManager;
+using Models.Charities;
 using Models.Common;
 using Models.HandleFault;
 
@@ -17,60 +17,28 @@ namespace SubsidyServices.Charities
     // NOTE: In order to launch WCF Test Client for testing this service, please select EmployeeSubsidy.svc or EmployeeSubsidy.svc.cs at the Solution Explorer and start debugging.
     public class EmployeeSubsidy : IEmployeeSubsidy
     {
-        public RequestResult Insert(
-            int CharityType,
-            long LicenseNumber,
-            int SubsidyType,
-            string ChairmanBoardName,
-            long ChairmanBoardMobileNumber,
-            string EmployeeName,
-            string EmployeeHireDate,
-            long EmployeeNationalId,
-            string EmployeeBirthDate,
-            string EmployeeNationality,
-            int Employeequalification,
-            string EmployeeSpecialist,
-            int EmployeeSpecialistCD,
-            int EmployeeExpertise,
-            decimal EmployeeSalary,
-            string EmployeeRentAmount,
-            long CommissionerNumber
+        public RequestResult InsertEmployeeSubsidy(
+            EmployeeInfo emp
             )
         {
             try
             {
                 /// Data Validations
 
-                if (String.IsNullOrEmpty(ChairmanBoardName))
-                    if (String.IsNullOrEmpty(EmployeeName))
-                        if (String.IsNullOrEmpty(EmployeeHireDate))
-                            if (String.IsNullOrEmpty(EmployeeBirthDate))
-                                if (String.IsNullOrEmpty(EmployeeNationality))
-                                    if (String.IsNullOrEmpty(EmployeeNationality))
-                                        if (String.IsNullOrEmpty(EmployeeRentAmount))
+                if (String.IsNullOrEmpty(emp.ChairmanBoardName))
+                    if (String.IsNullOrEmpty(emp.EmployeeName))
+                        if (String.IsNullOrEmpty(emp.EmployeeHireDate))
+                            if (String.IsNullOrEmpty(emp.EmployeeBirthDate))
+                                if (String.IsNullOrEmpty(emp.EmployeeNationality))
+                                    if (String.IsNullOrEmpty(emp.EmployeeNationality))
+                                        if (String.IsNullOrEmpty(emp.EmployeeRentAmount))
                                             throw new FaultException<ValidationFault>(new ValidationFault());
 
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertEmployeeSubsidyDAL(
-                        CharityType,
-                        LicenseNumber,
-                        SubsidyType,
-                        ChairmanBoardName,
-                        ChairmanBoardMobileNumber,
-                        EmployeeName,
-                        EmployeeHireDate,
-                        EmployeeNationalId,
-                        EmployeeBirthDate,
-                        EmployeeNationality,
-                        Employeequalification,
-                        EmployeeSpecialist,
-                        EmployeeSpecialistCD,
-                        EmployeeExpertise,
-                        EmployeeSalary,
-                        EmployeeRentAmount,
-                        CommissionerNumber
+                        emp
                         );
                 }
             }
