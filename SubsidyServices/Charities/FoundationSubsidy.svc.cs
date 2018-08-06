@@ -51,8 +51,7 @@ namespace SubsidyServices.Charities
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                throw new FaultException<ValidationFault>(
-                    fault);
+                throw new FaultException<ValidationFault>(fault);
             }
             catch (Exception ex)
             {

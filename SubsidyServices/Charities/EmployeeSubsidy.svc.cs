@@ -24,7 +24,6 @@ namespace SubsidyServices.Charities
             try
             {
                 /// Data Validations
-
                 if (String.IsNullOrEmpty(emp.ChairmanBoardName))
                     if (String.IsNullOrEmpty(emp.EmployeeName))
                         if (String.IsNullOrEmpty(emp.EmployeeHireDate))
