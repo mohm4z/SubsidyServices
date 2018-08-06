@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 
 using Models.Charities;
+using Models.Common;
 using Models.HandleFault;
 
 namespace SubsidyServices.Charities
@@ -56,10 +57,33 @@ namespace SubsidyServices.Charities
             long SubsidyCode
             );
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="CharityType"></param>
+        /// <param name="LicenseNumber"></param>
+        /// <param name="ChairmanBoardMobileNumber"></param>
+        /// <param name="ChairmanBoardName"></param>
+        /// <param name="CommissionerNumber"></param>
+        /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult Insert(
-           long SubsidyCode
+           int CharityType,
+           long LicenseNumber,
+           long ChairmanBoardMobileNumber,
+           string ChairmanBoardName,
+           long CommissionerNumber
+           );
+
+
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        RequestResult InsertAttachment(
+           long RequestId,
+           int FileNumber,
+           string FilePath,
+           long CommissionerNumber
            );
     }
 }

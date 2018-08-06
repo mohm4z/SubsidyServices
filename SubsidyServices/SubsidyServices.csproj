@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Charities\FoundationSubsidy.svc" />
+    <Content Include="Common\CommonServices.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +71,10 @@
       <DependentUpon>FoundationSubsidy.svc</DependentUpon>
     </Compile>
     <Compile Include="Charities\IFoundationSubsidy.cs" />
+    <Compile Include="Common\CommonServices.svc.cs">
+      <DependentUpon>CommonServices.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ICommonServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

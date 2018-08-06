@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 using System.Xml.Linq;
 
-namespace DAL.CommonHelpers
+namespace DAL.Common
 {
     public static class Helper
     {

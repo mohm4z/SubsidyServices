@@ -53,7 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Charities\CharityDAL.cs" />
-    <Compile Include="CommonHelpers\Helper.cs" />
+    <Compile Include="Common\CommonDAL.cs" />
+    <Compile Include="Common\Helper.cs" />
     <Compile Include="DbManager\ADO.cs" />
     <Compile Include="DbManager\IADO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

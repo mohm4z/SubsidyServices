@@ -9,6 +9,7 @@ using Models.HandleFault;
 using Models.Charities;
 using DAL.Charities;
 using DAL.DbManager;
+using Models.Common;
 
 namespace SubsidyServices.Charities
 {
@@ -161,36 +162,44 @@ namespace SubsidyServices.Charities
 
 
         public RequestResult Insert(
-           long SubsidyCode
+           int CharityType,
+           long LicenseNumber,
+           long ChairmanBoardMobileNumber,
+           string ChairmanBoardName,
+           long CommissionerNumber
            )
         {
             try
             {
                 /// Data Validations
 
-                //if (String.IsNullOrEmpty(PI_1I))
+                if (String.IsNullOrEmpty(ChairmanBoardName))
+                    throw new FaultException<ValidationFault>(new ValidationFault());
 
-                //throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertDAL(
-                        SubsidyCode
+                        CharityType,
+                        LicenseNumber,
+                        ChairmanBoardMobileNumber,
+                        ChairmanBoardName,
+                        CommissionerNumber
                         );
                 }
             }
-            //catch (FaultException<ValidationFault> e)
-            //{
-            //    ValidationFault fault = new ValidationFault
-            //    {
-            //        Result = true,
-            //        Message = "Parameter not correct",
-            //        Description = "Invalid Parameter Name or All Parameters are nullu"
-            //    };
+            catch (FaultException<ValidationFault> e)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                };
 
-            //    throw new FaultException<ValidationFault>(
-            //        fault);
-            //}
+                throw new FaultException<ValidationFault>(
+                    fault);
+            }
             catch (Exception ex)
             {
                 ValidationFault fault = new ValidationFault
@@ -203,5 +212,56 @@ namespace SubsidyServices.Charities
                 throw new FaultException<ValidationFault>(fault);
             }
         }
+
+        public RequestResult InsertAttachment(
+           long RequestId,
+           int FileNumber,
+           string FilePath,
+           long CommissionerNumber
+           )
+        {
+            try
+            {
+                /// Data Validations
+
+                if (String.IsNullOrEmpty(FilePath))
+                    throw new FaultException<ValidationFault>(new ValidationFault());
+
+
+                using (CharityDAL dal = new CharityDAL(new ADO()))
+                {
+                    return dal.InsertAttachmentDAL(
+                        RequestId,
+                        FileNumber,
+                        FilePath,
+                        CommissionerNumber
+                        );
+                }
+            }
+            catch (FaultException<ValidationFault> e)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                };
+
+                throw new FaultException<ValidationFault>(
+                    fault);
+            }
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                throw new FaultException<ValidationFault>(fault);
+            }
+        }
+
     }
 }

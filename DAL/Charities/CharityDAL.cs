@@ -9,7 +9,8 @@ using Models.Charities;
 using Oracle.ManagedDataAccess.Client;
 using Models.SpParameters;
 using System.Data;
-using DAL.CommonHelpers;
+using DAL.Common;
+using Models.Common;
 
 namespace DAL.Charities
 {
@@ -68,7 +69,7 @@ namespace DAL.Charities
             {
                 DevelopmentCenterName = OPCs[":P_BRN_NAME"].Value.ToString(),
                 CharityName = OPCs[":P_REG_NAME"].Value.ToString(),
-                RegistrationDate = OPCs[":P_REGISTRY_DT"].Value.ToString(),
+                LicenseDate = OPCs[":P_REGISTRY_DT"].Value.ToString(),
                 ServiceArea = OPCs[":P_SERVICE_AREA"].Value.ToString(),
                 BankAccountNumber = OPCs[":P_SUBSIDY_ACC_NO"].Value != null ? Convert.ToInt64(OPCs[":P_SUBSIDY_ACC_NO"].Value.ToString()) : 0,
                 BankName = OPCs[":P_BANK_NAME"].Value.ToString(),
@@ -183,17 +184,25 @@ namespace DAL.Charities
 
 
         public RequestResult InsertDAL(
-           long SubsidyCode
+            int CharityType,
+            long LicenseNumber,
+            long ChairmanBoardMobileNumber,
+            string ChairmanBoardName,
+            long CommissionerNumber
           )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = SubsidyCode}
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = CharityType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = LicenseNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = ChairmanBoardName},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
-                new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
+                new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Int32 , Size = 100},
                 new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
                 new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
             };
@@ -209,7 +218,7 @@ namespace DAL.Charities
               );
 
             ado.ExecuteStoredProcedure(
-                "CH_P_GET_SUBSIDY_FILES",
+                "CH_P_SUBSIDY_ESTBLSH",
                 OpParms,
                 out OracleParameterCollection OPCs,
                 out DataSet Ds
@@ -218,6 +227,54 @@ namespace DAL.Charities
             RequestResult chi = new RequestResult
             {
                 RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                ErrorCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            return chi;
+        }
+
+
+        public RequestResult InsertAttachmentDAL(
+            long RequestId,
+            int FileNumber,
+            string FilePath,
+            long CommissionerNumber
+          )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REQUEST_ID" , VALUE = RequestId},
+                new SpInPuts(){KEY = "P_FILE_CODE" , VALUE = FileNumber},
+                new SpInPuts(){KEY = "P_FILE_PATH" , VALUE = FilePath},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "CH_P_SUBSIDY_ESTBLSH",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            RequestResult chi = new RequestResult
+            {
                 ErrorCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
                 ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
             };
