@@ -8,6 +8,8 @@ using DAL.DbManager;
 using Models.Charities;
 using Oracle.ManagedDataAccess.Client;
 using Models.SpParameters;
+using System.Data;
+using DAL.CommonHelpers;
 
 namespace DAL.Charities
 {
@@ -84,7 +86,7 @@ namespace DAL.Charities
         }
 
 
-        public CharityInfo GetCharityGoalsDAL(
+        public CharityGoals GetCharityGoalsDAL(
             long LicenseNumber,
             int CharityType
            )
@@ -113,18 +115,111 @@ namespace DAL.Charities
               );
 
             ado.ExecuteStoredProcedure(
-                "CH_P_CH_REG_INFO",
+                "CH_P_GET_REG_GOALS",
                 OpParms,
-                out OracleParameterCollection OPCs
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
                 );
 
-            CharityInfo chi = new CharityInfo
+            CharityGoals chi = new CharityGoals
             {
+                Goals= Ds.Tables[0].DataTableToList<Goals>(),
                 RequestResult = new RequestResult()
                 {
                     ErrorCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
                     ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
                 }
+            };
+
+            return chi;
+        }
+
+
+        public CharityFiles GetCharityFilesDAL(
+           long SubsidyCode
+          )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = SubsidyCode}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "CH_P_GET_SUBSIDY_FILES",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            CharityFiles chi = new CharityFiles
+            {
+                Files = Ds.Tables[0].DataTableToList<Files>(),
+                RequestResult = new RequestResult()
+                {
+                    ErrorCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                    ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+                }
+            };
+
+            return chi;
+        }
+
+
+        public RequestResult InsertDAL(
+           long SubsidyCode
+          )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = SubsidyCode}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "CH_P_GET_SUBSIDY_FILES",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            RequestResult chi = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                ErrorCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
             };
 
             return chi;

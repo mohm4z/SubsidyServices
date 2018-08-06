@@ -67,5 +67,141 @@ namespace SubsidyServices.Charities
             }
         }
 
+
+        public CharityGoals GetCharityGoals(
+            long LicenseNumber,
+            int CharityType
+            )
+        {
+            try
+            {
+                /// Data Validations
+
+                //if (String.IsNullOrEmpty(PI_1I))
+
+                //throw new FaultException<ValidationFault>(new ValidationFault());
+
+                using (CharityDAL dal = new CharityDAL(new ADO()))
+                {
+                    return dal.GetCharityGoalsDAL(
+                        LicenseNumber,
+                        CharityType
+                        );
+                }
+            }
+            //catch (FaultException<ValidationFault> e)
+            //{
+            //    ValidationFault fault = new ValidationFault
+            //    {
+            //        Result = true,
+            //        Message = "Parameter not correct",
+            //        Description = "Invalid Parameter Name or All Parameters are nullu"
+            //    };
+
+            //    throw new FaultException<ValidationFault>(
+            //        fault);
+            //}
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                throw new FaultException<ValidationFault>(fault);
+            }
+        }
+
+
+        public CharityFiles GetCharityFiles(
+           long SubsidyCode
+           )
+        {
+            try
+            {
+                /// Data Validations
+
+                //if (String.IsNullOrEmpty(PI_1I))
+
+                //throw new FaultException<ValidationFault>(new ValidationFault());
+
+                using (CharityDAL dal = new CharityDAL(new ADO()))
+                {
+                    return dal.GetCharityFilesDAL(
+                        SubsidyCode
+                        );
+                }
+            }
+            //catch (FaultException<ValidationFault> e)
+            //{
+            //    ValidationFault fault = new ValidationFault
+            //    {
+            //        Result = true,
+            //        Message = "Parameter not correct",
+            //        Description = "Invalid Parameter Name or All Parameters are nullu"
+            //    };
+
+            //    throw new FaultException<ValidationFault>(
+            //        fault);
+            //}
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                throw new FaultException<ValidationFault>(fault);
+            }
+        }
+
+
+        public RequestResult Insert(
+           long SubsidyCode
+           )
+        {
+            try
+            {
+                /// Data Validations
+
+                //if (String.IsNullOrEmpty(PI_1I))
+
+                //throw new FaultException<ValidationFault>(new ValidationFault());
+
+                using (CharityDAL dal = new CharityDAL(new ADO()))
+                {
+                    return dal.InsertDAL(
+                        SubsidyCode
+                        );
+                }
+            }
+            //catch (FaultException<ValidationFault> e)
+            //{
+            //    ValidationFault fault = new ValidationFault
+            //    {
+            //        Result = true,
+            //        Message = "Parameter not correct",
+            //        Description = "Invalid Parameter Name or All Parameters are nullu"
+            //    };
+
+            //    throw new FaultException<ValidationFault>(
+            //        fault);
+            //}
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                throw new FaultException<ValidationFault>(fault);
+            }
+        }
     }
 }

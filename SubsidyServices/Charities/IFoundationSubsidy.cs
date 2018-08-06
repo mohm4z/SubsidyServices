@@ -30,5 +30,36 @@ namespace SubsidyServices.Charities
             long LicenseNumber,
             int CharityType
             );
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="LicenseNumber"></param>
+        /// <param name="CharityType"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        CharityGoals GetCharityGoals(
+            long LicenseNumber,
+            int CharityType
+            );
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="LicenseNumber"></param>
+        /// <param name="CharityType"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        CharityFiles GetCharityFiles(
+            long SubsidyCode
+            );
+
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        RequestResult Insert(
+           long SubsidyCode
+           );
     }
 }

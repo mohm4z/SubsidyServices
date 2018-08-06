@@ -12,10 +12,7 @@ namespace Models.Charities
     public class CharityGoals
     {
         [DataMember]
-        public int Id { get; set; }
-
-        [DataMember]
-        public string Name { get; set; }
+        public IEnumerable<Goals> Goals { get; set; }
 
         [DataMember]
         public RequestResult RequestResult { get; set; }

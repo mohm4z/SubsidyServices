@@ -9,14 +9,13 @@ using System.Runtime.Serialization;
 namespace Models.Charities
 {
     [DataContract]
-    public class CharityFiles
+    public class Files
     {
         [DataMember]
-        public IEnumerable<Files> Files { get; set; }
+        public int Id { get; set; }
 
         [DataMember]
-        public RequestResult RequestResult { get; set; }
-
+        public string Name { get; set; }
 
     }
 }
