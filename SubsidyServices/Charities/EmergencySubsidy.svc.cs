@@ -18,27 +18,25 @@ namespace SubsidyServices.Charities
     public class EmergencySubsidy : IEmergencySubsidy
     {
         public RequestResult InsertEmergencySubsidy(
-              List<CharityInfo> ch
+              EmergencyInfo emg
             )
         {
             try
             {
                 /// Data Validations
 
-                //if (String.IsNullOrEmpty(ChairmanBoardName))
-                //    if (String.IsNullOrEmpty(EmployeeName))
-                //        if (String.IsNullOrEmpty(EmployeeHireDate))
-                //            if (String.IsNullOrEmpty(EmployeeBirthDate))
-                //                if (String.IsNullOrEmpty(EmployeeNationality))
-                //                    if (String.IsNullOrEmpty(EmployeeNationality))
-                //                        if (String.IsNullOrEmpty(EmployeeRentAmount))
-                //                            throw new FaultException<ValidationFault>(new ValidationFault());
+                if (String.IsNullOrEmpty(emg.GovernmentEvaluationResult))
+                    if (String.IsNullOrEmpty(emg.Causes))
+                        if (String.IsNullOrEmpty(emg.ActionsTaken))
+                            if (String.IsNullOrEmpty(emg.PartnerNames))
+                                if (String.IsNullOrEmpty(emg.RequiredSubsidy))
+                                            throw new FaultException<ValidationFault>(new ValidationFault());
 
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertEmergencySubsidyDAL(
-                        ch[0]
+                        emg
                         );
                 }
             }

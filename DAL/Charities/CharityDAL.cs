@@ -295,28 +295,35 @@ namespace DAL.Charities
 
 
         public RequestResult InsertEmergencySubsidyDAL(
-           CharityInfo ch
+           EmergencyInfo emg
          )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                //new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = CharityType},
-                //new SpInPuts(){KEY = "P_REG_ID" , VALUE = LicenseNumber},
-                //new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = SubsidyType},
-                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = ChairmanBoardName},
-                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = ChairmanBoardMobileNumber},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = EmployeeName},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_DT" , VALUE = EmployeeHireDate},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = EmployeeNationalId},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = EmployeeBirthDate},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_NATIONALITY" , VALUE = EmployeeNationality},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = Employeequalification},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST" , VALUE = EmployeeSpecialist},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST_CD" , VALUE = EmployeeSpecialistCD},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = EmployeeExpertise},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = EmployeeSalary},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_RENT_AMOUNT" , VALUE = EmployeeRentAmount},
-                //new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = CommissionerNumber}
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emg.CharityType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = emg.LicenseNumber},
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = emg.SubsidyType},
+                new SpInPuts(){KEY = "P_BENEF_COUNT" , VALUE = emg.BeneficiariesCount},
+                new SpInPuts(){KEY = "P_VOLUNTEERS_COUNT" , VALUE = emg.VolunteersCount},
+                new SpInPuts(){KEY = "P_EMP_SA_COUNT" , VALUE = emg.SaudiEmployeesCount},
+                new SpInPuts(){KEY = "P_EMP_NONSA_COUNT" , VALUE = emg.NonSaudiEmployeesCount},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = emg.IsbudgetIssued},
+                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = emg.IsBoardOfDirectorsMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = emg.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_REASON" , VALUE = emg.GeneralAssemblyIrregularityMeetingReason},
+                new SpInPuts(){KEY = "P_LAST_YEAR_EXPENSES" , VALUE = emg.TotalExpensesAdministrativePreviousYear},
+                new SpInPuts(){KEY = "P_LAST_YEAR_ROG_EXPENSES" , VALUE = emg.TotalExpensesForActivitiesPreviousYear},
+                new SpInPuts(){KEY = "P_LAST_YEAR_PRG_COUNT" , VALUE = emg.ProgramsImplementedPreviousYearCount},
+                new SpInPuts(){KEY = "P_MAKEEN_EAVL_RESULT" , VALUE = emg.GovernmentEvaluationResult},
+                new SpInPuts(){KEY = "P_SBSD_STATUS_DESC" , VALUE = emg.BriefAboutEmergencyAssembly},
+                new SpInPuts(){KEY = "P_SBSD_STATUS_REASONS" , VALUE = emg.Causes},
+                new SpInPuts(){KEY = "P_SBSD_STATUS_PROCEDURES" , VALUE = emg.ActionsTaken},
+                new SpInPuts(){KEY = "P_PARTNERS_FLAG" , VALUE = emg.AreTherePartners},
+                new SpInPuts(){KEY = "P_PARTNERS_LIST" , VALUE = emg.PartnerNames},
+                new SpInPuts(){KEY = "P_PARTNERS_FUND_SUPPORT" , VALUE = emg.TotalPartnerSupport},
+                new SpInPuts(){KEY = "P_CURR_BALANCE" , VALUE = emg.BankBalance},
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = emg.RequiredSubsidy},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emg.CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()

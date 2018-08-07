@@ -44,6 +44,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.identitymodel.services" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,9 +70,12 @@
     <Content Include="Charities\EmployeeSubsidy.svc" />
     <Content Include="Charities\FoundationSubsidy.svc" />
     <Content Include="Common\CommonServices.svc" />
+    <Content Include="UserNamePassService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\ServiceValidation\SecurityContract.cs" />
+    <Content Include="App_Code\ServiceValidation\UserNamePassValidator.cs" />
     <Compile Include="Charities\CharityCommonService.svc.cs">
       <DependentUpon>CharityCommonService.svc</DependentUpon>
     </Compile>
@@ -96,6 +102,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

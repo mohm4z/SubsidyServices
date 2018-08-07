@@ -21,7 +21,7 @@ namespace SubsidyServices.Charities
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertEmergencySubsidy(
-           List<CharityInfo> ch
+           EmergencyInfo emg
            );
     }
 }
