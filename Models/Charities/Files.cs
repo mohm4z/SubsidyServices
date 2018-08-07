@@ -15,7 +15,7 @@ namespace Models.Charities
         public int Id { get; set; }
 
         [DataMember]
-        public string Name { get; set; }
+        public string Path { get; set; }
 
     }
 }

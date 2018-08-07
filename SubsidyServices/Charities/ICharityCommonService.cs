@@ -59,13 +59,13 @@ namespace SubsidyServices.Charities
             );
 
 
-        [OperationContract]
-        [FaultContract(typeof(ValidationFault))]
-        RequestResult InsertAttachment(
-           long RequestId,
-           int FileNumber,
-           string FilePath,
-           long CommissionerNumber
-           );
+        //[OperationContract]
+        //[FaultContract(typeof(ValidationFault))]
+        //RequestResult InsertAttachment(
+        //   long RequestId,
+        //   int FileNumber,
+        //   string FilePath,
+        //   long CommissionerNumber
+        //   );
     }
 }

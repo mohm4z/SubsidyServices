@@ -70,7 +70,7 @@ namespace DAL.Charities
                 CharityName = OPCs[":P_REG_NAME"].Value.ToString(),
                 LicenseDate = OPCs[":P_REGISTRY_DT"].Value.ToString(),
                 ServiceArea = OPCs[":P_SERVICE_AREA"].Value.ToString(),
-                BankAccountNumber = OPCs[":P_SUBSIDY_ACC_NO"].Value != null ? Convert.ToInt64(OPCs[":P_SUBSIDY_ACC_NO"].Value.ToString()) : 0,
+                BankAccountNumber = OPCs[":P_SUBSIDY_ACC_NO"].ToString(),
                 BankName = OPCs[":P_BANK_NAME"].Value.ToString(),
                 CharityClassification = OPCs[":P_CAT_NAME"].Value.ToString(),
                 AccountNumber700 = OPCs[":P_NO_700"].Value.ToString() != null ? Convert.ToInt64(OPCs[":P_NO_700"].Value.ToString()) : 0,
@@ -187,7 +187,8 @@ namespace DAL.Charities
             long LicenseNumber,
             long ChairmanBoardMobileNumber,
             string ChairmanBoardName,
-            long CommissionerNumber
+            long CommissionerNumber,
+            List<Files> Files
           )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
@@ -230,12 +231,23 @@ namespace DAL.Charities
                 ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
             };
 
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    chi.RequestId,
+                    Files[i].Id,
+                    Files[i].Path,
+                    CommissionerNumber
+                    );
+            }
+
             return chi;
         }
 
 
         public RequestResult InsertEmployeeSubsidyDAL(
-            EmployeeInfo emp
+            EmployeeInfo emp,
+            List<Files> Files
          )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
@@ -250,7 +262,7 @@ namespace DAL.Charities
                 new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = emp.EmployeeNationalId},
                 new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = emp.EmployeeBirthDate},
                 new SpInPuts(){KEY = "P_SBSD_EMP_NATIONALITY" , VALUE = emp.EmployeeNationality},
-                new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = emp.Employeequalification},
+                new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = emp.EmployeeQualification},
                 new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST" , VALUE = emp.EmployeeSpecialist},
                 new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST_CD" , VALUE = emp.EmployeeSpecialistCD},
                 new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = emp.EmployeeExpertise},
@@ -290,12 +302,23 @@ namespace DAL.Charities
                 ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
             };
 
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    chi.RequestId,
+                    Files[i].Id,
+                    Files[i].Path,
+                    emp.CommissionerNumber
+                    );
+            }
+
             return chi;
         }
 
 
         public RequestResult InsertEmergencySubsidyDAL(
-           EmergencyInfo emg
+           EmergencyInfo emg,
+           List<Files> Files
          )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
@@ -357,6 +380,16 @@ namespace DAL.Charities
                 ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
             };
 
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    chi.RequestId,
+                    Files[i].Id,
+                    Files[i].Path,
+                    emg.CommissionerNumber
+                    );
+            }
+
             return chi;
         }
 
@@ -393,10 +426,9 @@ namespace DAL.Charities
               );
 
             ado.ExecuteStoredProcedure(
-                "CH_P_SUBSIDY_ESTBLSH",
+                "CH_P_SUBSIDY_ATTACHS",
                 OpParms,
-                out OracleParameterCollection OPCs,
-                out DataSet Ds
+                out OracleParameterCollection OPCs
                 );
 
             RequestResult chi = new RequestResult

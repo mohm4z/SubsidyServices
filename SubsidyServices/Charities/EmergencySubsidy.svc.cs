@@ -18,7 +18,8 @@ namespace SubsidyServices.Charities
     public class EmergencySubsidy : IEmergencySubsidy
     {
         public RequestResult InsertEmergencySubsidy(
-              EmergencyInfo emg
+              EmergencyInfo emg,
+              List<Files> Files
             )
         {
             try
@@ -36,7 +37,8 @@ namespace SubsidyServices.Charities
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertEmergencySubsidyDAL(
-                        emg
+                        emg,
+                        Files
                         );
                 }
             }

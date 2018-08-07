@@ -61,7 +61,7 @@ namespace Models.Charities
         /// رقم الحساب البنكي - ايبان
         /// </summary>
         [DataMember]
-        public long BankAccountNumber { get; set; }
+        public string BankAccountNumber { get; set; }
 
         /// <summary>
         /// تصنيف الجهه

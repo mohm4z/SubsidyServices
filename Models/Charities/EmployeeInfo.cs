@@ -45,7 +45,7 @@ namespace Models.Charities
         public string EmployeeNationality { get; set; }
 
         [DataMember]
-        public int Employeequalification { get; set; }
+        public int EmployeeQualification { get; set; }
 
         [DataMember]
         public string EmployeeSpecialist { get; set; }

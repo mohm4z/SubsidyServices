@@ -35,7 +35,8 @@ namespace SubsidyServices.Charities
            long LicenseNumber,
            long ChairmanBoardMobileNumber,
            string ChairmanBoardName,
-           long CommissionerNumber
+           long CommissionerNumber,
+           List<Files> Files
            );
 
 

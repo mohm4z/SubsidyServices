@@ -18,7 +18,8 @@ namespace SubsidyServices.Charities
     public class EmployeeSubsidy : IEmployeeSubsidy
     {
         public RequestResult InsertEmployeeSubsidy(
-            EmployeeInfo emp
+            EmployeeInfo emp,
+            List<Files> Files
             )
         {
             try
@@ -37,7 +38,8 @@ namespace SubsidyServices.Charities
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertEmployeeSubsidyDAL(
-                        emp
+                        emp,
+                        Files
                         );
                 }
             }
