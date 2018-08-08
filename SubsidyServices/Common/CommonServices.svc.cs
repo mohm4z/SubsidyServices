@@ -14,18 +14,14 @@ namespace SubsidyServices.Common
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "CommonServices" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select CommonServices.svc or CommonServices.svc.cs at the Solution Explorer and start debugging.
-    [ServiceContract(
-       ConfigurationName = "mlsd.gov.sa",
-       Namespace = "http://mlsd.gov.sa",
-       Name = "mlsd"
-       )]
+    
     public class CommonServices : ICommonServices
     {
         public IEnumerable<Lookup> GetLookup(
-            int SideType,
+            int AgencyType,
             string ApplicationCode,
             int TabNumber
-          )
+            )
         {
             try
             {
@@ -36,7 +32,7 @@ namespace SubsidyServices.Common
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
                     return dal.GetLookupDAL(
-                        SideType,
+                        AgencyType,
                         ApplicationCode,
                         TabNumber
                         );

@@ -217,6 +217,17 @@ namespace DAL.Charities
                 in Outouts
               );
 
+
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    222,
+                    Files[i].Id,
+                    Files[i].Path,
+                    CommissionerNumber
+                    );
+            }
+
             ado.ExecuteStoredProcedure(
                 "CH_P_SUBSIDY_ESTBLSH",
                 OpParms,

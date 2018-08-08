@@ -60,7 +60,7 @@ namespace Models.Charities
         public decimal EmployeeSalary { get; set; }
 
         [DataMember]
-        public string EmployeeRentAmount { get; set; }
+        public decimal EmployeeRentAmount { get; set; }
 
         [DataMember]
         public long CommissionerNumber { get; set; }

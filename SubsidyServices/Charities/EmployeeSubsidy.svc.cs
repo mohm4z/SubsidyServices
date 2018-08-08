@@ -31,7 +31,7 @@ namespace SubsidyServices.Charities
                             if (String.IsNullOrEmpty(emp.EmployeeBirthDate))
                                 if (String.IsNullOrEmpty(emp.EmployeeNationality))
                                     if (String.IsNullOrEmpty(emp.EmployeeNationality))
-                                        if (String.IsNullOrEmpty(emp.EmployeeRentAmount))
+                                        
                                             throw new FaultException<ValidationFault>(new ValidationFault());
 
 

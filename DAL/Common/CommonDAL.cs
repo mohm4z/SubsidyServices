@@ -22,14 +22,14 @@ namespace DAL.Common
         }
 
         public IEnumerable<Lookup> GetLookupDAL(
-            int SideType,
+            int AgencyType,
             string ApplicationCode,
             int TabNumber
            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE  " , VALUE = SideType},
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE  " , VALUE = AgencyType},
                 new SpInPuts(){KEY = "P_APPLICATION_CODE  " , VALUE = ApplicationCode},
                 new SpInPuts(){KEY = "P_TAB_NO" , VALUE = TabNumber}
             };
