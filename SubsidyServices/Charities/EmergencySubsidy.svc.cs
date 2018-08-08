@@ -26,7 +26,7 @@ namespace SubsidyServices.Charities
             {
                 /// Data Validations
                     if (String.IsNullOrEmpty(cnst.CharityMainData.BriefAboutEmergencyAssembly))
-                        if (String.IsNullOrEmpty(cnst.CharityMainData.CommissionerNumber))
+                        if (String.IsNullOrEmpty(cnst.CheckedData.CommissionerNumber))
                             if (String.IsNullOrEmpty(cnst.CharityMainData.PartnerNames))
                                 if (String.IsNullOrEmpty(cnst.CharityMainData.RequiredSubsidy))
                                     throw new FaultException<ValidationFault>(new ValidationFault());

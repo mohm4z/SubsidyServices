@@ -114,8 +114,8 @@ namespace DAL.Charities
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emp.CharityType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = emp.LicenseNumber},
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emp.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = emp.CheckedData.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = emp.SubsidyType},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = emp.ChairmanBoardName},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = emp.ChairmanBoardMobileNumber},
@@ -130,7 +130,7 @@ namespace DAL.Charities
                 new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = emp.EmployeeExpertise},
                 new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = emp.EmployeeSalary},
                 new SpInPuts(){KEY = "P_SBSD_EMP_RENT_AMOUNT" , VALUE = emp.EmployeeRentAmount},
-                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emp.CommissionerNumber}
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emp.CheckedData.CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
@@ -169,7 +169,7 @@ namespace DAL.Charities
                     chi.RequestId,
                     Files[i].Id,
                     Files[i].Path,
-                    emp.CommissionerNumber.ToString()
+                    emp.CheckedData.CommissionerNumber.ToString()
                     );
             }
 
@@ -183,8 +183,8 @@ namespace DAL.Charities
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emg.CharityMainData.CharityType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = emg.CharityMainData.LicenseNumber},
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emg.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = emg.CheckedData.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = emg.CharityMainData.SubsidyType},
                 new SpInPuts(){KEY = "P_BENEF_COUNT" , VALUE = emg.CharityMainData.BeneficiariesCount},
                 new SpInPuts(){KEY = "P_VOLUNTEERS_COUNT" , VALUE = emg.CharityMainData.VolunteersCount},
@@ -206,7 +206,7 @@ namespace DAL.Charities
                 new SpInPuts(){KEY = "P_PARTNERS_FUND_SUPPORT" , VALUE = emg.CharityMainData.TotalPartnerSupport},
                 new SpInPuts(){KEY = "P_CURR_BALANCE" , VALUE = emg.BankBalance},
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = emg.CharityMainData.RequiredSubsidy},
-                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emg.CharityMainData.CommissionerNumber}
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emg.CheckedData.CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
@@ -245,7 +245,7 @@ namespace DAL.Charities
                     chi.RequestId,
                     Files[i].Id,
                     Files[i].Path,
-                    emg.CharityMainData.CommissionerNumber
+                    emg.CheckedData.CommissionerNumber
                     );
             }
 
@@ -259,8 +259,8 @@ namespace DAL.Charities
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = cnst.CharityMainData.CharityType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = cnst.CharityMainData.LicenseNumber},
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = cnst.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = cnst.CheckedData.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = cnst.CharityMainData.SubsidyType},
                 new SpInPuts(){KEY = "P_BENEF_COUNT" , VALUE = cnst.CharityMainData.BeneficiariesCount},
                 new SpInPuts(){KEY = "P_VOLUNTEERS_COUNT" , VALUE = cnst.CharityMainData.VolunteersCount},
@@ -289,7 +289,7 @@ namespace DAL.Charities
                 new SpInPuts(){KEY = "P_PROG_REQUEST_AMOUNT" , VALUE = cnst.CharityMainData.RequiredSubsidy},
                 new SpInPuts(){KEY = "P_ORG_FUND_SUPPORT" , VALUE = cnst.AllocatedAmountToProject},
                 new SpInPuts(){KEY = "P_ORG_FUND_SUPPORT_PRCNT" , VALUE = cnst.AllocatedPercentageToProject},
-                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = cnst.CharityMainData.CommissionerNumber}
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = cnst.CheckedData.CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
@@ -328,7 +328,7 @@ namespace DAL.Charities
                     chi.RequestId,
                     Files[i].Id,
                     Files[i].Path,
-                    cnst.CharityMainData.CommissionerNumber
+                    cnst.CheckedData.CommissionerNumber
                     );
             }
 

@@ -52,6 +52,7 @@
     <Compile Include="Charities\ConstructInfo.cs" />
     <Compile Include="Charities\EmergencyInfo.cs" />
     <Compile Include="Charities\EmployeeInfo.cs" />
+    <Compile Include="Common\CheckedData.cs" />
     <Compile Include="Common\Files.cs" />
     <Compile Include="Common\Goals.cs" />
     <Compile Include="Common\RequestResult.cs" />
