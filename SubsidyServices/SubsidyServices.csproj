@@ -65,22 +65,18 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Charities\CharityCommonService.svc" />
     <Content Include="Charities\ConstructSubsidy.svc" />
     <Content Include="Charities\EmergencySubsidy.svc" />
     <Content Include="Charities\EmployeeSubsidy.svc" />
     <Content Include="Charities\FoundationSubsidy.svc" />
     <Content Include="Common\CommonServices.svc" />
-    <Content Include="Common\TestService.svc" />
+    <Content Include="Cooperative\ProjectsSupport.svc" />
     <Content Include="UserNamePassService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\ServiceValidation\SecurityContract.cs" />
     <Content Include="App_Code\ServiceValidation\UserNamePassValidator.cs" />
-    <Compile Include="Charities\CharityCommonService.svc.cs">
-      <DependentUpon>CharityCommonService.svc</DependentUpon>
-    </Compile>
     <Compile Include="Charities\ConstructSubsidy.svc.cs">
       <DependentUpon>ConstructSubsidy.svc</DependentUpon>
     </Compile>
@@ -93,7 +89,6 @@
     <Compile Include="Charities\FoundationSubsidy.svc.cs">
       <DependentUpon>FoundationSubsidy.svc</DependentUpon>
     </Compile>
-    <Compile Include="Charities\ICharityCommonService.cs" />
     <Compile Include="Charities\IConstructSubsidy.cs" />
     <Compile Include="Charities\IEmergencySubsidy.cs" />
     <Compile Include="Charities\IEmployeeSubsidy.cs" />
@@ -102,9 +97,9 @@
       <DependentUpon>CommonServices.svc</DependentUpon>
     </Compile>
     <Compile Include="Common\ICommonServices.cs" />
-    <Compile Include="Common\ITestService.cs" />
-    <Compile Include="Common\TestService.svc.cs">
-      <DependentUpon>TestService.svc</DependentUpon>
+    <Compile Include="Cooperative\IProjectsSupport.cs" />
+    <Compile Include="Cooperative\ProjectsSupport.svc.cs">
+      <DependentUpon>ProjectsSupport.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

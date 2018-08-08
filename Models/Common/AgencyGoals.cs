@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using Models.Common;
 
-namespace Models.Charities
+namespace Models.Common
 {
     [DataContract]
-    public class CharityGoals
+    public class AgencyGoals
     {
         [DataMember]
         public IEnumerable<Goals> Goals { get; set; }

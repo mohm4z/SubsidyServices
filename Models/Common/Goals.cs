@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
 
-namespace Models.Charities
+namespace Models.Common
 {
     [DataContract]
     public class Goals

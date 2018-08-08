@@ -5,7 +5,6 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-using Models.Charities;
 using Models.Common;
 using Models.HandleFault;
 

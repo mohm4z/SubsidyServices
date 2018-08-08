@@ -24,5 +24,44 @@ namespace SubsidyServices.Common
             string ApplicationCode,
             int TabNumber
           );
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="LicenseNumber"></param>
+        /// <param name="CharityType"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        AgencyInfo GetCharityInfo(
+            long LicenseNumber,
+            int CharityType
+            );
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="LicenseNumber"></param>
+        /// <param name="CharityType"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        AgencyGoals GetCharityGoals(
+            long LicenseNumber,
+            int CharityType
+            );
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="LicenseNumber"></param>
+        /// <param name="CharityType"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        AgencyFiles GetCharityFiles(
+            long SubsidyCode
+            );
     }
 }

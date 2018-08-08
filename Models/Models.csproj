@@ -45,15 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Charities\CharityFiles.cs" />
-    <Compile Include="Charities\CharityGoals.cs" />
-    <Compile Include="Charities\CharityInfo.cs" />
+    <Compile Include="Common\AgencyFiles.cs" />
+    <Compile Include="Common\AgencyGoals.cs" />
+    <Compile Include="Common\AgencyInfo.cs" />
     <Compile Include="Charities\CharityMainData.cs" />
     <Compile Include="Charities\ConstructInfo.cs" />
     <Compile Include="Charities\EmergencyInfo.cs" />
     <Compile Include="Charities\EmployeeInfo.cs" />
-    <Compile Include="Charities\Files.cs" />
-    <Compile Include="Charities\Goals.cs" />
+    <Compile Include="Common\Files.cs" />
+    <Compile Include="Common\Goals.cs" />
     <Compile Include="Common\RequestResult.cs" />
     <Compile Include="Common\Lookup.cs" />
     <Compile Include="HandleFault\ValidationFault.cs" />

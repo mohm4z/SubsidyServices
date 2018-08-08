@@ -16,9 +16,9 @@ namespace Models.Common
         public long RequestId { get; set; }
 
         [DataMember]
-        public string ErrorCode { get; set; }
+        public string RequestCode { get; set; }
 
         [DataMember]
-        public string ErrorName { get; set; }
+        public string RequestName { get; set; }
     }
 }

@@ -6,7 +6,6 @@ using System.ServiceModel;
 using System.Text;
 
 using Models.HandleFault;
-using Models.Charities;
 using DAL.Charities;
 using DAL.DbManager;
 using Models.Common;
