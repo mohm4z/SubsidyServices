@@ -25,14 +25,11 @@ namespace SubsidyServices.Charities
             try
             {
                 /// Data Validations
-
-                if (String.IsNullOrEmpty(cnst.CharityMainData.GovernmentEvaluationResult))
                     if (String.IsNullOrEmpty(cnst.CharityMainData.BriefAboutEmergencyAssembly))
                         if (String.IsNullOrEmpty(cnst.CharityMainData.CommissionerNumber))
                             if (String.IsNullOrEmpty(cnst.CharityMainData.PartnerNames))
                                 if (String.IsNullOrEmpty(cnst.CharityMainData.RequiredSubsidy))
-                                            throw new FaultException<ValidationFault>(new ValidationFault());
-
+                                    throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {

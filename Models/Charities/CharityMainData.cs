@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 
 namespace Models.Charities
 {
-    [DataContract]
+    [DataContract(Namespace = "CharityMainData")]
     public class CharityMainData
     {
         /// <summary>
@@ -38,7 +38,7 @@ namespace Models.Charities
         /// P_SUBSIDY_CODE
         /// </summary>
         [DataMember]
-        public int SubsidyType { get; set; } = 7;
+        public int SubsidyType { get; set; }
 
         /// <summary>
         /// عدد المستفيدين من الجمعية
@@ -73,28 +73,28 @@ namespace Models.Charities
         /// P_BALANCE_SHEET_FLG
         /// </summary>
         [DataMember]
-        public bool IsbudgetIssued { get; set; }
+        public int IsbudgetIssued { get; set; }
 
         /// <summary>
         /// هل اجتماعات مجلس الإدارة منتظمة أو غير منتظمة
         /// P_BOARD_MEET_FLG
         /// </summary>
         [DataMember]
-        public bool IsBoardOfDirectorsMeetingsRegular { get; set; }
+        public int IsBoardOfDirectorsMeetingsRegular { get; set; }
 
         /// <summary>
         /// هل اجتماعات الجمعية العمومية منتظمة أو غير منتظمة
         /// P_PUB_BOARD_MEET_FLG
         /// </summary>
         [DataMember]
-        public bool IsGeneralAssemblyMeetingsRegular { get; set; }
+        public int IsGeneralAssemblyMeetingsRegular { get; set; }
 
         /// <summary>
         /// سبب عدم انتظام اجتماعاعت الجمعية العمومية
         /// P_PUB_BOARD_MEET_REASON
         /// </summary>
         [DataMember]
-        public bool GeneralAssemblyIrregularityMeetingReason { get; set; }
+        public string GeneralAssemblyIrregularityMeetingReason { get; set; }
 
         /// <summary>
         /// إجمالي المصروفات العمومية والإدارية خلال العام السابق
@@ -122,7 +122,7 @@ namespace Models.Charities
         /// P_MAKEEN_EAVL_RESULT
         /// </summary>
         [DataMember]
-        public string GovernmentEvaluationResult { get; set; }
+        public int GovernmentEvaluationResult { get; set; }
 
         /// <summary>
         /// نبذة عن البرنامج او المشروع
@@ -136,7 +136,7 @@ namespace Models.Charities
         /// P_PARTNERS_FLAG
         /// </summary>
         [DataMember]
-        public bool AreTherePartners { get; set; }
+        public int AreTherePartners { get; set; }
 
         /// <summary>
         /// اسماء شركاء الجمعية

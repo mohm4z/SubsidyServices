@@ -10,13 +10,11 @@ using System.Runtime.Serialization;
 
 namespace Models.Charities
 {
-    [DataContract]
+    [DataContract(Namespace = "ConstructInfo")]
     public class ConstructInfo
     {
         [DataMember]
         public CharityMainData CharityMainData { get; set; }
-
-
 
 
 
@@ -75,7 +73,7 @@ namespace Models.Charities
         /// P_ORG_FUND_SUPPORT
         /// </summary>
         [DataMember]
-        public long AllocatedAmountToProject { get; set; }
+        public decimal AllocatedAmountToProject { get; set; }
 
 
         /// <summary>
@@ -83,7 +81,7 @@ namespace Models.Charities
         /// P_ORG_FUND_SUPPORT_PRCNT
         /// </summary>
         [DataMember]
-        public long AllocatedPercentageToProject { get; set; }
+        public decimal AllocatedPercentageToProject { get; set; }
 
     }
 

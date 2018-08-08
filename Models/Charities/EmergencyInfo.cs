@@ -9,7 +9,10 @@ using System.Runtime.Serialization;
 
 namespace Models.Charities
 {
-    [DataContract]
+    /// <summary>
+    /// بيانات الإعانة الطارئة
+    /// </summary>
+    [DataContract(Namespace = "EmergencyInfo")]
     public class EmergencyInfo
     {
         [DataMember]

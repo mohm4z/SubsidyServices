@@ -18,15 +18,13 @@ namespace SubsidyServices.Charities
     public class ConstructSubsidy : IConstructSubsidy
     {
         public RequestResult InsertConstructSubsidy(
-              ConstructInfo emg,
-              List<Files> Files
+            ConstructInfo emg,
+            List<Files> Files
             )
         {
             try
             {
                 /// Data Validations
-
-                if (String.IsNullOrEmpty(emg.CharityMainData.GovernmentEvaluationResult))
                             if (String.IsNullOrEmpty(emg.CharityMainData.PartnerNames))
                                 if (String.IsNullOrEmpty(emg.CharityMainData.RequiredSubsidy))
                                     throw new FaultException<ValidationFault>(new ValidationFault());

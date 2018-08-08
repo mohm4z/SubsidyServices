@@ -85,7 +85,6 @@ namespace DAL.Charities
             return chi;
         }
 
-
         public CharityGoals GetCharityGoalsDAL(
             long LicenseNumber,
             int CharityType
@@ -134,7 +133,6 @@ namespace DAL.Charities
             return chi;
         }
 
-
         public CharityFiles GetCharityFilesDAL(
            long SubsidyCode
           )
@@ -181,15 +179,14 @@ namespace DAL.Charities
             return chi;
         }
 
-
         public RequestResult InsertFoundationSubsidyDAL(
             long CharityType,
             long LicenseNumber,
             string ChairmanBoardMobileNumber,
             string ChairmanBoardName,
             string CommissionerNumber
-          //List<Files> Files
-          )
+            //List<Files> Files
+            )
         {
 
             List<SpInPuts> inputs = new List<SpInPuts>
@@ -265,11 +262,10 @@ namespace DAL.Charities
             return chi;
         }
 
-
         public RequestResult InsertEmployeeSubsidyDAL(
             EmployeeInfo emp,
             List<Files> Files
-         )
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -307,7 +303,7 @@ namespace DAL.Charities
             ado.PopulateSpOutPuts(
                 ref OpParms,
                 in Outouts
-              );
+                );
 
             ado.ExecuteStoredProcedure(
                 "CH_P_SUBSIDY_EMP",
@@ -335,11 +331,10 @@ namespace DAL.Charities
             return chi;
         }
 
-
         public RequestResult InsertEmergencySubsidyDAL(
-           EmergencyInfo emg,
-           List<Files> Files
-         )
+            EmergencyInfo emg,
+            List<Files> Files
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -384,7 +379,7 @@ namespace DAL.Charities
             ado.PopulateSpOutPuts(
                 ref OpParms,
                 in Outouts
-              );
+                );
 
             ado.ExecuteStoredProcedure(
                 "CH_P_SUBSIDY_EMRGNCY",
@@ -411,7 +406,6 @@ namespace DAL.Charities
 
             return chi;
         }
-
 
         public RequestResult InsertConstructSubsidyDAL(
            ConstructInfo cnst,
@@ -513,8 +507,8 @@ namespace DAL.Charities
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
-                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
             };
 
             //Populate Parameters
@@ -525,7 +519,7 @@ namespace DAL.Charities
             ado.PopulateSpOutPuts(
                 ref OpParms,
                 in Outouts
-              );
+                );
 
             ado.ExecuteStoredProcedure(
                 "CH_P_SUBSIDY_ATTACHS",

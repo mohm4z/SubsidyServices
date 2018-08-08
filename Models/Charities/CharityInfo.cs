@@ -12,7 +12,7 @@ namespace Models.Charities
     /// <summary>
     /// بيانات الجمعية الخيرية
     /// </summary>
-    [DataContract]
+    [DataContract(Namespace = "CharityInfo")]
     public class CharityInfo
     {
         /// <summary>
