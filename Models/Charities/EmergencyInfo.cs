@@ -15,7 +15,7 @@ namespace Models.Charities
     [DataContract(Namespace = "EmergencyInfo")]
     public class EmergencyInfo
     {
-        [DataMember]
+        [DataMember(Order = 0)]
         public CharityMainData CharityMainData { get; set; }
 
 
@@ -23,21 +23,21 @@ namespace Models.Charities
         /// مسببات الحالة
         /// P_SBSD_STATUS_REASONS
         /// </summary>
-        [DataMember]
+        [DataMember(Order = 1)]
         public string Causes { get; set; }
 
         /// <summary>
         /// الإجراءات التي تم اتخاذها لمواجهة الحالة
         /// P_SBSD_STATUS_PROCEDURES
         /// </summary>
-        [DataMember]
+        [DataMember(Order = 2)]
         public string ActionsTaken { get; set; }
 
         /// <summary>
         /// الرصيد المتوفر في حساب الجمعية
         /// P_CURR_BALANCE
         /// </summary>
-        [DataMember]
+        [DataMember(Order = 3)]
         public decimal BankBalance { get; set; }
 
         

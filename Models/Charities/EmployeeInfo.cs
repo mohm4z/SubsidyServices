@@ -14,55 +14,55 @@ namespace Models.Charities
         /// <summary>
         /// معلومات الموظف 
         /// </summary>
-        [DataMember]
+        [DataMember(Order = 0)]
         public int CharityType { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 1)]
         public long LicenseNumber { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 2)]
         public int SubsidyType { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 3)]
         public string ChairmanBoardName { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 4)]
         public long ChairmanBoardMobileNumber { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 5)]
         public string EmployeeName { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 6)]
         public string EmployeeHireDate { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 7)]
         public long EmployeeNationalId { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 8)]
         public string EmployeeBirthDate { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 9)]
         public string EmployeeNationality { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 10)]
         public string EmployeeQualification { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 11)]
         public string EmployeeSpecialist { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 12)]
         public string EmployeeSpecialistCD { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 13)]
         public int EmployeeExpertise { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 14)]
         public decimal EmployeeSalary { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 15)]
         public decimal EmployeeRentAmount { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 16)]
         public long CommissionerNumber { get; set; }
 
     }
