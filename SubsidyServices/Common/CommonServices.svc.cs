@@ -17,8 +17,7 @@ namespace SubsidyServices.Common
     
     public class CommonServices : ICommonServices
     {
-        public IEnumerable<Lookup> GetLookup(
-            int AgencyType,
+        public IEnumerable<LookupTable> GetLookup(
             string ApplicationCode,
             int TabNumber
             )
@@ -32,7 +31,6 @@ namespace SubsidyServices.Common
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
                     return dal.GetLookupDAL(
-                        AgencyType,
                         ApplicationCode,
                         TabNumber
                         );

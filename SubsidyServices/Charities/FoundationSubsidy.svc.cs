@@ -18,19 +18,20 @@ namespace SubsidyServices.Charities
     public class FoundationSubsidy : IFoundationSubsidy
     {
         public RequestResult InsertFoundationSubsidy(
-           int CharityType,
+           long CharityType,
            long LicenseNumber,
-           long ChairmanBoardMobileNumber,
+           string ChairmanBoardMobileNumber,
            string ChairmanBoardName,
-           long CommissionerNumber,
-           List<Files> Files
+           string CommissionerNumber
+           //List<Files> Files
            )
         {
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(ChairmanBoardName))
-                    throw new FaultException<ValidationFault>(new ValidationFault());
+                if (String.IsNullOrEmpty(CommissionerNumber))
+                    if (String.IsNullOrEmpty(ChairmanBoardName))
+                        throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
@@ -39,8 +40,8 @@ namespace SubsidyServices.Charities
                         LicenseNumber,
                         ChairmanBoardMobileNumber,
                         ChairmanBoardName,
-                        CommissionerNumber,
-                        Files
+                        CommissionerNumber
+                        //Files
                         );
                 }
             }

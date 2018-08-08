@@ -18,7 +18,7 @@ namespace SubsidyServices.Charities
     public class EmergencySubsidy : IEmergencySubsidy
     {
         public RequestResult InsertEmergencySubsidy(
-              EmergencyInfo emg,
+              EmergencyInfo cnst,
               List<Files> Files
             )
         {
@@ -26,18 +26,18 @@ namespace SubsidyServices.Charities
             {
                 /// Data Validations
 
-                if (String.IsNullOrEmpty(emg.CharityMainData.GovernmentEvaluationResult))
-                    if (String.IsNullOrEmpty(emg.Causes))
-                        if (String.IsNullOrEmpty(emg.ActionsTaken))
-                            if (String.IsNullOrEmpty(emg.CharityMainData.PartnerNames))
-                                if (String.IsNullOrEmpty(emg.CharityMainData.RequiredSubsidy))
+                if (String.IsNullOrEmpty(cnst.CharityMainData.GovernmentEvaluationResult))
+                    if (String.IsNullOrEmpty(cnst.CharityMainData.BriefAboutEmergencyAssembly))
+                        if (String.IsNullOrEmpty(cnst.CharityMainData.CommissionerNumber))
+                            if (String.IsNullOrEmpty(cnst.CharityMainData.PartnerNames))
+                                if (String.IsNullOrEmpty(cnst.CharityMainData.RequiredSubsidy))
                                             throw new FaultException<ValidationFault>(new ValidationFault());
 
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertEmergencySubsidyDAL(
-                        emg,
+                        cnst,
                         Files
                         );
                 }
@@ -67,5 +67,6 @@ namespace SubsidyServices.Charities
             }
 
         }
+
     }
 }

@@ -20,8 +20,7 @@ namespace SubsidyServices.Common
     {
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        IEnumerable<Lookup> GetLookup(
-            int AgencyType,
+        IEnumerable<LookupTable> GetLookup(
             string ApplicationCode,
             int TabNumber
           );

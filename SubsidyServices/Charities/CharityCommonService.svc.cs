@@ -60,7 +60,7 @@ namespace SubsidyServices.Charities
                 ValidationFault fault = new ValidationFault
                 {
                     Result = false,
-                    Message = ex.Message,
+                    Message = ex.Message + " StackTrace: " + ex.StackTrace,
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
 

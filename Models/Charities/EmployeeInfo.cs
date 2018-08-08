@@ -45,13 +45,13 @@ namespace Models.Charities
         public string EmployeeNationality { get; set; }
 
         [DataMember]
-        public int EmployeeQualification { get; set; }
+        public string EmployeeQualification { get; set; }
 
         [DataMember]
         public string EmployeeSpecialist { get; set; }
 
         [DataMember]
-        public int EmployeeSpecialistCD { get; set; }
+        public string EmployeeSpecialistCD { get; set; }
 
         [DataMember]
         public int EmployeeExpertise { get; set; }

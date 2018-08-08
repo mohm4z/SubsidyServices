@@ -31,9 +31,7 @@ namespace SubsidyServices.Charities
                             if (String.IsNullOrEmpty(emp.EmployeeBirthDate))
                                 if (String.IsNullOrEmpty(emp.EmployeeNationality))
                                     if (String.IsNullOrEmpty(emp.EmployeeNationality))
-                                        
                                             throw new FaultException<ValidationFault>(new ValidationFault());
-
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {

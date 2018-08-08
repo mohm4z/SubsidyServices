@@ -73,7 +73,7 @@ namespace Models.Charities
         /// رقم الحاسب 700
         /// </summary>
         [DataMember(EmitDefaultValue = false)]
-        public long AccountNumber700 { get; set; }
+        public string AccountNumber700 { get; set; }
 
         [DataMember]
         public RequestResult RequestResult { get; set; }

@@ -71,6 +71,7 @@
     <Content Include="Charities\EmployeeSubsidy.svc" />
     <Content Include="Charities\FoundationSubsidy.svc" />
     <Content Include="Common\CommonServices.svc" />
+    <Content Include="Common\TestService.svc" />
     <Content Include="UserNamePassService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -101,6 +102,10 @@
       <DependentUpon>CommonServices.svc</DependentUpon>
     </Compile>
     <Compile Include="Common\ICommonServices.cs" />
+    <Compile Include="Common\ITestService.cs" />
+    <Compile Include="Common\TestService.svc.cs">
+      <DependentUpon>TestService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,6 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-
 using DAL.Charities;
 using DAL.DbManager;
 using Models.Charities;
@@ -19,25 +18,24 @@ namespace SubsidyServices.Charities
     public class ConstructSubsidy : IConstructSubsidy
     {
         public RequestResult InsertConstructSubsidy(
-              EmergencyInfo ins,
+              ConstructInfo emg,
               List<Files> Files
             )
         {
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(ins.CharityMainData.GovernmentEvaluationResult))
-                    if (String.IsNullOrEmpty(ins.Causes))
-                        if (String.IsNullOrEmpty(ins.ActionsTaken))
-                            if (String.IsNullOrEmpty(ins.CharityMainData.PartnerNames))
-                                if (String.IsNullOrEmpty(ins.CharityMainData.RequiredSubsidy))
+
+                if (String.IsNullOrEmpty(emg.CharityMainData.GovernmentEvaluationResult))
+                            if (String.IsNullOrEmpty(emg.CharityMainData.PartnerNames))
+                                if (String.IsNullOrEmpty(emg.CharityMainData.RequiredSubsidy))
                                     throw new FaultException<ValidationFault>(new ValidationFault());
 
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertConstructSubsidyDAL(
-                        ins,
+                        emg,
                         Files
                         );
                 }

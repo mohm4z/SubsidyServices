@@ -84,8 +84,8 @@ namespace Models.Charities
         /// </summary>
         [DataMember]
         public long AllocatedPercentageToProject { get; set; }
-        
+
     }
 
-    
+
 }

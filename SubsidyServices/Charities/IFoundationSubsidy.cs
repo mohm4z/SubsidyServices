@@ -31,12 +31,12 @@ namespace SubsidyServices.Charities
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertFoundationSubsidy(
-           int CharityType,
+           long CharityType,
            long LicenseNumber,
-           long ChairmanBoardMobileNumber,
+           string ChairmanBoardMobileNumber,
            string ChairmanBoardName,
-           long CommissionerNumber,
-           List<Files> Files
+           string CommissionerNumber
+           //List<Files> Files
            );
 
 

@@ -21,15 +21,13 @@ namespace DAL.Common
             this.ado = Ado;
         }
 
-        public IEnumerable<Lookup> GetLookupDAL(
-            int AgencyType,
+        public IEnumerable<LookupTable> GetLookupDAL(
             string ApplicationCode,
             int TabNumber
            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE  " , VALUE = AgencyType},
                 new SpInPuts(){KEY = "P_APPLICATION_CODE  " , VALUE = ApplicationCode},
                 new SpInPuts(){KEY = "P_TAB_NO" , VALUE = TabNumber}
             };
@@ -37,7 +35,7 @@ namespace DAL.Common
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 100},
                 new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
             };
 
@@ -58,7 +56,7 @@ namespace DAL.Common
                 out DataSet Ds
                 );
           
-            return Ds.Tables[0].DataTableToList<Lookup>();
+            return Ds.Tables[0].DataTableToList<LookupTable>();
         }
 
         public void Dispose()
