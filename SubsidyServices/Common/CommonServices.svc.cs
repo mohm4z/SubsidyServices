@@ -67,7 +67,7 @@ namespace SubsidyServices.Common
         /// <param name="LicenseNumber"></param>
         /// <param name="CharityType"></param>
         /// <returns></returns>
-        public AgencyInfo GetCharityInfo(
+        public AgencyInfo GetAgencyInfo(
             long LicenseNumber,
             int CharityType
             )
@@ -82,7 +82,7 @@ namespace SubsidyServices.Common
 
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
-                    return dal.GetCharityInfoDAL(
+                    return dal.GetAgencyInfoDAL(
                         LicenseNumber,
                         CharityType
                         );
@@ -119,7 +119,7 @@ namespace SubsidyServices.Common
         /// <param name="LicenseNumber"></param>
         /// <param name="CharityType"></param>
         /// <returns></returns>
-        public AgencyGoals GetCharityGoals(
+        public AgencyGoals GetAgencyGoals(
             long LicenseNumber,
             int CharityType
             )
@@ -134,7 +134,7 @@ namespace SubsidyServices.Common
 
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
-                    return dal.GetCharityGoalsDAL(
+                    return dal.GetAgencyGoalsDAL(
                         LicenseNumber,
                         CharityType
                         );
@@ -170,7 +170,7 @@ namespace SubsidyServices.Common
         /// </summary>
         /// <param name="SubsidyCode"></param>
         /// <returns></returns>
-        public AgencyFiles GetCharityFiles(
+        public AgencyFiles GetAgencyFiles(
            long SubsidyCode
            )
         {
@@ -184,7 +184,7 @@ namespace SubsidyServices.Common
 
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
-                    return dal.GetCharityFilesDAL(
+                    return dal.GetAgencyFilesDAL(
                         SubsidyCode
                         );
                 }

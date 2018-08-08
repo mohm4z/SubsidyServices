@@ -22,8 +22,6 @@ namespace DAL.Charities
             this.ado = Ado;
         }
 
-       
-
         public RequestResult InsertFoundationSubsidyDAL(
             long CharityType,
             long LicenseNumber,

@@ -33,7 +33,7 @@ namespace SubsidyServices.Common
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        AgencyInfo GetCharityInfo(
+        AgencyInfo GetAgencyInfo(
             long LicenseNumber,
             int CharityType
             );
@@ -47,7 +47,7 @@ namespace SubsidyServices.Common
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        AgencyGoals GetCharityGoals(
+        AgencyGoals GetAgencyGoals(
             long LicenseNumber,
             int CharityType
             );
@@ -60,7 +60,7 @@ namespace SubsidyServices.Common
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        AgencyFiles GetCharityFiles(
+        AgencyFiles GetAgencyFiles(
             long SubsidyCode
             );
     }

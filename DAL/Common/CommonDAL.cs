@@ -59,8 +59,7 @@ namespace DAL.Common
             return Ds.Tables[0].DataTableToList<LookupTable>();
         }
 
-        
-        public AgencyInfo GetCharityInfoDAL(
+        public AgencyInfo GetAgencyInfoDAL(
             long LicenseNumber,
             int CharityType
            )
@@ -122,7 +121,7 @@ namespace DAL.Common
             return chi;
         }
 
-        public AgencyGoals GetCharityGoalsDAL(
+        public AgencyGoals GetAgencyGoalsDAL(
             long LicenseNumber,
             int CharityType
            )
@@ -170,7 +169,7 @@ namespace DAL.Common
             return chi;
         }
 
-        public AgencyFiles GetCharityFilesDAL(
+        public AgencyFiles GetAgencyFilesDAL(
            long SubsidyCode
           )
         {
@@ -216,6 +215,7 @@ namespace DAL.Common
             return chi;
         }
 
+    
         public void Dispose()
         {
             //throw new NotImplementedException();

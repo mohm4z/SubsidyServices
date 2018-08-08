@@ -14,7 +14,7 @@ namespace Models.Cooperative
     /// معلومات المشروع
     /// </summary>
     [DataContract]
-    class ProjectInfo
+    public class ProjectInfo
     {
         [DataMember(Order = 0)]
         public CheckedData CheckedData { get; set; }
