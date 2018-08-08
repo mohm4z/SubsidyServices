@@ -15,12 +15,23 @@ namespace Models.Charities
         [DataMember(Order = 0)]
         public CheckedData CheckedData { get; set; }
 
+        /// <summary>
+        /// نوع الإعانة
+        /// </summary>
         [DataMember(Order = 1)]
         public int SubsidyType { get; set; }
 
+        /// <summary>
+        /// اسم رئيس مجلس الادارة
+        /// P_BOARD_CHAIRMAN_NAME
+        /// </summary>
         [DataMember(Order = 2)]
         public string ChairmanBoardName { get; set; }
 
+        /// <summary>
+        /// رقم جوال رئيس مجلس الادارة
+        /// P_BOARD_CHAIRMAN_MOBILE
+        /// </summary>
         [DataMember(Order = 3)]
         public long ChairmanBoardMobileNumber { get; set; }
 

@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Runtime.Serialization;
-using Models.Common;
 
 namespace Models.Common
 {
+
+    /// <summary>
+    /// ارفاق الملفات
+    /// </summary>
     [DataContract]
     public class AgencyFiles
     {
