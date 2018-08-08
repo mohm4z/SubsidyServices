@@ -13,75 +13,30 @@ namespace Models.Charities
     public class EmergencyInfo
     {
         [DataMember]
-        public int CharityType { get; set; }
+        public CharityMainData CharityMainData { get; set; }
 
-        [DataMember]
-        public long LicenseNumber { get; set; }
 
-        [DataMember]
-        public int SubsidyType { get; set; }
-
-        [DataMember]
-        public int BeneficiariesCount { get; set; }
-
-        [DataMember]
-        public int VolunteersCount { get; set; }
-
-        [DataMember]
-        public int SaudiEmployeesCount { get; set; }
-
-        [DataMember]
-        public int NonSaudiEmployeesCount { get; set; }
-
-        [DataMember]
-        public bool IsbudgetIssued { get; set; }
-
-        [DataMember]
-        public bool IsBoardOfDirectorsMeetingsRegular { get; set; }
-
-        [DataMember]
-        public bool IsGeneralAssemblyMeetingsRegular { get; set; }
-
-        [DataMember]
-        public bool GeneralAssemblyIrregularityMeetingReason { get; set; }
-
-        [DataMember]
-        public decimal TotalExpensesAdministrativePreviousYear { get; set; }
-
-        [DataMember]
-        public decimal TotalExpensesForActivitiesPreviousYear { get; set; }
-
-        [DataMember]
-        public int ProgramsImplementedPreviousYearCount { get; set; }
-
-        [DataMember]
-        public string GovernmentEvaluationResult { get; set; }
-
-        [DataMember]
-        public decimal BriefAboutEmergencyAssembly { get; set; }
-
+        /// <summary>
+        /// مسببات الحالة
+        /// P_SBSD_STATUS_REASONS
+        /// </summary>
         [DataMember]
         public string Causes { get; set; }
 
+        /// <summary>
+        /// الإجراءات التي تم اتخاذها لمواجهة الحالة
+        /// P_SBSD_STATUS_PROCEDURES
+        /// </summary>
         [DataMember]
         public string ActionsTaken { get; set; }
 
-        [DataMember]
-        public bool AreTherePartners { get; set; }
-
-        [DataMember]
-        public string PartnerNames { get; set; }
-
-        [DataMember]
-        public decimal TotalPartnerSupport { get; set; }
-
+        /// <summary>
+        /// الرصيد المتوفر في حساب الجمعية
+        /// P_CURR_BALANCE
+        /// </summary>
         [DataMember]
         public decimal BankBalance { get; set; }
 
-        [DataMember]
-        public string RequiredSubsidy { get; set; }
-
-        [DataMember]
-        public long CommissionerNumber { get; set; }
+        
     }
 }

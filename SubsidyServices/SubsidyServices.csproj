@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Charities\CharityCommonService.svc" />
+    <Content Include="Charities\ConstructSubsidy.svc" />
     <Content Include="Charities\EmergencySubsidy.svc" />
     <Content Include="Charities\EmployeeSubsidy.svc" />
     <Content Include="Charities\FoundationSubsidy.svc" />
@@ -79,6 +80,9 @@
     <Compile Include="Charities\CharityCommonService.svc.cs">
       <DependentUpon>CharityCommonService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Charities\ConstructSubsidy.svc.cs">
+      <DependentUpon>ConstructSubsidy.svc</DependentUpon>
+    </Compile>
     <Compile Include="Charities\EmergencySubsidy.svc.cs">
       <DependentUpon>EmergencySubsidy.svc</DependentUpon>
     </Compile>
@@ -89,6 +93,7 @@
       <DependentUpon>FoundationSubsidy.svc</DependentUpon>
     </Compile>
     <Compile Include="Charities\ICharityCommonService.cs" />
+    <Compile Include="Charities\IConstructSubsidy.cs" />
     <Compile Include="Charities\IEmergencySubsidy.cs" />
     <Compile Include="Charities\IEmployeeSubsidy.cs" />
     <Compile Include="Charities\IFoundationSubsidy.cs" />

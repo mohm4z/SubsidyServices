@@ -10,20 +10,21 @@ using Models.Charities;
 using Models.Common;
 using Models.HandleFault;
 
+
 namespace SubsidyServices.Charities
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IEmergencySubsidy" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IConstructSubsidy" in both code and config file together.
     [ServiceContract(
        ConfigurationName = "mlsd.gov.sa",
        Namespace = "http://mlsd.gov.sa",
        Name = "mlsd"
        )]
-    public interface IEmergencySubsidy
+    public interface IConstructSubsidy
     {
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        RequestResult InsertEmergencySubsidy(
-           EmergencyInfo emg,
+        RequestResult InsertConstructSubsidy(
+           EmergencyInfo emr,
            List<Files> Files
            );
     }

@@ -217,17 +217,6 @@ namespace DAL.Charities
                 in Outouts
               );
 
-
-            for (int i = 0; i < Files.Count(); i++)
-            {
-                InsertAttachmentDAL(
-                    222,
-                    Files[i].Id,
-                    Files[i].Path,
-                    CommissionerNumber
-                    );
-            }
-
             ado.ExecuteStoredProcedure(
                 "CH_P_SUBSIDY_ESTBLSH",
                 OpParms,
@@ -248,7 +237,7 @@ namespace DAL.Charities
                     chi.RequestId,
                     Files[i].Id,
                     Files[i].Path,
-                    CommissionerNumber
+                    CommissionerNumber.ToString()
                     );
             }
 
@@ -319,7 +308,7 @@ namespace DAL.Charities
                     chi.RequestId,
                     Files[i].Id,
                     Files[i].Path,
-                    emp.CommissionerNumber
+                    emp.CommissionerNumber.ToString()
                     );
             }
 
@@ -334,30 +323,30 @@ namespace DAL.Charities
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emg.CharityType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = emg.LicenseNumber},
-                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = emg.SubsidyType},
-                new SpInPuts(){KEY = "P_BENEF_COUNT" , VALUE = emg.BeneficiariesCount},
-                new SpInPuts(){KEY = "P_VOLUNTEERS_COUNT" , VALUE = emg.VolunteersCount},
-                new SpInPuts(){KEY = "P_EMP_SA_COUNT" , VALUE = emg.SaudiEmployeesCount},
-                new SpInPuts(){KEY = "P_EMP_NONSA_COUNT" , VALUE = emg.NonSaudiEmployeesCount},
-                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = emg.IsbudgetIssued},
-                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = emg.IsBoardOfDirectorsMeetingsRegular},
-                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = emg.IsGeneralAssemblyMeetingsRegular},
-                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_REASON" , VALUE = emg.GeneralAssemblyIrregularityMeetingReason},
-                new SpInPuts(){KEY = "P_LAST_YEAR_EXPENSES" , VALUE = emg.TotalExpensesAdministrativePreviousYear},
-                new SpInPuts(){KEY = "P_LAST_YEAR_ROG_EXPENSES" , VALUE = emg.TotalExpensesForActivitiesPreviousYear},
-                new SpInPuts(){KEY = "P_LAST_YEAR_PRG_COUNT" , VALUE = emg.ProgramsImplementedPreviousYearCount},
-                new SpInPuts(){KEY = "P_MAKEEN_EAVL_RESULT" , VALUE = emg.GovernmentEvaluationResult},
-                new SpInPuts(){KEY = "P_SBSD_STATUS_DESC" , VALUE = emg.BriefAboutEmergencyAssembly},
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emg.CharityMainData.CharityType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = emg.CharityMainData.LicenseNumber},
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = emg.CharityMainData.SubsidyType},
+                new SpInPuts(){KEY = "P_BENEF_COUNT" , VALUE = emg.CharityMainData.BeneficiariesCount},
+                new SpInPuts(){KEY = "P_VOLUNTEERS_COUNT" , VALUE = emg.CharityMainData.VolunteersCount},
+                new SpInPuts(){KEY = "P_EMP_SA_COUNT" , VALUE = emg.CharityMainData.SaudiEmployeesCount},
+                new SpInPuts(){KEY = "P_EMP_NONSA_COUNT" , VALUE = emg.CharityMainData.NonSaudiEmployeesCount},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = emg.CharityMainData.IsbudgetIssued},
+                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = emg.CharityMainData.IsBoardOfDirectorsMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = emg.CharityMainData.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_REASON" , VALUE = emg.CharityMainData.GeneralAssemblyIrregularityMeetingReason},
+                new SpInPuts(){KEY = "P_LAST_YEAR_EXPENSES" , VALUE = emg.CharityMainData.TotalExpensesAdministrativePreviousYear},
+                new SpInPuts(){KEY = "P_LAST_YEAR_ROG_EXPENSES" , VALUE = emg.CharityMainData.TotalExpensesForActivitiesPreviousYear},
+                new SpInPuts(){KEY = "P_LAST_YEAR_PRG_COUNT" , VALUE = emg.CharityMainData.ProgramsImplementedPreviousYearCount},
+                new SpInPuts(){KEY = "P_MAKEEN_EAVL_RESULT" , VALUE = emg.CharityMainData.GovernmentEvaluationResult},
+                new SpInPuts(){KEY = "P_SBSD_STATUS_DESC" , VALUE = emg.CharityMainData.BriefAboutEmergencyAssembly},
                 new SpInPuts(){KEY = "P_SBSD_STATUS_REASONS" , VALUE = emg.Causes},
                 new SpInPuts(){KEY = "P_SBSD_STATUS_PROCEDURES" , VALUE = emg.ActionsTaken},
-                new SpInPuts(){KEY = "P_PARTNERS_FLAG" , VALUE = emg.AreTherePartners},
-                new SpInPuts(){KEY = "P_PARTNERS_LIST" , VALUE = emg.PartnerNames},
-                new SpInPuts(){KEY = "P_PARTNERS_FUND_SUPPORT" , VALUE = emg.TotalPartnerSupport},
+                new SpInPuts(){KEY = "P_PARTNERS_FLAG" , VALUE = emg.CharityMainData.AreTherePartners},
+                new SpInPuts(){KEY = "P_PARTNERS_LIST" , VALUE = emg.CharityMainData.PartnerNames},
+                new SpInPuts(){KEY = "P_PARTNERS_FUND_SUPPORT" , VALUE = emg.CharityMainData.TotalPartnerSupport},
                 new SpInPuts(){KEY = "P_CURR_BALANCE" , VALUE = emg.BankBalance},
-                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = emg.RequiredSubsidy},
-                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emg.CommissionerNumber}
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = emg.CharityMainData.RequiredSubsidy},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emg.CharityMainData.CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
@@ -397,7 +386,7 @@ namespace DAL.Charities
                     chi.RequestId,
                     Files[i].Id,
                     Files[i].Path,
-                    emg.CommissionerNumber
+                    emg.CharityMainData.CommissionerNumber
                     );
             }
 
@@ -405,11 +394,88 @@ namespace DAL.Charities
         }
 
 
+        public RequestResult InsertConstructSubsidyDAL(
+           EmergencyInfo emg,
+           List<Files> Files
+         )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emg.CharityMainData.CharityType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = emg.CharityMainData.LicenseNumber},
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = emg.CharityMainData.SubsidyType},
+                new SpInPuts(){KEY = "P_BENEF_COUNT" , VALUE = emg.CharityMainData.BeneficiariesCount},
+                new SpInPuts(){KEY = "P_VOLUNTEERS_COUNT" , VALUE = emg.CharityMainData.VolunteersCount},
+                new SpInPuts(){KEY = "P_EMP_SA_COUNT" , VALUE = emg.CharityMainData.SaudiEmployeesCount},
+                new SpInPuts(){KEY = "P_EMP_NONSA_COUNT" , VALUE = emg.CharityMainData.NonSaudiEmployeesCount},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = emg.CharityMainData.IsbudgetIssued},
+                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = emg.CharityMainData.IsBoardOfDirectorsMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = emg.CharityMainData.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_REASON" , VALUE = emg.CharityMainData.GeneralAssemblyIrregularityMeetingReason},
+                new SpInPuts(){KEY = "P_LAST_YEAR_EXPENSES" , VALUE = emg.CharityMainData.TotalExpensesAdministrativePreviousYear},
+                new SpInPuts(){KEY = "P_LAST_YEAR_ROG_EXPENSES" , VALUE = emg.CharityMainData.TotalExpensesForActivitiesPreviousYear},
+                new SpInPuts(){KEY = "P_LAST_YEAR_PRG_COUNT" , VALUE = emg.CharityMainData.ProgramsImplementedPreviousYearCount},
+                new SpInPuts(){KEY = "P_MAKEEN_EAVL_RESULT" , VALUE = emg.CharityMainData.GovernmentEvaluationResult},
+                new SpInPuts(){KEY = "P_SBSD_STATUS_DESC" , VALUE = emg.CharityMainData.BriefAboutEmergencyAssembly},
+                new SpInPuts(){KEY = "P_SBSD_STATUS_REASONS" , VALUE = emg.Causes},
+                new SpInPuts(){KEY = "P_SBSD_STATUS_PROCEDURES" , VALUE = emg.ActionsTaken},
+                new SpInPuts(){KEY = "P_PARTNERS_FLAG" , VALUE = emg.CharityMainData.AreTherePartners},
+                new SpInPuts(){KEY = "P_PARTNERS_LIST" , VALUE = emg.CharityMainData.PartnerNames},
+                new SpInPuts(){KEY = "P_PARTNERS_FUND_SUPPORT" , VALUE = emg.CharityMainData.TotalPartnerSupport},
+                new SpInPuts(){KEY = "P_CURR_BALANCE" , VALUE = emg.BankBalance},
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = emg.CharityMainData.RequiredSubsidy},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emg.CharityMainData.CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Int32 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "CH_P_SUBSIDY_EMP",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            RequestResult chi = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                ErrorCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                ErrorName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    chi.RequestId,
+                    Files[i].Id,
+                    Files[i].Path,
+                    emg.CharityMainData.CommissionerNumber
+                    );
+            }
+
+            return chi;
+        }
+
         public RequestResult InsertAttachmentDAL(
             long RequestId,
             int FileNumber,
             string FilePath,
-            long CommissionerNumber
+            string CommissionerNumber
           )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
@@ -450,6 +516,8 @@ namespace DAL.Charities
 
             return chi;
         }
+
+
 
         public void Dispose()
         {
