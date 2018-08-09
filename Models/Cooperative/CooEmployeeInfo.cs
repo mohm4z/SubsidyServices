@@ -9,6 +9,9 @@ using Models.Common;
 
 namespace Models.Cooperative
 {
+    /// <summary>
+    /// بيانات الموظف
+    /// </summary>
     [DataContract]
     public class CooEmployeeInfo
     {
@@ -45,7 +48,7 @@ namespace Models.Cooperative
         /// P_SBSD_EMP_QUALIF_CD
         /// </summary>
         [DataMember(Order = 5)]
-        public string EmployeeQualification { get; set; }
+        public int EmployeeQualification { get; set; }
 
         /// <summary>
         /// الخبرات
@@ -63,7 +66,7 @@ namespace Models.Cooperative
 
         /// <summary>
         /// موافقة أعضاء مجلس الإدارة على التعيين
-        /// P_SBSD_EMP_HIRE_BOD_AGREE_FLG
+        /// P_SBSD_EMP_HIRE_BOD_AGREE_FLG / P_SBSD_EMP_CONTRACT_FLG
         /// </summary>
         [DataMember(Order = 8)]
         public int AppointmentBoardApproval { get; set; }

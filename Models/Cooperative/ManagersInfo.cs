@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 namespace Models.Cooperative
 {
     /// <summary>
-    /// بيانات المدير
+    /// بيانات المدراء
     /// </summary>
     [DataContract]
     public class ManagersInfo
@@ -30,14 +30,14 @@ namespace Models.Cooperative
 
         /// <summary>
         /// اسم المدير التنفيذي
-        /// CEO_NAME
+        /// P_CEO_NAME
         /// </summary>
         [DataMember(Order = 2)]
         public string ExecutiveDirectorName { get; set; }
 
         /// <summary>
         /// جوال المدير التنفيذي
-        /// CEO_MOB_NO
+        /// P_CEO_MOB_NO
         /// </summary>
         [DataMember(Order = 3)]
         public long ExecutiveDirectorMobile { get; set; }
