@@ -68,8 +68,8 @@ namespace SubsidyServices.Common
         /// <param name="CharityType"></param>
         /// <returns></returns>
         public AgencyInfo GetAgencyInfo(
-            long LicenseNumber,
-            int CharityType
+            int AgencyType,
+            long AgencyLicenseNumber
             )
         {
             try
@@ -83,23 +83,23 @@ namespace SubsidyServices.Common
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
                     return dal.GetAgencyInfoDAL(
-                        LicenseNumber,
-                        CharityType
+                        AgencyType,
+                        AgencyLicenseNumber
                         );
                 }
             }
-            //catch (FaultException<ValidationFault> e)
-            //{
-            //    ValidationFault fault = new ValidationFault
-            //    {
-            //        Result = true,
-            //        Message = "Parameter not correct",
-            //        Description = "Invalid Parameter Name or All Parameters are nullu"
-            //    };
+            catch (FaultException<ValidationFault> e)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                };
 
-            //    throw new FaultException<ValidationFault>(
-            //        fault);
-            //}
+                throw new FaultException<ValidationFault>(
+                    fault);
+            }
             catch (Exception ex)
             {
                 ValidationFault fault = new ValidationFault
@@ -120,8 +120,8 @@ namespace SubsidyServices.Common
         /// <param name="CharityType"></param>
         /// <returns></returns>
         public AgencyGoals GetAgencyGoals(
-            long LicenseNumber,
-            int CharityType
+            int AgencyType,
+            long AgencyLicenseNumber
             )
         {
             try
@@ -135,23 +135,23 @@ namespace SubsidyServices.Common
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
                     return dal.GetAgencyGoalsDAL(
-                        LicenseNumber,
-                        CharityType
+                         AgencyType,
+                         AgencyLicenseNumber
                         );
                 }
             }
-            //catch (FaultException<ValidationFault> e)
-            //{
-            //    ValidationFault fault = new ValidationFault
-            //    {
-            //        Result = true,
-            //        Message = "Parameter not correct",
-            //        Description = "Invalid Parameter Name or All Parameters are nullu"
-            //    };
+            catch (FaultException<ValidationFault> e)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                };
 
-            //    throw new FaultException<ValidationFault>(
-            //        fault);
-            //}
+                throw new FaultException<ValidationFault>(
+                    fault);
+            }
             catch (Exception ex)
             {
                 ValidationFault fault = new ValidationFault

@@ -22,35 +22,36 @@ namespace DAL.Cooperative
         }
 
         public RequestResult InsertProjectsSupportDAL(
-             ProjectInfo emp,
+             ProjectInfo prj,
              List<Files> Files
              )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                //new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emp.CheckedData.AgencyType},
-                //new SpInPuts(){KEY = "P_REG_ID" , VALUE = emp.CheckedData.AgencyLicenseNumber},
-                //new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = emp.SubsidyType},
-                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = emp.ChairmanBoardName},
-                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = emp.ChairmanBoardMobileNumber},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = emp.EmployeeName},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_DT" , VALUE = emp.EmployeeHireDate},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = emp.EmployeeNationalId},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = emp.EmployeeBirthDate},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_NATIONALITY" , VALUE = emp.EmployeeNationality},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = emp.EmployeeQualification},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST" , VALUE = emp.EmployeeSpecialist},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_SPECIALIST_CD" , VALUE = emp.EmployeeSpecialistCD},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = emp.EmployeeExpertise},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = emp.EmployeeSalary},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_RENT_AMOUNT" , VALUE = emp.EmployeeRentAmount},
-                //new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emp.CheckedData.CommissionerNumber}
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = prj.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = prj.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = prj.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = prj.ChairmanBoardName},
+                new SpInPuts(){KEY = "CEO_NAME" , VALUE = prj.ExecutiveDirectorName},
+                new SpInPuts(){KEY = "CEO_MOB_NO" , VALUE = prj.ExecutiveDirectorMobile},
+                new SpInPuts(){KEY = "ECONOMIC_FEASIBILITY_FLG" , VALUE = prj.IsThereFeasibilityStudy},
+                new SpInPuts(){KEY = "PROJ_TYPE" , VALUE = prj.ProjectType},
+                new SpInPuts(){KEY = "PROJ_DESC" , VALUE = prj.ProjectDescription},
+                new SpInPuts(){KEY = "PROJ_LOCATION" , VALUE = prj.ProjectLocation},
+                new SpInPuts(){KEY = "PROJ_EXEC_REGION" , VALUE = prj.ExecutingAgency},
+                new SpInPuts(){KEY = "PROJ_AGREE_FLG" , VALUE = prj.ImplementProjectAgreement},
+                new SpInPuts(){KEY = "PROJ_ACTUAL_COST" , VALUE = prj.ActualCost},
+                new SpInPuts(){KEY = "PROJ_STAGES_FUND  " , VALUE = prj.DistributeAmountsOnStages},
+                new SpInPuts(){KEY = "PROJ_EXPNS_CMBTL_FLG  " , VALUE = prj.IsExpendedIdenticalBudget},
+                new SpInPuts(){KEY = "PROJ_REG_SHARE_AMNT  " , VALUE = prj.AmountForProject},
+                new SpInPuts(){KEY = "PROJ_EXPEND_BAL_AMNT  " , VALUE = prj.AmountExpendedOnBudget},
+                new SpInPuts(){KEY = "P_LOGIN_ID  " , VALUE = prj.CheckedData.CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
-                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000},
                 new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
             };
 
@@ -83,7 +84,7 @@ namespace DAL.Cooperative
                     chi.RequestId,
                     Files[i].Id,
                     Files[i].Path,
-                    emp.CheckedData.CommissionerNumber.ToString()
+                    prj.CheckedData.CommissionerNumber.ToString()
                     );
             }
 

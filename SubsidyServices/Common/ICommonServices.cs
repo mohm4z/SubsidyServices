@@ -34,8 +34,8 @@ namespace SubsidyServices.Common
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         AgencyInfo GetAgencyInfo(
-            long LicenseNumber,
-            int CharityType
+            int AgencyType,
+            long AgencyLicenseNumber
             );
 
 
@@ -48,8 +48,8 @@ namespace SubsidyServices.Common
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         AgencyGoals GetAgencyGoals(
-            long LicenseNumber,
-            int CharityType
+            int AgencyType,
+            long AgencyLicenseNumber
             );
 
         /// <summary>

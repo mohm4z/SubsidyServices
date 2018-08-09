@@ -25,11 +25,20 @@ namespace SubsidyServices.Charities
             try
             {
                 /// Data Validations
-                    if (String.IsNullOrEmpty(cnst.CharityMainData.BriefAboutEmergencyAssembly))
-                        if (String.IsNullOrEmpty(cnst.CheckedData.CommissionerNumber))
-                            if (String.IsNullOrEmpty(cnst.CharityMainData.PartnerNames))
-                                if (String.IsNullOrEmpty(cnst.CharityMainData.RequiredSubsidy))
-                                    throw new FaultException<ValidationFault>(new ValidationFault());
+                if (cnst.CheckedData.AgencyType == 0 ||
+                    cnst.CheckedData.AgencyLicenseNumber == 0 ||
+                    String.IsNullOrEmpty(cnst.CheckedData.CommissionerNumber) ||
+                    cnst.CharityMainData.SubsidyType == 0 ||
+                    cnst.CharityMainData.BeneficiariesCount == 0 ||
+                    cnst.CharityMainData.VolunteersCount == 0 ||
+                    cnst.CharityMainData.SaudiEmployeesCount == 0 ||
+                    cnst.CharityMainData.NonSaudiEmployeesCount == 0 ||
+                    cnst.CharityMainData.IsbudgetIssued == 0 ||
+                    cnst.CharityMainData.IsBoardOfDirectorsMeetingsRegular == 0 ||
+                    cnst.CharityMainData.IsGeneralAssemblyMeetingsRegular == 0 ||
+                    String.IsNullOrEmpty(cnst.CharityMainData.GeneralAssemblyIrregularityMeetingReason) ||
+                    cnst.CharityMainData.TotalExpensesAdministrativePreviousYear == 0)
+                    throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {

@@ -16,31 +16,32 @@ namespace SubsidyServices.Charities
     // NOTE: In order to launch WCF Test Client for testing this service, please select FoundationSubsidy.svc or FoundationSubsidy.svc.cs at the Solution Explorer and start debugging.
     public class FoundationSubsidy : IFoundationSubsidy
     {
+
+
+
         public RequestResult InsertFoundationSubsidy(
-           long CharityType,
-           long LicenseNumber,
-           string ChairmanBoardMobileNumber,
-           string ChairmanBoardName,
-           string CommissionerNumber
-           //List<Files> Files
-           )
+            CheckedData CheckedData,
+            string ChairmanBoardMobileNumber,
+            string ChairmanBoardName
+            )
         {
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(CommissionerNumber))
-                    if (String.IsNullOrEmpty(ChairmanBoardName))
-                        throw new FaultException<ValidationFault>(new ValidationFault());
+                if (CheckedData.AgencyType == 0 ||
+                    CheckedData.AgencyLicenseNumber == 0 ||
+                    String.IsNullOrEmpty(CheckedData.CommissionerNumber) ||
+                    String.IsNullOrEmpty(ChairmanBoardMobileNumber) ||
+                    String.IsNullOrEmpty(ChairmanBoardName))
+                    throw new FaultException<ValidationFault>(new ValidationFault());
+
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertFoundationSubsidyDAL(
-                        CharityType,
-                        LicenseNumber,
+                        CheckedData,
                         ChairmanBoardMobileNumber,
-                        ChairmanBoardName,
-                        CommissionerNumber
-                        //Files
+                        ChairmanBoardName
                         );
                 }
             }
@@ -50,10 +51,10 @@ namespace SubsidyServices.Charities
                 {
                     Result = true,
                     Message = "Parameter not correct",
-                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                    Description = "Invalid Parameter Name or All Parameters are null"
                 };
 
-                throw new FaultException<ValidationFault>(fault);
+                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameter Name or All Parameters are null"));
             }
             catch (Exception ex)
             {
@@ -64,7 +65,7 @@ namespace SubsidyServices.Charities
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
 
-                throw new FaultException<ValidationFault>(fault);
+                throw new FaultException<ValidationFault>(fault, new FaultReason("General Fault"));
             }
         }
 

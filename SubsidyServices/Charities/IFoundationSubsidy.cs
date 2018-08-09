@@ -30,11 +30,9 @@ namespace SubsidyServices.Charities
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertFoundationSubsidy(
-           long CharityType,
-           long LicenseNumber,
+           CheckedData chda,
            string ChairmanBoardMobileNumber,
-           string ChairmanBoardName,
-           string CommissionerNumber
+           string ChairmanBoardName
            //List<Files> Files
            );
 

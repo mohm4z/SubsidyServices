@@ -23,28 +23,26 @@ namespace DAL.Charities
         }
 
         public RequestResult InsertFoundationSubsidyDAL(
-            long CharityType,
-            long LicenseNumber,
+            CheckedData chda,
             string ChairmanBoardMobileNumber,
-            string ChairmanBoardName,
-            string CommissionerNumber
+            string ChairmanBoardName
             //List<Files> Files
             )
         {
 
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = CharityType},
-                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = LicenseNumber},
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = chda.AgencyType},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = chda.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = ChairmanBoardName},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = ChairmanBoardMobileNumber},
-                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = CommissionerNumber}
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = chda.CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
-                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000},
                 new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
             };
 
@@ -58,51 +56,20 @@ namespace DAL.Charities
                 in Outouts
               );
 
-            //List<OracleParameter> OpParms = new List<OracleParameter>()
-            //{
-            //     new OracleParameter(){ ParameterName=":P_REG_TYPE_CODE" , OracleDbType = OracleDbType.Int32 , Direction = ParameterDirection.Input , Value=CharityType  },
-            //     new OracleParameter(){ ParameterName=":P_SOC_REG_ID" , OracleDbType = OracleDbType.Int32 , Direction = ParameterDirection.Input , Value= LicenseNumber  },
-            //     new OracleParameter(){ ParameterName=":P_BOARD_CHAIRMAN_MOBILE" , OracleDbType = OracleDbType.Varchar2 , Direction = ParameterDirection.Input , Value= ChairmanBoardMobileNumber  },
-            //     new OracleParameter(){ ParameterName=":P_BOARD_CHAIRMAN_NAME" , OracleDbType = OracleDbType.Varchar2 , Direction = ParameterDirection.Input , Value= ChairmanBoardName  },
-            //     new OracleParameter(){ ParameterName=":P_LOGIN_ID" , OracleDbType = OracleDbType.Varchar2 , Direction = ParameterDirection.Input , Value= CommissionerNumber  },
-
-            //     new OracleParameter(){ ParameterName=":P_REQUEST_ID" , OracleDbType = OracleDbType.Int32 , Direction = ParameterDirection.Output , Size= 100  },
-            //     new OracleParameter(){ ParameterName=":P_REG_TYPE_CODE" , OracleDbType = OracleDbType.Int32 , Direction = ParameterDirection.InputOutput , Size= 100  },
-            //     new OracleParameter(){ ParameterName=":P_REG_TYPE_CODE" , OracleDbType = OracleDbType.Varchar2 , Direction = ParameterDirection.InputOutput , Size= 100  }
-            //};
-
-
-
-
             ado.ExecuteStoredProcedure(
                 "CH_P_SUBSIDY_ESTBLSH",
                 OpParms,
-                out OracleParameterCollection OPCs,
-                out DataSet Ds
+                out OracleParameterCollection OPCs
                 );
 
-            RequestResult chi = new RequestResult
+            RequestResult RequestResult = new RequestResult
             {
                 RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
                 RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
                 RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
-
-                //RequestId = 1,
-                //ErrorCode = "1",
-                //ErrorName = "sss"
             };
 
-            //for (int i = 0; i < Files.Count(); i++)
-            //{
-            //    InsertAttachmentDAL(
-            //        chi.RequestId,
-            //        Files[i].Id,
-            //        Files[i].Path,
-            //        CommissionerNumber
-            //        );
-            //}
-
-            return chi;
+            return RequestResult;
         }
 
         public RequestResult InsertEmployeeSubsidyDAL(
@@ -134,7 +101,7 @@ namespace DAL.Charities
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
-                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000},
                 new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
             };
 
@@ -154,7 +121,7 @@ namespace DAL.Charities
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult chi = new RequestResult
+            RequestResult RequestResult = new RequestResult
             {
                 RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
                 RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
@@ -164,14 +131,14 @@ namespace DAL.Charities
             for (int i = 0; i < Files.Count(); i++)
             {
                 InsertAttachmentDAL(
-                    chi.RequestId,
+                    RequestResult.RequestId,
                     Files[i].Id,
                     Files[i].Path,
                     emp.CheckedData.CommissionerNumber.ToString()
                     );
             }
 
-            return chi;
+            return RequestResult;
         }
 
         public RequestResult InsertEmergencySubsidyDAL(
@@ -230,7 +197,7 @@ namespace DAL.Charities
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult chi = new RequestResult
+            RequestResult RequestResult = new RequestResult
             {
                 RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
                 RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
@@ -240,14 +207,14 @@ namespace DAL.Charities
             for (int i = 0; i < Files.Count(); i++)
             {
                 InsertAttachmentDAL(
-                    chi.RequestId,
+                    RequestResult.RequestId,
                     Files[i].Id,
                     Files[i].Path,
                     emg.CheckedData.CommissionerNumber
                     );
             }
 
-            return chi;
+            return RequestResult;
         }
 
         public RequestResult InsertConstructSubsidyDAL(
@@ -313,7 +280,7 @@ namespace DAL.Charities
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult chi = new RequestResult
+            RequestResult RequestResult = new RequestResult
             {
                 RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
                 RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
@@ -323,14 +290,14 @@ namespace DAL.Charities
             for (int i = 0; i < Files.Count(); i++)
             {
                 InsertAttachmentDAL(
-                    chi.RequestId,
+                    RequestResult.RequestId,
                     Files[i].Id,
                     Files[i].Path,
                     cnst.CheckedData.CommissionerNumber
                     );
             }
 
-            return chi;
+            return RequestResult;
         }
 
         public RequestResult InsertAttachmentDAL(
@@ -370,13 +337,13 @@ namespace DAL.Charities
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult chi = new RequestResult
+            RequestResult RequestResult = new RequestResult
             {
                 RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
                 RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
             };
 
-            return chi;
+            return RequestResult;
         }
 
 

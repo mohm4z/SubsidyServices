@@ -60,14 +60,14 @@ namespace DAL.Common
         }
 
         public AgencyInfo GetAgencyInfoDAL(
-            long LicenseNumber,
-            int CharityType
+            int AgencyType,
+            long AgencyLicenseNumber
            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = CharityType.ToString()},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = LicenseNumber.ToString()}
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = AgencyLicenseNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
@@ -122,14 +122,14 @@ namespace DAL.Common
         }
 
         public AgencyGoals GetAgencyGoalsDAL(
-            long LicenseNumber,
-            int CharityType
+            int AgencyType,
+            long AgencyLicenseNumber
            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = LicenseNumber},
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = CharityType}
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = AgencyLicenseNumber},
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
@@ -215,7 +215,7 @@ namespace DAL.Common
             return chi;
         }
 
-    
+
         public void Dispose()
         {
             //throw new NotImplementedException();

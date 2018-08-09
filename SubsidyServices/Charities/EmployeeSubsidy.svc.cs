@@ -25,13 +25,22 @@ namespace SubsidyServices.Charities
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(emp.ChairmanBoardName))
-                    if (String.IsNullOrEmpty(emp.EmployeeName))
-                        if (String.IsNullOrEmpty(emp.EmployeeHireDate))
-                            if (String.IsNullOrEmpty(emp.EmployeeBirthDate))
-                                if (String.IsNullOrEmpty(emp.EmployeeNationality))
-                                    if (String.IsNullOrEmpty(emp.EmployeeNationality))
-                                            throw new FaultException<ValidationFault>(new ValidationFault());
+                if (emp.CheckedData.AgencyType == 0 ||
+                    emp.CheckedData.AgencyLicenseNumber == 0 ||
+                    String.IsNullOrEmpty(emp.CheckedData.CommissionerNumber) ||
+                    String.IsNullOrEmpty(emp.ChairmanBoardName) ||
+                    emp.ChairmanBoardMobileNumber == 0 ||
+                    String.IsNullOrEmpty(emp.EmployeeName) ||
+                    String.IsNullOrEmpty(emp.EmployeeHireDate) ||
+                    emp.EmployeeNationalId == 0 ||
+                    String.IsNullOrEmpty(emp.EmployeeBirthDate) ||
+                    String.IsNullOrEmpty(emp.EmployeeNationality) ||
+                    String.IsNullOrEmpty(emp.EmployeeQualification) ||
+                    String.IsNullOrEmpty(emp.EmployeeSpecialist) ||
+                    String.IsNullOrEmpty(emp.EmployeeSpecialistCD) ||
+                    emp.EmployeeSalary == 0 ||
+                    emp.EmployeeRentAmount == 0)
+                    throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {

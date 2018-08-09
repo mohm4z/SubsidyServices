@@ -20,8 +20,8 @@ namespace SubsidyServices.Cooperative
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="LicenseNumber"></param>
-        /// <param name="CharityType"></param>
+        /// <param name="prj"></param>
+        /// <param name="Files"></param>
         /// <returns></returns>
         public RequestResult InsertProjectsSupport(
             ProjectInfo prj,
@@ -51,8 +51,7 @@ namespace SubsidyServices.Cooperative
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                throw new FaultException<ValidationFault>(
-                    fault);
+                throw new FaultException<ValidationFault>(fault);
             }
             catch (Exception ex)
             {
