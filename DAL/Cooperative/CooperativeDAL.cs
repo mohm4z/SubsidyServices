@@ -190,7 +190,7 @@ namespace DAL.Cooperative
                 );
 
             ado.ExecuteStoredProcedure(
-                "CS_P_SUBSIDY_ESTBLSH",
+                "CS_P_SUBSIDY_BOD_REWARD",
                 OpParms,
                 out OracleParameterCollection OPCs
                 );
@@ -290,7 +290,78 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
+        public RequestResult InsertReassigningAccountantDAL(
+            AccountantInfo mgInf,
+            List<Files> Files
+            )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = mgInf.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = mgInf.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = mgInf.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = mgInf.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = mgInf.ManagersInfo.ExecutiveDirectorName},
+                new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = mgInf.ManagersInfo.ExecutiveDirectorMobile},
+                new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = mgInf.CooEmployeeInfo.EmployeeName},
+                new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = mgInf.CooEmployeeInfo.EmployeeBirthDate},
+                new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = mgInf.CooEmployeeInfo.EmployeeNationalId},
+                new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_DT" , VALUE = mgInf.CooEmployeeInfo.EmployeeHireDate},
+                new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = mgInf.CooEmployeeInfo.EmployeeSpecialistCD},
+                new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = mgInf.CooEmployeeInfo.EmployeeQualification},
+                new SpInPuts(){KEY = "P_BALSHT_SAL_SPRT_FLG" , VALUE = mgInf.AccountantSalarySeparateInTheBudget},
+                new SpInPuts(){KEY = "P_SBSD_EMP_CONTRACT_FLG" , VALUE = mgInf.IsContractSignedbotheAndNameAndSalaryShown},
+                new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_BOD_AGREE_FLG" , VALUE = mgInf.CooEmployeeInfo.AppointmentBoardApproval},
+                new SpInPuts(){KEY = "P_SPONSOR_FLG" , VALUE = mgInf.IsNonSaudiSponsorshipOnAgancy},
+                new SpInPuts(){KEY = "P_PAYROLL_FLG" , VALUE = mgInf.IsAccountantReceiptSheetAvailable},
+                new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = mgInf.AnnualSalary},
+                new SpInPuts(){KEY = "P_SBSD_EMP_PRIVILEGES" , VALUE = mgInf.CooEmployeeInfo.OtherPrivileges},
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = mgInf.RequiredSubsidy},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = mgInf.CheckedData.CommissionerNumber}
+            };
 
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000},
+                new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.ExecuteStoredProcedure(
+                "CS_P_SUBSIDY_ACCOUNTANT",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            RequestResult RequestResult = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    RequestResult.RequestId,
+                    Files[i].Id,
+                    Files[i].Path,
+                    mgInf.CheckedData.CommissionerNumber.ToString()
+                    );
+            }
+
+            return RequestResult;
+        }
 
 
         public RequestResult InsertAttachmentDAL(
