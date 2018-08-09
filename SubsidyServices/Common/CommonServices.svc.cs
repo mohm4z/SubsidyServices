@@ -135,8 +135,8 @@ namespace SubsidyServices.Common
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
                     return dal.GetAgencyGoalsDAL(
-                         AgencyType,
-                         AgencyLicenseNumber
+                        AgencyType,
+                        AgencyLicenseNumber
                         );
                 }
             }

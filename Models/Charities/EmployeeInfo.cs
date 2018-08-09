@@ -17,6 +17,7 @@ namespace Models.Charities
 
         /// <summary>
         /// نوع الإعانة
+        /// P_SUBSIDY_CODE
         /// </summary>
         [DataMember(Order = 1)]
         public int SubsidyType { get; set; }
@@ -35,40 +36,84 @@ namespace Models.Charities
         [DataMember(Order = 3)]
         public long ChairmanBoardMobileNumber { get; set; }
 
+        /// <summary>
+        /// اسم المدير
+        /// P_SBSD_EMP_NAME
+        /// </summary>
         [DataMember(Order = 4)]
         public string EmployeeName { get; set; }
 
+        /// <summary>
+        /// تاريخ التعيين
+        /// P_SBSD_EMP_HIRE_DT
+        /// </summary>
         [DataMember(Order = 5)]
         public string EmployeeHireDate { get; set; }
 
+        /// <summary>
+        /// رقم الهوية الوطنية
+        /// P_SBSD_EMP_ID
+        /// </summary>
         [DataMember(Order = 6)]
         public long EmployeeNationalId { get; set; }
 
+        /// <summary>
+        /// تاريخ الميلاد
+        /// P_SBSD_EMP_BDATE
+        /// </summary>
         [DataMember(Order = 7)]
         public string EmployeeBirthDate { get; set; }
 
+        /// <summary>
+        /// الجنسية
+        /// P_SBSD_EMP_NATIONALITY
+        /// </summary>
         [DataMember(Order = 8)]
         public string EmployeeNationality { get; set; }
 
+        /// <summary>
+        /// المؤهل التعليمي
+        /// P_SBSD_EMP_QUALIF_CD
+        /// </summary>
         [DataMember(Order = 9)]
         public string EmployeeQualification { get; set; }
 
+        /// <summary>
+        /// التخصص ، يدخل في حالة المحاسب
+        /// P_SBSD_EMP_SPECIALIST
+        /// </summary>
         [DataMember(Order = 10)]
         public string EmployeeSpecialist { get; set; }
 
+        /// <summary>
+        /// التخصص ، يدخل في حالة الباحث
+        /// P_SBSD_EMP_SPECIALIST_CD
+        /// </summary>
         [DataMember(Order = 11)]
         public string EmployeeSpecialistCD { get; set; }
 
+        /// <summary>
+        /// الخبرة
+        /// P_SBSD_EMP_EXPR_PRD_CD
+        /// </summary>
         [DataMember(Order = 12)]
         public int EmployeeExpertise { get; set; }
 
+        /// <summary>
+        /// الراتب الشهري الاساسي
+        /// P_SBSD_EMP_SALARY
+        /// </summary>
         [DataMember(Order = 13)]
         public decimal EmployeeSalary { get; set; }
 
+        /// <summary>
+        /// قيمة بدل السكن
+        /// P_SBSD_EMP_RENT_AMOUNT
+        /// </summary>
         [DataMember(Order = 14)]
         public decimal EmployeeRentAmount { get; set; }
 
-       
+
 
     }
 }

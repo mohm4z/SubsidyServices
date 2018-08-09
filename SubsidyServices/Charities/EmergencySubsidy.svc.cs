@@ -18,32 +18,32 @@ namespace SubsidyServices.Charities
     public class EmergencySubsidy : IEmergencySubsidy
     {
         public RequestResult InsertEmergencySubsidy(
-              EmergencyInfo cnst,
+              EmergencyInfo EmergencyInfo,
               List<Files> Files
             )
         {
             try
             {
                 /// Data Validations
-                if (cnst.CheckedData.AgencyType == 0 ||
-                    cnst.CheckedData.AgencyLicenseNumber == 0 ||
-                    String.IsNullOrEmpty(cnst.CheckedData.CommissionerNumber) ||
-                    cnst.CharityMainData.SubsidyType == 0 ||
-                    cnst.CharityMainData.BeneficiariesCount == 0 ||
-                    cnst.CharityMainData.VolunteersCount == 0 ||
-                    cnst.CharityMainData.SaudiEmployeesCount == 0 ||
-                    cnst.CharityMainData.NonSaudiEmployeesCount == 0 ||
-                    cnst.CharityMainData.IsbudgetIssued == 0 ||
-                    cnst.CharityMainData.IsBoardOfDirectorsMeetingsRegular == 0 ||
-                    cnst.CharityMainData.IsGeneralAssemblyMeetingsRegular == 0 ||
-                    String.IsNullOrEmpty(cnst.CharityMainData.GeneralAssemblyIrregularityMeetingReason) ||
-                    cnst.CharityMainData.TotalExpensesAdministrativePreviousYear == 0)
+                if (EmergencyInfo.CheckedData.AgencyType == 0 ||
+                    EmergencyInfo.CheckedData.AgencyLicenseNumber == 0 ||
+                    String.IsNullOrEmpty(EmergencyInfo.CheckedData.CommissionerNumber) ||
+                    EmergencyInfo.CharityMainData.SubsidyType == 0 ||
+                    EmergencyInfo.CharityMainData.BeneficiariesCount == 0 ||
+                    EmergencyInfo.CharityMainData.VolunteersCount == 0 ||
+                    EmergencyInfo.CharityMainData.SaudiEmployeesCount == 0 ||
+                    EmergencyInfo.CharityMainData.NonSaudiEmployeesCount == 0 ||
+                    EmergencyInfo.CharityMainData.IsbudgetIssued == 0 ||
+                    EmergencyInfo.CharityMainData.IsBoardOfDirectorsMeetingsRegular == 0 ||
+                    EmergencyInfo.CharityMainData.IsGeneralAssemblyMeetingsRegular == 0 ||
+                    String.IsNullOrEmpty(EmergencyInfo.CharityMainData.GeneralAssemblyIrregularityMeetingReason) ||
+                    EmergencyInfo.CharityMainData.TotalExpensesAdministrativePreviousYear == 0)
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertEmergencySubsidyDAL(
-                        cnst,
+                        EmergencyInfo,
                         Files
                         );
                 }

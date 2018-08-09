@@ -22,6 +22,13 @@ namespace DAL.Charities
             this.ado = Ado;
         }
 
+        /// <summary>
+        /// حفظ بيانات الاعانة التأسيسية
+        /// </summary>
+        /// <param name="chda"></param>
+        /// <param name="ChairmanBoardMobileNumber"></param>
+        /// <param name="ChairmanBoardName"></param>
+        /// <returns></returns>
         public RequestResult InsertFoundationSubsidyDAL(
             CheckedData chda,
             string ChairmanBoardMobileNumber,
@@ -72,6 +79,12 @@ namespace DAL.Charities
             return RequestResult;
         }
 
+        /// <summary>
+        /// حفظ بيانات اعانة الموظفين
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <param name="Files"></param>
+        /// <returns></returns>
         public RequestResult InsertEmployeeSubsidyDAL(
             EmployeeInfo emp,
             List<Files> Files
@@ -141,6 +154,12 @@ namespace DAL.Charities
             return RequestResult;
         }
 
+        /// <summary>
+        /// حفظ بيانات الإعانة الطارئة
+        /// </summary>
+        /// <param name="emg"></param>
+        /// <param name="Files"></param>
+        /// <returns></returns>
         public RequestResult InsertEmergencySubsidyDAL(
             EmergencyInfo emg,
             List<Files> Files
@@ -217,10 +236,16 @@ namespace DAL.Charities
             return RequestResult;
         }
 
+        /// <summary>
+        /// حفظ بيانات الاعانه الانشائية
+        /// </summary>
+        /// <param name="cnst"></param>
+        /// <param name="Files"></param>
+        /// <returns></returns>
         public RequestResult InsertConstructSubsidyDAL(
-           ConstructInfo cnst,
-           List<Files> Files
-         )
+            ConstructInfo cnst,
+            List<Files> Files
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -300,12 +325,20 @@ namespace DAL.Charities
             return RequestResult;
         }
 
+        /// <summary>
+        /// حفظ المرفقات
+        /// </summary>
+        /// <param name="RequestId"></param>
+        /// <param name="FileNumber"></param>
+        /// <param name="FilePath"></param>
+        /// <param name="CommissionerNumber"></param>
+        /// <returns></returns>
         public RequestResult InsertAttachmentDAL(
             long RequestId,
             int FileNumber,
             string FilePath,
             string CommissionerNumber
-          )
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {

@@ -20,24 +20,24 @@ namespace SubsidyServices.Cooperative
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="prj"></param>
+        /// <param name="ProjectInfo"></param>
         /// <param name="Files"></param>
         /// <returns></returns>
         public RequestResult InsertProjectsSupport(
-            ProjectInfo prj,
+            ProjectInfo ProjectInfo,
             List<Files> Files
             )
         {
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(prj.ChairmanBoardName))
+                if (String.IsNullOrEmpty(ProjectInfo.ManagersInfo.ChairmanBoardName))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
                     return dal.InsertProjectsSupportDAL(
-                        prj,
+                        ProjectInfo,
                         Files
                         );
                 }

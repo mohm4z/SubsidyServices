@@ -18,34 +18,34 @@ namespace SubsidyServices.Charities
     public class EmployeeSubsidy : IEmployeeSubsidy
     {
         public RequestResult InsertEmployeeSubsidy(
-            EmployeeInfo emp,
+            EmployeeInfo EmployeeInfo,
             List<Files> Files
             )
         {
             try
             {
                 /// Data Validations
-                if (emp.CheckedData.AgencyType == 0 ||
-                    emp.CheckedData.AgencyLicenseNumber == 0 ||
-                    String.IsNullOrEmpty(emp.CheckedData.CommissionerNumber) ||
-                    String.IsNullOrEmpty(emp.ChairmanBoardName) ||
-                    emp.ChairmanBoardMobileNumber == 0 ||
-                    String.IsNullOrEmpty(emp.EmployeeName) ||
-                    String.IsNullOrEmpty(emp.EmployeeHireDate) ||
-                    emp.EmployeeNationalId == 0 ||
-                    String.IsNullOrEmpty(emp.EmployeeBirthDate) ||
-                    String.IsNullOrEmpty(emp.EmployeeNationality) ||
-                    String.IsNullOrEmpty(emp.EmployeeQualification) ||
-                    String.IsNullOrEmpty(emp.EmployeeSpecialist) ||
-                    String.IsNullOrEmpty(emp.EmployeeSpecialistCD) ||
-                    emp.EmployeeSalary == 0 ||
-                    emp.EmployeeRentAmount == 0)
+                if (EmployeeInfo.CheckedData.AgencyType == 0 ||
+                    EmployeeInfo.CheckedData.AgencyLicenseNumber == 0 ||
+                    String.IsNullOrEmpty(EmployeeInfo.CheckedData.CommissionerNumber) ||
+                    String.IsNullOrEmpty(EmployeeInfo.ChairmanBoardName) ||
+                    EmployeeInfo.ChairmanBoardMobileNumber == 0 ||
+                    String.IsNullOrEmpty(EmployeeInfo.EmployeeName) ||
+                    String.IsNullOrEmpty(EmployeeInfo.EmployeeHireDate) ||
+                    EmployeeInfo.EmployeeNationalId == 0 ||
+                    String.IsNullOrEmpty(EmployeeInfo.EmployeeBirthDate) ||
+                    String.IsNullOrEmpty(EmployeeInfo.EmployeeNationality) ||
+                    String.IsNullOrEmpty(EmployeeInfo.EmployeeQualification) ||
+                    String.IsNullOrEmpty(EmployeeInfo.EmployeeSpecialist) ||
+                    String.IsNullOrEmpty(EmployeeInfo.EmployeeSpecialistCD) ||
+                    EmployeeInfo.EmployeeSalary == 0 ||
+                    EmployeeInfo.EmployeeRentAmount == 0)
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertEmployeeSubsidyDAL(
-                        emp,
+                        EmployeeInfo,
                         Files
                         );
                 }

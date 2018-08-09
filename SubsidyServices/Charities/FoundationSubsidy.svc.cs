@@ -16,9 +16,6 @@ namespace SubsidyServices.Charities
     // NOTE: In order to launch WCF Test Client for testing this service, please select FoundationSubsidy.svc or FoundationSubsidy.svc.cs at the Solution Explorer and start debugging.
     public class FoundationSubsidy : IFoundationSubsidy
     {
-
-
-
         public RequestResult InsertFoundationSubsidy(
             CheckedData CheckedData,
             string ChairmanBoardMobileNumber,
@@ -34,7 +31,6 @@ namespace SubsidyServices.Charities
                     String.IsNullOrEmpty(ChairmanBoardMobileNumber) ||
                     String.IsNullOrEmpty(ChairmanBoardName))
                     throw new FaultException<ValidationFault>(new ValidationFault());
-
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
