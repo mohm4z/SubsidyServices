@@ -35,8 +35,7 @@ namespace SubsidyServices.Charities
                     EmployeeInfo.EmployeeNationalId == 0 ||
                     String.IsNullOrEmpty(EmployeeInfo.EmployeeBirthDate) ||
                     String.IsNullOrEmpty(EmployeeInfo.EmployeeNationality) ||
-                    String.IsNullOrEmpty(EmployeeInfo.EmployeeQualification) ||
-                    String.IsNullOrEmpty(EmployeeInfo.EmployeeSpecialistCD) ||
+                    EmployeeInfo.EmployeeQualification == 0 ||
                     EmployeeInfo.EmployeeSalary == 0 ||
                     EmployeeInfo.EmployeeRentAmount == 0)
                     throw new FaultException<ValidationFault>(new ValidationFault());

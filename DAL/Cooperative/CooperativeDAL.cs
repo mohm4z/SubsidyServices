@@ -91,7 +91,6 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
-
         public RequestResult InsertFoundationCooperativeDAL(
             FoundationInfo FoundationInfo,
             List<Files> Files
@@ -151,6 +150,69 @@ namespace DAL.Cooperative
 
             return RequestResult;
         }
+
+        public RequestResult InsertBoardDirectorsRemunerationDAL(
+          BoardDirectorsRemunerationInfo BDRI,
+          List<Files> Files
+          )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = BDRI.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = BDRI.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = BDRI.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = BDRI.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "CEO_NAME" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorName},
+                new SpInPuts(){KEY = "CEO_MOB_NO" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorMobile},
+                //new SpInPuts(){KEY = "CEO_MOB_NO" , VALUE = BoardDirectorsRemunerationInfo.CompanyCapitalInBeginning},
+                new SpInPuts(){KEY = "P_ESTBLSH_CAPITAL" , VALUE = BDRI.CheckedData.CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000},
+                new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.ExecuteStoredProcedure(
+                "CS_P_SUBSIDY_ESTBLSH",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            RequestResult RequestResult = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    RequestResult.RequestId,
+                    Files[i].Id,
+                    Files[i].Path,
+                    BDRI.CheckedData.CommissionerNumber.ToString()
+                    );
+            }
+
+            return RequestResult;
+        }
+
+
+
 
 
         public RequestResult InsertAttachmentDAL(

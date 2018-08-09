@@ -8,6 +8,9 @@ using System.Runtime.Serialization;
 
 namespace Models.Cooperative
 {
+    /// <summary>
+    /// بيانات المدير
+    /// </summary>
     [DataContract]
     public class ManagersInfo
     {

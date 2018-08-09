@@ -76,7 +76,7 @@ namespace Models.Charities
         /// P_SBSD_EMP_QUALIF_CD
         /// </summary>
         [DataMember(Order = 9)]
-        public string EmployeeQualification { get; set; }
+        public int EmployeeQualification { get; set; }
 
         /// <summary>
         /// التخصص ، يدخل في حالة الباحث
@@ -90,7 +90,7 @@ namespace Models.Charities
         /// P_SBSD_EMP_EXPR_PRD_CD
         /// </summary>
         [DataMember(Order = 12)]
-        public int EmployeeExpertise { get; set; }
+        public string EmployeeExpertise { get; set; }
 
         /// <summary>
         /// الراتب الشهري الاساسي

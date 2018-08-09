@@ -57,6 +57,8 @@
     <Compile Include="Common\Goals.cs" />
     <Compile Include="Common\RequestResult.cs" />
     <Compile Include="Common\Lookup.cs" />
+    <Compile Include="Cooperative\BoardDirectorsRemunerationInfo.cs" />
+    <Compile Include="Cooperative\CooEmployeeInfo.cs" />
     <Compile Include="Cooperative\FoundationInfo.cs" />
     <Compile Include="Cooperative\ManagersInfo.cs" />
     <Compile Include="Cooperative\ProjectInfo.cs" />
