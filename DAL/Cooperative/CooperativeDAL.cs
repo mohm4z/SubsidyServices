@@ -164,7 +164,11 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = BDRI.ManagersInfo.ChairmanBoardName},
                 new SpInPuts(){KEY = "CEO_NAME" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "CEO_MOB_NO" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorMobile},
-                //new SpInPuts(){KEY = "CEO_MOB_NO" , VALUE = BoardDirectorsRemunerationInfo.CompanyCapitalInBeginning},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = BDRI.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = BDRI.IsBudgetRegular},
+                new SpInPuts(){KEY = "P_PROFIT_FLG" , VALUE = BDRI.IsAssociationMadeProfitsInlastbudget},
+                new SpInPuts(){KEY = "P_PROFIT_AFTER_ZAKAT_AMNT" , VALUE = BDRI.ProfitsAfterZakat},
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = BDRI.RequiredSubsidy},
                 new SpInPuts(){KEY = "P_ESTBLSH_CAPITAL" , VALUE = BDRI.CheckedData.CommissionerNumber}
             };
 

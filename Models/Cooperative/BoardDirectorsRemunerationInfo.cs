@@ -33,7 +33,6 @@ namespace Models.Cooperative
         [DataMember(Order = 3)]
         public string IsBudgetRegular { get; set; }
 
-
         /// <summary>
         /// هل حققت الجمعية أرباحا بموجب اخر ميزانية صدرت لها؟
         /// P_PROFIT_FLG
@@ -53,6 +52,6 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [DataMember(Order = 6)]
-        public string ManagersInfo { get; set; }
+        public string RequiredSubsidy { get; set; }
     }
 }

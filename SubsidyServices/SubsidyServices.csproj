@@ -73,6 +73,7 @@
     <Content Include="Cooperative\BoardDirectorsRemuneration.svc" />
     <Content Include="Cooperative\FoundationCooperative.svc" />
     <Content Include="Cooperative\ProjectsSupport.svc" />
+    <Content Include="Cooperative\ReassigningManager.svc" />
     <Content Include="UserNamePassService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -108,8 +109,12 @@
     <Compile Include="Cooperative\IBoardDirectorsRemuneration.cs" />
     <Compile Include="Cooperative\IFoundationCooperative.cs" />
     <Compile Include="Cooperative\IProjectsSupport.cs" />
+    <Compile Include="Cooperative\IReassigningManager.cs" />
     <Compile Include="Cooperative\ProjectsSupport.svc.cs">
       <DependentUpon>ProjectsSupport.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Cooperative\ReassigningManager.svc.cs">
+      <DependentUpon>ReassigningManager.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
