@@ -71,7 +71,7 @@ namespace DAL.Cooperative
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult chi = new RequestResult
+            RequestResult RequestResult = new RequestResult
             {
                 RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
                 RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
@@ -81,14 +81,14 @@ namespace DAL.Cooperative
             for (int i = 0; i < Files.Count(); i++)
             {
                 InsertAttachmentDAL(
-                    chi.RequestId,
+                    RequestResult.RequestId,
                     Files[i].Id,
                     Files[i].Path,
                     prj.CheckedData.CommissionerNumber.ToString()
                     );
             }
 
-            return chi;
+            return RequestResult;
         }
 
 
@@ -132,7 +132,7 @@ namespace DAL.Cooperative
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult chi = new RequestResult
+            RequestResult RequestResult = new RequestResult
             {
                 RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
                 RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
@@ -142,14 +142,14 @@ namespace DAL.Cooperative
             for (int i = 0; i < Files.Count(); i++)
             {
                 InsertAttachmentDAL(
-                    chi.RequestId,
+                    RequestResult.RequestId,
                     Files[i].Id,
                     Files[i].Path,
                     FoundationInfo.CheckedData.CommissionerNumber.ToString()
                     );
             }
 
-            return chi;
+            return RequestResult;
         }
 
 
@@ -190,13 +190,13 @@ namespace DAL.Cooperative
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult chi = new RequestResult
+            RequestResult RequestResult = new RequestResult
             {
                 RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
                 RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
             };
 
-            return chi;
+            return RequestResult;
         }
 
 

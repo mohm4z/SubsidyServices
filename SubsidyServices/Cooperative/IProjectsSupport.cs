@@ -28,7 +28,7 @@ namespace SubsidyServices.Cooperative
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertProjectsSupport(
-            ProjectInfo prj,
+            ProjectInfo ProjectInfo,
             List<Files> Files
             );
     }

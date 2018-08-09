@@ -23,7 +23,7 @@ namespace SubsidyServices.Charities
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertEmergencySubsidy(
-           EmergencyInfo emg,
+           EmergencyInfo EmergencyInfo,
            List<Files> Files
            );
     }

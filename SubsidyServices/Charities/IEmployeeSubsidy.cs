@@ -21,7 +21,7 @@ namespace SubsidyServices.Charities
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertEmployeeSubsidy(
-            EmployeeInfo emp,
+            EmployeeInfo EmployeeInfo,
             List<Files> Files
             );
     }

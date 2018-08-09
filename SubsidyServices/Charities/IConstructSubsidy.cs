@@ -24,7 +24,7 @@ namespace SubsidyServices.Charities
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertConstructSubsidy(
-           ConstructInfo emg,
+           ConstructInfo ConstructInfo,
            List<Files> Files
            );
     }
