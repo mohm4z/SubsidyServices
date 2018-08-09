@@ -36,7 +36,6 @@ namespace SubsidyServices.Charities
                     String.IsNullOrEmpty(EmployeeInfo.EmployeeBirthDate) ||
                     String.IsNullOrEmpty(EmployeeInfo.EmployeeNationality) ||
                     String.IsNullOrEmpty(EmployeeInfo.EmployeeQualification) ||
-                    String.IsNullOrEmpty(EmployeeInfo.EmployeeSpecialist) ||
                     String.IsNullOrEmpty(EmployeeInfo.EmployeeSpecialistCD) ||
                     EmployeeInfo.EmployeeSalary == 0 ||
                     EmployeeInfo.EmployeeRentAmount == 0)

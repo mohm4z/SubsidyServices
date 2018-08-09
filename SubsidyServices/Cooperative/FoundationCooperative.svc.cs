@@ -19,20 +19,20 @@ namespace SubsidyServices.Cooperative
     {
         
         public RequestResult InsertFoundationCooperative(
-            ProjectInfo ProjectInfo,
+            FoundationInfo FoundationInfo,
             List<Files> Files
             )
         {
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(ProjectInfo.ManagersInfo.ChairmanBoardName))
+                if (String.IsNullOrEmpty(FoundationInfo.ManagersInfo.ChairmanBoardName))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
                     return dal.InsertFoundationCooperativeDAL(
-                        ProjectInfo,
+                        FoundationInfo,
                         Files
                         );
                 }

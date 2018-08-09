@@ -22,7 +22,7 @@ namespace SubsidyServices.Cooperative
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertFoundationCooperative(
-            ProjectInfo ProjectInfo,
+            FoundationInfo ProjectInfo,
             List<Files> Files
             );
     }

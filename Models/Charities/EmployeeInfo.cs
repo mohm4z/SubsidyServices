@@ -79,13 +79,6 @@ namespace Models.Charities
         public string EmployeeQualification { get; set; }
 
         /// <summary>
-        /// التخصص ، يدخل في حالة المحاسب
-        /// P_SBSD_EMP_SPECIALIST
-        /// </summary>
-        [DataMember(Order = 10)]
-        public string EmployeeSpecialist { get; set; }
-
-        /// <summary>
         /// التخصص ، يدخل في حالة الباحث
         /// P_SBSD_EMP_SPECIALIST_CD
         /// </summary>
