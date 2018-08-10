@@ -5,26 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Runtime.Serialization;
-
+using Models.Common;
 
 namespace Models.Charities
 {
     [DataContract(Namespace = "CharityMainData")]
     public class CharityMainData
     {
-
         /// <summary>
         /// نوع الإعانة
         /// P_SUBSIDY_CODE
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 0)]
-        //[DataMember(Order = 0, IsRequired = true)]
         public int SubsidyType { get; set; }
 
         /// <summary>
         /// عدد المستفيدين من الجمعية
         /// P_BENEF_COUNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 1)]
         public int BeneficiariesCount { get; set; }
 
@@ -32,6 +32,7 @@ namespace Models.Charities
         /// عدد المتطوعين
         /// P_VOLUNTEERS_COUNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 2)]
         public int VolunteersCount { get; set; }
 
@@ -39,6 +40,7 @@ namespace Models.Charities
         /// عدد الموظفين السعودين
         /// P_EMP_SA_COUNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 3)]
         public int SaudiEmployeesCount { get; set; }
 
@@ -46,6 +48,7 @@ namespace Models.Charities
         /// عدد الموظفين الغير سعودين
         /// P_EMP_NONSA_COUNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 4)]
         public int NonSaudiEmployeesCount { get; set; }
 
@@ -53,6 +56,7 @@ namespace Models.Charities
         /// هل صدرت الميزانية
         /// P_BALANCE_SHEET_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 5)]
         public int IsbudgetIssued { get; set; }
 
@@ -60,6 +64,7 @@ namespace Models.Charities
         /// هل اجتماعات مجلس الإدارة منتظمة أو غير منتظمة
         /// P_BOARD_MEET_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 6)]
         public int IsBoardOfDirectorsMeetingsRegular { get; set; }
 
@@ -67,6 +72,7 @@ namespace Models.Charities
         /// هل اجتماعات الجمعية العمومية منتظمة أو غير منتظمة
         /// P_PUB_BOARD_MEET_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 7)]
         public int IsGeneralAssemblyMeetingsRegular { get; set; }
 
@@ -74,6 +80,7 @@ namespace Models.Charities
         /// سبب عدم انتظام اجتماعاعت الجمعية العمومية
         /// P_PUB_BOARD_MEET_REASON
         /// </summary>
+        //[ItsRequired]
         [DataMember(Order = 8)]
         public string GeneralAssemblyIrregularityMeetingReason { get; set; }
 
@@ -95,6 +102,7 @@ namespace Models.Charities
         /// عدد البرامج المنفذة خلال العام السابق
         /// P_LAST_YEAR_PRG_COUNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 11)]
         public int ProgramsImplementedPreviousYearCount { get; set; }
 
@@ -102,6 +110,7 @@ namespace Models.Charities
         /// نتيجة تقييم زيارة الحوكمة
         /// P_MAKEEN_EAVL_RESULT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 12)]
         public int GovernmentEvaluationResult { get; set; }
 
@@ -109,6 +118,7 @@ namespace Models.Charities
         /// نبذة عن البرنامج او المشروع
         /// P_PROG_SUMMARY
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 13)]
         public string BriefAboutEmergencyAssembly { get; set; }
 
@@ -116,6 +126,7 @@ namespace Models.Charities
         /// هل يوجد شركاء للجمعية 
         /// P_PARTNERS_FLAG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 14)]
         public int AreTherePartners { get; set; }
 
@@ -123,6 +134,7 @@ namespace Models.Charities
         /// اسماء شركاء الجمعية
         /// P_PARTNERS_LIST
         /// </summary>
+        //[ItsRequired]
         [DataMember(Order = 15)]
         public string PartnerNames { get; set; }
 
@@ -130,6 +142,7 @@ namespace Models.Charities
         /// اجمالي دعم الشركاء للمشروع من التكاليف الاجمالية
         /// P_PARTNERS_FUND_SUPPORT
         /// </summary>
+        //[ItsRequired]
         [DataMember(Order = 16)]
         public decimal TotalPartnerSupport { get; set; }
 
@@ -137,6 +150,7 @@ namespace Models.Charities
         /// المبلغ المطلوب من الوزارة
         /// P_PROG_REQUEST_AMOUNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 17)]
         public string RequiredSubsidy { get; set; }
     }

@@ -32,8 +32,7 @@ namespace SubsidyServices.Charities
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
 
-
-
+                /// Call Database
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertFoundationSubsidyDAL(
@@ -48,10 +47,10 @@ namespace SubsidyServices.Charities
                 {
                     Result = true,
                     Message = "Parameter not correct",
-                    Description = "Invalid Parameters its Requerd and have null or empty or 0 value"
+                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
                 };
 
-                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameter Name or All Parameters are null or defulte value"));
+                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
             }
             catch (Exception ex)
             {

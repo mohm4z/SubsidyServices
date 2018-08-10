@@ -9,16 +9,19 @@ using System.Runtime.Serialization;
 
 namespace Models.Common
 {
-    [DataContract]
+    /// <summary>
+    /// نتيجة الإتصال وإضافة وتحديث البيانات في قواعد البيانات
+    /// </summary>
+    [DataContract(Namespace = "RequestResult")]
     public class RequestResult
     {
-        [DataMember(EmitDefaultValue = false)]
+        [DataMember(Order = 0, EmitDefaultValue = false)]
         public long RequestId { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 1)]
         public string RequestCode { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 2)]
         public string RequestName { get; set; }
     }
 }

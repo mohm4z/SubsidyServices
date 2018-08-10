@@ -25,11 +25,13 @@ namespace SubsidyServices.Charities
             try
             {
                 /// Data Validations
-                            if (String.IsNullOrEmpty(ConstructInfo.CharityMainData.PartnerNames))
-                                if (String.IsNullOrEmpty(ConstructInfo.CharityMainData.RequiredSubsidy))
-                                    throw new FaultException<ValidationFault>(new ValidationFault());
+                if (DataValidation.IsEmptyOrDefault(ConstructInfo) ||
+                    DataValidation.IsEmptyOrDefault(ConstructInfo.CheckedData) ||
+                    DataValidation.IsEmptyOrDefault(ConstructInfo.CharityMainData) ||
+                    DataValidation.IsEmptyOrDefaultList(Files))
+                    throw new FaultException<ValidationFault>(new ValidationFault());
 
-
+                /// Call Database
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertConstructSubsidyDAL(
@@ -44,11 +46,10 @@ namespace SubsidyServices.Charities
                 {
                     Result = true,
                     Message = "Parameter not correct",
-                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
                 };
 
-                throw new FaultException<ValidationFault>(
-                    fault);
+                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
             }
             catch (Exception ex)
             {

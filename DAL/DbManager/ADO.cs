@@ -559,7 +559,6 @@ namespace DAL.DbManager
             return exapoy;
         }
 
-
         public XElement CreateXElement(
             in string T_NAME,
             ref OracleParameterCollection OPCs

@@ -23,6 +23,7 @@ namespace Models.Charities
         /// اسم البرنامج او المشروع
         /// P_PROG_NAME
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 2)]
         public string ProgramName { get; set; }
 
@@ -30,6 +31,7 @@ namespace Models.Charities
         /// المستهدفين
         /// P_PROG_AUDIENCES
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 3)]
         public string TargetedPeoples { get; set; }
 
@@ -37,6 +39,7 @@ namespace Models.Charities
         /// اهداف البرنامج او المشروع
         /// P_PROG_GOALS
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 4)]
         public string ProgramGoals { get; set; }
 
@@ -44,6 +47,7 @@ namespace Models.Charities
         /// تاريخ التنفيذ
         /// P_IMPLEMENTATION_DT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 5)]
         public string ImplementationDate { get; set; }
 
@@ -51,6 +55,7 @@ namespace Models.Charities
         /// طريقة التنفيذ
         /// P_IMPLEMENTATION_DESC
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 6)]
         public string ImplementationMethod { get; set; }
 
@@ -58,6 +63,7 @@ namespace Models.Charities
         /// مدة التنفيذ
         /// P_IMPLEMENTATION_DURATION
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 7)]
         public decimal ImplementationDuration { get; set; }
 
@@ -65,6 +71,7 @@ namespace Models.Charities
         /// التكلفة الاجمالية للمشروع
         /// P_TOTAL_PROG_COST
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 8)]
         public decimal TotalCost { get; set; }
 
@@ -72,6 +79,7 @@ namespace Models.Charities
         /// مدى توافق البرنامج او المشروع مع اهداف الجمعية و نشاطها
         /// P_PROG_GOALS_CMPTBL_FLAG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 9)]
         public decimal CompatibilityOfProgramsWithObjectives { get; set; }
 
@@ -79,6 +87,7 @@ namespace Models.Charities
         /// إجمالي ما تم رصدة للمشروع من الجمعية.
         /// P_ORG_FUND_SUPPORT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 10)]
         public decimal AllocatedAmountToProject { get; set; }
 
@@ -86,6 +95,7 @@ namespace Models.Charities
         /// نسبة ما تم رصدة للمشروع %
         /// P_ORG_FUND_SUPPORT_PRCNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 11)]
         public decimal AllocatedPercentageToProject { get; set; }
 

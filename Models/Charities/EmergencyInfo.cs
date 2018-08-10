@@ -25,6 +25,7 @@ namespace Models.Charities
         /// مسببات الحالة
         /// P_SBSD_STATUS_REASONS
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 2)]
         public string Causes { get; set; }
 
@@ -32,6 +33,7 @@ namespace Models.Charities
         /// الإجراءات التي تم اتخاذها لمواجهة الحالة
         /// P_SBSD_STATUS_PROCEDURES
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 3)]
         public string ActionsTaken { get; set; }
 
@@ -39,6 +41,7 @@ namespace Models.Charities
         /// الرصيد المتوفر في حساب الجمعية
         /// P_CURR_BALANCE
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 4)]
         public decimal BankBalance { get; set; }
 

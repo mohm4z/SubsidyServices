@@ -25,21 +25,13 @@ namespace SubsidyServices.Charities
             try
             {
                 /// Data Validations
-                //if (EmergencyInfo.CheckedData.AgencyType == 0 ||
-                //    EmergencyInfo.CheckedData.AgencyLicenseNumber == 0 ||
-                //    String.IsNullOrEmpty(EmergencyInfo.CheckedData.CommissionerNumber) ||
-                //    EmergencyInfo.CharityMainData.SubsidyType == 0 ||
-                //    EmergencyInfo.CharityMainData.BeneficiariesCount == 0 ||
-                //    EmergencyInfo.CharityMainData.VolunteersCount == 0 ||
-                //    EmergencyInfo.CharityMainData.SaudiEmployeesCount == 0 ||
-                //    EmergencyInfo.CharityMainData.NonSaudiEmployeesCount == 0 ||
-                //    EmergencyInfo.CharityMainData.IsbudgetIssued == 0 ||
-                //    EmergencyInfo.CharityMainData.IsBoardOfDirectorsMeetingsRegular == 0 ||
-                //    EmergencyInfo.CharityMainData.IsGeneralAssemblyMeetingsRegular == 0 ||
-                //    String.IsNullOrEmpty(EmergencyInfo.CharityMainData.GeneralAssemblyIrregularityMeetingReason) ||
-                //    EmergencyInfo.CharityMainData.TotalExpensesAdministrativePreviousYear == 0)
-                //    throw new FaultException<ValidationFault>(new ValidationFault());
+                if (DataValidation.IsEmptyOrDefault(EmergencyInfo) ||
+                    DataValidation.IsEmptyOrDefault(EmergencyInfo.CheckedData) ||
+                    DataValidation.IsEmptyOrDefault(EmergencyInfo.CharityMainData) ||
+                    DataValidation.IsEmptyOrDefaultList(Files))
+                    throw new FaultException<ValidationFault>(new ValidationFault());
 
+                /// Call Database
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertEmergencySubsidyDAL(
@@ -48,17 +40,16 @@ namespace SubsidyServices.Charities
                         );
                 }
             }
-            catch (FaultException<ValidationFault> )
+            catch (FaultException<ValidationFault>)
             {
                 ValidationFault fault = new ValidationFault
                 {
                     Result = true,
                     Message = "Parameter not correct",
-                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
                 };
 
-                throw new FaultException<ValidationFault>(
-                    fault);
+                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
             }
             catch (Exception ex)
             {
