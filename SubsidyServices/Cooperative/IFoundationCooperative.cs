@@ -11,7 +11,6 @@ using Models.HandleFault;
 
 namespace SubsidyServices.Cooperative
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IFoundationCooperative" in both code and config file together.
     [ServiceContract(
       ConfigurationName = "mlsd.gov.sa",
       Namespace = "http://mlsd.gov.sa",

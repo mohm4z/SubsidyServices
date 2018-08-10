@@ -13,8 +13,9 @@ using Models.Cooperative;
 
 namespace SubsidyServices.Cooperative
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "FoundationCooperative" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select FoundationCooperative.svc or FoundationCooperative.svc.cs at the Solution Explorer and start debugging.
+    /// <summary>
+    /// خدمة اعانة تأسيسية للجمعيات التعاونية
+    /// </summary>
     public class FoundationCooperative : IFoundationCooperative
     {
         
@@ -26,9 +27,14 @@ namespace SubsidyServices.Cooperative
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(FoundationInfo.ManagersInfo.ChairmanBoardName))
+                if (DataValidation.IsEmptyOrDefault(FoundationInfo) ||
+                    DataValidation.IsEmptyOrDefault(FoundationInfo.CheckedData) ||
+                    DataValidation.IsEmptyOrDefault(FoundationInfo.ManagersInfo) ||
+                    DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
+
+                /// Call Database
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
                     return dal.InsertFoundationCooperativeDAL(

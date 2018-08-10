@@ -13,8 +13,9 @@ using Models.Cooperative;
 
 namespace SubsidyServices.Cooperative
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ProjectsSupport" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select ProjectsSupport.svc or ProjectsSupport.svc.cs at the Solution Explorer and start debugging.
+    /// <summary>
+    /// خدمة اعانة المشاريع للجمعيات التعاونية
+    /// </summary>
     public class ProjectsSupport : IProjectsSupport
     {
         /// <summary>
@@ -31,9 +32,14 @@ namespace SubsidyServices.Cooperative
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(ProjectInfo.ManagersInfo.ChairmanBoardName))
+                if (DataValidation.IsEmptyOrDefault(ProjectInfo) ||
+                    DataValidation.IsEmptyOrDefault(ProjectInfo.CheckedData) ||
+                    DataValidation.IsEmptyOrDefault(ProjectInfo.ManagersInfo) ||
+                    DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
+
+                /// Call Database
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
                     return dal.InsertProjectsSupportDAL(

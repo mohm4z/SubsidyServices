@@ -13,7 +13,7 @@ namespace Models.Cooperative
     /// <summary>
     /// معلومات المشروع
     /// </summary>
-    [DataContract]
+    [DataContract(Namespace = "ProjectInfo")]
     public class ProjectInfo
     {
         [DataMember(Order = 0)]
@@ -26,6 +26,7 @@ namespace Models.Cooperative
         /// هل توجد دراسة جدوى اقتصادية للمشروع
         /// ECONOMIC_FEASIBILITY_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 2)]
         public int IsThereFeasibilityStudy { get; set; }
 
@@ -33,6 +34,7 @@ namespace Models.Cooperative
         /// نوع المشروع
         /// PROJ_TYPE
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 3)]
         public string ProjectType { get; set; }
 
@@ -40,6 +42,7 @@ namespace Models.Cooperative
         /// وصف المشروع
         /// PROJ_DESC
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 4)]
         public string ProjectDescription { get; set; }
 
@@ -47,6 +50,7 @@ namespace Models.Cooperative
         /// موقع المشروع/منطقة خدمات المشروع
         /// PROJ_LOCATION
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 5)]
         public string ProjectLocation { get; set; }
 
@@ -54,6 +58,7 @@ namespace Models.Cooperative
         /// الجهة المنفذة للمشروع
         /// PROJ_EXEC_REGION
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 6)]
         public string ExecutingAgency { get; set; }
 
@@ -61,6 +66,7 @@ namespace Models.Cooperative
         /// هل توجد موافقة على تنفيذ المشروع
         /// PROJ_AGREE_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 7)]
         public int ImplementProjectAgreement { get; set; }
 
@@ -75,6 +81,7 @@ namespace Models.Cooperative
         /// توزيع المبالغ على مراحل المشروع
         /// PROJ_STAGES_FUND
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 9)]
         public string DistributeAmountsOnStages { get; set; }
 
@@ -82,6 +89,7 @@ namespace Models.Cooperative
         /// هل المبلغ المصروف في بيان الصرف مطابق مع ماظهر في الميزانية
         /// PROJ_EXPNS_CMBTL_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 10)]
         public int IsExpendedIdenticalBudget { get; set; }
 
@@ -89,6 +97,7 @@ namespace Models.Cooperative
         /// المبلغ الذي تم رصده من قبل الجمعية للمشروع
         /// PROJ_REG_SHARE_AMNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 11)]
         public decimal AmountForProject { get; set; }
 
@@ -96,11 +105,10 @@ namespace Models.Cooperative
         /// المبلغ المصروف على المشروع الظاهر في الميزانية
         /// PROJ_EXPEND_BAL_AMNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 12)]
         public decimal AmountExpendedOnBudget { get; set; }
-
-        [DataMember(Order = 13)]
-        public RequestResult RequestResult { get; set; }
+      
 
     }
 }

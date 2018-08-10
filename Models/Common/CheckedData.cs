@@ -9,7 +9,6 @@ using System.Reflection;
 
 namespace Models.Common
 {
-   
     /// <summary>
     /// البيانات التي سيتم فحصها لتأكد من أن المستخم له صلاحيات على هذه الخدمة
     /// </summary>
@@ -40,9 +39,5 @@ namespace Models.Common
         [DataMember(Order = 2)]
         public string CommissionerNumber { get; set; }
 
-
-       
-
-        
     }
 }

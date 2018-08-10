@@ -9,7 +9,10 @@ using Models.Common;
 
 namespace Models.Cooperative
 {
-    [DataContract]
+    /// <summary>
+    /// بيانات خدمة التأسيسية للجمعيات التعاونية
+    /// </summary>
+    [DataContract(Namespace = "FoundationInfo")]
     public class FoundationInfo
     {
         [DataMember(Order = 0)]
@@ -22,10 +25,10 @@ namespace Models.Cooperative
         /// راس مال الجمعية بداية التأسيس
         /// P_ESTBLSH_CAPITAL
         /// </summary>
-        [DataMember(Order = 12)]
+        [ItsRequired]
+        [DataMember(Order = 2)]
         public decimal CompanyCapitalInBeginning { get; set; }
 
-        [DataMember(Order = 13)]
-        public RequestResult RequestResult { get; set; }
+       
     }
 }

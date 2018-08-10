@@ -9,7 +9,7 @@ using Models.Common;
 
 namespace Models.Cooperative
 {
-    [DataContract]
+    [DataContract(Namespace = "BoardDirectorsRemunerationInfo")]
     public class BoardDirectorsRemunerationInfo
     {
         [DataMember(Order = 0)]
@@ -18,11 +18,11 @@ namespace Models.Cooperative
         [DataMember(Order = 1)]
         public ManagersInfo ManagersInfo { get; set; }
 
-
         /// <summary>
         /// اجتماعات الجمعية العمومية
         /// P_PUB_BOARD_MEET_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 2)]
         public string IsGeneralAssemblyMeetingsRegular { get; set; }
 
@@ -30,6 +30,7 @@ namespace Models.Cooperative
         /// ميزانياتها العمومية وحساباتها منتظمة
         /// P_BALANCE_SHEET_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 3)]
         public string IsBudgetRegular { get; set; }
 
@@ -37,6 +38,7 @@ namespace Models.Cooperative
         /// هل حققت الجمعية أرباحا بموجب اخر ميزانية صدرت لها؟
         /// P_PROFIT_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 4)]
         public string IsAssociationMadeProfitsInlastbudget { get; set; }
 
@@ -44,6 +46,7 @@ namespace Models.Cooperative
         /// مقدار الربح المحقق بعد خصم مخصص الزكاة:
         /// P_PROFIT_AFTER_ZAKAT_AMNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 5)]
         public string ProfitsAfterZakat { get; set; }
 
@@ -51,6 +54,7 @@ namespace Models.Cooperative
         /// مبلغ الاعانة المطلوبة من الوزارة
         /// P_REQUEST_AMOUNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 6)]
         public string RequiredSubsidy { get; set; }
     }

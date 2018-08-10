@@ -13,8 +13,9 @@ using Models.Cooperative;
 
 namespace SubsidyServices.Cooperative
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ReassigningManager" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select ReassigningManager.svc or ReassigningManager.svc.cs at the Solution Explorer and start debugging.
+    /// <summary>
+    /// 
+    /// </summary>
     public class ReassigningManager : IReassigningManager
     {
         /// <summary>
@@ -31,9 +32,15 @@ namespace SubsidyServices.Cooperative
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(ManagerInfo.ManagersInfo.ChairmanBoardName))
+                if (DataValidation.IsEmptyOrDefault(ManagerInfo) ||
+                    DataValidation.IsEmptyOrDefault(ManagerInfo.CheckedData) ||
+                    DataValidation.IsEmptyOrDefault(ManagerInfo.ManagersInfo) ||
+                    DataValidation.IsEmptyOrDefault(ManagerInfo.CooEmployeeInfo) ||
+                    DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
+
+                /// Call Database
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
                     return dal.InsertReassigningManagerDAL(

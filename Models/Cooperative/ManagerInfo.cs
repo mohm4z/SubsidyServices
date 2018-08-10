@@ -12,7 +12,7 @@ namespace Models.Cooperative
     /// <summary>
     /// بيانات المدير
     /// </summary>
-    [DataContract]
+    [DataContract(Namespace = "AccountantInfo")]
     public class ManagerInfo
     {
         [DataMember(Order = 0)]
@@ -28,6 +28,7 @@ namespace Models.Cooperative
         /// اجتماعات مجلس الإدارة
         /// P_BOARD_MEET_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 3)]
         public string DirectorsBoardMeetings { get; set; }
 
@@ -35,6 +36,7 @@ namespace Models.Cooperative
         /// اجتماعات الجمعية العمومية
         /// P_PUB_BOARD_MEET_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order =4)]
         public string IsGeneralAssemblyMeetingsRegular { get; set; }
 
@@ -42,6 +44,7 @@ namespace Models.Cooperative
         /// ميزانياتها العمومية وحساباتها منتظمة
         /// P_BALANCE_SHEET_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 5)]
         public string IsBudgetRegular { get; set; }
 
@@ -49,6 +52,7 @@ namespace Models.Cooperative
         /// راتب السنه
         /// P_SBSD_EMP_YEAR_SALARY_CS
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 6)]
         public string SalaryForWhichYear { get; set; }
 
@@ -56,6 +60,7 @@ namespace Models.Cooperative
         /// هل المدير متفرغ لأعمال الجمعية
         /// P_SBSD_EMP_FULLTIME_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 7)]
         public string IsDirectorDedicatedForJob { get; set; }
 
@@ -63,6 +68,7 @@ namespace Models.Cooperative
         /// مقدار الراتب:
         /// P_SBSD_EMP_SALARY
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 8)]
         public string AnnualSalary { get; set; }
 
@@ -70,6 +76,7 @@ namespace Models.Cooperative
         /// مبلغ الاعانة المطلوبة من الوزارة
         /// P_REQUEST_AMOUNT
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 9)]
         public string RequiredSubsidy { get; set; }
 

@@ -12,7 +12,7 @@ namespace Models.Cooperative
     /// <summary>
     /// ملعلومات المحاسب
     /// </summary>
-    [DataContract]
+    [DataContract(Namespace = "AccountantInfo")]
     public class AccountantInfo
     {
         [DataMember(Order = 0)]
@@ -28,6 +28,7 @@ namespace Models.Cooperative
         /// ظهرت رواتب المحاسب منفصلة عن رواتب الموظفين في الميزانية
         /// P_BALSHT_SAL_SPRT_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 3)]
         public int AccountantSalarySeparateInTheBudget { get; set; }
 
@@ -35,6 +36,7 @@ namespace Models.Cooperative
         /// عقد العمل بين الجمعية والمحاسب موقع من الطرفين وموضح به اسم المحاسب ومقدار الراتب
         /// P_SBSD_EMP_CONTRACT_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 4)]
         public int IsContractSignedbotheAndNameAndSalaryShown { get; set; }
 
@@ -42,6 +44,7 @@ namespace Models.Cooperative
         /// المحاسب (غير السعودي) على كفالة الجمعية.
         /// P_SPONSOR_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 5)]
         public int IsNonSaudiSponsorshipOnAgancy { get; set; }
 
@@ -49,6 +52,7 @@ namespace Models.Cooperative
         /// بيان باستلام المحاسب للرواتب
         /// P_PAYROLL_FLG
         /// </summary>
+        [ItsRequired]
         [DataMember(Order = 6)]
         public int IsAccountantReceiptSheetAvailable { get; set; }
 
@@ -56,14 +60,16 @@ namespace Models.Cooperative
         /// مقدار الراتب:
         /// P_SBSD_EMP_SALARY
         /// </summary>
-        [DataMember(Order = 8)]
+        [ItsRequired]
+        [DataMember(Order = 7)]
         public string AnnualSalary { get; set; }
 
         /// <summary>
         /// مبلغ الاعانة المطلوبة من الوزارة
         /// P_REQUEST_AMOUNT
         /// </summary>
-        [DataMember(Order = 9)]
+        [ItsRequired]
+        [DataMember(Order = 8)]
         public string RequiredSubsidy { get; set; }
 
     }

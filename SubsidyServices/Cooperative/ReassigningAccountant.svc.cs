@@ -13,21 +13,18 @@ using Models.Cooperative;
 
 namespace SubsidyServices.Cooperative
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ReassigningAccountant" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this sPROJ_EXPEND_BAL_AMNTervice, please select ReassigningAccountant.svc or ReassigningAccountant.svc.cs at the Solution Explorer and start debugging.
+    /// <summary>
+    /// خدمة اعانة تعيين محاسب جمعية تعاونية
+    /// </summary>
     public class ReassigningAccountant : IReassigningAccountant
     {
 
-        //public bool IsValidData(
-
-        //    );
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ProjectInfo"></param>
-        /// <param name="Files"></param>
-        /// <returns></returns>
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="AccountantInfo"></param>
+       /// <param name="Files"></param>
+       /// <returns></returns>
         public RequestResult InsertReassigningAccountant(
             AccountantInfo AccountantInfo,
             List<Files> Files
@@ -36,9 +33,15 @@ namespace SubsidyServices.Cooperative
             try
             {
                 /// Data Validations
-                //if (String.IsNullOrEmpty(AccountantInfo.ManagersInfo.ChairmanBoardName))
-                    //throw new FaultException<ValidationFault>(new ValidationFault());
+                if (DataValidation.IsEmptyOrDefault(AccountantInfo) ||
+                    DataValidation.IsEmptyOrDefault(AccountantInfo.CheckedData) ||
+                    DataValidation.IsEmptyOrDefault(AccountantInfo.ManagersInfo) ||
+                    DataValidation.IsEmptyOrDefault(AccountantInfo.CooEmployeeInfo) ||
+                    DataValidation.IsEmptyOrDefaultList(Files))
+                    throw new FaultException<ValidationFault>(new ValidationFault());
 
+
+                /// Call Database
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
                     return dal.InsertReassigningAccountantDAL(
