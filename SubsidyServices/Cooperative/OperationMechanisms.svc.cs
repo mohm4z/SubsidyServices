@@ -14,22 +14,21 @@ using Models.Cooperative;
 namespace SubsidyServices.Cooperative
 {
     /// <summary>
-    /// خدمة اعانة تأسيسية للجمعيات التعاونية
+    /// خدمة اعانة تشغيل اليات للجمعات التعاونية 
     /// </summary>
-    public class FoundationCooperative : IFoundationCooperative
+    public class OperationMechanisms : IOperationMechanisms
     {
-
-        public RequestResult InsertFoundationCooperative(
-            FoundationInfo FoundationInfo,
+        public RequestResult InsertOperationMechanisms(
+            OperationInfo OperationInfo,
             List<Files> Files
             )
         {
             try
             {
                 /// Data Validations
-                if (DataValidation.IsEmptyOrDefault(FoundationInfo) ||
-                    DataValidation.IsEmptyOrDefault(FoundationInfo.CheckedData) ||
-                    DataValidation.IsEmptyOrDefault(FoundationInfo.ManagersInfo) ||
+                if (DataValidation.IsEmptyOrDefault(OperationInfo) ||
+                    DataValidation.IsEmptyOrDefault(OperationInfo.CheckedData) ||
+                    //DataValidation.IsEmptyOrDefault(OperationInfo.ManagersInfo) ||
                     DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
@@ -37,13 +36,13 @@ namespace SubsidyServices.Cooperative
                 /// Call Database
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
-                    return dal.InsertFoundationCooperativeDAL(
-                        FoundationInfo,
+                    return dal.InsertInsertOperationMechanismsDAL(
+                        OperationInfo,
                         Files
                         );
                 }
             }
-            catch (FaultException<ValidationFault>)
+            catch (FaultException<ValidationFault> e)
             {
                 ValidationFault fault = new ValidationFault
                 {
@@ -59,7 +58,7 @@ namespace SubsidyServices.Cooperative
                 ValidationFault fault = new ValidationFault
                 {
                     Result = false,
-                    Message = ex.Message,
+                    Message = ex.Message + " StackTrace: " + ex.StackTrace,
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
 

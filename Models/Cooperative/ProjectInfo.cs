@@ -68,7 +68,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 7)]
-        public int ImplementProjectAgreement { get; set; }
+        public int IsThereImplementProjectAgreement { get; set; }
 
         /// <summary>
         /// التكلفة الفعلية للمشروع

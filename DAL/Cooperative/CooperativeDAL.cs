@@ -30,8 +30,8 @@ namespace DAL.Cooperative
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = prj.CheckedData.AgencyType},
                 new SpInPuts(){KEY = "P_REG_ID" , VALUE = prj.CheckedData.AgencyLicenseNumber},
-                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = prj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = prj.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = prj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = prj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = prj.ManagersInfo.ExecutiveDirectorMobile},
                 new SpInPuts(){KEY = "ECONOMIC_FEASIBILITY_FLG" , VALUE = prj.IsThereFeasibilityStudy},
@@ -39,7 +39,7 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "PROJ_DESC" , VALUE = prj.ProjectDescription},
                 new SpInPuts(){KEY = "PROJ_LOCATION" , VALUE = prj.ProjectLocation},
                 new SpInPuts(){KEY = "PROJ_EXEC_REGION" , VALUE = prj.ExecutingAgency},
-                new SpInPuts(){KEY = "PROJ_AGREE_FLG" , VALUE = prj.ImplementProjectAgreement},
+                new SpInPuts(){KEY = "PROJ_AGREE_FLG" , VALUE = prj.IsThereImplementProjectAgreement},
                 new SpInPuts(){KEY = "PROJ_ACTUAL_COST" , VALUE = prj.ActualCost},
                 new SpInPuts(){KEY = "PROJ_STAGES_FUND" , VALUE = prj.DistributeAmountsOnStages},
                 new SpInPuts(){KEY = "PROJ_EXPNS_CMBTL_FLG" , VALUE = prj.IsExpendedIdenticalBudget},
@@ -85,6 +85,70 @@ namespace DAL.Cooperative
                     Files[i].Id,
                     Files[i].Path,
                     prj.CheckedData.CommissionerNumber.ToString()
+                    );
+            }
+
+            return RequestResult;
+        }
+
+        public RequestResult InsertInsertOperationMechanismsDAL(
+            OperationInfo BDRI,
+            List<Files> Files
+       )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                //new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = BDRI.CheckedData.AgencyType},
+                //new SpInPuts(){KEY = "P_REG_ID" , VALUE = BDRI.CheckedData.AgencyLicenseNumber},
+                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = BDRI.ManagersInfo.ChairmanBoardMobileNumber},
+                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = BDRI.ManagersInfo.ChairmanBoardName},
+                //new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorName},
+                //new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorMobile},
+                //new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = BDRI.IsGeneralAssemblyMeetingsRegular},
+                //new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = BDRI.IsBudgetRegular},
+                //new SpInPuts(){KEY = "P_PROFIT_FLG" , VALUE = BDRI.IsAssociationMadeProfitsInlastbudget},
+                //new SpInPuts(){KEY = "P_PROFIT_AFTER_ZAKAT_AMNT" , VALUE = BDRI.ProfitsAfterZakat},
+                //new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = BDRI.RequiredSubsidy},
+                //new SpInPuts(){KEY = "P_ESTBLSH_CAPITAL" , VALUE = BDRI.CheckedData.CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000},
+                new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.ExecuteStoredProcedure(
+                "CS_P_SUBSIDY_BOD_REWARD",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            RequestResult RequestResult = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    RequestResult.RequestId,
+                    Files[i].Id,
+                    Files[i].Path,
+                    BDRI.CheckedData.CommissionerNumber.ToString()
                     );
             }
 

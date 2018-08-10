@@ -16,13 +16,13 @@ namespace SubsidyServices.Cooperative
       Namespace = "http://mlsd.gov.sa",
       Name = "mlsd"
       )]
-    public interface IBoardDirectorsRemuneration
+    public interface IOperationMechanisms
     {
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        RequestResult InsertBoardDirectorsRemuneration(
-           BoardDirectorsRemunerationInfo BoardDirectorsRemunerationInfo,
-           List<Files> Files
-           );
+        RequestResult InsertOperationMechanisms(
+            OperationInfo OperationInfo,
+            List<Files> Files
+            );
     }
 }
