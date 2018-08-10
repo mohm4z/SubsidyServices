@@ -8,14 +8,24 @@ using System.Runtime.Serialization;
 
 namespace Models.Common
 {
+    /// <summary>
+    /// الملفات
+    /// </summary>
     [DataContract]
     public class Files
     {
-        [DataMember]
+        /// <summary>
+        /// رقم الملف
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 0)]
         public int Id { get; set; }
 
-        [DataMember]
+        /// <summary>
+        /// إسم او مسار الملف
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 1)]
         public string Path { get; set; }
-
     }
 }

@@ -21,7 +21,7 @@ namespace Models.Cooperative
         [DataMember(Order = 1)]
         public ManagersInfo ManagersInfo { get; set; }
 
-        [DataMember(Order = 2)]
+        [DataMember(Order = 2, IsRequired = true)]
         public CooEmployeeInfo CooEmployeeInfo { get; set; }
 
         /// <summary>

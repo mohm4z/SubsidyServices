@@ -36,7 +36,7 @@ namespace SubsidyServices.Common
                         );
                 }
             }
-            catch (FaultException<ValidationFault> e)
+            catch (FaultException<ValidationFault>)
             {
                 ValidationFault fault = new ValidationFault
                 {
@@ -88,7 +88,7 @@ namespace SubsidyServices.Common
                         );
                 }
             }
-            catch (FaultException<ValidationFault> e)
+            catch (FaultException<ValidationFault> )
             {
                 ValidationFault fault = new ValidationFault
                 {
@@ -140,7 +140,7 @@ namespace SubsidyServices.Common
                         );
                 }
             }
-            catch (FaultException<ValidationFault> e)
+            catch (FaultException<ValidationFault> )
             {
                 ValidationFault fault = new ValidationFault
                 {

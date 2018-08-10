@@ -18,7 +18,9 @@ namespace SubsidyServices.Cooperative
     public class ReassigningAccountant : IReassigningAccountant
     {
 
-        //public bool IsValidData()
+        //public bool IsValidData(
+
+        //    );
 
         /// <summary>
         /// 
@@ -45,7 +47,7 @@ namespace SubsidyServices.Cooperative
                         );
                 }
             }
-            catch (FaultException<ValidationFault> e)
+            catch (FaultException<ValidationFault> )
             {
                 ValidationFault fault = new ValidationFault
                 {

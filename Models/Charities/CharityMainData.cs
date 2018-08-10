@@ -12,12 +12,13 @@ namespace Models.Charities
     [DataContract(Namespace = "CharityMainData")]
     public class CharityMainData
     {
-        
+
         /// <summary>
         /// نوع الإعانة
         /// P_SUBSIDY_CODE
         /// </summary>
         [DataMember(Order = 0)]
+        //[DataMember(Order = 0, IsRequired = true)]
         public int SubsidyType { get; set; }
 
         /// <summary>

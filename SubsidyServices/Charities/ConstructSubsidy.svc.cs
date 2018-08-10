@@ -38,7 +38,7 @@ namespace SubsidyServices.Charities
                         );
                 }
             }
-            catch (FaultException<ValidationFault> e)
+            catch (FaultException<ValidationFault> )
             {
                 ValidationFault fault = new ValidationFault
                 {

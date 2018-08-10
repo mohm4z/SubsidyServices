@@ -9,6 +9,7 @@ using Models.HandleFault;
 using DAL.Charities;
 using DAL.DbManager;
 using Models.Common;
+using System.Reflection;
 
 namespace SubsidyServices.Charities
 {
@@ -25,32 +26,32 @@ namespace SubsidyServices.Charities
             try
             {
                 /// Data Validations
-                if (CheckedData.AgencyType == 0 ||
-                    CheckedData.AgencyLicenseNumber == 0 ||
-                    String.IsNullOrEmpty(CheckedData.CommissionerNumber) ||
+                if (DataValidation.IsEmptyOrDefault(CheckedData) ||
                     String.IsNullOrEmpty(ChairmanBoardMobileNumber) ||
                     String.IsNullOrEmpty(ChairmanBoardName))
                     throw new FaultException<ValidationFault>(new ValidationFault());
+
+
+
 
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertFoundationSubsidyDAL(
                         CheckedData,
                         ChairmanBoardMobileNumber,
-                        ChairmanBoardName
-                        );
+                        ChairmanBoardName);
                 }
             }
-            catch (FaultException<ValidationFault> e)
+            catch (FaultException<ValidationFault> )
             {
                 ValidationFault fault = new ValidationFault
                 {
                     Result = true,
                     Message = "Parameter not correct",
-                    Description = "Invalid Parameter Name or All Parameters are null"
+                    Description = "Invalid Parameters its Requerd and have null or empty or 0 value"
                 };
 
-                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameter Name or All Parameters are null"));
+                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameter Name or All Parameters are null or defulte value"));
             }
             catch (Exception ex)
             {

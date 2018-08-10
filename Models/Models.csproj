@@ -34,6 +34,7 @@
       <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -53,6 +54,7 @@
     <Compile Include="Charities\EmergencyInfo.cs" />
     <Compile Include="Charities\EmployeeInfo.cs" />
     <Compile Include="Common\CheckedData.cs" />
+    <Compile Include="Common\DataValidation.cs" />
     <Compile Include="Common\Files.cs" />
     <Compile Include="Common\Goals.cs" />
     <Compile Include="Common\RequestResult.cs" />

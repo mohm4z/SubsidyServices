@@ -25,21 +25,14 @@ namespace SubsidyServices.Charities
             try
             {
                 /// Data Validations
-                if (EmployeeInfo.CheckedData.AgencyType == 0 ||
-                    EmployeeInfo.CheckedData.AgencyLicenseNumber == 0 ||
-                    String.IsNullOrEmpty(EmployeeInfo.CheckedData.CommissionerNumber) ||
-                    String.IsNullOrEmpty(EmployeeInfo.ChairmanBoardName) ||
-                    EmployeeInfo.ChairmanBoardMobileNumber == 0 ||
-                    String.IsNullOrEmpty(EmployeeInfo.EmployeeName) ||
-                    String.IsNullOrEmpty(EmployeeInfo.EmployeeHireDate) ||
-                    EmployeeInfo.EmployeeNationalId == 0 ||
-                    String.IsNullOrEmpty(EmployeeInfo.EmployeeBirthDate) ||
-                    String.IsNullOrEmpty(EmployeeInfo.EmployeeNationality) ||
-                    EmployeeInfo.EmployeeQualification == 0 ||
-                    EmployeeInfo.EmployeeSalary == 0 ||
-                    EmployeeInfo.EmployeeRentAmount == 0)
+                if (DataValidation.IsEmptyOrDefault(EmployeeInfo) ||
+                    DataValidation.IsEmptyOrDefault(EmployeeInfo.CheckedData) ||
+                    DataValidation.IsEmptyOrDefaultList(Files))
+                {
                     throw new FaultException<ValidationFault>(new ValidationFault());
+                }
 
+                /// Call Database
                 using (CharityDAL dal = new CharityDAL(new ADO()))
                 {
                     return dal.InsertEmployeeSubsidyDAL(
@@ -48,7 +41,7 @@ namespace SubsidyServices.Charities
                         );
                 }
             }
-            catch (FaultException<ValidationFault> e)
+            catch (FaultException<ValidationFault>)
             {
                 ValidationFault fault = new ValidationFault
                 {

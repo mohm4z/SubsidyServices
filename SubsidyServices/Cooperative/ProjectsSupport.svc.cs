@@ -42,7 +42,7 @@ namespace SubsidyServices.Cooperative
                         );
                 }
             }
-            catch (FaultException<ValidationFault> e)
+            catch (FaultException<ValidationFault>)
             {
                 ValidationFault fault = new ValidationFault
                 {
