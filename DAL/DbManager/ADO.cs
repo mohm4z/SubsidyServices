@@ -521,8 +521,8 @@ namespace DAL.DbManager
         }
 
         public void PopulateSpOutPuts(
-             ref List<OracleParameter> OpParams,
-             in List<SpOutPuts> sqOutPuts
+            ref List<OracleParameter> OpParams,
+            in List<SpOutPuts> sqOutPuts
             )
         {
             for (int i = 0; i < sqOutPuts.Count(); i++)
@@ -533,6 +533,24 @@ namespace DAL.DbManager
                     OracleDbType = sqOutPuts[i].OracleDbType,
                     Direction = ParameterDirection.Output,
                     Size = sqOutPuts[i].Size
+                });
+            }
+        }
+
+        public void PopulateSpInOutPuts(
+            ref List<OracleParameter> OpParams,
+            in List<SpInOutPuts> InOutPuts
+            )
+        {
+            for (int i = 0; i < InOutPuts.Count(); i++)
+            {
+                OpParams.Add(new OracleParameter()
+                {
+                    ParameterName = ":" + InOutPuts[i].ParameterName,
+                    OracleDbType = InOutPuts[i].OracleDbType,
+                    Direction = ParameterDirection.InputOutput,
+                    Value = InOutPuts[i].Value,
+                    Size = InOutPuts[i].Size
                 });
             }
         }

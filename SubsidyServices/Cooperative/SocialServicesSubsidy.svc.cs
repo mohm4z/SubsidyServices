@@ -15,28 +15,23 @@ using Models.Cooperative;
 namespace SubsidyServices.Cooperative
 {
     /// <summary>
-    /// خدمة اعانة تدريب للجمعية التعاونية 
+    /// خدمة اعانة خدمات اجتماعية للجمعيات التعاونية 
     /// </summary>
-    public class TrainingSubsidy : ITrainingSubsidy
+    public class SocialServicesSubsidy : ISocialServicesSubsidy
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="TrainingInfo"></param>
-        /// <param name="Files"></param>
-        /// <returns></returns>
-        public RequestResult InsertTrainingSubsidy(
-            TrainingInfo TrainingInfo,
+        
+        public RequestResult InsertSocialServicesSubsidy(
+            SocialServiceInfo SocialServiceInfo,
             List<Files> Files
             )
         {
             try
             {
                 /// Data Validations
-                if (DataValidation.IsEmptyOrDefault(TrainingInfo) ||
-                    DataValidation.IsEmptyOrDefault(TrainingInfo.CheckedData) ||
-                    DataValidation.IsEmptyOrDefault(TrainingInfo.ManagersInfo) ||
-                    DataValidation.IsEmptyOrDefault(TrainingInfo.MeetingInfo) ||
+                if (DataValidation.IsEmptyOrDefault(SocialServiceInfo) ||
+                    DataValidation.IsEmptyOrDefault(SocialServiceInfo.CheckedData) ||
+                    DataValidation.IsEmptyOrDefault(SocialServiceInfo.ManagersInfo) ||
+                    DataValidation.IsEmptyOrDefault(SocialServiceInfo.MeetingInfo) ||
                     DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
@@ -44,8 +39,8 @@ namespace SubsidyServices.Cooperative
                 /// Call Database
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
-                    return dal.InsertTrainingSubsidyDAL(
-                        TrainingInfo,
+                    return dal.InsertSocialServicesSubsidyDAL(
+                        SocialServiceInfo,
                         Files
                         );
                 }

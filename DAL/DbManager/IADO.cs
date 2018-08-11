@@ -94,23 +94,29 @@ namespace DAL.DbManager
             object value
             );
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="outOfOPs"></param>
-        /// <returns></returns>
-        void PopulateSpOutPuts(
-              ref List<OracleParameter> OpParams,
-             in List<SpOutPuts> outOfOPs
-             );
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="OpParams"></param>
-        /// <param name="GENCs"></param>
+        /// <param name="InPuts"></param>
         List<OracleParameter> PopulateSpInPuts(
-            in List<SpInPuts> GENCs
+            in List<SpInPuts> InPuts
+            );
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="OutPuts"></param>
+        /// <returns></returns>
+        void PopulateSpOutPuts(
+              ref List<OracleParameter> OpParams,
+             in List<SpOutPuts> OutPuts
+             );
+
+        void PopulateSpInOutPuts(
+            ref List<OracleParameter> OpParams,
+            in List<SpInOutPuts> InOutPuts
             );
 
         /// <summary>

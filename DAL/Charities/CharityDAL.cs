@@ -33,7 +33,6 @@ namespace DAL.Charities
             CheckedData chda,
             string ChairmanBoardMobileNumber,
             string ChairmanBoardName
-            //List<Files> Files
             )
         {
 
@@ -63,6 +62,66 @@ namespace DAL.Charities
                 in Outouts
               );
 
+            ado.ExecuteStoredProcedure(
+                "CH_P_SUBSIDY_ESTBLSH",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            RequestResult RequestResult = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            return RequestResult;
+        }
+
+
+        public RequestResult UpdateFoundationSubsidyDAL(
+           long RequestId,
+           CheckedData chda,
+           string ChairmanBoardMobileNumber,
+           string ChairmanBoardName
+           )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = chda.AgencyType},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = chda.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = ChairmanBoardName},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = chda.CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName = "P_RESULT_CODE" , OracleDbType = OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName = "P_RESULT_TEXT" , OracleDbType = OracleDbType.Varchar2 , Size = 2000},
+            };
+
+            List<SpInOutPuts> InOutPuts = new List<SpInOutPuts>()
+            {
+                new SpInOutPuts() { ParameterName = "P_REQUEST_ID" , OracleDbType = OracleDbType.Varchar2 , Value = RequestId,  Size = 300},
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.PopulateSpInOutPuts(
+                ref OpParms,
+                in InOutPuts
+                );
+
+            // Call Stored Procedure
             ado.ExecuteStoredProcedure(
                 "CH_P_SUBSIDY_ESTBLSH",
                 OpParms,

@@ -606,6 +606,78 @@ namespace DAL.Cooperative
         }
 
 
+        public RequestResult InsertSocialServicesSubsidyDAL(
+           SocialServiceInfo obj,
+           List<Files> Files
+           )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
+                new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
+                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
+                //new SpInPuts(){KEY = "P_PARTICIPANTS_COUNT" , VALUE = obj.ParticipantsCount},
+                //new SpInPuts(){KEY = "P_PARTICIPANTS_NAMES" , VALUE = obj.TraineesNames},
+                //new SpInPuts(){KEY = "P_PARTICIPATION_TYPE_CD" , VALUE = obj.ParticipationType},
+                //new SpInPuts(){KEY = "P_PARTICIPANTS_LOCATION" , VALUE = obj.ParticipationLocation},
+                //new SpInPuts(){KEY = "P_PARTICIPANT_MEMBER_FLG" , VALUE = obj.IsTrainersFromAgency},
+                //new SpInPuts(){KEY = "P_PARTICIPATION_SUBJECT_FLG" , VALUE = obj.IsTrainingTopicRelatedToAgency},
+                //new SpInPuts(){KEY = "P_PARTICIPATION_ACTUAL_COST" , VALUE = obj.ActualCost},
+                //new SpInPuts(){KEY = "P_PARTICIPATION_10PRCNT_FLG" , VALUE = obj.IsTheirApprovalToAllocateCosts},
+                //new SpInPuts(){KEY = "P_PARTICIPATION_AGREE_FLG" , VALUE = obj.IsThereParticipationApproved},
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000},
+                new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.ExecuteStoredProcedure(
+                "CS_P_SUBSIDY_TRAINING",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            RequestResult RequestResult = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    RequestResult.RequestId,
+                    Files[i].Id,
+                    Files[i].Path,
+                    obj.CheckedData.CommissionerNumber.ToString()
+                    );
+            }
+
+            return RequestResult;
+        }
+
 
 
         public RequestResult InsertStagesDAL(

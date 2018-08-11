@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Runtime.Serialization;
+//using System.Runtime.Serialization;
 
 
 namespace Models.SpParameters
 {
-    [DataContract]
+    //[DataContract]
     public class SpInPuts
     {
-        [DataMember]
+        //[DataMember]
         public string KEY { get; set; }
 
-        [DataMember]
+        //[DataMember]
         public object VALUE { get; set; }
     }
 }

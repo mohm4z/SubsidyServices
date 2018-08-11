@@ -69,10 +69,12 @@
     <Compile Include="Cooperative\MeetingInfo.cs" />
     <Compile Include="Cooperative\OperationInfo.cs" />
     <Compile Include="Cooperative\ProjectInfo.cs" />
+    <Compile Include="Cooperative\SocialServiceInfo.cs" />
     <Compile Include="Cooperative\StagesInfo.cs" />
     <Compile Include="Cooperative\TrainingInfo.cs" />
     <Compile Include="HandleFault\ValidationFault.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpParameters\SpInOutPuts.cs" />
     <Compile Include="SpParameters\SpInPuts.cs" />
     <Compile Include="SpParameters\SpOutPuts.cs" />
     <Compile Include="SpParameters\SrvOutPots.cs" />

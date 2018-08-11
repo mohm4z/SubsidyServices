@@ -11,13 +11,16 @@ using Oracle.ManagedDataAccess.Client;
 namespace Models.SpParameters
 {
     //[DataContract]
-    public class SpOutPuts
+    public class SpInOutPuts
     {
         //[DataMember]
         public string ParameterName { get; set; }
 
         //[DataMember]
         public OracleDbType OracleDbType { get; set; }
+
+        //[DataMember]
+        public object Value { get; set; }
 
         //[DataMember]
         public int Size { get; set; }
