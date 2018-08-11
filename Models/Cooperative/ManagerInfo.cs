@@ -38,7 +38,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order =4)]
-        public string IsGeneralAssemblyMeetingsRegular { get; set; }
+        public int IsGeneralAssemblyMeetingsRegular { get; set; }
 
         /// <summary>
         /// ميزانياتها العمومية وحساباتها منتظمة
@@ -46,7 +46,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 5)]
-        public string IsBudgetRegular { get; set; }
+        public int IsBudgetRegular { get; set; }
 
         /// <summary>
         /// راتب السنه
@@ -54,7 +54,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 6)]
-        public string SalaryForWhichYear { get; set; }
+        public int SalaryForWhichYear { get; set; }
 
         /// <summary>
         /// هل المدير متفرغ لأعمال الجمعية
@@ -62,7 +62,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 7)]
-        public string IsDirectorDedicatedForJob { get; set; }
+        public int IsDirectorDedicatedForJob { get; set; }
 
         /// <summary>
         /// مقدار الراتب:
@@ -70,7 +70,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 8)]
-        public string AnnualSalary { get; set; }
+        public decimal AnnualSalary { get; set; }
 
         /// <summary>
         /// مبلغ الاعانة المطلوبة من الوزارة
@@ -78,7 +78,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 9)]
-        public string RequiredSubsidy { get; set; }
+        public decimal RequiredSubsidy { get; set; }
 
 
     }

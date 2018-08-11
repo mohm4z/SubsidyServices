@@ -62,7 +62,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 7)]
-        public string AnnualSalary { get; set; }
+        public decimal AnnualSalary { get; set; }
 
         /// <summary>
         /// مبلغ الاعانة المطلوبة من الوزارة
@@ -70,7 +70,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 8)]
-        public string RequiredSubsidy { get; set; }
+        public decimal RequiredSubsidy { get; set; }
 
     }
 }

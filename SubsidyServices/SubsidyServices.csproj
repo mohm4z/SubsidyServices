@@ -71,6 +71,7 @@
     <Content Include="Charities\FoundationSubsidy.svc" />
     <Content Include="Common\CommonServices.svc" />
     <Content Include="Cooperative\BoardDirectorsRemuneration.svc" />
+    <Content Include="Cooperative\BuildHeadquarter.svc" />
     <Content Include="Cooperative\FoundationCooperative.svc" />
     <Content Include="Cooperative\OperationMechanisms.svc" />
     <Content Include="Cooperative\ProjectsSupport.svc" />
@@ -105,10 +106,14 @@
     <Compile Include="Cooperative\BoardDirectorsRemuneration.svc.cs">
       <DependentUpon>BoardDirectorsRemuneration.svc</DependentUpon>
     </Compile>
+    <Compile Include="Cooperative\BuildHeadquarter.svc.cs">
+      <DependentUpon>BuildHeadquarter.svc</DependentUpon>
+    </Compile>
     <Compile Include="Cooperative\FoundationCooperative.svc.cs">
       <DependentUpon>FoundationCooperative.svc</DependentUpon>
     </Compile>
     <Compile Include="Cooperative\IBoardDirectorsRemuneration.cs" />
+    <Compile Include="Cooperative\IBuildHeadquarter.cs" />
     <Compile Include="Cooperative\IFoundationCooperative.cs" />
     <Compile Include="Cooperative\IOperationMechanisms.cs" />
     <Compile Include="Cooperative\IProjectsSupport.cs" />

@@ -9,6 +9,7 @@ using Models.Common;
 using Models.Cooperative;
 using Models.HandleFault;
 
+
 namespace SubsidyServices.Cooperative
 {
     [ServiceContract(
@@ -16,18 +17,18 @@ namespace SubsidyServices.Cooperative
        Namespace = "http://mlsd.gov.sa",
        Name = "mlsd"
        )]
-    public interface IProjectsSupport
+    public interface IBuildHeadquarter
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ProjectInfo"></param>
-        /// <param name="Files"></param>
-        /// <returns></returns>
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="HeadquarterInfo"></param>
+       /// <param name="Files"></param>
+       /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        RequestResult InsertProjectsSupport(
-            ProjectInfo ProjectInfo,
+        RequestResult InsertBuildHeadquarter(
+            HeadquarterInfo HeadquarterInfo,
             List<Files> Files
             );
     }

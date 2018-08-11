@@ -24,7 +24,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 2)]
-        public string IsGeneralAssemblyMeetingsRegular { get; set; }
+        public int IsGeneralAssemblyMeetingsRegular { get; set; }
 
         /// <summary>
         /// ميزانياتها العمومية وحساباتها منتظمة
@@ -32,7 +32,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 3)]
-        public string IsBudgetRegular { get; set; }
+        public int IsBudgetRegular { get; set; }
 
         /// <summary>
         /// هل حققت الجمعية أرباحا بموجب اخر ميزانية صدرت لها؟
@@ -40,7 +40,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 4)]
-        public string IsAssociationMadeProfitsInlastbudget { get; set; }
+        public int IsAssociationMadeProfitsInlastbudget { get; set; }
 
         /// <summary>
         /// مقدار الربح المحقق بعد خصم مخصص الزكاة:
@@ -48,7 +48,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 5)]
-        public string ProfitsAfterZakat { get; set; }
+        public decimal ProfitsAfterZakat { get; set; }
 
         /// <summary>
         /// مبلغ الاعانة المطلوبة من الوزارة
@@ -56,6 +56,6 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 6)]
-        public string RequiredSubsidy { get; set; }
+        public decimal RequiredSubsidy { get; set; }
     }
 }

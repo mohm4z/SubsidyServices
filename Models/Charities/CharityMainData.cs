@@ -152,6 +152,6 @@ namespace Models.Charities
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 17)]
-        public string RequiredSubsidy { get; set; }
+        public decimal RequiredSubsidy { get; set; }
     }
 }

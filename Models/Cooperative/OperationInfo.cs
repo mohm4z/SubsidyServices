@@ -108,6 +108,6 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 12)]
-        public string RequiredSubsidy { get; set; }
+        public decimal RequiredSubsidy { get; set; }
     }
 }
