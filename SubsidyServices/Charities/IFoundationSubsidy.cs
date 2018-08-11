@@ -36,7 +36,16 @@ namespace SubsidyServices.Charities
            //List<Files> Files
            );
 
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        RequestResult UpdateFoundationSubsidy(
+           long RequestId,
+           CheckedData CheckedData,
+           string ChairmanBoardMobileNumber,
+           string ChairmanBoardName
+           );
 
-        
+
+
     }
 }

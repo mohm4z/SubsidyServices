@@ -66,6 +66,55 @@ namespace SubsidyServices.Charities
         }
 
 
+        public RequestResult UpdateFoundationSubsidy(
+           long RequestId,
+           CheckedData CheckedData,
+           string ChairmanBoardMobileNumber,
+           string ChairmanBoardName
+           )
+        {
+            try
+            {
+                /// Data Validations
+                if (DataValidation.IsEmptyOrDefault(CheckedData) ||
+                    String.IsNullOrEmpty(ChairmanBoardMobileNumber) ||
+                    String.IsNullOrEmpty(ChairmanBoardName))
+                    throw new FaultException<ValidationFault>(new ValidationFault());
+
+
+                /// Call Database
+                using (CharityDAL dal = new CharityDAL(new ADO()))
+                {
+                    return dal.UpdateFoundationSubsidyDAL(
+                        RequestId,
+                        CheckedData,
+                        ChairmanBoardMobileNumber,
+                        ChairmanBoardName);
+                }
+            }
+            catch (FaultException<ValidationFault>)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
+                };
+
+                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+            }
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                throw new FaultException<ValidationFault>(fault, new FaultReason("General Fault"));
+            }
+        }
 
     }
 }
