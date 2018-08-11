@@ -92,24 +92,30 @@ namespace DAL.Cooperative
         }
 
         public RequestResult InsertInsertOperationMechanismsDAL(
-            OperationInfo BDRI,
+            OperationInfo obj,
             List<Files> Files
-       )
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                //new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = BDRI.CheckedData.AgencyType},
-                //new SpInPuts(){KEY = "P_REG_ID" , VALUE = BDRI.CheckedData.AgencyLicenseNumber},
-                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = BDRI.ManagersInfo.ChairmanBoardMobileNumber},
-                //new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = BDRI.ManagersInfo.ChairmanBoardName},
-                //new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorName},
-                //new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorMobile},
-                //new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = BDRI.IsGeneralAssemblyMeetingsRegular},
-                //new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = BDRI.IsBudgetRegular},
-                //new SpInPuts(){KEY = "P_PROFIT_FLG" , VALUE = BDRI.IsAssociationMadeProfitsInlastbudget},
-                //new SpInPuts(){KEY = "P_PROFIT_AFTER_ZAKAT_AMNT" , VALUE = BDRI.ProfitsAfterZakat},
-                //new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = BDRI.RequiredSubsidy},
-                //new SpInPuts(){KEY = "P_ESTBLSH_CAPITAL" , VALUE = BDRI.CheckedData.CommissionerNumber}
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
+                new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
+                new SpInPuts(){KEY = "P_HAVE_3_MACHINES_FLG" , VALUE = obj.IsAgencyHaveThreeMachinesReady},
+                new SpInPuts(){KEY = "P_MACHINES_WORKERS_FLG" , VALUE = obj.WorkersOnMachines},
+                new SpInPuts(){KEY = "P_SAUDI_WORKERS_SALARIES" , VALUE = obj.SaudisSalaries},
+                new SpInPuts(){KEY = "P_SAUDI_WORKERS_COUNT" , VALUE = obj.SaudisCount},
+                new SpInPuts(){KEY = "P_NON_SAUDI_WORKERS_SALARIES" , VALUE = obj.NonSaudisSalaries},
+                new SpInPuts(){KEY = "P_NON_SAUDI_WORKERS_COUNT" , VALUE = obj.NonSaudisCount},
+                new SpInPuts(){KEY = "P_MACHINES_COUNT" , VALUE = obj.OwnedVehiclesCount},
+                new SpInPuts(){KEY = "P_JOB_CONTRACT_CMTBL_FLG" , VALUE = obj.IsJobCompatibleWithContract},
+                new SpInPuts(){KEY = "P_BOD_MACHINES_CERTF_FLG" , VALUE = obj.IsThereJobCertificateForMachines},
+                new SpInPuts(){KEY = "P_SUPPLIER_MACHINES_CERTF_FLG" , VALUE = obj.AmountForProject},
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
@@ -148,7 +154,7 @@ namespace DAL.Cooperative
                     RequestResult.RequestId,
                     Files[i].Id,
                     Files[i].Path,
-                    BDRI.CheckedData.CommissionerNumber.ToString()
+                    obj.CheckedData.CommissionerNumber.ToString()
                     );
             }
 
@@ -216,24 +222,24 @@ namespace DAL.Cooperative
         }
 
         public RequestResult InsertBoardDirectorsRemunerationDAL(
-            BoardDirectorsRemunerationInfo BDRI,
+            BoardDirectorsRemunerationInfo obj,
             List<Files> Files
             )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
-                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = BDRI.CheckedData.AgencyType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = BDRI.CheckedData.AgencyLicenseNumber},
-                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = BDRI.ManagersInfo.ChairmanBoardMobileNumber},
-                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = BDRI.ManagersInfo.ChairmanBoardName},
-                new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorName},
-                new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = BDRI.ManagersInfo.ExecutiveDirectorMobile},
-                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = BDRI.IsGeneralAssemblyMeetingsRegular},
-                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = BDRI.IsBudgetRegular},
-                new SpInPuts(){KEY = "P_PROFIT_FLG" , VALUE = BDRI.IsAssociationMadeProfitsInlastbudget},
-                new SpInPuts(){KEY = "P_PROFIT_AFTER_ZAKAT_AMNT" , VALUE = BDRI.ProfitsAfterZakat},
-                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = BDRI.RequiredSubsidy},
-                new SpInPuts(){KEY = "P_ESTBLSH_CAPITAL" , VALUE = BDRI.CheckedData.CommissionerNumber}
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
+                new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.IsBudgetRegular},
+                new SpInPuts(){KEY = "P_PROFIT_FLG" , VALUE = obj.IsAssociationMadeProfitsInlastbudget},
+                new SpInPuts(){KEY = "P_PROFIT_AFTER_ZAKAT_AMNT" , VALUE = obj.ProfitsAfterZakat},
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
@@ -272,7 +278,7 @@ namespace DAL.Cooperative
                     RequestResult.RequestId,
                     Files[i].Id,
                     Files[i].Path,
-                    BDRI.CheckedData.CommissionerNumber.ToString()
+                    obj.CheckedData.CommissionerNumber.ToString()
                     );
             }
 
@@ -426,7 +432,6 @@ namespace DAL.Cooperative
 
             return RequestResult;
         }
-
 
         public RequestResult InsertAttachmentDAL(
             long RequestId,

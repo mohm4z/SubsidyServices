@@ -28,7 +28,7 @@ namespace SubsidyServices.Cooperative
                 /// Data Validations
                 if (DataValidation.IsEmptyOrDefault(OperationInfo) ||
                     DataValidation.IsEmptyOrDefault(OperationInfo.CheckedData) ||
-                    //DataValidation.IsEmptyOrDefault(OperationInfo.ManagersInfo) ||
+                    DataValidation.IsEmptyOrDefault(OperationInfo.ManagersInfo) ||
                     DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
@@ -42,7 +42,7 @@ namespace SubsidyServices.Cooperative
                         );
                 }
             }
-            catch (FaultException<ValidationFault> e)
+            catch (FaultException<ValidationFault>)
             {
                 ValidationFault fault = new ValidationFault
                 {
@@ -58,7 +58,7 @@ namespace SubsidyServices.Cooperative
                 ValidationFault fault = new ValidationFault
                 {
                     Result = false,
-                    Message = ex.Message + " StackTrace: " + ex.StackTrace,
+                    Message = ex.Message ,
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
 

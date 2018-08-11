@@ -54,17 +54,17 @@ namespace SubsidyServices.Cooperative
                 {
                     Result = true,
                     Message = "Parameter not correct",
-                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
                 };
 
-                throw new FaultException<ValidationFault>(fault);
+                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
             }
             catch (Exception ex)
             {
                 ValidationFault fault = new ValidationFault
                 {
                     Result = false,
-                    Message = ex.Message + " StackTrace: " + ex.StackTrace,
+                    Message = ex.Message ,
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
 
