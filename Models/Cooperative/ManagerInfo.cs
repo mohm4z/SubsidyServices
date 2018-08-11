@@ -24,36 +24,15 @@ namespace Models.Cooperative
         [DataMember(Order = 2)]
         public CooEmployeeInfo CooEmployeeInfo { get; set; }
 
-        /// <summary>
-        /// اجتماعات مجلس الإدارة
-        /// P_BOARD_MEET_FLG
-        /// </summary>
-        [ItsRequired]
         [DataMember(Order = 3)]
-        public string DirectorsBoardMeetings { get; set; }
-
-        /// <summary>
-        /// اجتماعات الجمعية العمومية
-        /// P_PUB_BOARD_MEET_FLG
-        /// </summary>
-        [ItsRequired]
-        [DataMember(Order =4)]
-        public int IsGeneralAssemblyMeetingsRegular { get; set; }
-
-        /// <summary>
-        /// ميزانياتها العمومية وحساباتها منتظمة
-        /// P_BALANCE_SHEET_FLG
-        /// </summary>
-        [ItsRequired]
-        [DataMember(Order = 5)]
-        public int IsBudgetRegular { get; set; }
+        public MeetingInfo MeetingInfo { get; set; }
 
         /// <summary>
         /// راتب السنه
         /// P_SBSD_EMP_YEAR_SALARY_CS
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 6)]
+        [DataMember(Order = 4)]
         public int SalaryForWhichYear { get; set; }
 
         /// <summary>
@@ -61,7 +40,7 @@ namespace Models.Cooperative
         /// P_SBSD_EMP_FULLTIME_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 7)]
+        [DataMember(Order = 5)]
         public int IsDirectorDedicatedForJob { get; set; }
 
         /// <summary>
@@ -69,7 +48,7 @@ namespace Models.Cooperative
         /// P_SBSD_EMP_SALARY
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 8)]
+        [DataMember(Order = 6)]
         public decimal AnnualSalary { get; set; }
 
         /// <summary>
@@ -77,7 +56,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 9)]
+        [DataMember(Order = 7)]
         public decimal RequiredSubsidy { get; set; }
 
 

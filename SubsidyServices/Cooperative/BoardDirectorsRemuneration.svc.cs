@@ -29,6 +29,7 @@ namespace SubsidyServices.Cooperative
                 if (DataValidation.IsEmptyOrDefault(BoardDirectorsRemunerationInfo) ||
                     DataValidation.IsEmptyOrDefault(BoardDirectorsRemunerationInfo.CheckedData) ||
                     DataValidation.IsEmptyOrDefault(BoardDirectorsRemunerationInfo.ManagersInfo) ||
+                    DataValidation.IsEmptyOrDefault(BoardDirectorsRemunerationInfo.MeetingInfo) ||
                     DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 

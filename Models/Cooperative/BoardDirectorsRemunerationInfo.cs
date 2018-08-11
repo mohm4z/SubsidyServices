@@ -18,28 +18,15 @@ namespace Models.Cooperative
         [DataMember(Order = 1)]
         public ManagersInfo ManagersInfo { get; set; }
 
-        /// <summary>
-        /// اجتماعات الجمعية العمومية
-        /// P_PUB_BOARD_MEET_FLG
-        /// </summary>
-        [ItsRequired]
         [DataMember(Order = 2)]
-        public int IsGeneralAssemblyMeetingsRegular { get; set; }
-
-        /// <summary>
-        /// ميزانياتها العمومية وحساباتها منتظمة
-        /// P_BALANCE_SHEET_FLG
-        /// </summary>
-        [ItsRequired]
-        [DataMember(Order = 3)]
-        public int IsBudgetRegular { get; set; }
+        public MeetingInfo MeetingInfo { get; set; }
 
         /// <summary>
         /// هل حققت الجمعية أرباحا بموجب اخر ميزانية صدرت لها؟
         /// P_PROFIT_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 4)]
+        [DataMember(Order = 3)]
         public int IsAssociationMadeProfitsInlastbudget { get; set; }
 
         /// <summary>
@@ -47,7 +34,7 @@ namespace Models.Cooperative
         /// P_PROFIT_AFTER_ZAKAT_AMNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 5)]
+        [DataMember(Order = 4)]
         public decimal ProfitsAfterZakat { get; set; }
 
         /// <summary>
@@ -55,7 +42,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 6)]
+        [DataMember(Order = 5)]
         public decimal RequiredSubsidy { get; set; }
     }
 }

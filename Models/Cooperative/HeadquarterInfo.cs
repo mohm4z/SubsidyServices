@@ -43,7 +43,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 4)]
-        public int AgencyOfSupported { get; set; }
+        public string AgencyOfSupported { get; set; }
 
         /// <summary>
         /// هل تملك الجمعية صك للأرض المراد إقامة المبنى عليها على ان تكون صالحة للبناء عليها

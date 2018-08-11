@@ -77,6 +77,7 @@
     <Content Include="Cooperative\ProjectsSupport.svc" />
     <Content Include="Cooperative\ReassigningAccountant.svc" />
     <Content Include="Cooperative\ReassigningManager.svc" />
+    <Content Include="Cooperative\TrainingSubsidy.svc" />
     <Content Include="UserNamePassService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -119,6 +120,7 @@
     <Compile Include="Cooperative\IProjectsSupport.cs" />
     <Compile Include="Cooperative\IReassigningAccountant.cs" />
     <Compile Include="Cooperative\IReassigningManager.cs" />
+    <Compile Include="Cooperative\ITrainingSubsidy.cs" />
     <Compile Include="Cooperative\OperationMechanisms.svc.cs">
       <DependentUpon>OperationMechanisms.svc</DependentUpon>
     </Compile>
@@ -130,6 +132,9 @@
     </Compile>
     <Compile Include="Cooperative\ReassigningManager.svc.cs">
       <DependentUpon>ReassigningManager.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Cooperative\TrainingSubsidy.svc.cs">
+      <DependentUpon>TrainingSubsidy.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -66,6 +66,7 @@
     <Compile Include="Cooperative\HeadquarterInfo.cs" />
     <Compile Include="Cooperative\ManagerInfo.cs" />
     <Compile Include="Cooperative\ManagersInfo.cs" />
+    <Compile Include="Cooperative\MeetingInfo.cs" />
     <Compile Include="Cooperative\OperationInfo.cs" />
     <Compile Include="Cooperative\ProjectInfo.cs" />
     <Compile Include="HandleFault\ValidationFault.cs" />

@@ -36,6 +36,7 @@ namespace SubsidyServices.Cooperative
                     DataValidation.IsEmptyOrDefault(ManagerInfo.CheckedData) ||
                     DataValidation.IsEmptyOrDefault(ManagerInfo.ManagersInfo) ||
                     DataValidation.IsEmptyOrDefault(ManagerInfo.CooEmployeeInfo) ||
+                    DataValidation.IsEmptyOrDefault(ManagerInfo.MeetingInfo) ||
                     DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 

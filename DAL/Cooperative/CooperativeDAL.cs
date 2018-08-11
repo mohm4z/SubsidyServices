@@ -99,14 +99,17 @@ namespace DAL.Cooperative
             List<SpInPuts> inputs = new List<SpInPuts>
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = obj.CheckedData.AgencyLicenseNumber},
-                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
                 new SpInPuts(){KEY = "P_HAVE_3_MACHINES_FLG" , VALUE = obj.IsAgencyHaveThreeMachinesReady},
                 new SpInPuts(){KEY = "P_MACHINES_WORKERS_FLG" , VALUE = obj.WorkersOnMachines},
-                new SpInPuts(){KEY = "P_SAUDI_WORKERS_SALARIES" , VALUE = obj.SaudisSalaries},
+                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.WorkersOnMachines},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.IsBoredMeetingsRegular},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.IsGeneralAssemblyeetingsRegular},
+                new SpInPuts(){KEY = "P_SAUDI_WORKERS_SALARIES" , VALUE = obj.IsBudgetRegular},
                 new SpInPuts(){KEY = "P_SAUDI_WORKERS_COUNT" , VALUE = obj.SaudisCount},
                 new SpInPuts(){KEY = "P_NON_SAUDI_WORKERS_SALARIES" , VALUE = obj.NonSaudisSalaries},
                 new SpInPuts(){KEY = "P_NON_SAUDI_WORKERS_COUNT" , VALUE = obj.NonSaudisCount},
@@ -136,7 +139,7 @@ namespace DAL.Cooperative
                 );
 
             ado.ExecuteStoredProcedure(
-                "CS_P_SUBSIDY_BOD_REWARD",
+                "CS_P_SUBSIDY_MACHINES",
                 OpParms,
                 out OracleParameterCollection OPCs
                 );
@@ -169,7 +172,7 @@ namespace DAL.Cooperative
             List<SpInPuts> inputs = new List<SpInPuts>
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
@@ -229,13 +232,16 @@ namespace DAL.Cooperative
             List<SpInPuts> inputs = new List<SpInPuts>
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = obj.CheckedData.AgencyLicenseNumber},
-                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
-                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.IsGeneralAssemblyMeetingsRegular},
-                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.IsBudgetRegular},
+
+                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
+
                 new SpInPuts(){KEY = "P_PROFIT_FLG" , VALUE = obj.IsAssociationMadeProfitsInlastbudget},
                 new SpInPuts(){KEY = "P_PROFIT_AFTER_ZAKAT_AMNT" , VALUE = obj.ProfitsAfterZakat},
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
@@ -293,26 +299,33 @@ namespace DAL.Cooperative
             List<SpInPuts> inputs = new List<SpInPuts>
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = obj.CheckedData.AgencyLicenseNumber},
-                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
-                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.DirectorsBoardMeetings},
-                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.IsGeneralAssemblyMeetingsRegular},
-                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.IsBudgetRegular},
+
+                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = obj.CooEmployeeInfo.EmployeeName},
                 new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = obj.CooEmployeeInfo.EmployeeNationalId},
                 new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = obj.CooEmployeeInfo.EmployeeBirthDate},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_DT" , VALUE = obj.CooEmployeeInfo.EmployeeHireDate},
                 new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = obj.CooEmployeeInfo.EmployeeQualification},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = obj.CooEmployeeInfo.EmployeeSpecialistCD},
-                new SpInPuts(){KEY = "P_SBSD_EMP_YEAR_SALARY_CS" , VALUE = obj.SalaryForWhichYear},
+                new SpInPuts(){KEY = "P_SBSD_EMP_YEAR_SALARY_CD" , VALUE = obj.SalaryForWhichYear},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_CONTRACT_FLG" , VALUE = obj.CooEmployeeInfo.IsThereJobContract},
                 new SpInPuts(){KEY = "P_SBSD_EMP_FULLTIME_FLG" , VALUE = obj.IsDirectorDedicatedForJob},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_BOD_AGREE_FLG" , VALUE = obj.CooEmployeeInfo.AppointmentBoardApproval},
                 new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = obj.AnnualSalary},
                 new SpInPuts(){KEY = "P_SBSD_EMP_PRIVILEGES" , VALUE = obj.CooEmployeeInfo.OtherPrivileges},
+
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
@@ -368,25 +381,32 @@ namespace DAL.Cooperative
             List<SpInPuts> inputs = new List<SpInPuts>
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = obj.CheckedData.AgencyLicenseNumber},
-                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = obj.CooEmployeeInfo.EmployeeName},
                 new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = obj.CooEmployeeInfo.EmployeeBirthDate},
                 new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = obj.CooEmployeeInfo.EmployeeNationalId},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_DT" , VALUE = obj.CooEmployeeInfo.EmployeeHireDate},
                 new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = obj.CooEmployeeInfo.EmployeeSpecialistCD},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = obj.CooEmployeeInfo.EmployeeQualification},
                 new SpInPuts(){KEY = "P_BALSHT_SAL_SPRT_FLG" , VALUE = obj.AccountantSalarySeparateInTheBudget},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_CONTRACT_FLG" , VALUE = obj.IsContractSignedbotheAndNameAndSalaryShown},
                 new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_BOD_AGREE_FLG" , VALUE = obj.CooEmployeeInfo.AppointmentBoardApproval},
+
                 new SpInPuts(){KEY = "P_SPONSOR_FLG" , VALUE = obj.IsNonSaudiSponsorshipOnAgancy},
                 new SpInPuts(){KEY = "P_PAYROLL_FLG" , VALUE = obj.IsAccountantReceiptSheetAvailable},
+
                 new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = obj.AnnualSalary},
                 new SpInPuts(){KEY = "P_SBSD_EMP_PRIVILEGES" , VALUE = obj.CooEmployeeInfo.OtherPrivileges},
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 
@@ -442,19 +462,17 @@ namespace DAL.Cooperative
             List<SpInPuts> inputs = new List<SpInPuts>
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
-                new SpInPuts(){KEY = "P_REG_ID" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
-
                 new SpInPuts(){KEY = "P_PARTNERS_FLAG" , VALUE = obj.IsAgencyHaveSupportedBeforeInRebuild},
                 new SpInPuts(){KEY = "P_PARTNERS_FUND_SUPPORT" , VALUE = obj.AmountOfSupported},
                 new SpInPuts(){KEY = "P_PARTNERS_LIST" , VALUE = obj.AgencyOfSupported},
                 new SpInPuts(){KEY = "P_LAND_INSTRUMENT_FLG" , VALUE = obj.IsAgencyHaveLandToBuild},
                 new SpInPuts(){KEY = "P_PROJ_REG_SHARE_AMNT" , VALUE = obj.AmountForProjectAsNumber},
                 new SpInPuts(){KEY = "P_PROJ_EXPEND_BAL_AMNT" , VALUE = obj.ExpendedOnProjectInBudget},
-
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 

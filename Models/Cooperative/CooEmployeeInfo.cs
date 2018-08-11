@@ -61,7 +61,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 5)]
-        public string EmployeeSpecialistCD { get; set; }
+        public int EmployeeSpecialistCD { get; set; }
 
         /// <summary>
         /// أي امتيازات أخرى
