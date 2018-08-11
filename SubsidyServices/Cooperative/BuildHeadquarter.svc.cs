@@ -26,6 +26,7 @@ namespace SubsidyServices.Cooperative
        /// <returns></returns>
         public RequestResult InsertBuildHeadquarter(
             HeadquarterInfo HeadquarterInfo,
+            List<StagesInfo> StagesInfo,
             List<Files> Files
             )
         {
@@ -35,6 +36,7 @@ namespace SubsidyServices.Cooperative
                 if (DataValidation.IsEmptyOrDefault(HeadquarterInfo) ||
                     DataValidation.IsEmptyOrDefault(HeadquarterInfo.CheckedData) ||
                     DataValidation.IsEmptyOrDefault(HeadquarterInfo.ManagersInfo) ||
+                    DataValidation.IsEmptyOrDefaultList(StagesInfo) ||
                     DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
@@ -42,8 +44,9 @@ namespace SubsidyServices.Cooperative
                 /// Call Database
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
-                    return dal.InsertInsertBuildHeadquartertDAL(
+                    return dal.InsertBuildHeadquartertDAL(
                         HeadquarterInfo,
+                        StagesInfo,
                         Files
                         );
                 }

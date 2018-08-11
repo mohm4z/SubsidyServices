@@ -29,6 +29,7 @@ namespace SubsidyServices.Cooperative
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertBuildHeadquarter(
             HeadquarterInfo HeadquarterInfo,
+            List<StagesInfo> StagesInfo,
             List<Files> Files
             );
     }

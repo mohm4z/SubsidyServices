@@ -91,7 +91,7 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
-        public RequestResult InsertInsertOperationMechanismsDAL(
+        public RequestResult InsertOperationMechanismsDAL(
             OperationInfo obj,
             List<Files> Files
             )
@@ -455,11 +455,11 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
-
-        public RequestResult InsertInsertBuildHeadquartertDAL(
-           HeadquarterInfo obj,
-           List<Files> Files
-           )
+        public RequestResult InsertBuildHeadquartertDAL(
+            HeadquarterInfo obj,
+            List<StagesInfo> Stages,
+            List<Files> Files
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -508,6 +508,18 @@ namespace DAL.Cooperative
                 RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
             };
 
+            int Conter = 0;
+
+            for (int i = 0; i < Stages.Count(); i++)
+            {
+                InsertStagesDAL(
+                    RequestResult.RequestId,
+                    Conter,
+                    Stages[i],
+                    obj.CheckedData.CommissionerNumber.ToString()
+                    );
+            }
+
             for (int i = 0; i < Files.Count(); i++)
             {
                 InsertAttachmentDAL(
@@ -521,11 +533,10 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
-
         public RequestResult InsertTrainingSubsidyDAL(
-           TrainingInfo obj,
-           List<Files> Files
-           )
+            TrainingInfo obj,
+            List<Files> Files
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -535,34 +546,19 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
-
                 new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
                 new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
                 new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
-
-
-
-                //new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = obj.CooEmployeeInfo.EmployeeName},
-
-
-                //new SpInPuts(){KEY = "P_SBSD_EMP_NAME" , VALUE = obj.CooEmployeeInfo.EmployeeName},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_ID" , VALUE = obj.CooEmployeeInfo.EmployeeNationalId},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_BDATE" , VALUE = obj.CooEmployeeInfo.EmployeeBirthDate},
-
-                //new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_DT" , VALUE = obj.CooEmployeeInfo.EmployeeHireDate},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_QUALIF_CD" , VALUE = obj.CooEmployeeInfo.EmployeeQualification},
-
-                //new SpInPuts(){KEY = "P_SBSD_EMP_EXPR_PRD_CD" , VALUE = obj.CooEmployeeInfo.EmployeeSpecialistCD},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_YEAR_SALARY_CD" , VALUE = obj.SalaryForWhichYear},
-
-                //new SpInPuts(){KEY = "P_SBSD_EMP_CONTRACT_FLG" , VALUE = obj.CooEmployeeInfo.IsThereJobContract},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_FULLTIME_FLG" , VALUE = obj.IsDirectorDedicatedForJob},
-
-                //new SpInPuts(){KEY = "P_SBSD_EMP_HIRE_BOD_AGREE_FLG" , VALUE = obj.CooEmployeeInfo.AppointmentBoardApproval},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_SALARY" , VALUE = obj.AnnualSalary},
-                //new SpInPuts(){KEY = "P_SBSD_EMP_PRIVILEGES" , VALUE = obj.CooEmployeeInfo.OtherPrivileges},
-
-                //new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+                new SpInPuts(){KEY = "P_PARTICIPANTS_COUNT" , VALUE = obj.ParticipantsCount},
+                new SpInPuts(){KEY = "P_PARTICIPANTS_NAMES" , VALUE = obj.TraineesNames},
+                new SpInPuts(){KEY = "P_PARTICIPATION_TYPE_CD" , VALUE = obj.ParticipationType},
+                new SpInPuts(){KEY = "P_PARTICIPANTS_LOCATION" , VALUE = obj.ParticipationLocation},
+                new SpInPuts(){KEY = "P_PARTICIPANT_MEMBER_FLG" , VALUE = obj.IsTrainersFromAgency},
+                new SpInPuts(){KEY = "P_PARTICIPATION_SUBJECT_FLG" , VALUE = obj.IsTrainingTopicRelatedToAgency},
+                new SpInPuts(){KEY = "P_PARTICIPATION_ACTUAL_COST" , VALUE = obj.ActualCost},
+                new SpInPuts(){KEY = "P_PARTICIPATION_10PRCNT_FLG" , VALUE = obj.IsTheirApprovalToAllocateCosts},
+                new SpInPuts(){KEY = "P_PARTICIPATION_AGREE_FLG" , VALUE = obj.IsThereParticipationApproved},
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 
@@ -609,6 +605,56 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
+
+
+
+        public RequestResult InsertStagesDAL(
+           long RequestId,
+           int Conter,
+           StagesInfo si,
+           string CommissionerNumber
+           )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REQUEST_ID" , VALUE = RequestId},
+                new SpInPuts(){KEY = "STG_SEQ" , VALUE = Conter},
+                new SpInPuts(){KEY = "STG_DT" , VALUE = si.StageDate},
+                new SpInPuts(){KEY = "STG_COST" , VALUE = si.StageCost},
+                new SpInPuts(){KEY = "STG_NOTE" , VALUE = si.Notes},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.ExecuteStoredProcedure(
+                "CS_P_SUBSIDY_BUILDUP_STAGES",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            RequestResult RequestResult = new RequestResult
+            {
+                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            return RequestResult;
+        }
 
         public RequestResult InsertAttachmentDAL(
             long RequestId,

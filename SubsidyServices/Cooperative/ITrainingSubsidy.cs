@@ -19,8 +19,6 @@ namespace SubsidyServices.Cooperative
        )]
     public interface ITrainingSubsidy
     {
-        /// <summary>
-     
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         RequestResult InsertTrainingSubsidy(

@@ -34,7 +34,6 @@ namespace Models.Cooperative
         [DataMember(Order = 3)]
         public int ParticipantsCount { get; set; }
 
-
         /// <summary>
         /// اسماء المتدربين
         /// P_PARTICIPANTS_NAMES
@@ -51,38 +50,61 @@ namespace Models.Cooperative
         [DataMember(Order = 5)]
         public int ParticipationType { get; set; }
 
-        ///// <summary>
-        ///// 
-        ///// 
-        ///// </summary>
-        //[ItsRequired]
-        //[DataMember(Order = 6)]
-        //public int ParticipantsCount { get; set; }
+        /// <summary>
+        /// مكان المشاركة
+        /// P_PARTICIPANTS_LOCATION
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 6)]
+        public string ParticipationLocation { get; set; }
 
+        /// <summary>
+        /// هل المتدرب من الأعضاء او العاملين بالجمعية؟
+        /// P_PARTICIPANT_MEMBER_FLG
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 7)]
+        public int IsTrainersFromAgency { get; set; }
 
-        ///// <summary>
-        ///// مكان المشاركة
-        ///// P_PARTICIPANTS_LOCATION
-        ///// </summary>
-        //[ItsRequired]
-        //[DataMember(Order = 7)]
-        //public int ParticipantsCount { get; set; }
+        /// <summary>
+        /// هل التدريب في موضوع له علاقة بأنشطة الجمعية؟ 
+        /// P_PARTICIPATION_SUBJECT_FLG
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 8)]
+        public int IsTrainingTopicRelatedToAgency { get; set; }
 
-        ///// <summary>
-        ///// 
-        ///// 
-        ///// </summary>
-        //[ItsRequired]
-        //[DataMember(Order = 8)]
-        //public int ParticipantsCount { get; set; }
+        /// <summary>
+        /// التكلفة الفعلية 
+        /// P_PARTICIPATION_ACTUAL_COST
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 9)]
+        public decimal ActualCost { get; set; }
 
-        ///// <summary>
-        ///// 
-        ///// 
-        ///// </summary>
-        //[ItsRequired]
-        //[DataMember(Order = 9)]
-        //public int ParticipantsCount { get; set; }
+        /// <summary>
+        /// هل تمت الموافقة على تخصيص (10%) من التكاليف لذلك
+        /// P_PARTICIPATION_10PRCNT_FLG
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 10)]
+        public int IsTheirApprovalToAllocateCosts { get; set; }
+
+        /// <summary>
+        ///هل تمت الموافقة على المشاركة من قبل الوزارة
+        /// P_PARTICIPATION_AGREE_FLG
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 11)]
+        public int IsThereParticipationApproved { get; set; }
+
+        /// <summary>
+        /// مبلغ الاعانة المطلوبة من الوزارة
+        /// P_REQUEST_AMOUNT
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 12)]
+        public decimal RequiredSubsidy { get; set; }
 
     }
 }

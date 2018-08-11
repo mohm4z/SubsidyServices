@@ -36,7 +36,7 @@ namespace SubsidyServices.Cooperative
                 /// Call Database
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
-                    return dal.InsertInsertOperationMechanismsDAL(
+                    return dal.InsertOperationMechanismsDAL(
                         OperationInfo,
                         Files
                         );
