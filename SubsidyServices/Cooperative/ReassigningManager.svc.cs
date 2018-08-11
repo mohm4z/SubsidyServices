@@ -14,7 +14,7 @@ using Models.Cooperative;
 namespace SubsidyServices.Cooperative
 {
     /// <summary>
-    /// 
+    /// خدمة اعانة تعيين مدير جمعية تعاونية
     /// </summary>
     public class ReassigningManager : IReassigningManager
     {

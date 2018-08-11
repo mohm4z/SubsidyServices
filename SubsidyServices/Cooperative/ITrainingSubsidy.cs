@@ -5,13 +5,27 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
+
+using Models.Common;
+using Models.Cooperative;
+using Models.HandleFault;
+
 namespace SubsidyServices.Cooperative
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ITrainingSubsidy" in both code and config file together.
-    [ServiceContract]
+    [ServiceContract(
+       ConfigurationName = "mlsd.gov.sa",
+       Namespace = "http://mlsd.gov.sa",
+       Name = "mlsd"
+       )]
     public interface ITrainingSubsidy
     {
+        /// <summary>
+     
         [OperationContract]
-        void DoWork();
+        [FaultContract(typeof(ValidationFault))]
+        RequestResult InsertTrainingSubsidy(
+            TrainingInfo TrainingInfo,
+            List<Files> Files
+            );
     }
 }

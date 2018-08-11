@@ -12,15 +12,15 @@ namespace Models.Cooperative
     /// <summary>
     /// معلومات الإجتماعات
     /// </summary>
+    [DataContract(Namespace = "MeetingInfo")]
     public class MeetingInfo
     {
-
         /// <summary>
         /// اجتماعات مجلس الإدارة
         /// P_BOARD_MEET_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 3)]
+        [DataMember(Order = 0)]
         public int IsDirectorsBoardMeetingsRegular { get; set; }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Models.Cooperative
         /// P_PUB_BOARD_MEET_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 4)]
+        [DataMember(Order = 1)]
         public int IsGeneralAssemblyMeetingsRegular { get; set; }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Models.Cooperative
         /// P_BALANCE_SHEET_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 5)]
+        [DataMember(Order = 2)]
         public int IsBudgetRegular { get; set; }
 
     }
