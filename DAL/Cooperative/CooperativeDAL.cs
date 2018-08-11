@@ -107,9 +107,11 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_HAVE_3_MACHINES_FLG" , VALUE = obj.IsAgencyHaveThreeMachinesReady},
                 new SpInPuts(){KEY = "P_MACHINES_WORKERS_FLG" , VALUE = obj.WorkersOnMachines},
                 new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.WorkersOnMachines},
-                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.IsBoredMeetingsRegular},
-                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.IsGeneralAssemblyeetingsRegular},
-                new SpInPuts(){KEY = "P_SAUDI_WORKERS_SALARIES" , VALUE = obj.IsBudgetRegular},
+
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_SAUDI_WORKERS_SALARIES" , VALUE = obj.MeetingInfo.IsBudgetRegular},
+
                 new SpInPuts(){KEY = "P_SAUDI_WORKERS_COUNT" , VALUE = obj.SaudisCount},
                 new SpInPuts(){KEY = "P_NON_SAUDI_WORKERS_SALARIES" , VALUE = obj.NonSaudisSalaries},
                 new SpInPuts(){KEY = "P_NON_SAUDI_WORKERS_COUNT" , VALUE = obj.NonSaudisCount},

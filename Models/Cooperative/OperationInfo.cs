@@ -19,12 +19,15 @@ namespace Models.Cooperative
         [DataMember(Order = 1)]
         public ManagersInfo ManagersInfo { get; set; }
 
+        [DataMember(Order = 2)]
+        public MeetingInfo MeetingInfo { get; set; }
+
         /// <summary>
         /// هل تمتلك الجمعية عدد ثلاث آليات ميكانيكية جاهـزة للاستخدام؟
         /// P_HAVE_3_MACHINES_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 2)]
+        [DataMember(Order = 3)]
         public int IsAgencyHaveThreeMachinesReady { get; set; }
 
         /// <summary>
@@ -35,39 +38,16 @@ namespace Models.Cooperative
         /// P_MACHINES_WORKERS_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 3)]
+        [DataMember(Order = 4)]
         public int WorkersOnMachines { get; set; }
 
-        /// <summary>
-        /// هل اجتماعات مجلس الإدارة منتظمة
-        /// P_BOARD_MEET_FLG
-        /// </summary>
-        [ItsRequired]
-        [DataMember(Order = 4)]
-        public int IsBoredMeetingsRegular { get; set; }
-
-        /// <summary>
-        /// هل اجتماعات الجمعية العمومية منتظمة
-        /// P_PUB_BOARD_MEET_FLG
-        /// </summary>
-        [ItsRequired]
-        [DataMember(Order = 5)]
-        public int IsGeneralAssemblyeetingsRegular { get; set; }
-
-        /// <summary>
-        /// ميزانياتها العمومية وحساباتها منتظمة
-        /// P_BALANCE_SHEET_FLG
-        /// </summary>
-        [ItsRequired]
-        [DataMember(Order = 6)]
-        public int IsBudgetRegular { get; set; }
 
         /// <summary>
         /// رواتب الموظفين السعوديين العاملين على الاليات
         /// P_SAUDI_WORKERS_SALARIES
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 7)]
+        [DataMember(Order = 5)]
         public int SaudisSalaries { get; set; }
 
         /// <summary>
@@ -75,7 +55,7 @@ namespace Models.Cooperative
         /// P_SAUDI_WORKERS_COUNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 8)]
+        [DataMember(Order = 6)]
         public int SaudisCount { get; set; }
 
         /// <summary>
@@ -83,7 +63,7 @@ namespace Models.Cooperative
         /// P_NON_SAUDI_WORKERS_SALARIES
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 9)]
+        [DataMember(Order = 7)]
         public int NonSaudisSalaries { get; set; }
 
         /// <summary>
@@ -91,7 +71,7 @@ namespace Models.Cooperative
         /// P_NON_SAUDI_WORKERS_COUNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 10)]
+        [DataMember(Order = 8)]
         public int NonSaudisCount { get; set; }
 
         /// <summary>
@@ -99,7 +79,7 @@ namespace Models.Cooperative
         /// P_MACHINES_COUNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 11)]
+        [DataMember(Order = 9)]
         public int OwnedVehiclesCount { get; set; }
 
         /// <summary>
@@ -107,7 +87,7 @@ namespace Models.Cooperative
         /// P_JOB_CONTRACT_CMTBL_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 12)]
+        [DataMember(Order = 10)]
         public int IsJobCompatibleWithContract { get; set; }
 
         /// <summary>
@@ -115,7 +95,7 @@ namespace Models.Cooperative
         /// P_BOD_MACHINES_CERTF_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 13)]
+        [DataMember(Order = 11)]
         public int IsThereJobCertificateForMachines { get; set; }
 
         /// <summary>
@@ -123,7 +103,7 @@ namespace Models.Cooperative
         /// P_SUPPLIER_MACHINES_CERTF_FLG
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 14)]
+        [DataMember(Order = 12)]
         public decimal AmountForProject { get; set; }
 
         /// <summary>
@@ -131,7 +111,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 15)]
+        [DataMember(Order = 13)]
         public decimal RequiredSubsidy { get; set; }
     }
 }
