@@ -10,6 +10,7 @@ using DAL.DbManager;
 using Models.HandleFault;
 using DAL.Cooperative;
 using Models.Cooperative;
+using log4net;
 
 namespace SubsidyServices.Cooperative
 {
@@ -18,6 +19,8 @@ namespace SubsidyServices.Cooperative
     /// </summary>
     public class ReassigningManager : IReassigningManager
     {
+        private readonly ILog _log = LogManager.GetLogger(typeof(ReassigningManager));
+
         /// <summary>
         /// 
         /// </summary>
@@ -50,7 +53,7 @@ namespace SubsidyServices.Cooperative
                         );
                 }
             }
-            catch (FaultException<ValidationFault> )
+            catch (FaultException<ValidationFault>)
             {
                 ValidationFault fault = new ValidationFault
                 {
@@ -59,16 +62,22 @@ namespace SubsidyServices.Cooperative
                     Description = "Invalid Parameters is Required but have null or empty or 0 value"
                 };
 
-                throw new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(fl);
+
+                throw fl;
             }
             catch (Exception ex)
             {
                 ValidationFault fault = new ValidationFault
                 {
                     Result = false,
-                    Message = ex.Message ,
+                    Message = ex.Message,
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
+
+                _log.Error(ex);
 
                 throw new FaultException<ValidationFault>(fault);
             }
