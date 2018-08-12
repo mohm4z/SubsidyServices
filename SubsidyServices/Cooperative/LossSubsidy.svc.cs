@@ -14,22 +14,22 @@ using Models.Cooperative;
 namespace SubsidyServices.Cooperative
 {
     /// <summary>
-    /// خدمة اعانة دراسات و بحوث للجمعيات التعاونية 
+    /// خدمة اعانة خسائر و مخاطر للجمعيات التعاونية 
     /// </summary>
-    public class ResearchSubsidy : IResearchSubsidy
+    public class LossSubsidy : ILossSubsidy
     {
-        public RequestResult InsertResearchSubsidy(
-            ResearchInfo ResearchInfo,
+        public RequestResult InsertLossSubsidy(
+            LossInfo LossInfo,
             List<Files> Files
             )
         {
             try
             {
                 /// Data Validations
-                if (DataValidation.IsEmptyOrDefault(ResearchInfo) ||
-                    DataValidation.IsEmptyOrDefault(ResearchInfo.CheckedData) ||
-                    DataValidation.IsEmptyOrDefault(ResearchInfo.ManagersInfo) ||
-                    DataValidation.IsEmptyOrDefault(ResearchInfo.MeetingInfo) ||
+                if (DataValidation.IsEmptyOrDefault(LossInfo) ||
+                    DataValidation.IsEmptyOrDefault(LossInfo.CheckedData) ||
+                    DataValidation.IsEmptyOrDefault(LossInfo.ManagersInfo) ||
+                    DataValidation.IsEmptyOrDefault(LossInfo.MeetingInfo) ||
                     DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
@@ -37,8 +37,8 @@ namespace SubsidyServices.Cooperative
                 /// Call Database
                 using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
-                    return dal.InsertResearchSubsidyDAL(
-                        ResearchInfo,
+                    return dal.InsertLossSubsidyDAL(
+                        LossInfo,
                         Files
                         );
                 }

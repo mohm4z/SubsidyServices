@@ -9,6 +9,9 @@ using Models.Common;
 
 namespace Models.Cooperative
 {
+    /// <summary>
+    /// بيانات خدمة البحوث
+    /// </summary>
     [DataContract(Namespace = "ResearchInfo")]
     public class ResearchInfo
     {

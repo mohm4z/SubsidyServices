@@ -605,11 +605,10 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
-
         public RequestResult InsertSocialServicesSubsidyDAL(
-           SocialServiceInfo obj,
-           List<Files> Files
-           )
+            SocialServiceInfo obj,
+            List<Files> Files
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -619,14 +618,10 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
-
                 new SpInPuts(){KEY = "P_SOCIALS_SPENT_AMOUNT" , VALUE = obj.AmountForSocialServicetAsNumber},
                 new SpInPuts(){KEY = "P_SOCIALS_SPENT_ON" , VALUE = obj.AgenciesDisbursedOnIt},
                 new SpInPuts(){KEY = "P_SOCIALS_BOD_AGREE_FLG" , VALUE = obj.IsThereApprovingDisbursementOfSociaServices},
-
                 new SpInPuts(){KEY = "P_SOCIALS_SPENT_LETTER_FLG" , VALUE = obj.IsThereStatementOfDisbursedAgenciesAndCertified},
-
-
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
@@ -674,11 +669,10 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
-
         public RequestResult InsertResearchSubsidyDAL(
-          ResearchInfo obj,
-          List<Files> Files
-          )
+            ResearchInfo obj,
+            List<Files> Files
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -688,18 +682,17 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
-
+                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
                 new SpInPuts(){KEY = "P_RSRCH_SUBJECT" , VALUE = obj.ResearchSubject},
                 new SpInPuts(){KEY = "P_RSRCH_GOOLS" , VALUE = obj.ResearchGools},
                 new SpInPuts(){KEY = "P_RSRCH_SUBJECT_ACTIVITIES" , VALUE = obj.ActivityResearchRelationship},
-
                 new SpInPuts(){KEY = "P_RSRCH_BOD_AGREE_FLG" , VALUE = obj.IsThereApprovalForResearch},
                 new SpInPuts(){KEY = "P_RSRCH_MINISTRY_AGREE_FLG" , VALUE = obj.IsThereApprovalFromMinistryForResearch},
-                new SpInPuts(){KEY = "P_RSRCH_EXPECTED_COST_FLG" , VALUE = obj.CostForResearchAsNumber},
+                new SpInPuts(){KEY = "P_RSRCH_EXPECTED_COST" , VALUE = obj.CostForResearchAsNumber},
                 new SpInPuts(){KEY = "P_SOCIALS_SPENT_ON" , VALUE = obj.AgenciesDisbursedOnIt},
                 new SpInPuts(){KEY = "P_RSRCH_COST_LETTER_FLG" , VALUE = obj.IsCostStatementBeenAttached},
-
-
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
@@ -722,7 +715,7 @@ namespace DAL.Cooperative
                 );
 
             ado.ExecuteStoredProcedure(
-                "CS_P_SUBSIDY_SOCIAL_SERVICES",
+                "CS_P_SUBSIDY_RESEARCHES",
                 OpParms,
                 out OracleParameterCollection OPCs
                 );
@@ -747,6 +740,76 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
+
+
+        public RequestResult InsertLossSubsidyDAL(
+            LossInfo obj,
+            List<Files> Files
+            )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
+                new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
+                new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
+                new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
+                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
+                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
+                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
+                new SpInPuts(){KEY = "P_RISK_DESC" , VALUE = obj.LossType},
+                new SpInPuts(){KEY = "P_RISK_PROOF_LETTERS_FLG" , VALUE = obj.IsThereRecordsProvingDamagesAndValue},
+                new SpInPuts(){KEY = "P_RISK_BOD_MEET_FLG" , VALUE = obj.IsBoardMeetAboutThisSubject},
+                new SpInPuts(){KEY = "P_RISK_BALSHT_LOST_FLG" , VALUE = obj.IsLossesAppearInBalanceSheet},
+                new SpInPuts(){KEY = "P_RISK_AMOUNT" , VALUE = obj.LossesValueAsNumber},
+                new SpInPuts(){KEY = "P_RISK_BALSHT_SPENT_AMOUNT" , VALUE = obj.ProjectAmountShownInBudget},
+                new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000},
+                new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.ExecuteStoredProcedure(
+                "CS_P_SUBSIDY_RISKS",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            RequestResult RequestResult = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            for (int i = 0; i < Files.Count(); i++)
+            {
+                InsertAttachmentDAL(
+                    RequestResult.RequestId,
+                    Files[i].Id,
+                    Files[i].Path,
+                    obj.CheckedData.CommissionerNumber.ToString()
+                    );
+            }
+
+            return RequestResult;
+        }
 
 
         public RequestResult InsertStagesDAL(
