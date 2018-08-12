@@ -81,7 +81,6 @@
     <Content Include="Cooperative\ResearchSubsidy.svc" />
     <Content Include="Cooperative\SocialServicesSubsidy.svc" />
     <Content Include="Cooperative\TrainingSubsidy.svc" />
-    <Content Include="UserNamePassService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -158,7 +157,6 @@
     <Folder Include="Committees\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
