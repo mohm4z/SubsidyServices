@@ -28,7 +28,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 2)]
-        public decimal AmountForProjectAsNumber { get; set; }
+        public decimal AmountForSocialServicetAsNumber { get; set; }
 
         /// <summary>
         /// الجهات التي تم الصرف عليها
@@ -44,7 +44,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 4)]
-        public decimal IsThereApprovingDisbursementOfSociaServices { get; set; }
+        public int IsThereApprovingDisbursementOfSociaServices { get; set; }
 
         /// <summary>
         /// هل يوجد بيان بالجهات التي تم الصرف عليها ومبالغها معتمد من مجلس الإدارة ومصدقا من الجهة المشرفة بالمنطقة
@@ -52,8 +52,7 @@ namespace Models.Cooperative
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 5)]
-        public decimal IsThereStatementOfDisbursedAgenciesAndCertified { get; set; }
-
+        public int IsThereStatementOfDisbursedAgenciesAndCertified { get; set; }
 
         /// <summary>
         /// مبلغ الاعانة المطلوبة من الوزارة
