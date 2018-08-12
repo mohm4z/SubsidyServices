@@ -19,7 +19,6 @@ namespace SubsidyServices.Cooperative
     /// </summary>
     public class SocialServicesSubsidy : ISocialServicesSubsidy
     {
-        
         public RequestResult InsertSocialServicesSubsidy(
             SocialServiceInfo SocialServiceInfo,
             List<Files> Files
@@ -31,7 +30,6 @@ namespace SubsidyServices.Cooperative
                 if (DataValidation.IsEmptyOrDefault(SocialServiceInfo) ||
                     DataValidation.IsEmptyOrDefault(SocialServiceInfo.CheckedData) ||
                     DataValidation.IsEmptyOrDefault(SocialServiceInfo.ManagersInfo) ||
-                    DataValidation.IsEmptyOrDefault(SocialServiceInfo.MeetingInfo) ||
                     DataValidation.IsEmptyOrDefaultList(Files))
                     throw new FaultException<ValidationFault>(new ValidationFault());
 

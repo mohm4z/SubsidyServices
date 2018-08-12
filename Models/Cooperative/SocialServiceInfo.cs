@@ -22,10 +22,37 @@ namespace Models.Cooperative
         [DataMember(Order = 1)]
         public ManagersInfo ManagersInfo { get; set; }
 
+        /// <summary>
+        /// المبلغ الذي تم صرفه على الخدمات الاجتماعية رقماً
+        /// P_SOCIALS_SPENT_AMOUNT
+        /// </summary>
+        [ItsRequired]
         [DataMember(Order = 2)]
-        public MeetingInfo MeetingInfo { get; set; }
+        public decimal AmountForProjectAsNumber { get; set; }
 
+        /// <summary>
+        /// الجهات التي تم الصرف عليها
+        /// P_SOCIALS_SPENT_ON
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 3)]
+        public string AgenciesDisbursedOnIt { get; set; }
 
+        /// <summary>
+        /// هل يوجد محضر اجتماع مجلس الإدارة بالموافقة على الصرف من بند الخدمات الاجتماعية
+        /// P_SOCIALS_BOD_AGREE_FLG
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 4)]
+        public decimal IsThereApprovingDisbursementOfSociaServices { get; set; }
+
+        /// <summary>
+        /// هل يوجد بيان بالجهات التي تم الصرف عليها ومبالغها معتمد من مجلس الإدارة ومصدقا من الجهة المشرفة بالمنطقة
+        /// P_SOCIALS_SPENT_LETTER_FLG
+        /// </summary>
+        [ItsRequired]
+        [DataMember(Order = 5)]
+        public decimal IsThereStatementOfDisbursedAgenciesAndCertified { get; set; }
 
 
         /// <summary>
@@ -33,7 +60,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 12)]
+        [DataMember(Order = 6)]
         public decimal RequiredSubsidy { get; set; }
     }
 }

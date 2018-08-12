@@ -619,18 +619,14 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
-                new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
-                new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
-                new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
-                //new SpInPuts(){KEY = "P_PARTICIPANTS_COUNT" , VALUE = obj.ParticipantsCount},
-                //new SpInPuts(){KEY = "P_PARTICIPANTS_NAMES" , VALUE = obj.TraineesNames},
-                //new SpInPuts(){KEY = "P_PARTICIPATION_TYPE_CD" , VALUE = obj.ParticipationType},
-                //new SpInPuts(){KEY = "P_PARTICIPANTS_LOCATION" , VALUE = obj.ParticipationLocation},
-                //new SpInPuts(){KEY = "P_PARTICIPANT_MEMBER_FLG" , VALUE = obj.IsTrainersFromAgency},
-                //new SpInPuts(){KEY = "P_PARTICIPATION_SUBJECT_FLG" , VALUE = obj.IsTrainingTopicRelatedToAgency},
-                //new SpInPuts(){KEY = "P_PARTICIPATION_ACTUAL_COST" , VALUE = obj.ActualCost},
-                //new SpInPuts(){KEY = "P_PARTICIPATION_10PRCNT_FLG" , VALUE = obj.IsTheirApprovalToAllocateCosts},
-                //new SpInPuts(){KEY = "P_PARTICIPATION_AGREE_FLG" , VALUE = obj.IsThereParticipationApproved},
+
+                new SpInPuts(){KEY = "P_SOCIALS_SPENT_AMOUNT" , VALUE = obj.AmountForProjectAsNumber},
+                new SpInPuts(){KEY = "P_SOCIALS_SPENT_ON" , VALUE = obj.AgenciesDisbursedOnIt},
+                new SpInPuts(){KEY = "P_SOCIALS_BOD_AGREE_FLG" , VALUE = obj.IsThereApprovingDisbursementOfSociaServices},
+
+                new SpInPuts(){KEY = "P_SOCIALS_SPENT_LETTER_FLG" , VALUE = obj.IsThereStatementOfDisbursedAgenciesAndCertified},
+
+
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
@@ -653,7 +649,7 @@ namespace DAL.Cooperative
                 );
 
             ado.ExecuteStoredProcedure(
-                "CS_P_SUBSIDY_TRAINING",
+                "CS_P_SUBSIDY_SOCIAL_SERVICES",
                 OpParms,
                 out OracleParameterCollection OPCs
                 );

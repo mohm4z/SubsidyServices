@@ -77,6 +77,7 @@
     <Content Include="Cooperative\ProjectsSupport.svc" />
     <Content Include="Cooperative\ReassigningAccountant.svc" />
     <Content Include="Cooperative\ReassigningManager.svc" />
+    <Content Include="Cooperative\ResearchSubsidy.svc" />
     <Content Include="Cooperative\SocialServicesSubsidy.svc" />
     <Content Include="Cooperative\TrainingSubsidy.svc" />
     <Content Include="UserNamePassService.svc" />
@@ -121,6 +122,7 @@
     <Compile Include="Cooperative\IProjectsSupport.cs" />
     <Compile Include="Cooperative\IReassigningAccountant.cs" />
     <Compile Include="Cooperative\IReassigningManager.cs" />
+    <Compile Include="Cooperative\IResearchSubsidy.cs" />
     <Compile Include="Cooperative\ISocialServicesSubsidy.cs" />
     <Compile Include="Cooperative\ITrainingSubsidy.cs" />
     <Compile Include="Cooperative\OperationMechanisms.svc.cs">
@@ -134,6 +136,9 @@
     </Compile>
     <Compile Include="Cooperative\ReassigningManager.svc.cs">
       <DependentUpon>ReassigningManager.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Cooperative\ResearchSubsidy.svc.cs">
+      <DependentUpon>ResearchSubsidy.svc</DependentUpon>
     </Compile>
     <Compile Include="Cooperative\SocialServicesSubsidy.svc.cs">
       <DependentUpon>SocialServicesSubsidy.svc</DependentUpon>
