@@ -84,6 +84,7 @@
     <Content Include="Cooperative\ResearchSubsidy.svc" />
     <Content Include="Cooperative\SocialServicesSubsidy.svc" />
     <Content Include="Cooperative\TrainingSubsidy.svc" />
+    <Content Include="log4net.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +159,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Committees\" />
+    <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
