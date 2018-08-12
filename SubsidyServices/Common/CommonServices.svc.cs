@@ -57,11 +57,11 @@ namespace SubsidyServices.Common
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
-                _log.Error(fl);
+                _log.Error(flex);
 
-                throw fl;
+                throw flex;
             }
             catch (Exception ex)
             {
@@ -79,10 +79,10 @@ namespace SubsidyServices.Common
         }
 
         public IEnumerable<LookupTable> GetSubLookup(
-           string ApplicationCode,
-           int TabNumber,
-           int SubTabNumber
-           )
+            string ApplicationCode,
+            int TabNumber,
+            int SubTabNumber
+            )
         {
             try
             {
@@ -112,11 +112,11 @@ namespace SubsidyServices.Common
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
-                _log.Error(fl);
+                _log.Error(flex);
 
-                throw fl;
+                throw flex;
             }
             catch (Exception ex)
             {
@@ -170,11 +170,11 @@ namespace SubsidyServices.Common
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
-                _log.Error(fl);
+                _log.Error(flex);
 
-                throw fl;
+                throw flex;
             }
             catch (Exception ex)
             {
@@ -227,11 +227,11 @@ namespace SubsidyServices.Common
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
-                _log.Error(fl);
+                _log.Error(flex);
 
-                throw fl;
+                throw flex;
             }
             catch (Exception ex)
             {
@@ -279,11 +279,11 @@ namespace SubsidyServices.Common
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
-                _log.Error(fl);
+                _log.Error(flex);
 
-                throw fl;
+                throw flex;
             }
             catch (Exception ex)
             {

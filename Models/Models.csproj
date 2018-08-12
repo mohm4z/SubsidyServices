@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Committees\Project.cs" />
     <Compile Include="Common\AgencyFiles.cs" />
     <Compile Include="Common\AgencyGoals.cs" />
     <Compile Include="Common\AgencyInfo.cs" />
@@ -85,8 +86,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Committees\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

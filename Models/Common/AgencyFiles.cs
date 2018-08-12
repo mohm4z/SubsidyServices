@@ -8,7 +8,6 @@ using System.Runtime.Serialization;
 
 namespace Models.Common
 {
-
     /// <summary>
     /// ارفاق الملفات
     /// </summary>
