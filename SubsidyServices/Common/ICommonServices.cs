@@ -23,14 +23,16 @@ namespace SubsidyServices.Common
         IEnumerable<LookupTable> GetLookup(
             string ApplicationCode,
             int TabNumber
-          );
+            );
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="LicenseNumber"></param>
-        /// <param name="CharityType"></param>
-        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        IEnumerable<LookupTable> GetSubLookup(
+            string ApplicationCode,
+            int TabNumber,
+            int SubTabNumber
+            );
+
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         AgencyInfo GetAgencyInfo(
@@ -38,13 +40,6 @@ namespace SubsidyServices.Common
             long AgencyLicenseNumber
             );
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="LicenseNumber"></param>
-        /// <param name="CharityType"></param>
-        /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         AgencyGoals GetAgencyGoals(
@@ -52,12 +47,6 @@ namespace SubsidyServices.Common
             long AgencyLicenseNumber
             );
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="LicenseNumber"></param>
-        /// <param name="CharityType"></param>
-        /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
         AgencyFiles GetAgencyFiles(

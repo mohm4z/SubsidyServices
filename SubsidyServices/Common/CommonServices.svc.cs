@@ -9,14 +9,23 @@ using Models.Common;
 using DAL.Common;
 using DAL.DbManager;
 using Models.HandleFault;
+using log4net;
 
 namespace SubsidyServices.Common
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "CommonServices" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select CommonServices.svc or CommonServices.svc.cs at the Solution Explorer and start debugging.
-
+    /// <summary>
+    /// خدمات عامه
+    /// </summary>
     public class CommonServices : ICommonServices
     {
+        private readonly ILog _log = LogManager.GetLogger(typeof(CommonServices));
+
+        /// <summary>
+        /// إحضار جدول صغير
+        /// </summary>
+        /// <param name="ApplicationCode"></param>
+        /// <param name="TabNumber"></param>
+        /// <returns></returns>
         public IEnumerable<LookupTable> GetLookup(
             string ApplicationCode,
             int TabNumber
@@ -25,9 +34,12 @@ namespace SubsidyServices.Common
             try
             {
                 /// Data Validations
-                if (String.IsNullOrEmpty(ApplicationCode))
+                if (String.IsNullOrEmpty(ApplicationCode) ||
+                    TabNumber <= 0)
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
+
+                /// Call Database
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
                     return dal.GetLookupDAL(
@@ -45,8 +57,11 @@ namespace SubsidyServices.Common
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                throw new FaultException<ValidationFault>(
-                    fault);
+                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(fl);
+
+                throw fl;
             }
             catch (Exception ex)
             {
@@ -57,15 +72,72 @@ namespace SubsidyServices.Common
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
 
+                _log.Error(ex);
+
+                throw new FaultException<ValidationFault>(fault);
+            }
+        }
+
+        public IEnumerable<LookupTable> GetSubLookup(
+           string ApplicationCode,
+           int TabNumber,
+           int SubTabNumber
+           )
+        {
+            try
+            {
+                /// Data Validations
+                if (String.IsNullOrEmpty(ApplicationCode) ||
+                    TabNumber <= 0 ||
+                    SubTabNumber <= 0)
+                    throw new FaultException<ValidationFault>(new ValidationFault());
+
+
+                /// Call Database
+                using (CommonDAL dal = new CommonDAL(new ADO()))
+                {
+                    return dal.GetSubLookupDAL(
+                        ApplicationCode,
+                        TabNumber,
+                        SubTabNumber
+                        );
+                }
+            }
+            catch (FaultException<ValidationFault>)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                };
+
+                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(fl);
+
+                throw fl;
+            }
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                _log.Error(ex);
+
                 throw new FaultException<ValidationFault>(fault);
             }
         }
 
         /// <summary>
-        /// 
+        /// احضار بيانات جمعيات
         /// </summary>
-        /// <param name="LicenseNumber"></param>
-        /// <param name="CharityType"></param>
+        /// <param name="AgencyType"></param>
+        /// <param name="AgencyLicenseNumber"></param>
         /// <returns></returns>
         public AgencyInfo GetAgencyInfo(
             int AgencyType,
@@ -75,11 +147,12 @@ namespace SubsidyServices.Common
             try
             {
                 /// Data Validations
+                if (AgencyType <= 0 ||
+                   AgencyLicenseNumber <= 0)
+                    throw new FaultException<ValidationFault>(new ValidationFault());
 
-                //if (String.IsNullOrEmpty(PI_1I))
 
-                //throw new FaultException<ValidationFault>(new ValidationFault());
-
+                /// Call Database
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
                     return dal.GetAgencyInfoDAL(
@@ -88,7 +161,7 @@ namespace SubsidyServices.Common
                         );
                 }
             }
-            catch (FaultException<ValidationFault> )
+            catch (FaultException<ValidationFault>)
             {
                 ValidationFault fault = new ValidationFault
                 {
@@ -97,27 +170,32 @@ namespace SubsidyServices.Common
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                throw new FaultException<ValidationFault>(
-                    fault);
+                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(fl);
+
+                throw fl;
             }
             catch (Exception ex)
             {
                 ValidationFault fault = new ValidationFault
                 {
                     Result = false,
-                    Message = ex.Message + " StackTrace: " + ex.StackTrace,
+                    Message = ex.Message,
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
+
+                _log.Error(ex);
 
                 throw new FaultException<ValidationFault>(fault);
             }
         }
 
         /// <summary>
-        /// 
+        /// احضار اهداف الجمعيات
         /// </summary>
-        /// <param name="LicenseNumber"></param>
-        /// <param name="CharityType"></param>
+        /// <param name="AgencyType"></param>
+        /// <param name="AgencyLicenseNumber"></param>
         /// <returns></returns>
         public AgencyGoals GetAgencyGoals(
             int AgencyType,
@@ -127,10 +205,10 @@ namespace SubsidyServices.Common
             try
             {
                 /// Data Validations
+                if (AgencyType <= 0 ||
+                   AgencyLicenseNumber <= 0)
 
-                //if (String.IsNullOrEmpty(PI_1I))
-
-                //throw new FaultException<ValidationFault>(new ValidationFault());
+                    throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
@@ -140,7 +218,7 @@ namespace SubsidyServices.Common
                         );
                 }
             }
-            catch (FaultException<ValidationFault> )
+            catch (FaultException<ValidationFault>)
             {
                 ValidationFault fault = new ValidationFault
                 {
@@ -149,8 +227,11 @@ namespace SubsidyServices.Common
                     Description = "Invalid Parameter Name or All Parameters are nullu"
                 };
 
-                throw new FaultException<ValidationFault>(
-                    fault);
+                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(fl);
+
+                throw fl;
             }
             catch (Exception ex)
             {
@@ -161,26 +242,26 @@ namespace SubsidyServices.Common
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
 
+                _log.Error(ex);
+
                 throw new FaultException<ValidationFault>(fault);
             }
         }
 
         /// <summary>
-        /// 
+        /// احضار اسماء الملفات المطلوبة لكل خدمة
         /// </summary>
         /// <param name="SubsidyCode"></param>
         /// <returns></returns>
         public AgencyFiles GetAgencyFiles(
-           long SubsidyCode
-           )
+            long SubsidyCode
+            )
         {
             try
             {
                 /// Data Validations
-
-                //if (String.IsNullOrEmpty(PI_1I))
-
-                //throw new FaultException<ValidationFault>(new ValidationFault());
+                if (SubsidyCode <= 0)
+                    throw new FaultException<ValidationFault>(new ValidationFault());
 
                 using (CommonDAL dal = new CommonDAL(new ADO()))
                 {
@@ -189,18 +270,21 @@ namespace SubsidyServices.Common
                         );
                 }
             }
-            //catch (FaultException<ValidationFault> e)
-            //{
-            //    ValidationFault fault = new ValidationFault
-            //    {
-            //        Result = true,
-            //        Message = "Parameter not correct",
-            //        Description = "Invalid Parameter Name or All Parameters are nullu"
-            //    };
+            catch (FaultException<ValidationFault>)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                };
 
-            //    throw new FaultException<ValidationFault>(
-            //        fault);
-            //}
+                var fl = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(fl);
+
+                throw fl;
+            }
             catch (Exception ex)
             {
                 ValidationFault fault = new ValidationFault
@@ -209,6 +293,8 @@ namespace SubsidyServices.Common
                     Message = ex.Message,
                     Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
                 };
+
+                _log.Error(ex);
 
                 throw new FaultException<ValidationFault>(fault);
             }

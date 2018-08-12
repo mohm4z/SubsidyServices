@@ -41,7 +41,6 @@ namespace Models.Cooperative
         [DataMember(Order = 4)]
         public int WorkersOnMachines { get; set; }
 
-
         /// <summary>
         /// رواتب الموظفين السعوديين العاملين على الاليات
         /// P_SAUDI_WORKERS_SALARIES

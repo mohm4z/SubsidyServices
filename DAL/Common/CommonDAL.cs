@@ -24,7 +24,7 @@ namespace DAL.Common
         public IEnumerable<LookupTable> GetLookupDAL(
             string ApplicationCode,
             int TabNumber
-           )
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -59,10 +59,50 @@ namespace DAL.Common
             return Ds.Tables[0].DataTableToList<LookupTable>();
         }
 
+        public IEnumerable<LookupTable> GetSubLookupDAL(
+           string ApplicationCode,
+           int TabNumber,
+           int SubTabNumber
+           )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_APPLICATION_CODE  " , VALUE = ApplicationCode},
+                new SpInPuts(){KEY = "P_TAB_NO" , VALUE = TabNumber},
+                new SpInPuts(){KEY = "P_SUBTAB_NO" , VALUE = SubTabNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "CH_P_GET_LOOKUPS_DET",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            return Ds.Tables[0].DataTableToList<LookupTable>();
+        }
+
         public AgencyInfo GetAgencyInfoDAL(
             int AgencyType,
             long AgencyLicenseNumber
-           )
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -124,7 +164,7 @@ namespace DAL.Common
         public AgencyGoals GetAgencyGoalsDAL(
             int AgencyType,
             long AgencyLicenseNumber
-           )
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -170,8 +210,8 @@ namespace DAL.Common
         }
 
         public AgencyFiles GetAgencyFilesDAL(
-           long SubsidyCode
-          )
+            long SubsidyCode
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
