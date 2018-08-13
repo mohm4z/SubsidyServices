@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using DAL.Common;
 using DAL.DbManager;
 using Models.Committees;
 using Models.Common;
@@ -80,6 +82,43 @@ namespace DAL.Committees
             };
 
             return chi;
+        }
+
+        public IEnumerable<LookupTable> GetInitiativesDAL(
+           )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_APPLICATION_CODE  " , VALUE = "SD"},
+                //new SpInPuts(){KEY = "P_TAB_NO" , VALUE = TabNumber},
+                //new SpInPuts(){KEY = "P_SUBTAB_NO" , VALUE = SubTabNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.ExecuteStoredProcedure(
+                "SD_P_GET_INITIATIVES",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            return Ds.Tables[0].DataTableToList<LookupTable>();
         }
 
         public void Dispose()

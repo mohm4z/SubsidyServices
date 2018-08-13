@@ -16,14 +16,14 @@ namespace Models.Committees
         /// اسم مركز التنمية
         /// P_BRN_NAME
         /// </summary>
-        [DataMember(Order = 2)]
+        [DataMember(Order = 0)]
         public string DevelopmentCenterName { get; set; }
 
         /// <summary>
         /// رقم مركز التنمية
         /// P_BRN_NO
         /// </summary>
-        [DataMember(Order = 2)]
+        [DataMember(Order = 1)]
         public string DevelopmentCenterNumber { get; set; }
 
         /// <summary>
@@ -37,14 +37,14 @@ namespace Models.Committees
         /// تصنيف اللجنة
         /// P_CLASS_CD
         /// </summary>
-        [DataMember(EmitDefaultValue = false, Order = 8)]
+        [DataMember(Order = 4)]
         public string CommitteeClassification { get; set; }
 
         /// <summary>
         /// رقم الحساب البنكي - ايبان
         /// P_IBAN_NO  
         /// </summary>
-        [DataMember(Order = 7)]
+        [DataMember(Order = 5)]
         public string BankAccountNumber { get; set; }
 
         /// <summary>
@@ -58,10 +58,10 @@ namespace Models.Committees
         /// رصيد اللجنة
         /// P_ACCOUNT_BALANCE       
         /// </summary>
-        [DataMember(Order = 6)]
+        [DataMember(Order = 7)]
         public string AccountBalance { get; set; }
 
-        [DataMember(Order = 10)]
+        [DataMember(Order = 8)]
         public RequestResult RequestResult { get; set; }
     }
 }

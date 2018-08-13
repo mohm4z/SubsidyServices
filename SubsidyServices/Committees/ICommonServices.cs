@@ -25,5 +25,9 @@ namespace SubsidyServices.Committees
             int AgencyType,
             long AgencyLicenseNumber
             );
+
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        IEnumerable<LookupTable> GetInitiatives();
     }
 }

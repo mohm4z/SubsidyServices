@@ -35,8 +35,8 @@ namespace DAL.Common
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
             };
 
             //Populate Parameters
@@ -60,10 +60,10 @@ namespace DAL.Common
         }
 
         public IEnumerable<LookupTable> GetSubLookupDAL(
-           string ApplicationCode,
-           int TabNumber,
-           int SubTabNumber
-           )
+            string ApplicationCode,
+            int TabNumber,
+            int SubTabNumber
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -75,8 +75,8 @@ namespace DAL.Common
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
             };
 
             //Populate Parameters
@@ -120,8 +120,9 @@ namespace DAL.Common
                 new SpOutPuts() { ParameterName ="P_BANK_NAME" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
                 new SpOutPuts() { ParameterName ="P_CAT_NAME" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
                 new SpOutPuts() { ParameterName ="P_NO_700" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+
                 new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
-                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
             };
 
             //Populate Parameters
@@ -175,8 +176,8 @@ namespace DAL.Common
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
             };
 
             //Populate Parameters
@@ -221,8 +222,8 @@ namespace DAL.Common
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100}
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
             };
 
             //Populate Parameters
