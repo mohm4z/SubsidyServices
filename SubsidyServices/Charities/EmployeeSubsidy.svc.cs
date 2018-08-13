@@ -17,6 +17,7 @@ namespace SubsidyServices.Charities
     /// <summary>
     /// خدمة موظفي الجمعيات الخيرية
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class EmployeeSubsidy : IEmployeeSubsidy
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(EmployeeSubsidy));

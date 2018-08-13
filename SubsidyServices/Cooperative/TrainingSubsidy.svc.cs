@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة تدريب للجمعية التعاونية 
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class TrainingSubsidy : ITrainingSubsidy
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(TrainingSubsidy));

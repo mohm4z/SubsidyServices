@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة تأسيسية للجمعيات التعاونية
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class FoundationCooperative : IFoundationCooperative
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(FoundationCooperative));

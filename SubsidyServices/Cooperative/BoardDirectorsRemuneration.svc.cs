@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة مكافأة مجلس ادارة جمعية تعاونية
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class BoardDirectorsRemuneration : IBoardDirectorsRemuneration
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(BoardDirectorsRemuneration));

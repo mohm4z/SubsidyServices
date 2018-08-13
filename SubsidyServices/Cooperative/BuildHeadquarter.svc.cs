@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة بناء مقر للجمعات التعاونية 
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class BuildHeadquarter : IBuildHeadquarter
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(BuildHeadquarter));

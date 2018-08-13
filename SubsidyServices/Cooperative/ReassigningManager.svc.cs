@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة تعيين مدير جمعية تعاونية
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class ReassigningManager : IReassigningManager
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(ReassigningManager));

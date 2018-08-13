@@ -17,6 +17,7 @@ namespace SubsidyServices.Charities
     /// <summary>
     /// خدمة الاعانة الطارئة للجمعيات الخيرية
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class EmergencySubsidy : IEmergencySubsidy
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(EmergencySubsidy));

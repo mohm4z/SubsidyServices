@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة المشاريع للجمعيات التعاونية
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class ProjectsSupport : IProjectsSupport
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(ProjectsSupport));

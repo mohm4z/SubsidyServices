@@ -16,6 +16,7 @@ namespace SubsidyServices.Common
     /// <summary>
     /// خدمات عامه
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class CommonServices : ICommonServices
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(CommonServices));

@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة تشغيل اليات للجمعات التعاونية 
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class OperationMechanisms : IOperationMechanisms
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(OperationMechanisms));

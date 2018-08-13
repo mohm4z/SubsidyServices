@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة خسائر و مخاطر للجمعيات التعاونية 
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class LossSubsidy : ILossSubsidy
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(LossSubsidy));

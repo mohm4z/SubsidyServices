@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة دراسات و بحوث للجمعيات التعاونية 
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class ResearchSubsidy : IResearchSubsidy
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(ResearchSubsidy));

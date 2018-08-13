@@ -17,6 +17,7 @@ namespace SubsidyServices.Cooperative
     /// <summary>
     /// خدمة اعانة تعيين محاسب جمعية تعاونية
     /// </summary>
+    [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
     public class ReassigningAccountant : IReassigningAccountant
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(ReassigningAccountant));
