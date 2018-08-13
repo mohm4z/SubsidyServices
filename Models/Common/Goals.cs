@@ -9,7 +9,10 @@ using System.Runtime.Serialization;
 
 namespace Models.Common
 {
-    [DataContract]
+    /// <summary>
+    /// أهداف الجمعية
+    /// </summary>
+    [DataContract(Namespace = "Goals")]
     public class Goals
     {
         //[DataMember]

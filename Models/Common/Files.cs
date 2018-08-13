@@ -11,7 +11,7 @@ namespace Models.Common
     /// <summary>
     /// الملفات
     /// </summary>
-    [DataContract]
+    [DataContract(Namespace = "Files")]
     public class Files
     {
         /// <summary>

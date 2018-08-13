@@ -8,11 +8,10 @@ using System.Runtime.Serialization;
 
 namespace Models.Common
 {
-
-   /// <summary>
-   /// 
-   /// </summary>
-    [DataContract]
+    /// <summary>
+    /// 
+    /// </summary>
+    [DataContract(Namespace = "Lookup")]
     public class Lookup
     {
         [DataMember]
@@ -25,7 +24,7 @@ namespace Models.Common
     /// <summary>
     /// الجداول الأساسية
     /// </summary>
-    [DataContract]
+    [DataContract(Namespace = "LookupTable")]
     public class LookupTable
     {
         [DataMember]
