@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Committees\CommitteeInfo.cs" />
     <Compile Include="Committees\CommitteeRequestInfo.cs" />
     <Compile Include="Committees\Project.cs" />
     <Compile Include="Common\AgencyFiles.cs" />

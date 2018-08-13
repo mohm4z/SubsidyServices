@@ -33,15 +33,16 @@ namespace Models.Cooperative
         /// المبلغ
         /// P_PARTNERS_FUND_SUPPORT
         /// </summary>
-        [ItsRequired]
+        //[ItsRequired]
         [DataMember(Order = 3)]
-        public decimal AmountOfSupported { get; set; }
+        public string AmountOfSupported { get; set; }
+        // في حالة يقبل فارغ ويكون رقم
 
         /// <summary>
         /// الجهة الداعمة
         /// P_PARTNERS_LIST
         /// </summary>
-        [ItsRequired]
+        //[ItsRequired]
         [DataMember(Order = 4)]
         public string AgencyOfSupported { get; set; }
 

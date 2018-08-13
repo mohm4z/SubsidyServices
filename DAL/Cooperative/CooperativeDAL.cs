@@ -118,7 +118,7 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_MACHINES_COUNT" , VALUE = obj.OwnedVehiclesCount},
                 new SpInPuts(){KEY = "P_JOB_CONTRACT_CMTBL_FLG" , VALUE = obj.IsJobCompatibleWithContract},
                 new SpInPuts(){KEY = "P_BOD_MACHINES_CERTF_FLG" , VALUE = obj.IsThereJobCertificateForMachines},
-                new SpInPuts(){KEY = "P_SUPPLIER_MACHINES_CERTF_FLG" , VALUE = obj.AmountForProject},
+                new SpInPuts(){KEY = "P_SUPPLIER_MACHINES_CERTF_FLG" , VALUE = obj.IsThereCertificateAssureMechanismsValid},
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };

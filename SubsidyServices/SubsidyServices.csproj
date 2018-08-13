@@ -73,6 +73,7 @@
     <Content Include="Charities\EmployeeSubsidy.svc" />
     <Content Include="Charities\FoundationSubsidy.svc" />
     <Content Include="Committees\CommitteeServices.svc" />
+    <Content Include="Committees\CommonServices.svc" />
     <Content Include="Common\CommonServices.svc" />
     <Content Include="Cooperative\BoardDirectorsRemuneration.svc" />
     <Content Include="Cooperative\BuildHeadquarter.svc" />
@@ -109,7 +110,11 @@
     <Compile Include="Committees\CommitteeServices.svc.cs">
       <DependentUpon>CommitteeServices.svc</DependentUpon>
     </Compile>
+    <Compile Include="Committees\CommonServices.svc.cs">
+      <DependentUpon>CommonServices.svc</DependentUpon>
+    </Compile>
     <Compile Include="Committees\ICommitteeServices.cs" />
+    <Compile Include="Committees\ICommonServices.cs" />
     <Compile Include="Common\CommonServices.svc.cs">
       <DependentUpon>CommonServices.svc</DependentUpon>
     </Compile>

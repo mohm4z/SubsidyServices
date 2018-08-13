@@ -98,12 +98,12 @@ namespace Models.Cooperative
         public int IsThereJobCertificateForMachines { get; set; }
 
         /// <summary>
-        /// المبلغ الذي تم رصده من قبل الجمعية للمشروع
+        /// هل توجد شهادة من الجهه المختصه تؤكد صلاحية الأليات للعمل
         /// P_SUPPLIER_MACHINES_CERTF_FLG
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 12)]
-        public decimal AmountForProject { get; set; }
+        public int IsThereCertificateAssureMechanismsValid { get; set; }
 
         /// <summary>
         /// مبلغ الاعانة المطلوبة من الوزارة

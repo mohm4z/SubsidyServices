@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Charities\CharityDAL.cs" />
+    <Compile Include="Committees\CommitteesDAL.cs" />
     <Compile Include="Common\CommonDAL.cs" />
     <Compile Include="Common\Helper.cs" />
     <Compile Include="Cooperative\CooperativeDAL.cs" />
@@ -70,8 +71,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Committees\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
