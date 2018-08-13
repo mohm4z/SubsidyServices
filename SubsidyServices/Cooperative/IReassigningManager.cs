@@ -13,9 +13,8 @@ namespace SubsidyServices.Cooperative
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IReassigningManager" in both code and config file together.
     [ServiceContract(
-        ConfigurationName = "mlsd.gov.sa",
-        Namespace = "http://mlsd.gov.sa",
-        Name = "mlsd"
+        ConfigurationName = "mlsd.ServiceContractConfig",
+        Namespace = "http://mlsd.gov.sa"
         )]
     public interface IReassigningManager
     {

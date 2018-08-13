@@ -89,7 +89,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\ServiceValidation\SecurityContract.cs" />
     <Content Include="App_Code\ServiceValidation\UserNamePassValidator.cs" />
     <Compile Include="Charities\ConstructSubsidy.svc.cs">
       <DependentUpon>ConstructSubsidy.svc</DependentUpon>

@@ -13,7 +13,7 @@ namespace SubsidyServices.App_Code.ServiceValidation
                 throw new ArgumentNullException();
             }
 
-            if (!(userName == "mm1" && password == "mm1"))
+            if (!(userName == "mohm4z@live.com" && password == "m.zanaty@mlsd.gov.sa"))
             {
                 throw new FaultException("Incorrect Username or Password");
             }

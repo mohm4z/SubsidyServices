@@ -13,17 +13,15 @@ namespace Models.Committees
     /// بيانات المشروع
     /// </summary>
     [DataContract(Namespace = "Project")]
-    class Project
+    public class Project
     {
-       
-
         /// <summary>
-        /// ظهرت رواتب المحاسب منفصلة عن رواتب الموظفين في الميزانية
-        /// P_BALSHT_SAL_SPRT_FLG
+        /// المساهمة الحكومية المقترحة
+        /// PROG_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 0)]
-        public int AccountantSalarySeparateInTheBudget { get; set; }
+        public string ProposedGovernmentContribution { get; set; }
 
 
 

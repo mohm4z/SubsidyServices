@@ -13,9 +13,8 @@ using Models.HandleFault;
 namespace SubsidyServices.Cooperative
 {
     [ServiceContract(
-       ConfigurationName = "mlsd.gov.sa",
-       Namespace = "http://mlsd.gov.sa",
-       Name = "mlsd"
+       ConfigurationName = "mlsd.ServiceContractConfig",
+       Namespace = "http://mlsd.gov.sa"
        )]
     public interface IBuildHeadquarter
     {
