@@ -5,12 +5,23 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
+using Models.Committees;
+using Models.Common;
+using Models.HandleFault;
+
 namespace SubsidyServices.Committees
 {
-    [ServiceContract]
+    [ServiceContract(
+       ConfigurationName = "mlsd.ServiceContractConfig",
+       Namespace = "http://mlsd.gov.sa"
+       )]
     public interface ICommitteeServices
     {
         [OperationContract]
-        void DoWork();
+        [FaultContract(typeof(ValidationFault))]
+        RequestResult InsertCommitteeServices(
+            CommitteeRequestInfo CommitteeRequestInfo,
+            List<Files> Files
+            );
     }
 }

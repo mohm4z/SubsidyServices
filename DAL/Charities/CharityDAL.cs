@@ -78,13 +78,12 @@ namespace DAL.Charities
             return RequestResult;
         }
 
-
         public RequestResult UpdateFoundationSubsidyDAL(
-           long RequestId,
-           CheckedData chda,
-           string ChairmanBoardMobileNumber,
-           string ChairmanBoardName
-           )
+            long RequestId,
+            CheckedData chda,
+            string ChairmanBoardMobileNumber,
+            string ChairmanBoardName
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {

@@ -18,13 +18,21 @@ namespace Models.Committees
         [DataMember(Order = 0)]
         public CheckedData CheckedData { get; set; }
 
+        /// <summary>
+        /// نوع الاعانة
+        /// SUBSIDY_CODE
+        /// </summary>
         [DataMember(Order = 1)]
         public int SubsidyType { get; set; }
 
-        [DataMember(Order = 1)]
+        /// <summary>
+        /// السنة المالية
+        /// FIN_YEAR
+        /// </summary>
+        [DataMember(Order = 2)]
         public int FinancialYear { get; set; }
 
-        [DataMember(Order = 1)]
+        [DataMember(Order = 3)]
         public List<Project> Projects { get; set; }
 
     }
