@@ -87,6 +87,34 @@
     <Content Include="Cooperative\SocialServicesSubsidy.svc" />
     <Content Include="Cooperative\TrainingSubsidy.svc" />
     <Content Include="log4net.xml" />
+    <Content Include="Publish\bin\App_Code.dll" />
+    <Content Include="Publish\bin\DAL.dll" />
+    <Content Include="Publish\bin\DAL.pdb" />
+    <Content Include="Publish\bin\log4net.dll" />
+    <Content Include="Publish\bin\Models.dll" />
+    <Content Include="Publish\bin\Models.pdb" />
+    <Content Include="Publish\bin\Oracle.ManagedDataAccess.dll" />
+    <Content Include="Publish\bin\SubsidyServices.dll" />
+    <Content Include="Publish\bin\SubsidyServices.pdb" />
+    <Content Include="Publish\Charities\ConstructSubsidy.svc" />
+    <Content Include="Publish\Charities\EmergencySubsidy.svc" />
+    <Content Include="Publish\Charities\EmployeeSubsidy.svc" />
+    <Content Include="Publish\Charities\FoundationSubsidy.svc" />
+    <Content Include="Publish\Committees\CommitteeServices.svc" />
+    <Content Include="Publish\Committees\CommonServices.svc" />
+    <Content Include="Publish\Common\CommonServices.svc" />
+    <Content Include="Publish\Cooperative\BoardDirectorsRemuneration.svc" />
+    <Content Include="Publish\Cooperative\BuildHeadquarter.svc" />
+    <Content Include="Publish\Cooperative\FoundationCooperative.svc" />
+    <Content Include="Publish\Cooperative\LossSubsidy.svc" />
+    <Content Include="Publish\Cooperative\OperationMechanisms.svc" />
+    <Content Include="Publish\Cooperative\ProjectsSupport.svc" />
+    <Content Include="Publish\Cooperative\ReassigningAccountant.svc" />
+    <Content Include="Publish\Cooperative\ReassigningManager.svc" />
+    <Content Include="Publish\Cooperative\ResearchSubsidy.svc" />
+    <Content Include="Publish\Cooperative\SocialServicesSubsidy.svc" />
+    <Content Include="Publish\Cooperative\TrainingSubsidy.svc" />
+    <Content Include="Publish\log4net.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +200,11 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Publish\bin\App_Code.compiled" />
+    <Content Include="Publish\bin\DAL.dll.config" />
+    <Content Include="Publish\bin\Models.dll.config" />
+    <Content Include="Publish\PrecompiledApp.config" />
+    <Content Include="Publish\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
