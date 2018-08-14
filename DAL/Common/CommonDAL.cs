@@ -261,7 +261,7 @@ namespace DAL.Common
             int AgencyType,
             long AgencyLicenseNumber,
             int SubsidyCode
-           )
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -305,8 +305,8 @@ namespace DAL.Common
         }
 
         public IEnumerable<FinancialYears> GetFinancialYearsDAL(
-          int AgencyType
-          )
+            int AgencyType
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -341,8 +341,8 @@ namespace DAL.Common
         }
 
         public string NumberToTextDAL(
-          decimal Number
-          )
+            decimal Number
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {

@@ -1,0 +1,10 @@
+ERROR 12 SubsidyServices.Charities.FoundationSubsidy - 2018-08-13 00:37:38,352 - System.ServiceModel.FaultException`1[Models.HandleFault.ValidationFault]: Invalid Parameters is Required but have null or empty or 0 value (Fault Detail is equal to Models.HandleFault.ValidationFault).
+2018-08-13 00:40:40,042 - ERROR - 5 - SubsidyServices.Charities.FoundationSubsidy - System.ServiceModel.FaultException`1[Models.HandleFault.ValidationFault]: Invalid Parameters is Required but have null or empty or 0 value (Fault Detail is equal to Models.HandleFault.ValidationFault).
+2018-08-13 01:15:55,273 - ERROR 7 - SubsidyServices.Common.CommonServices - System.ServiceModel.FaultException`1[Models.HandleFault.ValidationFault]: Invalid Parameters is Required but have null or empty or 0 value (Fault Detail is equal to Models.HandleFault.ValidationFault).
+2018-08-13 01:16:40,915 - ERROR 13 - SubsidyServices.Common.CommonServices - Oracle.ManagedDataAccess.Client.OracleException (0x80004005): Connection request timed out
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, CriteriaCtx criteriaCtx, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, CriteriaCtx criteriaCtx, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, CriteriaCtx criteriaCtx)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at DAL.DbManager.ADO..ctor() in D:\PROGS\Projects\Tamken\MLSD\SubsidyServices\SubsidyServices\DAL\DbManager\ADO.cs:line 61
+   at SubsidyServices.Common.CommonServices.GetLookup(String ApplicationCode, Int32 TabNumber) in D:\PROGS\Projects\Tamken\MLSD\SubsidyServices\SubsidyServices\SubsidyServices\Common\CommonServices.svc.cs:line 43
