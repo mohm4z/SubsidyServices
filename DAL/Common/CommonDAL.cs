@@ -340,6 +340,41 @@ namespace DAL.Common
             return Ds.Tables[0].DataTableToList<FinancialYears>();
         }
 
+        public string NumberToTextDAL(
+          decimal Number
+          )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_NUMBER" , VALUE = Number}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "CH_P_NUMBER_TO_TEXT",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            return OPCs[":P_TEXT"].Value.ToString();
+        }
+
         public void Dispose()
         {
             //throw new NotImplementedException();

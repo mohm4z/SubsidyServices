@@ -319,9 +319,9 @@ namespace SubsidyServices.Common
             try
             {
                 /// Data Validations
-                if (CheckType == 0 ||
-                    AgencyType == 0 ||
-                    AgencyLicenseNumber == 0 ||
+                if (CheckType <= 0 ||
+                    AgencyType <= 0 ||
+                    AgencyLicenseNumber <= 0 ||
                     SubsidyCode <= 0)
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
@@ -418,5 +418,54 @@ namespace SubsidyServices.Common
                 throw new FaultException<ValidationFault>(fault);
             }
         }
+
+
+        public string NumberToText(
+            decimal Number
+            )
+        {
+            try
+            {
+                /// Data Validations
+                if (Number <= 0)
+                    throw new FaultException<ValidationFault>(new ValidationFault());
+
+                using (CommonDAL dal = new CommonDAL(new ADO()))
+                {
+                    return dal.NumberToTextDAL(
+                        Number
+                        );
+                }
+            }
+            catch (FaultException<ValidationFault>)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                };
+
+                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(flex);
+
+                throw flex;
+            }
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                _log.Error(ex);
+
+                throw new FaultException<ValidationFault>(fault);
+            }
+        }
+
     }
 }

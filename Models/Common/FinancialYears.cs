@@ -8,6 +8,9 @@ using System.Runtime.Serialization;
 
 namespace Models.Common
 {
+    /// <summary>
+    /// بانات السنوات المالية
+    /// </summary>
     [DataContract(Namespace = "FinancialYears")]
     public class FinancialYears
     {

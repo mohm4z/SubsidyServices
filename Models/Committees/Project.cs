@@ -105,7 +105,7 @@ namespace Models.Committees
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 10)]
-        public decimal ProjectGoals { get; set; }
+        public string ProjectGoals { get; set; }
 
         /// <summary>
         /// رسوم الاشتراك

@@ -66,5 +66,11 @@ namespace SubsidyServices.Common
         IEnumerable<FinancialYears> GetFinancialYears(
             int AgencyType
             );
+
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        string NumberToText(
+            decimal Number
+            );
     }
 }
