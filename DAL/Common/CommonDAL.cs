@@ -176,7 +176,7 @@ namespace DAL.Common
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
                 new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
             };
 
@@ -222,7 +222,7 @@ namespace DAL.Common
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
                 new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
                 new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
             };
 
@@ -273,8 +273,8 @@ namespace DAL.Common
 
             List<SpOutPuts> Outouts = new List<SpOutPuts>()
             {
-                new SpOutPuts() { ParameterName ="P_RESULT_STATUS" , OracleDbType= OracleDbType.RefCursor , Size = 100},
-                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Int32 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_STATUS" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
                 new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
             };
 
@@ -304,6 +304,41 @@ namespace DAL.Common
             return chi;
         }
 
+        public IEnumerable<FinancialYears> GetFinancialYearsDAL(
+          int AgencyType
+          )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = AgencyType}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "SD_P_GET_FIN_YEARS",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            return Ds.Tables[0].DataTableToList<FinancialYears>();
+        }
 
         public void Dispose()
         {

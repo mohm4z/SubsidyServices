@@ -60,5 +60,11 @@ namespace SubsidyServices.Common
             long AgencyLicenseNumber,
             int SubsidyCode
             );
+
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        IEnumerable<FinancialYears> GetFinancialYears(
+            int AgencyType
+            );
     }
 }

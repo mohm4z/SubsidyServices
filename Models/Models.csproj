@@ -59,6 +59,7 @@
     <Compile Include="Common\CheckedData.cs" />
     <Compile Include="Common\DataValidation.cs" />
     <Compile Include="Common\Files.cs" />
+    <Compile Include="Common\FinancialYears.cs" />
     <Compile Include="Common\Goals.cs" />
     <Compile Include="Common\RequestPreviousStatus.cs" />
     <Compile Include="Common\RequestResult.cs" />

@@ -301,7 +301,14 @@ namespace SubsidyServices.Common
             }
         }
 
-       
+        /// <summary>
+        /// فحص هل هنالك طلب من نفس النوع لهذه الجهة تم قبوله و يكون على مستويين
+        /// </summary>
+        /// <param name="CheckType"></param>
+        /// <param name="AgencyType"></param>
+        /// <param name="AgencyLicenseNumber"></param>
+        /// <param name="SubsidyCode"></param>
+        /// <returns></returns>
         public RequestPreviousStatus CheckPreviousRequestsStatus(
             int CheckType,
             int AgencyType,
@@ -325,6 +332,60 @@ namespace SubsidyServices.Common
                         AgencyType,
                         AgencyLicenseNumber,
                         SubsidyCode
+                        );
+                }
+            }
+            catch (FaultException<ValidationFault>)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                };
+
+                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(flex);
+
+                throw flex;
+            }
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                _log.Error(ex);
+
+                throw new FaultException<ValidationFault>(fault);
+            }
+        }
+
+        /// <summary>
+        /// السنوات المالية
+        /// </summary>
+        /// <param name="AgencyType"></param>
+        /// <returns></returns>
+        public IEnumerable<FinancialYears> GetFinancialYears(
+            int AgencyType
+            )
+        {
+            try
+            {
+                /// Data Validations
+                if (AgencyType <= 0)
+                    throw new FaultException<ValidationFault>(new ValidationFault());
+
+
+                /// Call Database
+                using (CommonDAL dal = new CommonDAL(new ADO()))
+                {
+                    return dal.GetFinancialYearsDAL(
+                        AgencyType
                         );
                 }
             }
