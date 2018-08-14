@@ -51,5 +51,14 @@ namespace SubsidyServices.Common
         AgencyFiles GetAgencyFiles(
             long SubsidyCode
             );
+
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        RequestPreviousStatus CheckPreviousRequestsStatus(
+            int CheckType,
+            int AgencyType,
+            long AgencyLicenseNumber,
+            int SubsidyCode
+            );
     }
 }
