@@ -72,5 +72,14 @@ namespace SubsidyServices.Common
         string NumberToText(
             decimal Number
             );
+
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        IEnumerable<Request> GetPreviousRequests(
+            int AgencyType,
+            long AgencyLicenseNumber,
+            string SubsidyCode,
+            string  RequestsStatusId
+            );
     }
 }

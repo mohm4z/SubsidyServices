@@ -14,16 +14,16 @@ namespace Models.Common
     [DataContract(Namespace = "FinancialYears")]
     public class FinancialYears
     {
-        [DataMember]
+        [DataMember(Order = 0)]
         public string StartDate { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 1)]
         public string EndDate { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 2)]
         public string FinancialYear { get; set; }
 
-        [DataMember]
+        [DataMember(Order = 3)]
         public string Year { get; set; }
 
     }

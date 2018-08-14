@@ -61,6 +61,7 @@
     <Compile Include="Common\Files.cs" />
     <Compile Include="Common\FinancialYears.cs" />
     <Compile Include="Common\Goals.cs" />
+    <Compile Include="Common\Request.cs" />
     <Compile Include="Common\RequestPreviousStatus.cs" />
     <Compile Include="Common\RequestResult.cs" />
     <Compile Include="Common\Lookup.cs" />

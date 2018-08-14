@@ -375,6 +375,48 @@ namespace DAL.Common
             return OPCs[":P_TEXT"].Value.ToString();
         }
 
+        public IEnumerable<Request> GetPreviousRequestsDAL(
+            int AgencyType,
+            long AgencyLicenseNumber,
+            string SubsidyCode,
+            string RequestsStatusId
+            )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = AgencyType},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = SubsidyCode},
+                new SpInPuts(){KEY = "P_REQUEST_STATUS_CD" , VALUE = RequestsStatusId}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "CH_P_GET_REQUESTS_STATUS",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            return Ds.Tables[0].DataTableToList<Request>();
+        }
+
         public void Dispose()
         {
             //throw new NotImplementedException();

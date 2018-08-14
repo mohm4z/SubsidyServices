@@ -116,9 +116,15 @@
     <Content Include="Publish\Cooperative\SocialServicesSubsidy.svc" />
     <Content Include="Publish\Cooperative\TrainingSubsidy.svc" />
     <Content Include="Publish\log4net.xml" />
+    <Content Include="Test\tests.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Test\Itests.cs" />
+    <Compile Include="Test\testc.cs" />
+    <Compile Include="Test\tests.svc.cs">
+      <DependentUpon>tests.svc</DependentUpon>
+    </Compile>
     <Content Include="App_Code\ServiceValidation\UserNamePassValidator.cs" />
     <Compile Include="Charities\ConstructSubsidy.svc.cs">
       <DependentUpon>ConstructSubsidy.svc</DependentUpon>
