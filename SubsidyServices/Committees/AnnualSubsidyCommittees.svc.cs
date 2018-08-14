@@ -5,7 +5,6 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-
 using DAL.Committees;
 using DAL.DbManager;
 using log4net;
@@ -13,17 +12,18 @@ using Models.Committees;
 using Models.Common;
 using Models.HandleFault;
 
+
 namespace SubsidyServices.Committees
 {
     /// <summary>
-    /// خدمة اعانة تأسيسية و سنوية و طارئة للجان التنمية 
+    /// خدمة اعانة سنوية للجان التنمية 
     /// </summary>
     [ServiceBehavior(ConfigurationName = "mlsd.ServicesBehavior")]
-    public class CommitteeServices : ICommitteeServices
+    public class AnnualSubsidyCommittees : IAnnualSubsidyCommittees
     {
-        private readonly ILog _log = LogManager.GetLogger(typeof(CommitteeServices));
+        private readonly ILog _log = LogManager.GetLogger(typeof(AnnualSubsidyCommittees));
 
-        public RequestResult InsertCommitteeServices(
+        public RequestResult InsertAnnualSubsidyCommittees(
             CommitteeRequestInfo CommitteeRequestInfo,
             List<Files> Files
             )
@@ -41,7 +41,7 @@ namespace SubsidyServices.Committees
                 /// Call Database
                 using (CommitteesDAL dal = new CommitteesDAL(new ADO()))
                 {
-                    return dal.InsertCommitteeServicesDAL(
+                    return dal.InsertAnnualSubsidyCommitteesDAL(
                         CommitteeRequestInfo,
                         Files
                         );

@@ -127,7 +127,7 @@ namespace DAL.Committees
         /// <param name="obj"></param>
         /// <param name="Files"></param>
         /// <returns></returns>
-        public RequestResult InsertCommitteeServicesDAL(
+        public RequestResult InsertAnnualSubsidyCommitteesDAL(
             CommitteeRequestInfo obj,
             List<Files> Files
             )
@@ -187,6 +187,61 @@ namespace DAL.Committees
                     Files[i].Id,
                     Files[i].Path,
                     obj.CheckedData.CommissionerNumber
+                    );
+            }
+
+            return RequestResult;
+        }
+
+        public RequestResult InsertFoundationAdditionalSubsidyCommitteesDAL(
+           CommitteeRequestInfo obj
+           )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
+                new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = obj.SubsidyType},
+                new SpInPuts(){KEY = "P_FIN_YEAR" , VALUE = obj.FinancialYear},
+                new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000},
+                new SpOutPuts() { ParameterName ="P_REQUEST_ID" , OracleDbType= OracleDbType.Varchar2 , Size = 300}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.ExecuteStoredProcedure(
+                "SD_P_SUBSIDY_REQUEST",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            RequestResult RequestResult = new RequestResult
+            {
+                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+            };
+
+            for (int i = 0; i < obj.Projects.Count(); i++)
+            {
+                InsertProjectDAL(
+                    RequestResult.RequestId,
+                    obj.CheckedData.CommissionerNumber,
+                    obj.Projects[i]
                     );
             }
 

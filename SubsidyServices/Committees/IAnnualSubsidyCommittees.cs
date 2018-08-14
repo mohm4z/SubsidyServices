@@ -15,13 +15,13 @@ namespace SubsidyServices.Committees
        ConfigurationName = "mlsd.ServiceContractConfig",
        Namespace = "http://mlsd.gov.sa"
        )]
-    public interface ICommitteeServices
+    public interface IAnnualSubsidyCommittees
     {
         [OperationContract]
         [FaultContract(typeof(ValidationFault))]
-        RequestResult InsertCommitteeServices(
-            CommitteeRequestInfo CommitteeRequestInfo,
-            List<Files> Files
-            );
+        RequestResult InsertAnnualSubsidyCommittees(
+             CommitteeRequestInfo CommitteeRequestInfo,
+             List<Files> Files
+             );
     }
 }

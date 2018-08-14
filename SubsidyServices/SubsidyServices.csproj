@@ -72,8 +72,9 @@
     <Content Include="Charities\EmergencySubsidy.svc" />
     <Content Include="Charities\EmployeeSubsidy.svc" />
     <Content Include="Charities\FoundationSubsidy.svc" />
-    <Content Include="Committees\CommitteeServices.svc" />
+    <Content Include="Committees\AnnualSubsidyCommittees.svc" />
     <Content Include="Committees\CommonServices.svc" />
+    <Content Include="Committees\FoundationAdditionalSubsidyCommittees.svc" />
     <Content Include="Common\CommonServices.svc" />
     <Content Include="Cooperative\BoardDirectorsRemuneration.svc" />
     <Content Include="Cooperative\BuildHeadquarter.svc" />
@@ -135,14 +136,18 @@
     <Compile Include="Charities\IEmergencySubsidy.cs" />
     <Compile Include="Charities\IEmployeeSubsidy.cs" />
     <Compile Include="Charities\IFoundationSubsidy.cs" />
-    <Compile Include="Committees\CommitteeServices.svc.cs">
-      <DependentUpon>CommitteeServices.svc</DependentUpon>
+    <Compile Include="Committees\AnnualSubsidyCommittees.svc.cs">
+      <DependentUpon>AnnualSubsidyCommittees.svc</DependentUpon>
     </Compile>
     <Compile Include="Committees\CommonServices.svc.cs">
       <DependentUpon>CommonServices.svc</DependentUpon>
     </Compile>
-    <Compile Include="Committees\ICommitteeServices.cs" />
+    <Compile Include="Committees\FoundationAdditionalSubsidyCommittees.svc.cs">
+      <DependentUpon>FoundationAdditionalSubsidyCommittees.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Committees\IAnnualSubsidyCommittees.cs" />
     <Compile Include="Committees\ICommonServices.cs" />
+    <Compile Include="Committees\IFoundationAdditionalSubsidyCommittees.cs" />
     <Compile Include="Common\CommonServices.svc.cs">
       <DependentUpon>CommonServices.svc</DependentUpon>
     </Compile>
