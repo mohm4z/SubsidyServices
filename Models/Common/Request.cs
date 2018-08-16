@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 
 namespace Models.Common
 {
-    [DataContract(Namespace = "FinancialYears")]
+    [DataContract(Namespace = "Request")]
     public class Request
     {
         [DataMember(Order = 0)]

@@ -149,7 +149,7 @@ namespace SubsidyServices.Common
             {
                 /// Data Validations
                 if (AgencyType <= 0 ||
-                   AgencyLicenseNumber <= 0)
+                    AgencyLicenseNumber <= 0)
                     throw new FaultException<ValidationFault>(new ValidationFault());
 
 
@@ -419,6 +419,14 @@ namespace SubsidyServices.Common
             }
         }
 
+        /// <summary>
+        /// احظار كل الطلبات السابقة
+        /// </summary>
+        /// <param name="AgencyType"></param>
+        /// <param name="AgencyLicenseNumber"></param>
+        /// <param name="SubsidyCode"></param>
+        /// <param name="RequestsStatusId"></param>
+        /// <returns></returns>
         public IEnumerable<Request> GetPreviousRequests(
             int AgencyType,
             long AgencyLicenseNumber,
@@ -474,7 +482,11 @@ namespace SubsidyServices.Common
             }
         }
 
-
+        /// <summary>
+        /// تحويل رقم إلى نص
+        /// </summary>
+        /// <param name="Number"></param>
+        /// <returns></returns>
         public string NumberToText(
             decimal Number
             )
@@ -521,6 +533,66 @@ namespace SubsidyServices.Common
                 throw new FaultException<ValidationFault>(fault);
             }
         }
+
+        /// <summary>
+        /// احضار بيانات الإعانات مع انواع الجمعيه
+        /// </summary>
+        /// <param name="AgencyType"></param>
+        /// <param name="SubsidyCode"></param>
+        /// <returns></returns>
+        public IEnumerable<Subsidy> CheckSubsidyInfo(
+            int? AgencyType,
+            int? SubsidyCode
+            )
+        {
+            try
+            {
+                /// Data Validations
+                if (AgencyType <= 0 ||
+                    SubsidyCode <= 0)
+                    throw new FaultException<ValidationFault>(new ValidationFault());
+
+
+                /// Call Database
+                using (CommonDAL dal = new CommonDAL(new ADO()))
+                {
+                    return dal.CheckSubsidyInfoDAL(
+                        AgencyType,
+                        SubsidyCode
+                        );
+                }
+            }
+            catch (FaultException<ValidationFault>)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = true,
+                    Message = "Parameter not correct",
+                    Description = "Invalid Parameter Name or All Parameters are nullu"
+                };
+
+                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(flex);
+
+                throw flex;
+            }
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                _log.Error(ex);
+
+                throw new FaultException<ValidationFault>(fault);
+            }
+        }
+
+        
 
     }
 }

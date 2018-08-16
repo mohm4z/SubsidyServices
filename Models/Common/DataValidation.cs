@@ -9,8 +9,71 @@ using System.Runtime.Serialization;
 
 namespace Models.Common
 {
+    [DataContract]
+    [AttributeUsage(AttributeTargets.Property)]
+    public class DtoPropertyAttribute : Attribute
+    {
+        [DataMember]
+        public int MaximumLength { get; set; }
+
+        public DtoPropertyAttribute(int maximumLength)
+        {
+            MaximumLength = maximumLength;
+        }
+    }
+
     public static class DataValidation
     {
+        public static string TestMethod(Object Class)
+        {
+            //if (Class == null)
+            //    throw new ArgumentNullException("dto");
+
+            PropertyInfo[] properties = Class.GetType().GetProperties();
+
+            foreach (var property in properties)
+            {
+                var attributes = property.GetCustomAttributes(true);
+                for (int i = 0; i < attributes.Length; i++)
+                {
+                    object attribute = attributes[i];
+                    if (attribute is DtoPropertyAttribute dtoPropAtt)
+                    {
+                        if (property.GetValue(Class, null).ToString().Length > dtoPropAtt.MaximumLength)
+                        {
+                            return $"Maximum Length is: '{dtoPropAtt.MaximumLength}'!";
+                        }
+                    }
+                }
+            }
+
+            return "Attribute Serialization Test Failed";
+        }
+
+        //public static string TestMethod(Object Class)
+        //{
+        //    //if (dto == null)
+        //    //    throw new ArgumentNullException("dto");
+
+        //    PropertyInfo[] properties = Class.GetType().GetProperties();
+
+        //    //var properties = typeof(Class.GetType).GetProperties();
+
+        //    foreach (var property in properties)
+        //    {
+        //        var attributes = property.GetCustomAttributes(true);
+        //        foreach (var attribute in attributes)
+        //        {
+        //            if (attribute is LengthAttribute dtoPropAtt)
+        //            {
+        //                return string.Format("Maximum Length is: '{0}'!", dtoPropAtt.MaxLength);
+        //            }
+        //        }
+        //    }
+
+        //    return "Attribute Serialization Test Failed";
+        //}
+
         /// <summary>
         /// Check All Class Properties if is it Required or not and Check if is it Empty or Default Value
         /// </summary>
@@ -24,9 +87,10 @@ namespace Models.Common
             foreach (PropertyInfo prop in Class.GetType().GetProperties())
             {
                 //DataMemberAttribute propAttr = (DataMemberAttribute)Attribute.GetCustomAttribute(prop.PropertyType, typeof(DataMemberAttribute));
-                //propAttr.IsRequired
+                //if (propAttr.IsRequired)
+                //{ }
 
-                if (Attribute.IsDefined(prop, typeof(ItsRequired)))
+                if (Attribute.IsDefined(prop, typeof(ItsRequiredAttribute)))
                 {
                     //if (prop is null)
                     //    return true;
@@ -72,7 +136,7 @@ namespace Models.Common
             {
                 foreach (PropertyInfo prop in Class.GetType().GetProperties())
                 {
-                    if (Attribute.IsDefined(prop, typeof(ItsRequired)))
+                    if (Attribute.IsDefined(prop, typeof(ItsRequiredAttribute)))
                     {
                         object Val = prop.GetValue(Class, null);
 
@@ -172,8 +236,29 @@ namespace Models.Common
     }
 
 
-    public class ItsRequired : Attribute
+    /// <summary>
+    /// Common Attribute to check data it's Required or not
+    /// </summary>
+    [DataContract]
+    public sealed class ItsRequiredAttribute : Attribute
     {
-        // Common Attribute to check data it's Required or not
+        //public ItsRequiredAttribute()
+        //{
+        //}
+    }
+
+
+    /// <summary>
+    /// Common Attribute to check data Length
+    /// </summary>
+    [DataContract]
+    public sealed class LengthAttribute : Attribute
+    {
+        //public LengthAttribute()
+        //{
+        //}
+
+        public int MinLength { get; set; }
+        public int MaxLength { get; set; }
     }
 }

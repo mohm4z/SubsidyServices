@@ -417,6 +417,45 @@ namespace DAL.Common
             return Ds.Tables[0].DataTableToList<Request>();
         }
 
+        public IEnumerable<Subsidy> CheckSubsidyInfoDAL(
+            int? AgencyType,
+            int? SubsidyCode
+            )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = AgencyType},
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = SubsidyCode},
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_RECORDSET" , OracleDbType= OracleDbType.RefCursor , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+                );
+
+            ado.ExecuteStoredProcedure(
+                "CH_P_GET_SUBSIDY_TYPES",
+                OpParms,
+                out OracleParameterCollection OPCs,
+                out DataSet Ds
+                );
+
+            return Ds.Tables[0].DataTableToList<Subsidy>();
+        }
+
+
         public void Dispose()
         {
             //throw new NotImplementedException();

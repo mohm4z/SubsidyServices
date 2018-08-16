@@ -81,5 +81,12 @@ namespace SubsidyServices.Common
             string SubsidyCode,
             string  RequestsStatusId
             );
+
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        IEnumerable<Subsidy> CheckSubsidyInfo(
+           int? AgencyType,
+           int? SubsidyCode
+           );
     }
 }

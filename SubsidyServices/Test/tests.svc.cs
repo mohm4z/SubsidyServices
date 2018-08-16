@@ -5,6 +5,9 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
+using Models.Common;
+
+
 namespace SubsidyServices.Test
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "tests" in code, svc and config file together.
@@ -15,6 +18,10 @@ namespace SubsidyServices.Test
             testc c
             )
         {
+
+            DataValidation.IsEmptyOrDefault(c);
+            DataValidation.TestMethod(c);
+
             return "NA";
         }
     }

@@ -49,6 +49,7 @@
     <Compile Include="Committees\CommitteeInfo.cs" />
     <Compile Include="Committees\CommitteeRequestInfo.cs" />
     <Compile Include="Committees\Project.cs" />
+    <Compile Include="Common\Subsidy.cs" />
     <Compile Include="Common\AgencyFiles.cs" />
     <Compile Include="Common\AgencyGoals.cs" />
     <Compile Include="Common\AgencyInfo.cs" />

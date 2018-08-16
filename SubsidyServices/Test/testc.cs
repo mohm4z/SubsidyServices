@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 using System.Runtime.Serialization;
+using Models.Common;
 
 
 namespace SubsidyServices.Test
@@ -15,12 +16,16 @@ namespace SubsidyServices.Test
             IsRequired = false,
             EmitDefaultValue = true
             )]
-        public int c1;
+        public int C1;
 
 
-        [DataMember(
-            IsRequired = true
-            )]
-        public int c2 = 0;
+        [ItsRequired]
+        [DataMember(IsRequired = true)]
+        public int C2 = 0;
+
+        [ItsRequired]
+        [DtoProperty(1)]
+        [DataMember(IsRequired = true)]
+        public int C3 { get; set; }
     }
 }
