@@ -15,10 +15,10 @@ namespace Models.Cooperative
     [DataContract(Namespace = "FoundationInfo")]
     public class FoundationInfo
     {
-        [DataMember(Order = 0)]
+        [DataMember(Order = 0, IsRequired = true)]
         public CheckedData CheckedData { get; set; }
 
-        [DataMember(Order = 1)]
+        [DataMember(Order = 1, IsRequired = true)]
         public ManagersInfo ManagersInfo { get; set; }
 
         /// <summary>

@@ -13,10 +13,10 @@ namespace Models.Charities
     [DataContract(Namespace = "ConstructInfo")]
     public class ConstructInfo
     {
-        [DataMember(Order = 0)]
+        [DataMember(Order = 0, IsRequired = true)]
         public CheckedData CheckedData { get; set; }
 
-        [DataMember(Order = 1)]
+        [DataMember(Order = 1, IsRequired = true)]
         public CharityMainData CharityMainData { get; set; }
 
         /// <summary>

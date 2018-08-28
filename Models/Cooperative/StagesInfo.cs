@@ -20,7 +20,7 @@ namespace Models.Cooperative
         /// STG_DT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order =0)]
+        [DataMember(Order = 0)]
         public string StageDate { get; set; }
 
         /// <summary>

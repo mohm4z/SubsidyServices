@@ -152,6 +152,13 @@ namespace Models.Common
                         if (prop is null)
                             return true;
 
+
+                        //string Val = prop.GetValue(Class, null).ToString();
+
+                        //if (String.IsNullOrWhiteSpace(Val) || Val == "0")
+                        //{
+                        //}
+
                         object Val = prop.GetValue(Class, null);
 
                         if (prop.PropertyType == typeof(string))

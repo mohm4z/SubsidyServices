@@ -15,7 +15,7 @@ namespace Models.Charities
     [DataContract(Namespace = "EmployeeInfo")]
     public class EmployeeInfo
     {
-        [DataMember(Order = 0)]
+        [DataMember(Order = 0, IsRequired = true)]
         public CheckedData CheckedData { get; set; }
 
         /// <summary>

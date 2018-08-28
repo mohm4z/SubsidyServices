@@ -15,7 +15,7 @@ namespace Models.Committees
     [DataContract(Namespace = "CommitteeRequestInfo")]
     public class CommitteeRequestInfo
     {
-        [DataMember(Order = 0)]
+        [DataMember(Order = 0, IsRequired = true)]
         public CheckedData CheckedData { get; set; }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Models.Committees
         [DataMember(Order = 2)]
         public int FinancialYear { get; set; }
 
-        [DataMember(Order = 3)]
+        [DataMember(Order = 3, IsRequired = true)]
         public List<Project> Projects { get; set; }
 
     }

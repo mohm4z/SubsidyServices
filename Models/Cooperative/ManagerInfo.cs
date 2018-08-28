@@ -15,16 +15,16 @@ namespace Models.Cooperative
     [DataContract(Namespace = "AccountantInfo")]
     public class ManagerInfo
     {
-        [DataMember(Order = 0)]
+        [DataMember(Order = 0, IsRequired = true)]
         public CheckedData CheckedData { get; set; }
 
-        [DataMember(Order = 1)]
+        [DataMember(Order = 1, IsRequired = true)]
         public ManagersInfo ManagersInfo { get; set; }
 
-        [DataMember(Order = 2)]
+        [DataMember(Order = 2, IsRequired = true)]
         public CooEmployeeInfo CooEmployeeInfo { get; set; }
 
-        [DataMember(Order = 3)]
+        [DataMember(Order = 3, IsRequired = true)]
         public MeetingInfo MeetingInfo { get; set; }
 
         /// <summary>
