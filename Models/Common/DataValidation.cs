@@ -34,10 +34,10 @@ namespace Models.Common
             foreach (var property in properties)
             {
                 var attributes = property.GetCustomAttributes(true);
+
                 for (int i = 0; i < attributes.Length; i++)
                 {
-                    object attribute = attributes[i];
-                    if (attribute is DtoPropertyAttribute dtoPropAtt)
+                    if (attributes[i] is DtoPropertyAttribute dtoPropAtt)
                     {
                         if (property.GetValue(Class, null).ToString().Length > dtoPropAtt.MaximumLength)
                         {
@@ -92,8 +92,9 @@ namespace Models.Common
 
                 if (Attribute.IsDefined(prop, typeof(ItsRequiredAttribute)))
                 {
-                    //if (prop is null)
-                    //    return true;
+                    if (prop is null)
+                        return true;
+
                     object Val = prop.GetValue(Class, null);
 
                     if (prop.PropertyType == typeof(string))
@@ -118,6 +119,12 @@ namespace Models.Common
 
                     //}
                 }
+
+
+                if (Attribute.IsDefined(prop, typeof(ItsRequiredAttribute)))
+                {
+
+                }
             }
 
             return false;
@@ -131,6 +138,10 @@ namespace Models.Common
         public static bool IsEmptyOrDefaultList(Object ListOfClass)
         {
             dynamic List = ListOfClass;
+            var s = List.Count;
+
+            if (List.Count <= 0)
+                return true;
 
             foreach (var Class in List)
             {
@@ -138,6 +149,9 @@ namespace Models.Common
                 {
                     if (Attribute.IsDefined(prop, typeof(ItsRequiredAttribute)))
                     {
+                        if (prop is null)
+                            return true;
+
                         object Val = prop.GetValue(Class, null);
 
                         if (prop.PropertyType == typeof(string))
