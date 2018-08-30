@@ -18,6 +18,7 @@ namespace Models.Common
         /// رقم الملف
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 10)]
         [DataMember(Order = 0)]
         public int Id { get; set; }
 
@@ -25,6 +26,7 @@ namespace Models.Common
         /// إسم او مسار الملف
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1000)]
         [DataMember(Order = 1)]
         public string Path { get; set; }
     }

@@ -17,6 +17,7 @@ namespace Models.Charities
         /// P_SUBSIDY_CODE
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 3)]
         [DataMember(Order = 0)]
         public int SubsidyType { get; set; }
 
@@ -25,6 +26,7 @@ namespace Models.Charities
         /// P_BENEF_COUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 7)]
         [DataMember(Order = 1)]
         public int BeneficiariesCount { get; set; }
 
@@ -33,6 +35,7 @@ namespace Models.Charities
         /// P_VOLUNTEERS_COUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 5)]
         [DataMember(Order = 2)]
         public int VolunteersCount { get; set; }
 
@@ -41,6 +44,7 @@ namespace Models.Charities
         /// P_EMP_SA_COUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 5)]
         [DataMember(Order = 3)]
         public int SaudiEmployeesCount { get; set; }
 
@@ -49,6 +53,7 @@ namespace Models.Charities
         /// P_EMP_NONSA_COUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 5)]
         [DataMember(Order = 4)]
         public int NonSaudiEmployeesCount { get; set; }
 
@@ -57,6 +62,7 @@ namespace Models.Charities
         /// P_BALANCE_SHEET_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 5)]
         public int IsbudgetIssued { get; set; }
 
@@ -65,6 +71,7 @@ namespace Models.Charities
         /// P_BOARD_MEET_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 6)]
         public int IsBoardOfDirectorsMeetingsRegular { get; set; }
 
@@ -73,6 +80,7 @@ namespace Models.Charities
         /// P_PUB_BOARD_MEET_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 7)]
         public int IsGeneralAssemblyMeetingsRegular { get; set; }
 
@@ -81,6 +89,7 @@ namespace Models.Charities
         /// P_PUB_BOARD_MEET_REASON
         /// </summary>
         //[ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 8)]
         public string GeneralAssemblyIrregularityMeetingReason { get; set; }
 
@@ -88,6 +97,8 @@ namespace Models.Charities
         /// إجمالي المصروفات العمومية والإدارية خلال العام السابق
         /// P_LAST_YEAR_EXPENSES
         /// </summary>
+        //[ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 9)]
         public decimal TotalExpensesAdministrativePreviousYear { get; set; }
 
@@ -95,6 +106,8 @@ namespace Models.Charities
         /// إجمالي المصروفات على الأنشطة والبرامج خلال العام السابق
         /// P_LAST_YEAR_ROG_EXPENSES
         /// </summary>
+        //[ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 10)]
         public decimal TotalExpensesForActivitiesPreviousYear { get; set; }
 
@@ -103,14 +116,16 @@ namespace Models.Charities
         /// P_LAST_YEAR_PRG_COUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 11)]
-        public int ProgramsImplementedPreviousYearCount { get; set; }
+        public decimal ProgramsImplementedPreviousYearCount { get; set; }
 
         /// <summary>
         /// نتيجة تقييم زيارة الحوكمة
         /// P_MAKEEN_EAVL_RESULT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 5)]
         [DataMember(Order = 12)]
         public int GovernmentEvaluationResult { get; set; }
 
@@ -119,6 +134,7 @@ namespace Models.Charities
         /// P_PROG_SUMMARY
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 13)]
         public string BriefAboutEmergencyAssembly { get; set; }
 
@@ -127,6 +143,7 @@ namespace Models.Charities
         /// P_PARTNERS_FLAG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 14)]
         public int AreTherePartners { get; set; }
 
@@ -135,6 +152,7 @@ namespace Models.Charities
         /// P_PARTNERS_LIST
         /// </summary>
         //[ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 15)]
         public string PartnerNames { get; set; }
 
@@ -143,6 +161,7 @@ namespace Models.Charities
         /// P_PARTNERS_FUND_SUPPORT
         /// </summary>
         //[ItsRequired]
+        [Length(MaxLength = 10.2)]
         [DataMember(Order = 16)]
         public decimal TotalPartnerSupport { get; set; }
 
@@ -151,6 +170,7 @@ namespace Models.Charities
         /// P_PROG_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 17)]
         public decimal RequiredSubsidy { get; set; }
     }

@@ -279,7 +279,7 @@ namespace Models.Common
         //{
         //}
 
-        public int MinLength { get; set; }
-        public int MaxLength { get; set; }
+        public double MinLength { get; set; }
+        public double MaxLength { get; set; }
     }
 }

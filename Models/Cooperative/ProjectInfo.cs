@@ -24,90 +24,102 @@ namespace Models.Cooperative
 
         /// <summary>
         /// هل توجد دراسة جدوى اقتصادية للمشروع
-        /// ECONOMIC_FEASIBILITY_FLG
+        /// P_ECONOMIC_FEASIBILITY_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 2)]
         public int IsThereFeasibilityStudy { get; set; }
 
         /// <summary>
         /// نوع المشروع
-        /// PROJ_TYPE
+        /// P_PROJ_TYPE
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 100)]
         [DataMember(Order = 3)]
         public string ProjectType { get; set; }
 
         /// <summary>
         /// وصف المشروع
-        /// PROJ_DESC
+        /// P_PROJ_DESC
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 4)]
         public string ProjectDescription { get; set; }
 
         /// <summary>
         /// موقع المشروع/منطقة خدمات المشروع
-        /// PROJ_LOCATION
+        /// P_PROJ_LOCATION
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 200)]
         [DataMember(Order = 5)]
         public string ProjectLocation { get; set; }
 
         /// <summary>
         /// الجهة المنفذة للمشروع
-        /// PROJ_EXEC_REGION
+        /// P_PROJ_EXEC_REGION
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 150)]
         [DataMember(Order = 6)]
         public string ExecutingAgency { get; set; }
 
         /// <summary>
         /// هل توجد موافقة على تنفيذ المشروع
-        /// PROJ_AGREE_FLG
+        /// P_PROJ_AGREE_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 7)]
         public int IsThereImplementProjectAgreement { get; set; }
 
         /// <summary>
         /// التكلفة الفعلية للمشروع
-        /// PROJ_ACTUAL_COST
+        /// P_PROJ_ACTUAL_COST
         /// </summary>
+        //[ItsRequired]
+        [Length(MaxLength = 10)]
         [DataMember(Order = 8)]
-        public decimal ActualCost { get; set; }
+        public int ActualCost { get; set; }
 
         /// <summary>
         /// توزيع المبالغ على مراحل المشروع
-        /// PROJ_STAGES_FUND
+        /// P_PROJ_STAGES_FUND
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 9)]
         public string DistributeAmountsOnStages { get; set; }
 
         /// <summary>
         /// هل المبلغ المصروف في بيان الصرف مطابق مع ماظهر في الميزانية
-        /// PROJ_EXPNS_CMBTL_FLG
+        /// P_PROJ_EXPNS_CMBTL_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 10)]
         public int IsExpendedIdenticalBudget { get; set; }
 
         /// <summary>
         /// المبلغ الذي تم رصده من قبل الجمعية للمشروع
-        /// PROJ_REG_SHARE_AMNT
+        /// P_PROJ_REG_SHARE_AMNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 10)]
         [DataMember(Order = 11)]
-        public decimal AmountForProject { get; set; }
+        public int AmountForProject { get; set; }
 
         /// <summary>
         /// المبلغ المصروف على المشروع الظاهر في الميزانية
-        /// PROJ_EXPEND_BAL_AMNT
+        /// P_PROJ_EXPEND_BAL_AMNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 10)]
         [DataMember(Order = 12)]
-        public decimal AmountExpendedOnBudget { get; set; }
+        public int AmountExpendedOnBudget { get; set; }
       
 
     }

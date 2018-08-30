@@ -20,6 +20,7 @@ namespace Models.Cooperative
         /// P_BOARD_CHAIRMAN_NAME
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 150)]
         [DataMember(Order = 0)]
         public string ChairmanBoardName { get; set; }
 
@@ -28,6 +29,7 @@ namespace Models.Cooperative
         /// P_BOARD_CHAIRMAN_MOBILE
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12)]
         [DataMember(Order = 1)]
         public long ChairmanBoardMobileNumber { get; set; }
 
@@ -36,6 +38,7 @@ namespace Models.Cooperative
         /// P_CEO_NAME
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 150)]
         [DataMember(Order = 2)]
         public string ExecutiveDirectorName { get; set; }
 
@@ -44,6 +47,7 @@ namespace Models.Cooperative
         /// P_CEO_MOB_NO
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12)]
         [DataMember(Order = 3)]
         public long ExecutiveDirectorMobile { get; set; }
     }

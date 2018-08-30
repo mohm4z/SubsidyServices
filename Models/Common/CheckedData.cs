@@ -20,22 +20,25 @@ namespace Models.Common
         /// P_REG_TYPE_CODE  
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2)]
         [DataMember(Order = 0)]
         public int AgencyType { get; set; }
 
         /// <summary>
         /// رقم ترخيص الجهه
-        /// P_REG_ID
+        /// P_REG_ID / P_SOC_REG_NO
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 7)]
         [DataMember(Order = 1)]
-        public long AgencyLicenseNumber { get; set; }
+        public int AgencyLicenseNumber { get; set; }
 
         /// <summary>
         /// رقم هوية المفوض 
         /// P_LOGIN_ID
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 10)]
         [DataMember(Order = 2)]
         public string CommissionerNumber { get; set; }
 

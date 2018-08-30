@@ -24,6 +24,7 @@ namespace Models.Charities
         /// P_PROG_NAME
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 150)]
         [DataMember(Order = 2)]
         public string ProgramName { get; set; }
 
@@ -32,6 +33,7 @@ namespace Models.Charities
         /// P_PROG_AUDIENCES
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 3)]
         public string TargetedPeoples { get; set; }
 
@@ -40,6 +42,7 @@ namespace Models.Charities
         /// P_PROG_GOALS
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 4)]
         public string ProgramGoals { get; set; }
 
@@ -48,6 +51,7 @@ namespace Models.Charities
         /// P_IMPLEMENTATION_DT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 8)]
         [DataMember(Order = 5)]
         public string ImplementationDate { get; set; }
 
@@ -56,6 +60,7 @@ namespace Models.Charities
         /// P_IMPLEMENTATION_DESC
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 6)]
         public string ImplementationMethod { get; set; }
 
@@ -64,6 +69,7 @@ namespace Models.Charities
         /// P_IMPLEMENTATION_DURATION
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 200)]
         [DataMember(Order = 7)]
         public decimal ImplementationDuration { get; set; }
 
@@ -72,6 +78,7 @@ namespace Models.Charities
         /// P_TOTAL_PROG_COST
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 10.2)]
         [DataMember(Order = 8)]
         public decimal TotalCost { get; set; }
 
@@ -80,14 +87,16 @@ namespace Models.Charities
         /// P_PROG_GOALS_CMPTBL_FLAG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 9)]
-        public decimal CompatibilityOfProgramsWithObjectives { get; set; }
+        public int CompatibilityOfProgramsWithObjectives { get; set; }
 
         /// <summary>
         /// إجمالي ما تم رصدة للمشروع من الجمعية.
         /// P_ORG_FUND_SUPPORT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 10.2)]
         [DataMember(Order = 10)]
         public decimal AllocatedAmountToProject { get; set; }
 
@@ -96,6 +105,7 @@ namespace Models.Charities
         /// P_ORG_FUND_SUPPORT_PRCNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 5.2)]
         [DataMember(Order = 11)]
         public decimal AllocatedPercentageToProject { get; set; }
 
