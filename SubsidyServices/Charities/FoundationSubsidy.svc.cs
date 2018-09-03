@@ -99,10 +99,24 @@ namespace SubsidyServices.Charities
             try
             {
                 /// Data Validations
-                if (DataValidation.IsEmptyOrDefault(CheckedData) ||
-                    String.IsNullOrEmpty(ChairmanBoardMobileNumber) ||
-                    String.IsNullOrEmpty(ChairmanBoardName))
-                    throw new FaultException<ValidationFault>(new ValidationFault());
+                DataValidation.IsEmptyOrDefault2(CheckedData);
+
+                if (String.IsNullOrEmpty(ChairmanBoardMobileNumber) ||
+                    String.IsNullOrEmpty(ChairmanBoardName) ||
+                    ChairmanBoardMobileNumber.Length > 150 ||
+                     ChairmanBoardName.Length > 150
+                    )
+                {
+                    string MS = "Invalid Parameters ChairmanBoardMobileNumber or ChairmanBoardName is Required but have null or empty or 0 value or length > 150";
+
+                    throw new FaultException<ValidationFault>(
+                        new ValidationFault()
+                        {
+                            Result = false,
+                            Message = MS,
+                            Description = MS
+                        }, new FaultReason(MS));
+                }
 
 
                 /// Call Database
@@ -115,16 +129,16 @@ namespace SubsidyServices.Charities
                         ChairmanBoardName);
                 }
             }
-            catch (FaultException<ValidationFault>)
+            catch (FaultException<ValidationFault> flex)
             {
-                ValidationFault fault = new ValidationFault
-                {
-                    Result = true,
-                    Message = "Parameter not correct",
-                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
-                };
+                //ValidationFault fault = new ValidationFault
+                //{
+                //    Result = true,
+                //    Message = "Parameter not correct",
+                //    Description = "Invalid Parameters is Required but have null or empty or 0 value"
+                //};
 
-                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                //var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
                 _log.Error(flex);
 

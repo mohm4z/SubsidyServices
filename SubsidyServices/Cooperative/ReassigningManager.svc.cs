@@ -36,13 +36,20 @@ namespace SubsidyServices.Cooperative
             try
             {
                 /// Data Validations
-                if (DataValidation.IsEmptyOrDefault(ManagerInfo) ||
-                    DataValidation.IsEmptyOrDefault(ManagerInfo.CheckedData) ||
-                    DataValidation.IsEmptyOrDefault(ManagerInfo.ManagersInfo) ||
-                    DataValidation.IsEmptyOrDefault(ManagerInfo.CooEmployeeInfo) ||
-                    DataValidation.IsEmptyOrDefault(ManagerInfo.MeetingInfo) ||
-                    DataValidation.IsEmptyOrDefaultList(Files))
-                    throw new FaultException<ValidationFault>(new ValidationFault());
+                DataValidation.IsEmptyOrDefault2(ManagerInfo);
+                DataValidation.IsEmptyOrDefault2(ManagerInfo.CheckedData);
+                DataValidation.IsEmptyOrDefault2(ManagerInfo.ManagersInfo);
+                DataValidation.IsEmptyOrDefault2(ManagerInfo.CooEmployeeInfo);
+                DataValidation.IsEmptyOrDefault2(ManagerInfo.MeetingInfo);
+                DataValidation.IsEmptyOrDefaultList2(Files);
+
+                //if (DataValidation.IsEmptyOrDefault(ManagerInfo) ||
+                //    DataValidation.IsEmptyOrDefault(ManagerInfo.CheckedData) ||
+                //    DataValidation.IsEmptyOrDefault(ManagerInfo.ManagersInfo) ||
+                //    DataValidation.IsEmptyOrDefault(ManagerInfo.CooEmployeeInfo) ||
+                //    DataValidation.IsEmptyOrDefault(ManagerInfo.MeetingInfo) ||
+                //    DataValidation.IsEmptyOrDefaultList(Files))
+                //    throw new FaultException<ValidationFault>(new ValidationFault());
 
 
                 /// Call Database
@@ -54,16 +61,16 @@ namespace SubsidyServices.Cooperative
                         );
                 }
             }
-            catch (FaultException<ValidationFault>)
+            catch (FaultException<ValidationFault> flex)
             {
-                ValidationFault fault = new ValidationFault
-                {
-                    Result = true,
-                    Message = "Parameter not correct",
-                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
-                };
+                //ValidationFault fault = new ValidationFault
+                //{
+                //    Result = true,
+                //    Message = "Parameter not correct",
+                //    Description = "Invalid Parameters is Required but have null or empty or 0 value"
+                //};
 
-                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                //var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
                 _log.Error(flex);
 

@@ -30,12 +30,18 @@ namespace SubsidyServices.Cooperative
             try
             {
                 /// Data Validations
-                if (DataValidation.IsEmptyOrDefault(ResearchInfo) ||
-                    DataValidation.IsEmptyOrDefault(ResearchInfo.CheckedData) ||
-                    DataValidation.IsEmptyOrDefault(ResearchInfo.ManagersInfo) ||
-                    DataValidation.IsEmptyOrDefault(ResearchInfo.MeetingInfo) ||
-                    DataValidation.IsEmptyOrDefaultList(Files))
-                    throw new FaultException<ValidationFault>(new ValidationFault());
+                DataValidation.IsEmptyOrDefault2(ResearchInfo);
+                DataValidation.IsEmptyOrDefault2(ResearchInfo.CheckedData);
+                DataValidation.IsEmptyOrDefault2(ResearchInfo.ManagersInfo);
+                DataValidation.IsEmptyOrDefault2(ResearchInfo.MeetingInfo);
+                DataValidation.IsEmptyOrDefaultList2(Files);
+
+                //if (DataValidation.IsEmptyOrDefault(ResearchInfo) ||
+                //    DataValidation.IsEmptyOrDefault(ResearchInfo.CheckedData) ||
+                //    DataValidation.IsEmptyOrDefault(ResearchInfo.ManagersInfo) ||
+                //    DataValidation.IsEmptyOrDefault(ResearchInfo.MeetingInfo) ||
+                //    DataValidation.IsEmptyOrDefaultList(Files))
+                //    throw new FaultException<ValidationFault>(new ValidationFault());
 
 
                 /// Call Database
@@ -47,16 +53,16 @@ namespace SubsidyServices.Cooperative
                         );
                 }
             }
-            catch (FaultException<ValidationFault>)
+            catch (FaultException<ValidationFault> flex)
             {
-                ValidationFault fault = new ValidationFault
-                {
-                    Result = true,
-                    Message = "Parameter not correct",
-                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
-                };
+                //ValidationFault fault = new ValidationFault
+                //{
+                //    Result = true,
+                //    Message = "Parameter not correct",
+                //    Description = "Invalid Parameters is Required but have null or empty or 0 value"
+                //};
 
-                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                //var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
                 _log.Error(flex);
 
