@@ -71,7 +71,7 @@ namespace Models.Charities
         [ItsRequired]
         [Length(MaxLength = 200)]
         [DataMember(Order = 7)]
-        public decimal ImplementationDuration { get; set; }
+        public string ImplementationDuration { get; set; }
 
         /// <summary>
         /// التكلفة الاجمالية للمشروع

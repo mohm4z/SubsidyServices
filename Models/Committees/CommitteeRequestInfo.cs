@@ -20,15 +20,19 @@ namespace Models.Committees
 
         /// <summary>
         /// نوع الاعانة
-        /// SUBSIDY_CODE
+        /// P_SUBSIDY_CODE
         /// </summary>
+        [ItsRequired]
+        [Length(MaxLength = 3)]
         [DataMember(Order = 1)]
         public int SubsidyType { get; set; }
 
         /// <summary>
         /// السنة المالية
-        /// FIN_YEAR
+        /// P_FIN_YEAR
         /// </summary>
+        [ItsRequired]
+        [Length(MaxLength = 8)]
         [DataMember(Order = 2)]
         public int FinancialYear { get; set; }
 

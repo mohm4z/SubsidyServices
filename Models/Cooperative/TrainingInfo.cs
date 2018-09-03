@@ -31,6 +31,7 @@ namespace Models.Cooperative
         /// P_PARTICIPANTS_COUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 3)]
         [DataMember(Order = 3)]
         public int ParticipantsCount { get; set; }
 
@@ -39,6 +40,7 @@ namespace Models.Cooperative
         /// P_PARTICIPANTS_NAMES
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 500)]
         [DataMember(Order = 4)]
         public string TraineesNames { get; set; }
 
@@ -47,6 +49,7 @@ namespace Models.Cooperative
         /// P_PARTICIPATION_TYPE_CD
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 3)]
         [DataMember(Order = 5)]
         public int ParticipationType { get; set; }
 
@@ -55,6 +58,7 @@ namespace Models.Cooperative
         /// P_PARTICIPANTS_LOCATION
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 200)]
         [DataMember(Order = 6)]
         public string ParticipationLocation { get; set; }
 
@@ -63,6 +67,7 @@ namespace Models.Cooperative
         /// P_PARTICIPANT_MEMBER_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 7)]
         public int IsTrainersFromAgency { get; set; }
 
@@ -71,6 +76,7 @@ namespace Models.Cooperative
         /// P_PARTICIPATION_SUBJECT_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 8)]
         public int IsTrainingTopicRelatedToAgency { get; set; }
 
@@ -79,6 +85,7 @@ namespace Models.Cooperative
         /// P_PARTICIPATION_ACTUAL_COST
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 9)]
         public decimal ActualCost { get; set; }
 
@@ -87,6 +94,7 @@ namespace Models.Cooperative
         /// P_PARTICIPATION_10PRCNT_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 10)]
         public int IsTheirApprovalToAllocateCosts { get; set; }
 
@@ -95,6 +103,7 @@ namespace Models.Cooperative
         /// P_PARTICIPATION_AGREE_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 11)]
         public int IsThereParticipationApproved { get; set; }
 
@@ -103,6 +112,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 12)]
         public decimal RequiredSubsidy { get; set; }
 

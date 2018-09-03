@@ -116,9 +116,9 @@ namespace Models.Charities
         /// P_LAST_YEAR_PRG_COUNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 5)]
         [DataMember(Order = 11)]
-        public decimal ProgramsImplementedPreviousYearCount { get; set; }
+        public int ProgramsImplementedPreviousYearCount { get; set; }
 
         /// <summary>
         /// نتيجة تقييم زيارة الحوكمة

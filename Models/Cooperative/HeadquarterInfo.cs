@@ -26,6 +26,7 @@ namespace Models.Cooperative
         /// P_PARTNERS_FLAG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 2)]
         public int IsAgencyHaveSupportedBeforeInRebuild { get; set; }
 
@@ -34,6 +35,7 @@ namespace Models.Cooperative
         /// P_PARTNERS_FUND_SUPPORT
         /// </summary>
         //[ItsRequired]
+        [Length(MaxLength = 10)]
         [DataMember(Order = 3)]
         public string AmountOfSupported { get; set; }
         // في حالة يقبل فارغ ويكون رقم
@@ -43,6 +45,7 @@ namespace Models.Cooperative
         /// P_PARTNERS_LIST
         /// </summary>
         //[ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 4)]
         public string AgencyOfSupported { get; set; }
 
@@ -51,6 +54,7 @@ namespace Models.Cooperative
         /// P_LAND_INSTRUMENT_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 5)]
         public int IsAgencyHaveLandToBuild { get; set; }
 
@@ -59,15 +63,17 @@ namespace Models.Cooperative
         /// P_PROJ_REG_SHARE_AMNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 10)]
         [DataMember(Order = 6)]
-        public decimal AmountForProjectAsNumber { get; set; }
+        public long AmountForProjectAsNumber { get; set; }
 
         /// <summary>
         /// المبلغ المصروف على المشروع الظاهر في الميزانية
         /// P_PROJ_EXPEND_BAL_AMNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 10)]
         [DataMember(Order = 7)]
-        public decimal ExpendedOnProjectInBudget { get; set; }
+        public long ExpendedOnProjectInBudget { get; set; }
     }
 }

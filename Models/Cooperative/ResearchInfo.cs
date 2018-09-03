@@ -29,6 +29,7 @@ namespace Models.Cooperative
         /// P_RSRCH_SUBJECT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 3)]
         public string ResearchSubject { get; set; }
 
@@ -37,6 +38,7 @@ namespace Models.Cooperative
         /// P_RSRCH_GOOLS
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 4)]
         public string ResearchGools { get; set; }
 
@@ -45,6 +47,7 @@ namespace Models.Cooperative
         /// P_RSRCH_SUBJECT_ACTIVITIES
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 5)]
         public string ActivityResearchRelationship { get; set; }
 
@@ -53,6 +56,7 @@ namespace Models.Cooperative
         /// P_RSRCH_BOD_AGREE_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 6)]
         public int IsThereApprovalForResearch { get; set; }
 
@@ -61,14 +65,16 @@ namespace Models.Cooperative
         /// P_RSRCH_MINISTRY_AGREE_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 7)]
         public int IsThereApprovalFromMinistryForResearch { get; set; }
 
         /// <summary>
         /// التكلفة المقدرة لإنجاز الدراسة او البحث رقماً
-        /// P_RSRCH_EXPECTED_COST_FLG
+        /// P_RSRCH_EXPECTED_COST
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 8)]
         public decimal CostForResearchAsNumber { get; set; }
 
@@ -77,6 +83,7 @@ namespace Models.Cooperative
         /// P_SOCIALS_SPENT_ON
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 9)]
         public string AgenciesDisbursedOnIt { get; set; }
 
@@ -85,6 +92,7 @@ namespace Models.Cooperative
         /// P_RSRCH_COST_LETTER_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 10)]
         public int IsCostStatementBeenAttached { get; set; }
 
@@ -93,6 +101,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 11)]
         public decimal RequiredSubsidy { get; set; }
     }

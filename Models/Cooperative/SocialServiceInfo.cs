@@ -27,6 +27,7 @@ namespace Models.Cooperative
         /// P_SOCIALS_SPENT_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12)]
         [DataMember(Order = 2)]
         public decimal AmountForSocialServicetAsNumber { get; set; }
 
@@ -35,6 +36,7 @@ namespace Models.Cooperative
         /// P_SOCIALS_SPENT_ON
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 3)]
         public string AgenciesDisbursedOnIt { get; set; }
 
@@ -43,6 +45,7 @@ namespace Models.Cooperative
         /// P_SOCIALS_BOD_AGREE_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 4)]
         public int IsThereApprovingDisbursementOfSociaServices { get; set; }
 
@@ -51,6 +54,7 @@ namespace Models.Cooperative
         /// P_SOCIALS_SPENT_LETTER_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 5)]
         public int IsThereStatementOfDisbursedAgenciesAndCertified { get; set; }
 
@@ -59,6 +63,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 6)]
         public decimal RequiredSubsidy { get; set; }
     }

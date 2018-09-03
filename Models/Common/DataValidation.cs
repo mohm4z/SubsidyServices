@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.ServiceModel;
+using Models.HandleFault;
 
 namespace Models.Common
 {
@@ -24,30 +26,46 @@ namespace Models.Common
 
     public static class DataValidation
     {
-        public static string TestMethod(Object Class)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Class"></param>
+        public static void TestMethod(Object Class)
         {
-            //if (Class == null)
-            //    throw new ArgumentNullException("dto");
-
             PropertyInfo[] properties = Class.GetType().GetProperties();
 
             foreach (var property in properties)
             {
                 var attributes = property.GetCustomAttributes(true);
 
+                string Val = property.GetValue(Class, null).ToString();
+
                 for (int i = 0; i < attributes.Length; i++)
                 {
-                    if (attributes[i] is DtoPropertyAttribute dtoPropAtt)
+                    if (attributes[i] is ItsRequiredAttribute isrq)
                     {
-                        if (property.GetValue(Class, null).ToString().Length > dtoPropAtt.MaximumLength)
-                        {
-                            return $"Maximum Length is: '{dtoPropAtt.MaximumLength}'!";
-                        }
+                        if (String.IsNullOrWhiteSpace(Val) || Val == "0")
+                            throw new FaultException<ValidationFault>(
+                                new ValidationFault()
+                                {
+                                    Result = false,
+                                    Message = "Invalid Parameters : " + property.Name + " is Required but have null or empty or 0 value",
+                                    Description = "Invalid Parameters : " + property.Name + " is Required but have null or empty or 0 value"
+                                });
+                    }
+                    else if (attributes[i] is LengthAttribute length)
+                    {
+                        if (Val.Length == length.MaxLength)
+                            throw new FaultException<ValidationFault>(
+                                new ValidationFault()
+                                {
+                                    Result = false,
+                                    Message = "Invalid Parameters : " + property.Name + " Length should be " + length.MaxLength,
+                                    Description = "Invalid Parameters : " + property.Name + " Length should be " + length.MaxLength,
+                                });
                     }
                 }
             }
-
-            return "Attribute Serialization Test Failed";
         }
 
         //public static string TestMethod(Object Class)

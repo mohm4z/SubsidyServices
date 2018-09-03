@@ -201,8 +201,10 @@ namespace DAL.Committees
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
                 new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+
                 new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = obj.SubsidyType},
                 new SpInPuts(){KEY = "P_FIN_YEAR" , VALUE = obj.FinancialYear},
+
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 

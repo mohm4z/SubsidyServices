@@ -26,6 +26,7 @@ namespace Models.Charities
         /// P_SBSD_STATUS_REASONS
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 2)]
         public string Causes { get; set; }
 
@@ -34,6 +35,7 @@ namespace Models.Charities
         /// P_SBSD_STATUS_PROCEDURES
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 3)]
         public string ActionsTaken { get; set; }
 
@@ -42,6 +44,7 @@ namespace Models.Charities
         /// P_CURR_BALANCE
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 4)]
         public decimal BankBalance { get; set; }
 

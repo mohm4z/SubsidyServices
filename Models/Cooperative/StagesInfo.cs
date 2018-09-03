@@ -20,6 +20,7 @@ namespace Models.Cooperative
         /// STG_DT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 8)]
         [DataMember(Order = 0)]
         public string StageDate { get; set; }
 
@@ -28,6 +29,7 @@ namespace Models.Cooperative
         /// STG_COST
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 1)]
         public decimal StageCost { get; set; }
 
@@ -36,6 +38,7 @@ namespace Models.Cooperative
         /// STG_NOTE
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 2)]
         public string Notes { get; set; }
 

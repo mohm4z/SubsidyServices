@@ -226,6 +226,7 @@ namespace DAL.Charities
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = emg.CheckedData.AgencyType},
                 new SpInPuts(){KEY = "P_REG_ID" , VALUE = emg.CheckedData.AgencyLicenseNumber},
+
                 new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = emg.CharityMainData.SubsidyType},
                 new SpInPuts(){KEY = "P_BENEF_COUNT" , VALUE = emg.CharityMainData.BeneficiariesCount},
                 new SpInPuts(){KEY = "P_VOLUNTEERS_COUNT" , VALUE = emg.CharityMainData.VolunteersCount},
@@ -240,13 +241,18 @@ namespace DAL.Charities
                 new SpInPuts(){KEY = "P_LAST_YEAR_PRG_COUNT" , VALUE = emg.CharityMainData.ProgramsImplementedPreviousYearCount},
                 new SpInPuts(){KEY = "P_MAKEEN_EAVL_RESULT" , VALUE = emg.CharityMainData.GovernmentEvaluationResult},
                 new SpInPuts(){KEY = "P_SBSD_STATUS_DESC" , VALUE = emg.CharityMainData.BriefAboutEmergencyAssembly},
+
                 new SpInPuts(){KEY = "P_SBSD_STATUS_REASONS" , VALUE = emg.Causes},
                 new SpInPuts(){KEY = "P_SBSD_STATUS_PROCEDURES" , VALUE = emg.ActionsTaken},
+
                 new SpInPuts(){KEY = "P_PARTNERS_FLAG" , VALUE = emg.CharityMainData.AreTherePartners},
                 new SpInPuts(){KEY = "P_PARTNERS_LIST" , VALUE = emg.CharityMainData.PartnerNames},
                 new SpInPuts(){KEY = "P_PARTNERS_FUND_SUPPORT" , VALUE = emg.CharityMainData.TotalPartnerSupport},
+
                 new SpInPuts(){KEY = "P_CURR_BALANCE" , VALUE = emg.BankBalance},
+
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = emg.CharityMainData.RequiredSubsidy},
+
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = emg.CheckedData.CommissionerNumber}
             };
 
@@ -308,6 +314,7 @@ namespace DAL.Charities
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = cnst.CheckedData.AgencyType},
                 new SpInPuts(){KEY = "P_REG_ID" , VALUE = cnst.CheckedData.AgencyLicenseNumber},
+
                 new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = cnst.CharityMainData.SubsidyType},
                 new SpInPuts(){KEY = "P_BENEF_COUNT" , VALUE = cnst.CharityMainData.BeneficiariesCount},
                 new SpInPuts(){KEY = "P_VOLUNTEERS_COUNT" , VALUE = cnst.CharityMainData.VolunteersCount},
@@ -321,21 +328,29 @@ namespace DAL.Charities
                 new SpInPuts(){KEY = "P_LAST_YEAR_ROG_EXPENSES" , VALUE = cnst.CharityMainData.TotalExpensesForActivitiesPreviousYear},
                 new SpInPuts(){KEY = "P_LAST_YEAR_PRG_COUNT" , VALUE = cnst.CharityMainData.ProgramsImplementedPreviousYearCount},
                 new SpInPuts(){KEY = "P_MAKEEN_EAVL_RESULT" , VALUE = cnst.CharityMainData.GovernmentEvaluationResult},
+
                 new SpInPuts(){KEY = "P_PROG_NAME" , VALUE = cnst.ProgramName},
                 new SpInPuts(){KEY = "P_PROG_AUDIENCES" , VALUE = cnst.TargetedPeoples},
+
                 new SpInPuts(){KEY = "P_PROG_SUMMARY" , VALUE = cnst.CharityMainData.BriefAboutEmergencyAssembly},
+
                 new SpInPuts(){KEY = "P_PROG_GOALS" , VALUE = cnst.ProgramGoals},
                 new SpInPuts(){KEY = "P_IMPLEMENTATION_DT" , VALUE = cnst.ImplementationDate},
                 new SpInPuts(){KEY = "P_IMPLEMENTATION_DESC" , VALUE = cnst.ImplementationMethod},
                 new SpInPuts(){KEY = "P_IMPLEMENTATION_DURATION" , VALUE = cnst.ImplementationDuration},
                 new SpInPuts(){KEY = "P_TOTAL_PROG_COST" , VALUE = cnst.TotalCost},
+
                 new SpInPuts(){KEY = "P_PARTNERS_FLAG" , VALUE = cnst.CharityMainData.AreTherePartners},
                 new SpInPuts(){KEY = "P_PARTNERS_LIST" , VALUE = cnst.CharityMainData.PartnerNames},
                 new SpInPuts(){KEY = "P_PARTNERS_FUND_SUPPORT" , VALUE = cnst.CharityMainData.TotalPartnerSupport},
+
                 new SpInPuts(){KEY = "P_PROG_GOALS_CMPTBL_FLAG" , VALUE = cnst.CompatibilityOfProgramsWithObjectives},
+
                 new SpInPuts(){KEY = "P_PROG_REQUEST_AMOUNT" , VALUE = cnst.CharityMainData.RequiredSubsidy},
+
                 new SpInPuts(){KEY = "P_ORG_FUND_SUPPORT" , VALUE = cnst.AllocatedAmountToProject},
                 new SpInPuts(){KEY = "P_ORG_FUND_SUPPORT_PRCNT" , VALUE = cnst.AllocatedPercentageToProject},
+
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = cnst.CheckedData.CommissionerNumber}
             };
 

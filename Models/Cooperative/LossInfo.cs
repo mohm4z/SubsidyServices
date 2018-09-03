@@ -29,6 +29,7 @@ namespace Models.Cooperative
         /// P_RISK_DESC
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2000)]
         [DataMember(Order = 3)]
         public string LossType { get; set; }
 
@@ -37,6 +38,7 @@ namespace Models.Cooperative
         /// P_RISK_PROOF_LETTERS_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 4)]
         public int IsThereRecordsProvingDamagesAndValue { get; set; }
 
@@ -45,6 +47,7 @@ namespace Models.Cooperative
         /// P_RISK_BOD_MEET_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 5)]
         public int IsBoardMeetAboutThisSubject { get; set; }
 
@@ -53,6 +56,7 @@ namespace Models.Cooperative
         /// P_RISK_BALSHT_LOST_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 6)]
         public int IsLossesAppearInBalanceSheet { get; set; }
 
@@ -61,6 +65,7 @@ namespace Models.Cooperative
         /// P_RISK_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 7)]
         public decimal LossesValueAsNumber { get; set; }
 
@@ -69,6 +74,7 @@ namespace Models.Cooperative
         /// P_RISK_BALSHT_SPENT_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 8)]
         public decimal ProjectAmountShownInBudget { get; set; }
 
@@ -77,6 +83,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 9)]
         public decimal RequiredSubsidy { get; set; }
 

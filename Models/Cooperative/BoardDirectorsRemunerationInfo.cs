@@ -26,6 +26,7 @@ namespace Models.Cooperative
         /// P_PROFIT_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 3)]
         public int IsAssociationMadeProfitsInlastbudget { get; set; }
 
@@ -34,6 +35,7 @@ namespace Models.Cooperative
         /// P_PROFIT_AFTER_ZAKAT_AMNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 13.2)]
         [DataMember(Order = 4)]
         public decimal ProfitsAfterZakat { get; set; }
 
@@ -42,6 +44,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 12.2)]
         [DataMember(Order = 5)]
         public decimal RequiredSubsidy { get; set; }
     }

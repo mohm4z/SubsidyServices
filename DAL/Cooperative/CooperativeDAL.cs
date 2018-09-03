@@ -494,13 +494,13 @@ namespace DAL.Cooperative
                 RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
             };
 
-            int Conter = 0;
+            int Conter = 1;
 
             for (int i = 0; i < Stages.Count(); i++)
             {
                 InsertStagesDAL(
                     RequestResult.RequestId,
-                    Conter,
+                    Conter++,
                     Stages[i],
                     obj.CheckedData.CommissionerNumber.ToString()
                     );
@@ -528,13 +528,16 @@ namespace DAL.Cooperative
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
                 new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
+
                 new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
                 new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
                 new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
+
                 new SpInPuts(){KEY = "P_PARTICIPANTS_COUNT" , VALUE = obj.ParticipantsCount},
                 new SpInPuts(){KEY = "P_PARTICIPANTS_NAMES" , VALUE = obj.TraineesNames},
                 new SpInPuts(){KEY = "P_PARTICIPATION_TYPE_CD" , VALUE = obj.ParticipationType},
@@ -545,6 +548,7 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_PARTICIPATION_10PRCNT_FLG" , VALUE = obj.IsTheirApprovalToAllocateCosts},
                 new SpInPuts(){KEY = "P_PARTICIPATION_AGREE_FLG" , VALUE = obj.IsThereParticipationApproved},
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 
@@ -600,15 +604,18 @@ namespace DAL.Cooperative
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
                 new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
+
                 new SpInPuts(){KEY = "P_SOCIALS_SPENT_AMOUNT" , VALUE = obj.AmountForSocialServicetAsNumber},
                 new SpInPuts(){KEY = "P_SOCIALS_SPENT_ON" , VALUE = obj.AgenciesDisbursedOnIt},
                 new SpInPuts(){KEY = "P_SOCIALS_BOD_AGREE_FLG" , VALUE = obj.IsThereApprovingDisbursementOfSociaServices},
                 new SpInPuts(){KEY = "P_SOCIALS_SPENT_LETTER_FLG" , VALUE = obj.IsThereStatementOfDisbursedAgenciesAndCertified},
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 
@@ -664,13 +671,16 @@ namespace DAL.Cooperative
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
                 new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
+
                 new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
                 new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
                 new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
+
                 new SpInPuts(){KEY = "P_RSRCH_SUBJECT" , VALUE = obj.ResearchSubject},
                 new SpInPuts(){KEY = "P_RSRCH_GOOLS" , VALUE = obj.ResearchGools},
                 new SpInPuts(){KEY = "P_RSRCH_SUBJECT_ACTIVITIES" , VALUE = obj.ActivityResearchRelationship},
@@ -680,6 +690,7 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_SOCIALS_SPENT_ON" , VALUE = obj.AgenciesDisbursedOnIt},
                 new SpInPuts(){KEY = "P_RSRCH_COST_LETTER_FLG" , VALUE = obj.IsCostStatementBeenAttached},
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 
@@ -726,8 +737,6 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
-
-
         public RequestResult InsertLossSubsidyDAL(
             LossInfo obj,
             List<Files> Files
@@ -737,13 +746,16 @@ namespace DAL.Cooperative
             {
                 new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.CheckedData.AgencyType},
                 new SpInPuts(){KEY = "P_SOC_REG_NO" , VALUE = obj.CheckedData.AgencyLicenseNumber},
+
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_NAME" , VALUE = obj.ManagersInfo.ChairmanBoardName},
                 new SpInPuts(){KEY = "P_BOARD_CHAIRMAN_MOBILE" , VALUE = obj.ManagersInfo.ChairmanBoardMobileNumber},
                 new SpInPuts(){KEY = "P_CEO_NAME" , VALUE = obj.ManagersInfo.ExecutiveDirectorName},
                 new SpInPuts(){KEY = "P_CEO_MOB_NO" , VALUE = obj.ManagersInfo.ExecutiveDirectorMobile},
+
                 new SpInPuts(){KEY = "P_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsDirectorsBoardMeetingsRegular},
                 new SpInPuts(){KEY = "P_PUB_BOARD_MEET_FLG" , VALUE = obj.MeetingInfo.IsGeneralAssemblyMeetingsRegular},
                 new SpInPuts(){KEY = "P_BALANCE_SHEET_FLG" , VALUE = obj.MeetingInfo.IsBudgetRegular},
+
                 new SpInPuts(){KEY = "P_RISK_DESC" , VALUE = obj.LossType},
                 new SpInPuts(){KEY = "P_RISK_PROOF_LETTERS_FLG" , VALUE = obj.IsThereRecordsProvingDamagesAndValue},
                 new SpInPuts(){KEY = "P_RISK_BOD_MEET_FLG" , VALUE = obj.IsBoardMeetAboutThisSubject},
@@ -751,6 +763,7 @@ namespace DAL.Cooperative
                 new SpInPuts(){KEY = "P_RISK_AMOUNT" , VALUE = obj.LossesValueAsNumber},
                 new SpInPuts(){KEY = "P_RISK_BALSHT_SPENT_AMOUNT" , VALUE = obj.ProjectAmountShownInBudget},
                 new SpInPuts(){KEY = "P_REQUEST_AMOUNT" , VALUE = obj.RequiredSubsidy},
+
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = obj.CheckedData.CommissionerNumber}
             };
 
@@ -797,7 +810,6 @@ namespace DAL.Cooperative
             return RequestResult;
         }
 
-
         public RequestResult InsertStagesDAL(
            long RequestId,
            int Conter,
@@ -808,10 +820,12 @@ namespace DAL.Cooperative
             List<SpInPuts> inputs = new List<SpInPuts>
             {
                 new SpInPuts(){KEY = "P_REQUEST_ID" , VALUE = RequestId},
-                new SpInPuts(){KEY = "STG_SEQ" , VALUE = Conter},
-                new SpInPuts(){KEY = "STG_DT" , VALUE = si.StageDate},
-                new SpInPuts(){KEY = "STG_COST" , VALUE = si.StageCost},
-                new SpInPuts(){KEY = "STG_NOTE" , VALUE = si.Notes},
+                new SpInPuts(){KEY = "P_STG_SEQ" , VALUE = Conter},
+
+                new SpInPuts(){KEY = "P_STG_DT" , VALUE = si.StageDate},
+                new SpInPuts(){KEY = "P_STG_COST" , VALUE = si.StageCost},
+                new SpInPuts(){KEY = "P_STG_NOTE" , VALUE = si.Notes},
+
                 new SpInPuts(){KEY = "P_LOGIN_ID" , VALUE = CommissionerNumber}
             };
 
