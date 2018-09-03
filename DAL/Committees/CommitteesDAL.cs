@@ -24,9 +24,9 @@ namespace DAL.Committees
         }
 
         public CommitteeInfo GetCommitteeInfoDAL(
-           int AgencyType,
-           long AgencyLicenseNumber
-           )
+            int AgencyType,
+            long AgencyLicenseNumber
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -85,7 +85,7 @@ namespace DAL.Committees
         }
 
         public IEnumerable<LookupTable> GetInitiativesDAL(
-           )
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -175,27 +175,47 @@ namespace DAL.Committees
 
                 for (int i = 0; i < obj.Projects.Count(); i++)
                 {
-                    RequestResult rr = InsertProjectDAL(
+                    RequestResult rr1 = InsertProjectDAL(
                         RequestResult.RequestId,
                         obj.CheckedData.CommissionerNumber,
                         obj.Projects[i]
                         );
 
-                    RequestResult.RequestCode = rr.RequestCode;
-                    RequestResult.RequestName = rr.RequestName;
+                    if (rr1.RequestCode != "1")
+                    {
+                        RequestResult.RequestId = -1;
+                        RequestResult.RequestCode = rr1.RequestCode;
+                        RequestResult.RequestName = rr1.RequestName;
+
+                        ado.SqlCommiteT(false);
+                        return RequestResult;
+                    }
+
+                    RequestResult.RequestCode = rr1.RequestCode;
+                    RequestResult.RequestName = rr1.RequestName;
                 }
 
                 for (int i = 0; i < Files.Count(); i++)
                 {
-                    RequestResult rr = InsertAttachmentDAL(
+                    RequestResult rr2 = InsertAttachmentDAL(
                         RequestResult.RequestId,
                         Files[i].Id,
                         Files[i].Path,
                         obj.CheckedData.CommissionerNumber
                         );
 
-                    RequestResult.RequestCode = rr.RequestCode;
-                    RequestResult.RequestName = rr.RequestName;
+                    if (rr2.RequestCode != "1")
+                    {
+                        RequestResult.RequestId = -1;
+                        RequestResult.RequestCode = rr2.RequestCode;
+                        RequestResult.RequestName = rr2.RequestName;
+
+                        ado.SqlCommiteT(false);
+                        return RequestResult;
+                    }
+
+                    RequestResult.RequestCode = rr2.RequestCode;
+                    RequestResult.RequestName = rr2.RequestName;
                 }
 
                 ado.SqlCommiteT(true);
@@ -210,8 +230,8 @@ namespace DAL.Committees
         }
 
         public RequestResult InsertFoundationAdditionalSubsidyCommitteesDAL(
-           CommitteeRequestInfo obj
-           )
+            CommitteeRequestInfo obj
+            )
         {
             List<SpInPuts> inputs = new List<SpInPuts>
             {
@@ -241,7 +261,9 @@ namespace DAL.Committees
                 in Outouts
                 );
 
-            ado.ExecuteStoredProcedure(
+            try
+            {
+                ado.ExecuteStoredProcedure(
                 "SD_P_SUBSIDY_REQUEST",
                 OpParms,
                 out OracleParameterCollection OPCs
@@ -256,14 +278,35 @@ namespace DAL.Committees
 
             for (int i = 0; i < obj.Projects.Count(); i++)
             {
-                InsertProjectDAL(
+                    RequestResult rr = InsertProjectDAL(
                     RequestResult.RequestId,
                     obj.CheckedData.CommissionerNumber,
                     obj.Projects[i]
                     );
-            }
 
-            return RequestResult;
+                    if (rr.RequestCode != "1")
+                    {
+                        RequestResult.RequestId = -1;
+                        RequestResult.RequestCode = rr.RequestCode;
+                        RequestResult.RequestName = rr.RequestName;
+
+                        ado.SqlCommiteT(false);
+                        return RequestResult;
+                    }
+
+                    RequestResult.RequestCode = rr.RequestCode;
+                    RequestResult.RequestName = rr.RequestName;
+                }
+
+                ado.SqlCommiteT(true);
+
+                return RequestResult;
+            }
+            catch (Exception ex)
+            {
+                ado.SqlCommiteT(false);
+                throw ex;
+            }
         }
 
         public RequestResult InsertProjectDAL(

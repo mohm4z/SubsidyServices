@@ -34,14 +34,14 @@ namespace SubsidyServices.Committees
                 DataValidation.IsEmptyOrDefault2(CommitteeRequestInfo.CheckedData);
                 DataValidation.IsEmptyOrDefaultList2(CommitteeRequestInfo.Projects);
 
-                    //if (DataValidation.IsEmptyOrDefault(CommitteeRequestInfo) ||
-                    //    DataValidation.IsEmptyOrDefault(CommitteeRequestInfo.CheckedData) ||
-                    //    DataValidation.IsEmptyOrDefaultList(CommitteeRequestInfo.Projects))
-                    //    throw new FaultException<ValidationFault>(new ValidationFault());
+                //if (DataValidation.IsEmptyOrDefault(CommitteeRequestInfo) ||
+                //    DataValidation.IsEmptyOrDefault(CommitteeRequestInfo.CheckedData) ||
+                //    DataValidation.IsEmptyOrDefaultList(CommitteeRequestInfo.Projects))
+                //    throw new FaultException<ValidationFault>(new ValidationFault());
 
 
-                    /// Call Database
-                    using (CommitteesDAL dal = new CommitteesDAL(new ADO()))
+                /// Call Database
+                using (CommitteesDAL dal = new CommitteesDAL(new ADO(true)))
                 {
                     return dal.InsertFoundationAdditionalSubsidyCommitteesDAL(
                         CommitteeRequestInfo

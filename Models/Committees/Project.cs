@@ -38,8 +38,8 @@ namespace Models.Committees
         /// P_CME_REV_ITEMS
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 2)]
         [Length(MaxLength = 13)]
+        [DataMember(Order = 2)]
         public decimal CivilContributionKind { get; set; }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace Models.Committees
         /// P_EX_GOV_REV_CASH
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 3)]
         [Length(MaxLength = 13)]
+        [DataMember(Order = 3)]
         public decimal LastYearSurplus { get; set; }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace Models.Committees
         /// P_INITIATIVE_NO
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 4)]
         [Length(MaxLength = 3)]
+        [DataMember(Order = 4)]
         public int InitiativeCode { get; set; }
 
         /// <summary>
@@ -66,8 +66,8 @@ namespace Models.Committees
         /// P_PROGRAM_CD
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 5)]
         [Length(MaxLength = 3)]
+        [DataMember(Order = 5)]
         public int TheProgram { get; set; }
 
         /// <summary>
@@ -76,8 +76,8 @@ namespace Models.Committees
         /// P_PROJ_CD
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 6)]
         [Length(MaxLength = 3)]
+        [DataMember(Order = 6)]
         public decimal Classification { get; set; }
 
         /// <summary>
@@ -85,8 +85,8 @@ namespace Models.Committees
         /// P_PROG_NAME
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 7)]
         [Length(MaxLength = 150)]
+        [DataMember(Order = 7)]
         public string ProjectName { get; set; }
 
         /// <summary>
@@ -96,8 +96,8 @@ namespace Models.Committees
         /// P_PROJ_DURATION_TYPE
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 8)]
         [Length(MaxLength = 10)]
+        [DataMember(Order = 8)]
         public string ProjectDurationType { get; set; }
 
         /// <summary>
@@ -105,8 +105,8 @@ namespace Models.Committees
         /// P_PROJ_DURATION
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 9)]
         [Length(MaxLength = 3)]
+        [DataMember(Order = 9)]
         public int ProjectDuration { get; set; }
 
         /// <summary>
@@ -114,8 +114,8 @@ namespace Models.Committees
         /// P_PROG_GOALS
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 10)]
         [Length(MaxLength = 2000)]
+        [DataMember(Order = 10)]
         public string ProjectGoals { get; set; }
 
         /// <summary>
@@ -123,8 +123,8 @@ namespace Models.Committees
         /// P_REQ_SUBSCRIPTION_FEES
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 11)]
         [Length(MaxLength = 13)]
+        [DataMember(Order = 11)]
         public decimal SubscriptionFee { get; set; }
 
         /// <summary>
@@ -134,8 +134,8 @@ namespace Models.Committees
         /// P_PROJ_SITUATION
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 12)]
         [Length(MaxLength = 1)]
+        [DataMember(Order = 12)]
         public int ProjectStatus { get; set; }
 
         /// <summary>
@@ -143,8 +143,8 @@ namespace Models.Committees
         /// P_EXP_BEN_CNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 13)]
         [Length(MaxLength = 7)]
+        [DataMember(Order = 13)]
         public int BeneficiariesExpectedNumber { get; set; }
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace Models.Committees
         /// P_RESIDENCE_CD
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 4)]
         [DataMember(Order = 14)]
-        [Length(MaxLength = 3)]
         public int HeadquarterType { get; set; }
 
         /// <summary>
@@ -162,8 +162,8 @@ namespace Models.Committees
         /// P_PRJ_EMP_COUNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 15)]
         [Length(MaxLength = 4)]
+        [DataMember(Order = 15)]
         public int EmployeesNumber { get; set; }
 
         /// <summary>
@@ -171,8 +171,8 @@ namespace Models.Committees
         /// P_RENT_AMOUNT
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 16)]
         [Length(MaxLength = 11)]
+        [DataMember(Order = 16)]
         public decimal RentAmount { get; set; }
 
         /// <summary>
@@ -180,8 +180,8 @@ namespace Models.Committees
         /// P_PRJ_SALARIES
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 17)]
         [Length(MaxLength = 11)]
+        [DataMember(Order = 17)]
         public decimal TotalEmployeeSalaries { get; set; }
 
         /// <summary>
@@ -189,8 +189,8 @@ namespace Models.Committees
         /// P_PRJ_FIXEDASSETS
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 18)]
         [Length(MaxLength = 13)]
+        [DataMember(Order = 18)]
         public decimal FixedAssetsValue { get; set; }
 
         /// <summary>
@@ -198,8 +198,8 @@ namespace Models.Committees
         /// P_PRJ_EXPENSES
         /// </summary>
         [ItsRequired]
-        [DataMember(Order = 19)]
         [Length(MaxLength = 11)]
+        [DataMember(Order = 19)]
         public decimal OtherExpenses { get; set; }
     }
 }
