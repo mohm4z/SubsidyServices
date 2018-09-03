@@ -153,7 +153,7 @@ namespace Models.Committees
         /// P_RESIDENCE_CD
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 4)]
+        [Length(MaxLength = 3)]
         [DataMember(Order = 14)]
         public int HeadquarterType { get; set; }
 
