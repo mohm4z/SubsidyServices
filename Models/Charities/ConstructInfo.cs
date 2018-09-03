@@ -78,7 +78,7 @@ namespace Models.Charities
         /// P_TOTAL_PROG_COST
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 10.2)]
+        [Length(MaxLength = 11)]
         [DataMember(Order = 8)]
         public decimal TotalCost { get; set; }
 
@@ -96,7 +96,7 @@ namespace Models.Charities
         /// P_ORG_FUND_SUPPORT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 10.2)]
+        [Length(MaxLength = 11)]
         [DataMember(Order = 10)]
         public decimal AllocatedAmountToProject { get; set; }
 
@@ -105,7 +105,7 @@ namespace Models.Charities
         /// P_ORG_FUND_SUPPORT_PRCNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 5.2)]
+        [Length(MaxLength = 6)]
         [DataMember(Order = 11)]
         public decimal AllocatedPercentageToProject { get; set; }
 

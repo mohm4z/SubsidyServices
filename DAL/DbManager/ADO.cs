@@ -48,8 +48,10 @@ namespace DAL.DbManager
         public ADO(bool Trans)
         {
             conn = new OracleConnection(ConnS);
-            cmd = new OracleCommand();
-            cmd.Connection = conn;
+            cmd = new OracleCommand
+            {
+                Connection = conn
+            };
             //cmd.BindByName = true;
 
             if (conn.State != ConnectionState.Open)

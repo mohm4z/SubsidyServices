@@ -85,7 +85,7 @@ namespace Models.Cooperative
         /// P_PARTICIPATION_ACTUAL_COST
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 9)]
         public decimal ActualCost { get; set; }
 
@@ -112,7 +112,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 12)]
         public decimal RequiredSubsidy { get; set; }
 

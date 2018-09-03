@@ -74,7 +74,7 @@ namespace Models.Cooperative
         /// P_RSRCH_EXPECTED_COST
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 8)]
         public decimal CostForResearchAsNumber { get; set; }
 
@@ -101,7 +101,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 11)]
         public decimal RequiredSubsidy { get; set; }
     }

@@ -122,7 +122,7 @@ namespace Models.Charities
         /// P_SBSD_EMP_SALARY
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 8.2)]
+        [Length(MaxLength = 9)]
         [DataMember(Order = 12)]
         public decimal EmployeeSalary { get; set; }
 
@@ -131,7 +131,7 @@ namespace Models.Charities
         /// P_SBSD_EMP_RENT_AMOUNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 8.2)]
+        [Length(MaxLength = 9)]
         [DataMember(Order = 13)]
         public decimal EmployeeRentAmount { get; set; }
 

@@ -38,7 +38,17 @@ namespace SubsidyServices.Committees
                 /// Data Validations
                 if (AgencyType <= 0 ||
                    AgencyLicenseNumber <= 0)
-                    throw new FaultException<ValidationFault>(new ValidationFault());
+                {
+                    string MS = "Invalid Parameters AgencyType or AgencyLicenseNumber is Required but have null or empty or 0 value or length";
+
+                    throw new FaultException<ValidationFault>(
+                        new ValidationFault()
+                        {
+                            Result = false,
+                            Message = MS,
+                            Description = MS
+                        }, new FaultReason(MS));
+                }
 
 
                 /// Call Database
@@ -50,16 +60,16 @@ namespace SubsidyServices.Committees
                         );
                 }
             }
-            catch (FaultException<ValidationFault>)
+            catch (FaultException<ValidationFault> flex)
             {
-                ValidationFault fault = new ValidationFault
-                {
-                    Result = true,
-                    Message = "Parameter not correct",
-                    Description = "Invalid Parameter Name or All Parameters are nullu"
-                };
+                //ValidationFault fault = new ValidationFault
+                //{
+                //    Result = true,
+                //    Message = "Parameter not correct",
+                //    Description = "Invalid Parameter Name or All Parameters are nullu"
+                //};
 
-                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                //var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
                 _log.Error(flex);
 

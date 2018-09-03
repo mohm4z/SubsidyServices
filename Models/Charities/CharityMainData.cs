@@ -98,7 +98,7 @@ namespace Models.Charities
         /// P_LAST_YEAR_EXPENSES
         /// </summary>
         //[ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 9)]
         public decimal TotalExpensesAdministrativePreviousYear { get; set; }
 
@@ -107,7 +107,7 @@ namespace Models.Charities
         /// P_LAST_YEAR_ROG_EXPENSES
         /// </summary>
         //[ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 10)]
         public decimal TotalExpensesForActivitiesPreviousYear { get; set; }
 
@@ -161,7 +161,7 @@ namespace Models.Charities
         /// P_PARTNERS_FUND_SUPPORT
         /// </summary>
         //[ItsRequired]
-        [Length(MaxLength = 10.2)]
+        [Length(MaxLength = 11)]
         [DataMember(Order = 16)]
         public decimal TotalPartnerSupport { get; set; }
 
@@ -170,7 +170,7 @@ namespace Models.Charities
         /// P_PROG_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 17)]
         public decimal RequiredSubsidy { get; set; }
     }

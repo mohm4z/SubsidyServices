@@ -29,9 +29,10 @@ namespace Models.Cooperative
 
         /// <summary>
         /// راتب السنه
-        /// P_SBSD_EMP_YEAR_SALARY_CS
+        /// P_SBSD_EMP_YEAR_SALARY_CD
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 2)]
         [DataMember(Order = 4)]
         public int SalaryForWhichYear { get; set; }
 
@@ -40,6 +41,7 @@ namespace Models.Cooperative
         /// P_SBSD_EMP_FULLTIME_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 5)]
         public int IsDirectorDedicatedForJob { get; set; }
 
@@ -48,6 +50,7 @@ namespace Models.Cooperative
         /// P_SBSD_EMP_SALARY
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 9)]
         [DataMember(Order = 6)]
         public decimal AnnualSalary { get; set; }
 
@@ -56,6 +59,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 7)]
         public decimal RequiredSubsidy { get; set; }
 

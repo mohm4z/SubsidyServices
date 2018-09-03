@@ -44,7 +44,7 @@ namespace Models.Charities
         /// P_CURR_BALANCE
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 4)]
         public decimal BankBalance { get; set; }
 

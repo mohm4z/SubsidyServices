@@ -20,7 +20,7 @@ namespace Models.Committees
         /// P_PROG_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 0)]
         public decimal ProposedGovernmentContribution { get; set; }
 
@@ -29,7 +29,7 @@ namespace Models.Committees
         /// P_CME_REV_CASH
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 1)]
         public decimal CivilMonetaryContribution { get; set; }
 
@@ -39,7 +39,7 @@ namespace Models.Committees
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 2)]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         public decimal CivilContributionKind { get; set; }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Models.Committees
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 3)]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         public decimal LastYearSurplus { get; set; }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Models.Committees
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 11)]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         public decimal SubscriptionFee { get; set; }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Models.Committees
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 16)]
-        [Length(MaxLength = 10.2)]
+        [Length(MaxLength = 11)]
         public decimal RentAmount { get; set; }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Models.Committees
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 17)]
-        [Length(MaxLength = 10.2)]
+        [Length(MaxLength = 11)]
         public decimal TotalEmployeeSalaries { get; set; }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Models.Committees
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 18)]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         public decimal FixedAssetsValue { get; set; }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Models.Committees
         /// </summary>
         [ItsRequired]
         [DataMember(Order = 19)]
-        [Length(MaxLength = 10.2)]
+        [Length(MaxLength = 11)]
         public decimal OtherExpenses { get; set; }
     }
 }

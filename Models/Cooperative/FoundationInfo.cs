@@ -26,7 +26,7 @@ namespace Models.Cooperative
         /// P_ESTBLSH_CAPITAL
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 2)]
         public decimal CompanyCapitalInBeginning { get; set; }
     }

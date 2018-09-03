@@ -29,7 +29,7 @@ namespace Models.Cooperative
         /// STG_COST
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 1)]
         public decimal StageCost { get; set; }
 

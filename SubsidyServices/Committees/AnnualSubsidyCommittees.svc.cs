@@ -31,15 +31,20 @@ namespace SubsidyServices.Committees
             try
             {
                 /// Data Validations
-                if (DataValidation.IsEmptyOrDefault(CommitteeRequestInfo) ||
-                    DataValidation.IsEmptyOrDefault(CommitteeRequestInfo.CheckedData) ||
-                    DataValidation.IsEmptyOrDefaultList(CommitteeRequestInfo.Projects) ||
-                    DataValidation.IsEmptyOrDefaultList(Files))
-                    throw new FaultException<ValidationFault>(new ValidationFault());
+                DataValidation.IsEmptyOrDefault2(CommitteeRequestInfo);
+                DataValidation.IsEmptyOrDefault2(CommitteeRequestInfo.CheckedData);
+                DataValidation.IsEmptyOrDefaultList2(CommitteeRequestInfo.Projects);
+                DataValidation.IsEmptyOrDefaultList2(Files);
+
+                    //if (DataValidation.IsEmptyOrDefault(CommitteeRequestInfo) ||
+                    //    DataValidation.IsEmptyOrDefault(CommitteeRequestInfo.CheckedData) ||
+                    //    DataValidation.IsEmptyOrDefaultList(CommitteeRequestInfo.Projects) ||
+                    //    DataValidation.IsEmptyOrDefaultList(Files))
+                    //    throw new FaultException<ValidationFault>(new ValidationFault());
 
 
-                /// Call Database
-                using (CommitteesDAL dal = new CommitteesDAL(new ADO()))
+                    /// Call Database
+                    using (CommitteesDAL dal = new CommitteesDAL(new ADO(true)))
                 {
                     return dal.InsertAnnualSubsidyCommitteesDAL(
                         CommitteeRequestInfo,
@@ -47,16 +52,16 @@ namespace SubsidyServices.Committees
                         );
                 }
             }
-            catch (FaultException<ValidationFault>)
+            catch (FaultException<ValidationFault> flex)
             {
-                ValidationFault fault = new ValidationFault
-                {
-                    Result = true,
-                    Message = "Parameter not correct",
-                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
-                };
+                //ValidationFault fault = new ValidationFault
+                //{
+                //    Result = true,
+                //    Message = "Parameter not correct",
+                //    Description = "Invalid Parameters is Required but have null or empty or 0 value"
+                //};
 
-                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                //var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
                 _log.Error(flex);
 

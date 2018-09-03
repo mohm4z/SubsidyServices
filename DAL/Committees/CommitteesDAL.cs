@@ -158,39 +158,55 @@ namespace DAL.Committees
                 in Outouts
                 );
 
-            ado.ExecuteStoredProcedure(
+            try
+            {
+                ado.ExecuteStoredProcedure(
                 "SD_P_SUBSIDY_REQUEST",
                 OpParms,
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult RequestResult = new RequestResult
-            {
-                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
-                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
-                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
-            };
+                RequestResult RequestResult = new RequestResult
+                {
+                    RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                    RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                    RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+                };
 
-            for (int i = 0; i < obj.Projects.Count(); i++)
-            {
-                InsertProjectDAL(
-                    RequestResult.RequestId,
-                    obj.CheckedData.CommissionerNumber,
-                    obj.Projects[i]
-                    );
+                for (int i = 0; i < obj.Projects.Count(); i++)
+                {
+                    RequestResult rr = InsertProjectDAL(
+                        RequestResult.RequestId,
+                        obj.CheckedData.CommissionerNumber,
+                        obj.Projects[i]
+                        );
+
+                    RequestResult.RequestCode = rr.RequestCode;
+                    RequestResult.RequestName = rr.RequestName;
+                }
+
+                for (int i = 0; i < Files.Count(); i++)
+                {
+                    RequestResult rr = InsertAttachmentDAL(
+                        RequestResult.RequestId,
+                        Files[i].Id,
+                        Files[i].Path,
+                        obj.CheckedData.CommissionerNumber
+                        );
+
+                    RequestResult.RequestCode = rr.RequestCode;
+                    RequestResult.RequestName = rr.RequestName;
+                }
+
+                ado.SqlCommiteT(true);
+
+                return RequestResult;
             }
-
-            for (int i = 0; i < Files.Count(); i++)
+            catch (Exception ex)
             {
-                InsertAttachmentDAL(
-                    RequestResult.RequestId,
-                    Files[i].Id,
-                    Files[i].Path,
-                    obj.CheckedData.CommissionerNumber
-                    );
+                ado.SqlCommiteT(false);
+                throw ex;
             }
-
-            return RequestResult;
         }
 
         public RequestResult InsertFoundationAdditionalSubsidyCommitteesDAL(

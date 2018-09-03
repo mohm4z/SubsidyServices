@@ -27,6 +27,7 @@ namespace Models.Cooperative
         /// P_HAVE_3_MACHINES_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 3)]
         public int IsAgencyHaveThreeMachinesReady { get; set; }
 
@@ -38,6 +39,7 @@ namespace Models.Cooperative
         /// P_MACHINES_WORKERS_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 4)]
         public int WorkersOnMachines { get; set; }
 
@@ -46,14 +48,16 @@ namespace Models.Cooperative
         /// P_SAUDI_WORKERS_SALARIES
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 11)]
         [DataMember(Order = 5)]
-        public int SaudisSalaries { get; set; }
+        public decimal SaudisSalaries { get; set; }
 
         /// <summary>
         /// عدد الموظفين السعوديين العاملين على الاليات
         /// P_SAUDI_WORKERS_COUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 4)]
         [DataMember(Order = 6)]
         public int SaudisCount { get; set; }
 
@@ -62,14 +66,16 @@ namespace Models.Cooperative
         /// P_NON_SAUDI_WORKERS_SALARIES
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 11)]
         [DataMember(Order = 7)]
-        public int NonSaudisSalaries { get; set; }
+        public decimal NonSaudisSalaries { get; set; }
 
         /// <summary>
         /// عدد الموظفين غير السعوديين العاملين على الآليات
         /// P_NON_SAUDI_WORKERS_COUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 4)]
         [DataMember(Order = 8)]
         public int NonSaudisCount { get; set; }
 
@@ -78,6 +84,7 @@ namespace Models.Cooperative
         /// P_MACHINES_COUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 4)]
         [DataMember(Order = 9)]
         public int OwnedVehiclesCount { get; set; }
 
@@ -86,6 +93,7 @@ namespace Models.Cooperative
         /// P_JOB_CONTRACT_CMTBL_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 10)]
         public int IsJobCompatibleWithContract { get; set; }
 
@@ -94,6 +102,7 @@ namespace Models.Cooperative
         /// P_BOD_MACHINES_CERTF_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 11)]
         public int IsThereJobCertificateForMachines { get; set; }
 
@@ -102,6 +111,7 @@ namespace Models.Cooperative
         /// P_SUPPLIER_MACHINES_CERTF_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 12)]
         public int IsThereCertificateAssureMechanismsValid { get; set; }
 
@@ -110,6 +120,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 13)]
         public decimal RequiredSubsidy { get; set; }
     }

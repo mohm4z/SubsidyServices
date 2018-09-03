@@ -30,12 +30,18 @@ namespace SubsidyServices.Cooperative
             try
             {
                 /// Data Validations
-                if (DataValidation.IsEmptyOrDefault(LossInfo) ||
-                    DataValidation.IsEmptyOrDefault(LossInfo.CheckedData) ||
-                    DataValidation.IsEmptyOrDefault(LossInfo.ManagersInfo) ||
-                    DataValidation.IsEmptyOrDefault(LossInfo.MeetingInfo) ||
-                    DataValidation.IsEmptyOrDefaultList(Files))
-                    throw new FaultException<ValidationFault>(new ValidationFault());
+                DataValidation.IsEmptyOrDefault2(LossInfo);
+                DataValidation.IsEmptyOrDefault2(LossInfo.CheckedData);
+                DataValidation.IsEmptyOrDefault2(LossInfo.ManagersInfo);
+                DataValidation.IsEmptyOrDefault2(LossInfo.MeetingInfo);
+                DataValidation.IsEmptyOrDefaultList2(Files);
+
+                //if (DataValidation.IsEmptyOrDefault(LossInfo) ||
+                //    DataValidation.IsEmptyOrDefault(LossInfo.CheckedData) ||
+                //    DataValidation.IsEmptyOrDefault(LossInfo.ManagersInfo) ||
+                //    DataValidation.IsEmptyOrDefault(LossInfo.MeetingInfo) ||
+                //    DataValidation.IsEmptyOrDefaultList(Files))
+                //    throw new FaultException<ValidationFault>(new ValidationFault());
 
 
                 /// Call Database

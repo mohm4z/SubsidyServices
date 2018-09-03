@@ -30,15 +30,20 @@ namespace SubsidyServices.Cooperative
             try
             {
                 /// Data Validations
-                if (DataValidation.IsEmptyOrDefault(FoundationInfo) ||
-                    DataValidation.IsEmptyOrDefault(FoundationInfo.CheckedData) ||
-                    DataValidation.IsEmptyOrDefault(FoundationInfo.ManagersInfo) ||
-                    DataValidation.IsEmptyOrDefaultList(Files))
-                    throw new FaultException<ValidationFault>(new ValidationFault());
+                DataValidation.IsEmptyOrDefault2(FoundationInfo);
+                DataValidation.IsEmptyOrDefault2(FoundationInfo.CheckedData);
+                DataValidation.IsEmptyOrDefault2(FoundationInfo.ManagersInfo);
+                DataValidation.IsEmptyOrDefaultList2(Files);
+
+                    //if (DataValidation.IsEmptyOrDefault(FoundationInfo) ||
+                    //    DataValidation.IsEmptyOrDefault(FoundationInfo.CheckedData) ||
+                    //    DataValidation.IsEmptyOrDefault(FoundationInfo.ManagersInfo) ||
+                    //    DataValidation.IsEmptyOrDefaultList(Files))
+                    //    throw new FaultException<ValidationFault>(new ValidationFault());
 
 
-                /// Call Database
-                using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
+                    /// Call Database
+                    using (CooperativeDAL dal = new CooperativeDAL(new ADO()))
                 {
                     return dal.InsertFoundationCooperativeDAL(
                         FoundationInfo,
@@ -46,16 +51,16 @@ namespace SubsidyServices.Cooperative
                         );
                 }
             }
-            catch (FaultException<ValidationFault>)
+            catch (FaultException<ValidationFault> flex)
             {
-                ValidationFault fault = new ValidationFault
-                {
-                    Result = true,
-                    Message = "Parameter not correct",
-                    Description = "Invalid Parameters is Required but have null or empty or 0 value"
-                };
+                //ValidationFault fault = new ValidationFault
+                //{
+                //    Result = true,
+                //    Message = "Parameter not correct",
+                //    Description = "Invalid Parameters is Required but have null or empty or 0 value"
+                //};
 
-                var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+                //var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
 
                 _log.Error(flex);
 

@@ -20,7 +20,7 @@ namespace SubsidyServices.Test
         {
 
             DataValidation.IsEmptyOrDefault(c);
-            DataValidation.TestMethod(c);
+            DataValidation.IsEmptyOrDefault2(c);
 
             return "NA";
         }

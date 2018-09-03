@@ -26,11 +26,63 @@ namespace Models.Common
 
     public static class DataValidation
     {
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="Class"></param>
+        //public static void TestMethod(Object Class)
+        //{
+        //    PropertyInfo[] properties = Class.GetType().GetProperties();
+
+        //    foreach (var property in properties)
+        //    {
+        //        var attributes = property.GetCustomAttributes(true);
+
+        //        string Val = property.GetValue(Class, null).ToString();
+
+        //        for (int i = 0; i < attributes.Length; i++)
+        //        {
+        //            if (attributes[i] is ItsRequiredAttribute isrq)
+        //            {
+        //                if (String.IsNullOrWhiteSpace(Val) || Val == "0")
+        //                { 
+        //                    string MS = "Invalid Parameters : " + property.Name + " is Required but have null or empty or 0 value";
+
+        //                    throw new FaultException<ValidationFault>(
+        //                        new ValidationFault()
+        //                        {
+        //                            Result = false,
+        //                            Message = MS,
+        //                            Description = MS
+        //                        }, new FaultReason(MS));
+        //                }
+        //            }
+        //            else if (attributes[i] is LengthAttribute length)
+        //            {
+        //                if (Val.Length > length.MaxLength)
+        //                {
+        //                    string MS = "Invalid Parameters : " + property.Name + " Length should be " + length.MaxLength;
+
+        //                    throw new FaultException<ValidationFault>(
+        //                        new ValidationFault()
+        //                        {
+        //                            Result = false,
+        //                            Message = MS,
+        //                            Description = MS,
+        //                        }, new FaultReason(MS));
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+
         /// <summary>
-        /// 
+        /// Check All Class Properties if is it Required or not and Check if is it Empty or Default Value
         /// </summary>
         /// <param name="Class"></param>
-        public static void TestMethod(Object Class)
+        /// <returns></returns>
+        public static void IsEmptyOrDefault2(Object Class)
         {
             PropertyInfo[] properties = Class.GetType().GetProperties();
 
@@ -45,52 +97,107 @@ namespace Models.Common
                     if (attributes[i] is ItsRequiredAttribute isrq)
                     {
                         if (String.IsNullOrWhiteSpace(Val) || Val == "0")
+                        {
+                            string MS = "Invalid Parameters : " + property.Name + " is Required but it,s null, empty or 0 value";
+
                             throw new FaultException<ValidationFault>(
                                 new ValidationFault()
                                 {
                                     Result = false,
-                                    Message = "Invalid Parameters : " + property.Name + " is Required but have null or empty or 0 value",
-                                    Description = "Invalid Parameters : " + property.Name + " is Required but have null or empty or 0 value"
-                                });
+                                    Message = MS,
+                                    Description = MS
+                                }, new FaultReason(MS));
+                        }
                     }
                     else if (attributes[i] is LengthAttribute length)
                     {
-                        if (Val.Length == length.MaxLength)
+                        if (Val.Length > length.MaxLength)
+                        {
+                            string MS = "Invalid Parameters : " + property.Name + " Length should be " + length.MaxLength;
+
                             throw new FaultException<ValidationFault>(
                                 new ValidationFault()
                                 {
                                     Result = false,
-                                    Message = "Invalid Parameters : " + property.Name + " Length should be " + length.MaxLength,
-                                    Description = "Invalid Parameters : " + property.Name + " Length should be " + length.MaxLength,
-                                });
+                                    Message = MS,
+                                    Description = MS,
+                                }, new FaultReason(MS));
+                        }
                     }
                 }
             }
         }
 
-        //public static string TestMethod(Object Class)
-        //{
-        //    //if (dto == null)
-        //    //    throw new ArgumentNullException("dto");
+        /// <summary>
+        /// Check All List Of Class Properties if is it Required or not and Check if is it Empty or Default Value
+        /// </summary>
+        /// <param name="ListOfClass"></param>
+        /// <returns></returns>
+        public static void IsEmptyOrDefaultList2(Object ListOfClass)
+        {
+            dynamic List = ListOfClass;
+            var s = List.Count;
 
-        //    PropertyInfo[] properties = Class.GetType().GetProperties();
+            if (List.Count <= 0)
+            {
+                string MS = "Invalid Parameters : " + List + " is Required but have no Items";
 
-        //    //var properties = typeof(Class.GetType).GetProperties();
+                throw new FaultException<ValidationFault>(
+                                   new ValidationFault()
+                                   {
+                                       Result = false,
+                                       Message = MS,
+                                       Description = MS
+                                   }, new FaultReason(MS));
+            }
 
-        //    foreach (var property in properties)
-        //    {
-        //        var attributes = property.GetCustomAttributes(true);
-        //        foreach (var attribute in attributes)
-        //        {
-        //            if (attribute is LengthAttribute dtoPropAtt)
-        //            {
-        //                return string.Format("Maximum Length is: '{0}'!", dtoPropAtt.MaxLength);
-        //            }
-        //        }
-        //    }
+            foreach (var Class in List)
+            {
+                PropertyInfo[] properties = Class.GetType().GetProperties();
 
-        //    return "Attribute Serialization Test Failed";
-        //}
+                foreach (var property in properties)
+                {
+                    var attributes = property.GetCustomAttributes(true);
+
+                    string Val = property.GetValue(Class, null).ToString();
+
+                    for (int i = 0; i < attributes.Length; i++)
+                    {
+                        if (attributes[i] is ItsRequiredAttribute isrq)
+                        {
+                            if (String.IsNullOrWhiteSpace(Val) || Val == "0")
+                            {
+                                string MS = "Invalid Parameters : " + List + "." + property.Name + " is Required but it,s null, empty or 0 value";
+
+                                throw new FaultException<ValidationFault>(
+                                    new ValidationFault()
+                                    {
+                                        Result = false,
+                                        Message = MS,
+                                        Description = MS
+                                    }, new FaultReason(MS));
+                            }
+                        }
+                        else if (attributes[i] is LengthAttribute length)
+                        {
+                            if (Val.Length > length.MaxLength)
+                            {
+                                string MS = "Invalid Parameters : " + List + "." + property.Name + " Length should be " + length.MaxLength;
+
+                                throw new FaultException<ValidationFault>(
+                                    new ValidationFault()
+                                    {
+                                        Result = false,
+                                        Message = MS,
+                                        Description = MS,
+                                    }, new FaultReason(MS));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         /// <summary>
         /// Check All Class Properties if is it Required or not and Check if is it Empty or Default Value
@@ -203,6 +310,142 @@ namespace Models.Common
             return false;
         }
 
+
+        //public static string TestMethod(Object Class)
+        //{
+        //    //if (dto == null)
+        //    //    throw new ArgumentNullException("dto");
+
+        //    PropertyInfo[] properties = Class.GetType().GetProperties();
+
+        //    //var properties = typeof(Class.GetType).GetProperties();
+
+        //    foreach (var property in properties)
+        //    {
+        //        var attributes = property.GetCustomAttributes(true);
+        //        foreach (var attribute in attributes)
+        //        {
+        //            if (attribute is LengthAttribute dtoPropAtt)
+        //            {
+        //                return string.Format("Maximum Length is: '{0}'!", dtoPropAtt.MaxLength);
+        //            }
+        //        }
+        //    }
+
+        //    return "Attribute Serialization Test Failed";
+        //}
+
+        ///// <summary>
+        ///// Check All Class Properties if is it Required or not and Check if is it Empty or Default Value
+        ///// </summary>
+        ///// <param name="Class"></param>
+        ///// <returns></returns>
+        //public static bool IsEmptyOrDefault(Object Class)
+        //{
+        //    //if (Class is null)
+        //    //    return true;
+
+        //    foreach (PropertyInfo prop in Class.GetType().GetProperties())
+        //    {
+        //        //DataMemberAttribute propAttr = (DataMemberAttribute)Attribute.GetCustomAttribute(prop.PropertyType, typeof(DataMemberAttribute));
+        //        //if (propAttr.IsRequired)
+        //        //{ }
+
+        //        if (Attribute.IsDefined(prop, typeof(ItsRequiredAttribute)))
+        //        {
+        //            if (prop is null)
+        //                return true;
+
+        //            object Val = prop.GetValue(Class, null);
+
+        //            if (prop.PropertyType == typeof(string))
+        //            {
+        //                if (String.IsNullOrWhiteSpace(Val.ToString()))
+        //                    return true;
+        //            }
+        //            else if (
+        //                prop.PropertyType == typeof(Int16) ||
+        //                prop.PropertyType == typeof(Int32) ||
+        //                prop.PropertyType == typeof(Int64) ||
+        //                prop.PropertyType == typeof(long) ||
+        //                prop.PropertyType == typeof(double) ||
+        //                prop.PropertyType == typeof(decimal)
+        //                )
+        //            {
+        //                if (Convert.ToDecimal(Val) == 0)
+        //                    return true;
+        //            }
+        //            //else if (prop is null)
+        //            //{
+
+        //            //}
+        //        }
+
+
+        //        if (Attribute.IsDefined(prop, typeof(ItsRequiredAttribute)))
+        //        {
+
+        //        }
+        //    }
+
+        //    return false;
+        //}
+
+        ///// <summary>
+        ///// Check All List Of Class Properties if is it Required or not and Check if is it Empty or Default Value
+        ///// </summary>
+        ///// <param name="ListOfClass"></param>
+        ///// <returns></returns>
+        //public static bool IsEmptyOrDefaultList(Object ListOfClass)
+        //{
+        //    dynamic List = ListOfClass;
+        //    var s = List.Count;
+
+        //    if (List.Count <= 0)
+        //        return true;
+
+        //    foreach (var Class in List)
+        //    {
+        //        foreach (PropertyInfo prop in Class.GetType().GetProperties())
+        //        {
+        //            if (Attribute.IsDefined(prop, typeof(ItsRequiredAttribute)))
+        //            {
+        //                if (prop is null)
+        //                    return true;
+
+
+        //                //string Val = prop.GetValue(Class, null).ToString();
+
+        //                //if (String.IsNullOrWhiteSpace(Val) || Val == "0")
+        //                //{
+        //                //}
+
+        //                object Val = prop.GetValue(Class, null);
+
+        //                if (prop.PropertyType == typeof(string))
+        //                {
+        //                    if (String.IsNullOrWhiteSpace(Val.ToString()))
+        //                        return true;
+        //                }
+        //                else if (
+        //                    prop.PropertyType == typeof(Int16) ||
+        //                    prop.PropertyType == typeof(Int32) ||
+        //                    prop.PropertyType == typeof(Int64) ||
+        //                    prop.PropertyType == typeof(long) ||
+        //                    prop.PropertyType == typeof(double) ||
+        //                    prop.PropertyType == typeof(decimal)
+        //                    )
+        //                {
+        //                    if (Convert.ToDecimal(Val) == 0)
+        //                        return true;
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return false;
+        //}
+
         /// <summary>
         /// Check All Class Properties if Is It null Or Not
         /// </summary>
@@ -297,7 +540,13 @@ namespace Models.Common
         //{
         //}
 
-        public double MinLength { get; set; }
-        public double MaxLength { get; set; }
+        public int MinLength { get; set; }
+        public int MaxLength { get; set; }
+
+        /// <summary>
+        /// طول العدد الكسري الذي يجب ان لا يتجاوزه
+        /// </summary>
+        public int Fractional { get; set; }
+
     }
 }

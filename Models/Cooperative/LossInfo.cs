@@ -65,7 +65,7 @@ namespace Models.Cooperative
         /// P_RISK_AMOUNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 7)]
         public decimal LossesValueAsNumber { get; set; }
 
@@ -74,7 +74,7 @@ namespace Models.Cooperative
         /// P_RISK_BALSHT_SPENT_AMOUNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 8)]
         public decimal ProjectAmountShownInBudget { get; set; }
 
@@ -83,7 +83,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
-        [Length(MaxLength = 12.2)]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 9)]
         public decimal RequiredSubsidy { get; set; }
 

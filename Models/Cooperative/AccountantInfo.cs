@@ -29,6 +29,7 @@ namespace Models.Cooperative
         /// P_BALSHT_SAL_SPRT_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 3)]
         public int AccountantSalarySeparateInTheBudget { get; set; }
 
@@ -37,6 +38,7 @@ namespace Models.Cooperative
         /// P_SBSD_EMP_CONTRACT_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 4)]
         public int IsContractSignedbotheAndNameAndSalaryShown { get; set; }
 
@@ -45,6 +47,7 @@ namespace Models.Cooperative
         /// P_SPONSOR_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 5)]
         public int IsNonSaudiSponsorshipOnAgancy { get; set; }
 
@@ -53,6 +56,7 @@ namespace Models.Cooperative
         /// P_PAYROLL_FLG
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 1)]
         [DataMember(Order = 6)]
         public int IsAccountantReceiptSheetAvailable { get; set; }
 
@@ -61,6 +65,7 @@ namespace Models.Cooperative
         /// P_SBSD_EMP_SALARY
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 9)]
         [DataMember(Order = 7)]
         public decimal AnnualSalary { get; set; }
 
@@ -69,6 +74,7 @@ namespace Models.Cooperative
         /// P_REQUEST_AMOUNT
         /// </summary>
         [ItsRequired]
+        [Length(MaxLength = 13)]
         [DataMember(Order = 8)]
         public decimal RequiredSubsidy { get; set; }
 
