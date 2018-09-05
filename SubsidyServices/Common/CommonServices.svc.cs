@@ -592,7 +592,55 @@ namespace SubsidyServices.Common
             }
         }
 
-        
+        /// <summary>
+        /// هل المفوض له صلاحية على الخدمة
+        /// </summary>
+        /// <param name="DelegatorInfo"></param>
+        /// <returns></returns>
+        public IsDelegatorAuthorizedResult IsDelegatorAuthorized(
+            DelegatorInfo DelegatorInfo
+            )
+        {
+            try
+            {
+                /// Data Validations
+                DataValidation.IsEmptyOrDefault2(DelegatorInfo);
 
+                using (CommonDAL dal = new CommonDAL(new ADO()))
+                {
+                    return dal.IsDelegatorAuthorizedDAL(
+                        DelegatorInfo
+                        );
+                }
+            }
+            catch (FaultException<ValidationFault> flex)
+            {
+                //ValidationFault fault = new ValidationFault
+                //{
+                //    Result = true,
+                //    Message = "Parameter not correct",
+                //    Description = "Invalid Parameter Name or All Parameters are nullu"
+                //};
+
+                //var flex = new FaultException<ValidationFault>(fault, new FaultReason("Invalid Parameters is Required but have null or empty or 0 value"));
+
+                _log.Error(flex);
+
+                throw flex;
+            }
+            catch (Exception ex)
+            {
+                ValidationFault fault = new ValidationFault
+                {
+                    Result = false,
+                    Message = ex.Message,
+                    Description = "Service have an internal error please contact service administartor m.zanaty@mlsd.gov.sa"
+                };
+
+                _log.Error(ex);
+
+                throw new FaultException<ValidationFault>(fault);
+            }
+        }
     }
 }

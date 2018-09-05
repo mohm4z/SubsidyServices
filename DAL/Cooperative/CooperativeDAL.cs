@@ -505,42 +505,78 @@ namespace DAL.Cooperative
                 in Outouts
                 );
 
-            ado.ExecuteStoredProcedure(
+            try
+            {
+                ado.ExecuteStoredProcedure(
                 "CS_P_SUBSIDY_BUILDUP",
                 OpParms,
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult RequestResult = new RequestResult
-            {
-                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
-                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
-                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
-            };
+                RequestResult RequestResult = new RequestResult
+                {
+                    RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                    RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                    RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+                };
 
-            int Conter = 1;
+                int Conter = 1;
 
-            for (int i = 0; i < Stages.Count(); i++)
-            {
-                InsertStagesDAL(
+                for (int i = 0; i < Stages.Count(); i++)
+                {
+                    RequestResult rr = InsertStagesDAL(
                     RequestResult.RequestId,
                     Conter++,
                     Stages[i],
                     obj.CheckedData.CommissionerNumber.ToString()
                     );
-            }
 
-            for (int i = 0; i < Files.Count(); i++)
-            {
-                InsertAttachmentDAL(
+                    if (rr.RequestCode != "1")
+                    {
+                        RequestResult.RequestId = -1;
+                        RequestResult.RequestCode = rr.RequestCode;
+                        RequestResult.RequestName = rr.RequestName;
+
+                        ado.SqlCommiteT(false);
+                        return RequestResult;
+                    }
+
+                    RequestResult.RequestCode = rr.RequestCode;
+                    RequestResult.RequestName = rr.RequestName;
+                }
+
+                for (int i = 0; i < Files.Count(); i++)
+                {
+                    RequestResult rr = InsertAttachmentDAL(
                     RequestResult.RequestId,
                     Files[i].Id,
                     Files[i].Path,
                     obj.CheckedData.CommissionerNumber.ToString()
                     );
-            }
 
-            return RequestResult;
+                    if (rr.RequestCode != "1")
+                    {
+                        RequestResult.RequestId = -1;
+                        RequestResult.RequestCode = rr.RequestCode;
+                        RequestResult.RequestName = rr.RequestName;
+
+                        ado.SqlCommiteT(false);
+                        return RequestResult;
+                    }
+
+                    RequestResult.RequestCode = rr.RequestCode;
+                    RequestResult.RequestName = rr.RequestName;
+                }
+
+                ado.SqlCommiteT(true);
+
+                return RequestResult;
+            }
+            catch (Exception ex)
+            {
+                ado.SqlCommiteT(false);
+                throw ex;
+            }
         }
 
         public RequestResult InsertTrainingSubsidyDAL(

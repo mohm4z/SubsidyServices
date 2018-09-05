@@ -269,15 +269,15 @@ namespace DAL.Committees
                 out OracleParameterCollection OPCs
                 );
 
-            RequestResult RequestResult = new RequestResult
-            {
-                RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
-                RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
-                RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
-            };
+                RequestResult RequestResult = new RequestResult
+                {
+                    RequestId = OPCs[":P_REQUEST_ID"].Value != null ? Convert.ToInt64(OPCs[":P_REQUEST_ID"].Value.ToString()) : 0,
+                    RequestCode = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                    RequestName = OPCs[":P_RESULT_TEXT"].Value.ToString(),
+                };
 
-            for (int i = 0; i < obj.Projects.Count(); i++)
-            {
+                for (int i = 0; i < obj.Projects.Count(); i++)
+                {
                     RequestResult rr = InsertProjectDAL(
                     RequestResult.RequestId,
                     obj.CheckedData.CommissionerNumber,

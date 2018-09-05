@@ -455,6 +455,59 @@ namespace DAL.Common
             return Ds.Tables[0].DataTableToList<Subsidy>();
         }
 
+        public IsDelegatorAuthorizedResult IsDelegatorAuthorizedDAL(
+            DelegatorInfo obj
+            )
+        {
+            List<SpInPuts> inputs = new List<SpInPuts>
+            {
+                new SpInPuts(){KEY = "P_REG_ID" , VALUE = obj.REG_ID},
+                new SpInPuts(){KEY = "P_DLGT_ID" , VALUE = obj.DLGT_ID},
+                new SpInPuts(){KEY = "P_REG_TYPE_CODE" , VALUE = obj.REG_TYPE_CODE},
+                new SpInPuts(){KEY = "P_SUBSIDY_CODE" , VALUE = obj.SUBSIDY_CODE}
+            };
+
+            List<SpOutPuts> Outouts = new List<SpOutPuts>()
+            {
+                new SpOutPuts() { ParameterName ="P_REG_DT" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_SOC_NAME" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_BRN_NAME" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_MOBILE_NO" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_DLGT_NAME" , OracleDbType= OracleDbType.Varchar2 , Size = 100},
+                new SpOutPuts() { ParameterName ="P_RESULT_CODE" , OracleDbType= OracleDbType.Varchar2 , Size = 300},
+                new SpOutPuts() { ParameterName ="P_RESULT_TEXT" , OracleDbType= OracleDbType.Varchar2 , Size = 2000}
+            };
+
+            //Populate Parameters
+            List<OracleParameter> OpParms = ado.PopulateSpInPuts(
+                in inputs
+                );
+
+            ado.PopulateSpOutPuts(
+                ref OpParms,
+                in Outouts
+              );
+
+            ado.ExecuteStoredProcedure(
+                "CH.PRC_GET_ORG_INFO",
+                OpParms,
+                out OracleParameterCollection OPCs
+                );
+
+            IsDelegatorAuthorizedResult rs = new IsDelegatorAuthorizedResult()
+            {
+                REG_DT = OPCs[":P_REG_DT"].Value.ToString(),
+                SOC_NAME = OPCs[":P_SOC_NAME"].Value.ToString(),
+                BRN_NAME = OPCs[":P_BRN_NAME"].Value.ToString(),
+                MOBILE_NO = OPCs[":P_MOBILE_NO"].Value.ToString(),
+                DLGT_NAME = OPCs[":P_DLGT_NAME"].Value.ToString(),
+                MESSAGE_CODE = OPCs[":P_RESULT_CODE"].Value.ToString(),
+                MESSAGE_DESC = OPCs[":P_RESULT_TEXT"].Value.ToString()
+            };
+
+            return rs;
+        }
+
 
         public void Dispose()
         {

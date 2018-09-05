@@ -79,7 +79,7 @@ namespace SubsidyServices.Common
             int AgencyType,
             long AgencyLicenseNumber,
             string SubsidyCode,
-            string  RequestsStatusId
+            string RequestsStatusId
             );
 
         [OperationContract]
@@ -88,5 +88,11 @@ namespace SubsidyServices.Common
            int? AgencyType,
            int? SubsidyCode
            );
+
+        [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        IsDelegatorAuthorizedResult IsDelegatorAuthorized(
+            DelegatorInfo DelegatorInfo
+            );
     }
 }
